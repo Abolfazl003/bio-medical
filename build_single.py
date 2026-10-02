@@ -6,6 +6,12 @@
 """
 import base64, os, sys
 
+# روی ویندوز کنسول ممکن است از یونیکد پشتیبانی نکند
+try:
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+except Exception:
+    pass
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 WEB = os.path.join(ROOT, 'web')
 FONTS = os.path.join(ROOT, 'fonts')
@@ -105,9 +111,9 @@ document.addEventListener("touchend", function(e){
         os.makedirs(os.path.dirname(o), exist_ok=True)
         with open(o, 'w', encoding='utf-8') as f:
             f.write(doc)
-        print(f'✓ {os.path.relpath(o, ROOT)}  ({os.path.getsize(o)/1024:.0f} KB)')
+        print(f'[OK] {os.path.relpath(o, ROOT)}  ({os.path.getsize(o)/1024:.0f} KB)')
 
-    print(f'\n✅ نسخه تک‌فایلی کامل ساخته شد — {os.path.getsize(outs[0])/1024/1024:.2f} MB (همه چیز داخلش هست)')
+    print(f'\n[DONE] Single-file offline app built: {os.path.getsize(outs[0])/1024/1024:.2f} MB')
 
 if __name__ == '__main__':
     main()
