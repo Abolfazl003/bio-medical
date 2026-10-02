@@ -1,5 +1,5 @@
 /* Service Worker برای کار آفلاین PWA */
-const CACHE_NAME = 'bme-konkur-v3';
+const CACHE_NAME = 'bme-konkur-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -7,6 +7,15 @@ const ASSETS = [
   './fonts.css',
   './app.js',
   './data.js',
+  './books.js',
+  './book_math.js',
+  './book_circuits.js',
+  './book_signals.js',
+  './book_anatomy.js',
+  './book_physics.js',
+  './book_others.js',
+  './book_last.js',
+  './book_reader.js',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png',

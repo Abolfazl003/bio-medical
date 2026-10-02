@@ -34,3 +34,8 @@ desktop.ini
 # temp
 *.log
 *.tmp
+
+# screenshots / test artifacts
+shots/
+shots2/
+shots3/

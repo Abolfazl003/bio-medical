@@ -20,10 +20,24 @@ def read(p, enc='utf-8'):
     with open(p, encoding=enc) as f:
         return f.read()
 
+def collect_book_js():
+    """همه فایل‌های محتوای کتاب را به ترتیب جمع می‌کند"""
+    import glob
+    files = sorted(f for f in glob.glob(os.path.join(WEB, 'book_*.js'))
+                   if os.path.basename(f) != 'book_reader.js')
+    parts = []
+    for f in files:
+        parts.append(read(f))
+    return "\n".join(parts), [os.path.basename(f) for f in files]
+
+
 def main():
-    css    = read(os.path.join(WEB, 'style.css'))
-    js     = read(os.path.join(WEB, 'app.js'))
-    data   = read(os.path.join(WEB, 'data.js'))
+    css     = read(os.path.join(WEB, 'style.css'))
+    reader  = read(os.path.join(WEB, 'book_reader.js'))
+    js      = read(os.path.join(WEB, 'app.js'))
+    data    = read(os.path.join(WEB, 'data.js'))
+    books   = read(os.path.join(WEB, 'books.js'))
+    bookjs, bookfiles = collect_book_js()
     fontcss= read(os.path.join(FONTS, 'vazirmatn-embedded.css'))
     icon   = "data:image/png;base64," + base64.b64encode(open(os.path.join(WEB,'icon-192.png'),'rb').read()).decode()
 
@@ -69,6 +83,9 @@ __CSS__</style>
   <main id="main"></main>
 </div>
 <script>__DATA__</script>
+<script>__BOOKS__</script>
+<script>__BOOKJS__</script>
+<script>__READER__</script>
 <script>__JS__</script>
 <script>
 /* ناوبری */
@@ -91,7 +108,10 @@ document.addEventListener("touchend", function(e){
 </body>
 </html>
 """
-    doc = (doc.replace("__FONT__", fontcss)
+    doc = (doc.replace("__BOOKS__", books)
+              .replace("__BOOKJS__", bookjs)
+              .replace("__READER__", reader)
+              .replace("__FONT__", fontcss)
               .replace("__CSS__", css)
               .replace("__DATA__", data)
               .replace("__JS__", js)
@@ -113,6 +133,7 @@ document.addEventListener("touchend", function(e){
             f.write(doc)
         print(f'[OK] {os.path.relpath(o, ROOT)}  ({os.path.getsize(o)/1024:.0f} KB)')
 
+    print(f'  کتاب‌ها: {", ".join(bookfiles) if bookfiles else "هیچ"}')
     print(f'\n[DONE] Single-file offline app built: {os.path.getsize(outs[0])/1024/1024:.2f} MB')
 
 if __name__ == '__main__':

@@ -19,7 +19,15 @@ const STATE = {
 function loadProgress(){
   try {
     const raw = localStorage.getItem(LS_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const p = JSON.parse(raw);
+      if(!p.completed_lessons) p.completed_lessons = [];
+      if(!p.bookmarks) p.bookmarks = [];
+      if(!p.saved_questions) p.saved_questions = [];
+      if(!p.quiz_stats) p.quiz_stats = {correct:0,total:0};
+      if(!p.exam_results) p.exam_results = [];
+      return p;
+    }
   } catch(e){}
   return {
     bookmarks:[],
@@ -65,6 +73,8 @@ function appBack(){
   if(openModal){ openModal.remove(); return true; }
   const map = {
     "subject-detail":"subjects",
+    "book":"subjects",
+    "book-chapter":"book",
     "teacher-lesson":"teacher",
     "foundation-lesson":"foundation",
     "quiz-playing":"quiz",
@@ -95,6 +105,8 @@ function render(){
   const v=STATE.view;
   if(v==="dashboard") renderDashboard(main);
   else if(v==="subjects") renderSubjects(main);
+  else if(v==="book") renderBookHome(STATE.activeSubject);
+  else if(v==="book-chapter"){const o=STATE._bookOpen; if(o) renderBookChapter(o.sid,o.chId); else setView("subjects");}
   else if(v==="subject-detail") renderSubjectDetail(main);
   else if(v==="quiz") renderQuizHome(main);
   else if(v==="quiz-playing") renderQuiz(main);
@@ -144,6 +156,8 @@ function renderDashboard(main){
         <div class="card-actions"><button class="btn btn-secondary">آزمون جامع</button></div></div>
       <div class="card clickable" onclick="setView('teacher')"><div class="emoji">🧑‍🏫</div><h3>کلاس با استاد</h3><p>تدریس تعاملی درس به درس</p>
         <div class="card-actions"><button class="btn" style="background:var(--warning);color:#0f172a">شروع کلاس</button></div></div>
+      <div class="card clickable" onclick="setView('books')"><div class="emoji">📕</div><h3>کتاب درسی کامل</h3><p>۱۰ کتاب با ۴۰ فصل، فرمول و مثال حل‌شده</p>
+        <div class="card-actions"><button class="btn btn-primary">مطالعه کتاب</button></div></div>
       <div class="card clickable" onclick="setView('freebooks')"><div class="emoji">🔗</div><h3>کتاب‌های رایگان</h3><p>لینک منابع آزاد قانونی برای مطالعه عمیق</p>
         <div class="card-actions"><button class="btn btn-ghost">مشاهده</button></div></div>
     </div>
@@ -153,7 +167,7 @@ function renderDashboard(main){
     <div class="grid-cards">
       <div class="card clickable" onclick="setView('savedq')"><div class="emoji">💾</div><h3>سوالات ذخیره‌شده (${(STATE.progress.saved_questions||[]).length})</h3><p>سوالات مهمی که ذخیره کردی برای مرور</p></div>
       <div class="card clickable" onclick="setView('freebooks')"><div class="emoji">🔗</div><h3>کتاب‌های رایگان</h3><p>لینک‌های قانونی و آزاد منابع درسی</p></div>
-      <div class="card clickable" onclick="setView('books')"><div class="emoji">📖</div><h3>کتاب‌های مرجع</h3><p>معرفی ۲۰ کتاب اصلی کنکور</p></div>
+      <div class="card clickable" onclick="setView('books')"><div class="emoji">📕</div><h3>کتابخانه درسی (۱۰ کتاب کامل)</h3><p>کتاب کامل هر درس + معرفی ۲۰ منبع مرجع کنکور</p></div>
     </div>
     ${last?`<div class="section-title">🏅 آخرین آزمون</div>
       <div class="card"><div style="font-weight:700;font-size:18px;color:var(--warning)">دوره ${last.year} — ${last.score} از ${last.total} (${Math.round(last.score*100/last.total)}%) <span style="font-size:12px;color:var(--muted)">${last.date||""}</span></div></div>`:""}
@@ -215,7 +229,8 @@ function renderSubjectDetail(main){
         <div style="flex:1;min-width:240px"><h2 style="font-size:22px">${s.name}</h2>
         <div style="color:var(--muted);font-size:13px">${s.lessons.length} فصل • ${qc} سوال</div></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn btn-primary" onclick="startQuiz('${s.id}')">📝 تست این درس</button>
+          ${hasBook(s.id)?`<button class="btn btn-primary" onclick="openBookHome('${s.id}')">📕 کتاب کامل (${bookChapterCount(s.id)} فصل)</button>`:""}
+          <button class="btn" style="background:var(--accent2);color:#fff" onclick="startQuiz('${s.id}')">📝 تست این درس</button>
           <button class="btn" style="background:var(--warning);color:#0f172a" onclick="openTeacher('${s.id}')">🧑‍🏫 تدریس استاد</button>
           <button class="btn btn-ghost" onclick="setView('subjects')">🔙</button>
         </div>
@@ -520,10 +535,49 @@ function restartExam(){const idx=APP_DATA.exams.findIndex(e=>e.year===STATE.exam
 
 /* ---- Books / Free Books ---- */
 function renderBooks(main){
-  main.innerHTML=`<div class="page-head"><h1>📖 کتاب‌های مرجع</h1><p>لیست ۲۰ کتاب اصلی کنکور ارشد</p><div style="margin-top:10px">
-    <button class="btn btn-primary" onclick="setView('freebooks')">🔗 مشاهده کتاب‌های رایگان و آزاد</button></div></div><div id="books"></div>`;
+  /* ---- بخش ۱: کتاب‌های درسی کامل داخل اپ ---- */
+  const subs=APP_DATA.subjects.filter(s=>hasBook(s.id));
+  let totCh=0, totMin=0, doneCh=0;
+  subs.forEach(s=>{ totCh+=bookChapterCount(s.id); totMin+=bookMinutes(s.id);
+    BOOK_DATA[s.id].parts.forEach(p=>p.chapters.forEach(c=>{ if(STATE.progress.completed_lessons.includes(chapterKey(s.id,c.id))) doneCh++; }));
+  });
+  const pct = totCh? Math.round(doneCh*100/totCh) : 0;
+
+  main.innerHTML=`
+    <div class="page-head"><h1>📕 کتابخانه درسی</h1>
+      <p>۱۰ کتاب کامل — نه خلاصه. ${totCh} فصل و حدود ${Math.round(totMin/60)} ساعت مطالعه.</p></div>
+    <div class="card" style="background:linear-gradient(135deg,var(--accent)22,transparent);border-color:var(--accent)44">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="font-weight:800;font-size:16px">پیشرفت کل کتاب‌ها: ${doneCh} از ${totCh} فصل (${pct}%)</div>
+        <button class="btn btn-primary" onclick="setView('freebooks')">🔗 منابع آزاد و رایگان</button>
+      </div>
+      <div class="bar" style="margin-top:12px"><div class="bar-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="section-title">📚 کتاب‌های کامل هر درس</div>
+    <div class="grid-cards" id="fullbooks"></div>
+    <div class="section-title">📖 منابع مرجع کنکور ارشد (۲۰ کتاب)</div>
+    <div id="books"></div>`;
+
+  const fb=$("#fullbooks");
+  subs.forEach(s=>{
+    const bk=BOOK_DATA[s.id];
+    const chAll=bookFlatChapters(bk);
+    const done=chAll.filter(c=>STATE.progress.completed_lessons.includes(chapterKey(s.id,c.id))).length;
+    const pc=chAll.length?Math.round(done*100/chAll.length):0;
+    const el=document.createElement("div"); el.className="card clickable";
+    el.onclick=()=>openBookHome(s.id);
+    el.innerHTML=`<div class="emoji">${s.emoji}</div>
+      <h3>${bk.title}</h3>
+      <p>${bk.subtitle||""}</p>
+      <div style="color:var(--muted);font-size:12.5px;margin:8px 0">📚 ${bk.parts.length} بخش • ${chAll.length} فصل • ⏱ ${bookMinutes(s.id)} دقیقه مطالعه</div>
+      <div class="bar"><div class="bar-fill" style="width:${pc}%"></div></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">${done} از ${chAll.length} فصل خوانده‌شده (${pc}%)</div>
+      <div class="card-actions"><button class="btn btn-primary">📖 باز کردن کتاب</button></div>`;
+    fb.appendChild(el);
+  });
+
   const box=$("#books");
-  APP_DATA.books.forEach(b=>{
+  (APP_DATA.books||[]).forEach(b=>{
     const el=document.createElement("div");el.className="book";
     el.innerHTML=`<span class="topic">${b.topic}</span><h3>📘 ${b.title}</h3><div class="author">نویسنده: ${b.author}</div><div class="desc">${b.desc}</div>`;
     box.appendChild(el);
@@ -534,7 +588,7 @@ function renderFreeBooks(main){
     <p>این منابع همگی به صورت قانونی توسط نویسندگان/دانشگاه‌ها به صورت آزاد یا پیش‌نمایش در دسترس قرار گرفته‌اند. برای استفاده شخصی خودت ازشون استفاده کن.</p></div>
     <div id="fb"></div>`;
   const box=$("#fb");
-  APP_DATA.free_books.forEach(b=>{
+  (APP_DATA.free_books||[]).forEach(b=>{
     const el=document.createElement("div");el.className="book";
     el.innerHTML=`<span class="topic">${b.topic}</span><h3>📚 <a href="${b.url}" target="_blank" style="color:var(--accent);text-decoration:none">${b.title}</a></h3><div class="desc">${b.note}</div>`;
     box.appendChild(el);
@@ -653,8 +707,8 @@ function renderSettings(main){
       </div>
       <h3 style="margin:16px 0 8px">درباره</h3>
       <p style="font-size:13px;line-height:2;color:var(--muted)">
-      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۳.۰ (موبایل/آفلاین/PWA)<br>
-      شامل: دوره پایه تا پیشرفته، درس‌نامه، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
+      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۱.۰ (موبایل/آفلاین/PWA)<br>
+      شامل: ۱۰ کتاب درسی کامل (۴۰ فصل)، دوره پایه تا پیشرفته، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
       </p>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-ghost" onclick="exportData()">📤 گرفتن پشتیبان</button>

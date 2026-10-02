@@ -64,7 +64,7 @@ class Api:
         return {'win': 'windows', 'darwin': 'macos', 'linux': 'linux'}.get(sys.platform, sys.platform)
 
     def app_version(self):
-        return '1.0.0'
+        return '1.1.0'
 
     def quit(self):
         for w in webview.windows:
