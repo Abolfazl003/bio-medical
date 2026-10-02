@@ -454,7 +454,7 @@ function renderExamsHome(main){
   APP_DATA.exams.forEach((e,i)=>{
     const prev=STATE.progress.exam_results.find(r=>r.year===e.year);
     const el=document.createElement("div");el.className="card clickable";
-    el.innerHTML=`<div class="emoji">📅</div><h3>دوره ${e.year}</h3><p>${e.questions.length} سوال • ۶۰ دقیقه</p>
+    el.innerHTML=`<div style="font-size:30px;font-weight:800;color:var(--accent2);line-height:1.3">${e.year}</div><h3>کنکور جامع ۲۵ سوالی</h3><p>${e.questions.length} سوال • ۶۰ دقیقه</p>
       ${prev?`<p style="color:var(--success);font-weight:700">آخرین نتیجه: ${Math.round(prev.score*100/prev.total)}%</p>`:""}
       <div class="card-actions"><button class="btn btn-secondary">شروع آزمون</button></div>`;
     el.onclick=()=>startExam(i);g.appendChild(el);
@@ -1079,7 +1079,7 @@ function renderKonkurHome(main){
       <div class="big-stat"><div class="num" style="color:var(--accent2)">${pkFa(years.length)}</div><div class="lbl">دوره (سال) 📅</div></div>
       <div class="big-stat"><div class="num" style="color:var(--success)">${pkFa(doneCount)}</div><div class="lbl">درس آزمون‌داده‌شده ✅</div></div>
     </div>
-    <div class="section-title">📅 انتخاب سال</div>
+    <div class="section-title">انتخاب سال</div>
     <div class="grid-cards" id="kg"></div>`;
 
   const g=$("#kg");
@@ -1087,8 +1087,8 @@ function renderKonkurHome(main){
     const n=pkYearCount(y);
     const solved=pkSubjects().filter(s=>pkRes(y,s)).length;
     const el=document.createElement("div"); el.className="card clickable";
-    el.innerHTML=`<div class="emoji">📅</div>
-      <h3>کنکور ${pkFa(y)}</h3>
+    el.innerHTML=`<div style="font-size:34px;font-weight:800;color:var(--accent2);line-height:1.25">${pkFa(y)}</div>
+      <h3>کنکور سراسری ارشد</h3>
       <p>${pkFa(pkSubjects().length)} درس • ${pkFa(n)} سوال</p>
       <div class="bar" style="margin:8px 0"><div class="bar-fill" style="width:${Math.round(solved*100/pkSubjects().length)}%"></div></div>
       <div style="font-size:12px;color:var(--muted)">${pkFa(solved)} از ${pkFa(pkSubjects().length)} درس تمرین‌شده</div>

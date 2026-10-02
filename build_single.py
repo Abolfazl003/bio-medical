@@ -56,6 +56,7 @@ def main():
 <button class="nav-btn" data-view="quiz"><span>📝</span><span>تست</span></button>
 <button class="nav-btn" data-view="practice"><span>✏️</span><span>تمرین</span></button>
 <button class="nav-btn" data-view="exams"><span>🎓</span><span>آزمون</span></button>
+<button class="nav-btn" data-view="konkur"><span>🏛</span><span>کنکور</span></button>
 <button class="nav-btn" data-view="subjects"><span>📚</span><span>درس</span></button>
 <button class="nav-btn" data-view="teacher"><span>🧑‍🏫</span><span>استاد</span></button>
 <button class="nav-btn" data-view="savedq"><span>💾</span><span>ذخیره</span></button>
@@ -118,6 +119,14 @@ document.addEventListener("touchend", function(e){
 </body>
 </html>
 """
+    # اطمینان از هم‌خوانی دکمه‌های ناوبری با index.html
+    import re as _re
+    _nav = set(_re.findall(r'data-view=[\\]?"([a-z-]+)', NAV_HTML))
+    _orig = set(_re.findall(r'data-view="([a-z-]+)"', read(os.path.join(WEB, 'index.html'))))
+    _miss = sorted(_orig - _nav)
+    assert not _miss, "دکمه ناوبری جا افتاده: %s" % _miss
+    print("  ناوبری: %d دکمه (index.html: %d)" % (len(_nav), len(_orig)))
+
     doc = (doc.replace("__BOOKS__", books)
               .replace("__BOOKJS__", bookjs)
               .replace("__READER__", reader)
