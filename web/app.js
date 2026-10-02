@@ -4,6 +4,11 @@
    konkori trick + full solution, save for review, teacher mode,
    free books, saved questions
 ===================================================== */
+/* ---- ذخیره‌سازی امن (در حالت private یا iframe سندباکس هم خطا نمی‌دهد) ---- */
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
+function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
+
 const LS_KEY = "bme_konkur_progress_v2";
 
 const STATE = {
@@ -18,7 +23,7 @@ const STATE = {
 
 function loadProgress(){
   try {
-    const raw = localStorage.getItem(LS_KEY);
+    const raw = lsGet(LS_KEY);
     if (raw) {
       const p = JSON.parse(raw);
       if(!p.completed_lessons) p.completed_lessons = [];
@@ -38,7 +43,7 @@ function loadProgress(){
     theme:"dark"
   };
 }
-function saveProgress(){ localStorage.setItem(LS_KEY, JSON.stringify(STATE.progress)); updateSidebarStat(); }
+function saveProgress(){ lsSet(LS_KEY, JSON.stringify(STATE.progress)); updateSidebarStat(); }
 
 const $ = s=>document.querySelector(s);
 const $$ = s=>[...document.querySelectorAll(s)];
@@ -747,7 +752,7 @@ function applyTheme(t){
     document.documentElement.style.setProperty("--muted","#94a3b8");
   }
 }
-function resetAll(){if(!confirm("مطمئنی تمام پیشرفت پاک شود؟"))return;localStorage.removeItem(LS_KEY);STATE.progress=loadProgress();setView("dashboard");}
+function resetAll(){if(!confirm("مطمئنی تمام پیشرفت پاک شود؟"))return;lsDel(LS_KEY);STATE.progress=loadProgress();setView("dashboard");}
 function exportData(){
   const json=JSON.stringify(STATE.progress,null,2);
   // پل بومی: اپ اندروید (Android.saveBackup) یا اپ دسکتاپ (pywebview api)
