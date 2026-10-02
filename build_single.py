@@ -20,6 +20,10 @@ def read(p, enc='utf-8'):
     with open(p, encoding=enc) as f:
         return f.read()
 
+def collect_konkur_js():
+    import glob
+    return sorted(glob.glob(os.path.join(WEB, 'konkur_*.js')))
+
 def collect_book_js():
     """همه فایل‌های محتوای کتاب را به ترتیب جمع می‌کند"""
     import glob
@@ -38,6 +42,11 @@ def main():
     data    = read(os.path.join(WEB, 'data.js'))
     books   = read(os.path.join(WEB, 'books.js'))
     bookjs, bookfiles = collect_book_js()
+    konkurjs, konkurfiles = (None, [])
+    if os.path.exists(os.path.join(WEB, "konkur_1394_95.js")):
+        kf = collect_konkur_js()
+        konkurjs = "\n".join(read(f) for f in kf)
+        konkurfiles = [os.path.basename(f) for f in kf]
     fontcss= read(os.path.join(FONTS, 'vazirmatn-embedded.css'))
     icon   = "data:image/png;base64," + base64.b64encode(open(os.path.join(WEB,'icon-192.png'),'rb').read()).decode()
 
@@ -86,6 +95,7 @@ __CSS__</style>
 <script>__BOOKS__</script>
 <script>__BOOKJS__</script>
 <script>__READER__</script>
+<script>__KONKUR__</script>
 <script>__JS__</script>
 <script>
 /* ناوبری */
@@ -111,6 +121,7 @@ document.addEventListener("touchend", function(e){
     doc = (doc.replace("__BOOKS__", books)
               .replace("__BOOKJS__", bookjs)
               .replace("__READER__", reader)
+              .replace("__KONKUR__", konkurjs or "")
               .replace("__FONT__", fontcss)
               .replace("__CSS__", css)
               .replace("__DATA__", data)
