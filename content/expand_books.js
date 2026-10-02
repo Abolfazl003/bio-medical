@@ -26,11 +26,12 @@ Object.keys(FILES).forEach(f => {
 
 /* ۲) خواندن فصل‌های تکمیلی */
 const EXTRA = {};
-["bx1.js", "bx2.js"].forEach(f => {
+["bx1.js", "bx2.js", "bx3.js"].forEach(f => {
   const p = path.join(__dirname, f);
   if (!fs.existsSync(p)) return;
   const src = fs.readFileSync(p, "utf8") + "\nreturn EXTRA;";
-  Object.assign(EXTRA, new Function(src)());
+  const part = new Function(src)();
+  Object.keys(part).forEach(k => { EXTRA[k] = (EXTRA[k] || []).concat(part[k]); });
 });
 
 /* ۳) ادغام با جلوگیری از تکرار */

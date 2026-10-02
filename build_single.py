@@ -24,11 +24,25 @@ def collect_konkur_js():
     import glob
     return sorted(glob.glob(os.path.join(WEB, 'konkur_*.js')))
 
+NEW_FAMILIES = ['figures.js','figures2.js','figures_fit.js','book_manifest.js',
+                'qbook_a.js','qbook_b.js','qbook_c.js','qbook_d.js','qbook_e.js',
+                'study_progress.js','teacher_jozve.js']
+
+def collect_new_js():
+    """خانواده‌های جدید (شکل‌ها، مانیفست کتاب‌ها، آزمون کتاب‌ها، تدریس/جزوه، پیشرفت مطالعه)"""
+    parts = []
+    for name in NEW_FAMILIES:
+        p = os.path.join(WEB, name)
+        if os.path.exists(p):
+            parts.append(read(p))
+    return "\n".join(parts)
+
+
 def collect_book_js():
     """همه فایل‌های محتوای کتاب را به ترتیب جمع می‌کند"""
     import glob
     files = sorted(f for f in glob.glob(os.path.join(WEB, 'book_*.js'))
-                   if os.path.basename(f) != 'book_reader.js')
+                   if os.path.basename(f) not in ('book_reader.js', 'book_manifest.js'))
     parts = []
     for f in files:
         parts.append(read(f))
@@ -42,6 +56,7 @@ def main():
     data    = read(os.path.join(WEB, 'data.js'))
     books   = read(os.path.join(WEB, 'books.js'))
     bookjs, bookfiles = collect_book_js()
+    newjs = collect_new_js()
     konkurjs, konkurfiles = (None, [])
     if os.path.exists(os.path.join(WEB, "konkur_1394_95.js")):
         kf = collect_konkur_js()
@@ -61,7 +76,9 @@ def main():
 <button class="nav-btn" data-view="teacher"><span>🧑‍🏫</span><span>استاد</span></button>
 <button class="nav-btn" data-view="savedq"><span>💾</span><span>ذخیره</span></button>
 <button class="nav-btn" data-view="bookmarks"><span>⭐</span><span>نشان</span></button>
+<button class="nav-btn" data-view="books"><span>📕</span><span>کتابخانه</span></button>
 <button class="nav-btn" data-view="freebooks"><span>🔗</span><span>کتاب</span></button>
+<button class="nav-btn" data-view="progress"><span>⏱</span><span>زمان</span></button>
 <button class="nav-btn" data-view="settings"><span>⚙️</span><span>تنظیم</span></button>
 """
 
@@ -95,6 +112,7 @@ __CSS__</style>
 <script>__DATA__</script>
 <script>__BOOKS__</script>
 <script>__BOOKJS__</script>
+<script>__NEWJS__</script>
 <script>__READER__</script>
 <script>__KONKUR__</script>
 <script>__JS__</script>
@@ -129,6 +147,7 @@ document.addEventListener("touchend", function(e){
 
     doc = (doc.replace("__BOOKS__", books)
               .replace("__BOOKJS__", bookjs)
+              .replace("__NEWJS__", newjs)
               .replace("__READER__", reader)
               .replace("__KONKUR__", konkurjs or "")
               .replace("__FONT__", fontcss)
@@ -154,6 +173,7 @@ document.addEventListener("touchend", function(e){
         print(f'[OK] {os.path.relpath(o, ROOT)}  ({os.path.getsize(o)/1024:.0f} KB)')
 
     print(f'  کتاب‌ها: {", ".join(bookfiles) if bookfiles else "هیچ"}')
+    print(f'  افزونه‌های جدید: {len(NEW_FAMILIES)} خانواده (شکل‌ها، مانیفست ۴۱ کتاب، ۲۴۶ تست کتاب، تدریس/جزوه، پیشرفت مطالعه)')
     print(f'\n[DONE] Single-file offline app built: {os.path.getsize(outs[0])/1024/1024:.2f} MB')
 
 if __name__ == '__main__':

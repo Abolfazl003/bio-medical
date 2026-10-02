@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 env:
-  VERSION: v1.2.0
+  VERSION: v1.3.0
 
 jobs:
   # ─────────────────────────────────────────────
@@ -238,7 +238,7 @@ jobs:
           if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
             echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
           else
-            echo "tag=v1.2.0" >> $GITHUB_OUTPUT
+            echo "tag=v1.3.0" >> $GITHUB_OUTPUT
           fi
 
       - name: Organize release assets

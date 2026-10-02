@@ -36,7 +36,12 @@ function renderBlock(b, i){
   if(t === "note") return `<div class="bk-box bk-note"><div class="bk-box-title">📌 نکته</div><div>${b.x}</div></div>`;
   if(t === "warn") return `<div class="bk-box bk-warn"><div class="bk-box-title">⚠️ اشتباه رایج</div><div>${b.x}</div></div>`;
   if(t === "tip")  return `<div class="bk-box bk-tip"><div class="bk-box-title">💡 ترفند کنکور</div><div>${b.x}</div></div>`;
-  if(t === "fig")  return `<div class="bk-fig"><pre>${b.x}</pre>${b.cap?`<div class="bk-fig-cap">${b.cap}</div>`:""}</div>`;
+  if(t === "fig"){
+    const svg = (typeof figureSVG === "function") ? figureSVG(b.fig) :
+                ((typeof FIGURES !== "undefined" && b.fig && FIGURES[b.fig]) ? FIGURES[b.fig]() : "");
+    if(!svg) return "";
+    return `<figure class="bk-fig">${svg}<figcaption class="bk-fig-cap">🖼 ${b.cap||""}</figcaption></figure>`;
+  }
 
   if(t === "ex"){
     // مثال حل‌شده کامل
@@ -80,72 +85,112 @@ function bookFlatChapters(bk){
 
 function chapterKey(sid, chId){ return `book:${sid}:${chId}`; }
 
-/* ---------- صفحه اصلی کتاب ---------- */
-function renderBookHome(sid){
+/* ---------- صفحه کتاب‌ها (چند کتاب در هر درس) ---------- */
+function renderBookHome(sid, bookId){
   const main = $("#main");
-  const s = APP_DATA.subjects.find(x=>x.id===sid);
-  const bk = (typeof BOOK_DATA !== "undefined") ? BOOK_DATA[sid] : null;
-  const color = s.color;
+  const s = APP_DATA.subjects.find(x=>x.id===sid) || {color:"#38bdf8", emoji:"📘", name:subName(sid)};
+  const books = (typeof bookList === "function") ? bookList(sid) : [];
+  if(!books.length){ main.innerHTML = `<div class="page-head"><h1>📕 ${s.name}</h1><p>کتاب این درس به‌زودی اضافه می‌شود.</p></div>`; return; }
 
-  if(!bk){
-    main.innerHTML = `<div class="page-head"><h1>📕 ${s.name}</h1>
-      <p>کتاب این درس به‌زودی اضافه می‌شود.</p>
-      <button class="btn btn-ghost" onclick="setView('subject-detail')">🔙 برگشت</button></div>`;
-    return;
-  }
+  // اگر کتاب مشخصی خواسته شده، همان را نشان بده
+  const one = bookId ? books.find(b=>b.id===bookId) : (books.length===1 ? books[0] : null);
+  if(one){ renderOneBook(main, s, one); return; }
 
-  const flat = bookFlatChapters(bk);
-  const doneCount = flat.filter(c=>STATE.progress.completed_lessons.includes(chapterKey(sid,c.id))).length;
-  const pct = Math.round(doneCount*100/flat.length);
+  const all = books.reduce((a,b)=>a.concat(b.chapters),[]);
+  const done = all.filter(c=>STATE.progress.completed_lessons.includes(chapterKey(sid,c.id))).length;
+  const pct = Math.round(done*100/all.length);
 
-  // فهرست مطالب
+  main.innerHTML = `
+    <div class="page-head"><h1>${s.emoji} کتاب‌های ${s.name}</h1>
+      <p>${books.length} کتاب مستقل • ${all.length} فصل • ${all.reduce((a,c)=>a+(c.minutes||0),0)} دقیقه مطالعه</p></div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px">
+        <span>پیشرفت مطالعه کتاب‌های این درس</span><span>${(done).toLocaleString("fa-IR")} از ${all.length.toLocaleString("fa-IR")} فصل (${pct}٪)</span></div>
+      <div class="progress"><div class="progress-bar" style="width:${pct}%;background:linear-gradient(90deg,#facc15,#22c55e)"></div></div>
+    </div>
+    <div class="grid-cards" id="blist"></div>`;
+  const g = $("#blist");
+  books.forEach(b=>{
+    const d = b.chapters.filter(c=>STATE.progress.completed_lessons.includes(chapterKey(sid,c.id))).length;
+    const pc = Math.round(d*100/b.chapters.length);
+    const qn = (typeof QB!=="undefined" && QB[b.id]) ? QB[b.id].length : 0;
+    const el = document.createElement("div"); el.className="card clickable";
+    el.innerHTML = `<div class="emoji">${b.icon}</div>
+      <h3>${b.title}</h3>
+      <p>${b.sub||b.desc||""}</p>
+      <div style="color:var(--muted);font-size:12.5px;margin:8px 0">📚 ${b.chapters.length} فصل • ⏱ ${b.minutes} دقیقه${qn?` • 🎯 ${qn} سؤال`:""} • 🏷 ${b.level}</div>
+      <div class="bar"><div class="bar-fill" style="width:${pc}%"></div></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">${d.toLocaleString("fa-IR")} از ${b.chapters.length.toLocaleString("fa-IR")} فصل (${pc}٪)</div>
+      <div class="card-actions">
+        <button class="btn btn-primary" data-act="read">📖 مطالعه</button>
+        <button class="btn btn-ghost" data-act="teach">🧑‍🏫 تدریس استاد</button>
+        <button class="btn btn-ghost" data-act="jozve">📝 جزوه</button>
+        ${qn?`<button class="btn btn-secondary" data-act="quiz">🎯 آزمون</button>`:""}
+      </div>`;
+    el.onclick = (ev)=>{
+      const a = ev.target.getAttribute && ev.target.getAttribute("data-act");
+      if(a==="teach") openTeacherBook(b.id);
+      else if(a==="jozve") showJozve(b.id);
+      else if(a==="quiz") startBookQuiz(b.id);
+      else openBookHome(sid, b.id);
+    };
+    g.appendChild(el);
+  });
+}
+
+/* ---------- یک کتاب مشخص ---------- */
+function renderOneBook(main, s, bk){
+  const flat = bk.chapters;
+  const doneCount = flat.filter(c=>STATE.progress.completed_lessons.includes(chapterKey(bk.sid,c.id))).length;
+  const pct = flat.length ? Math.round(doneCount*100/flat.length) : 0;
+  const qn = (typeof QB!=="undefined" && QB[bk.id]) ? QB[bk.id].length : 0;
+  const qs = qn ? (QB[bk.id]||[]) : [];
+
   let toc = "";
-  bk.parts.forEach((p, pi)=>{
+  bk.parts.forEach(p=>{
     toc += `<div class="bk-part-title">${p.title}</div>`;
     p.chapters.forEach(c=>{
-      const done = STATE.progress.completed_lessons.includes(chapterKey(sid,c.id));
-      const reader = `${ARTICLE_ICONS[c.id]||"📄"}`;
+      const d = STATE.progress.completed_lessons.includes(chapterKey(bk.sid,c.id));
+      const cq = qs.filter(q=>q.ch===c.id).length;
       toc += `<div class="bk-toc-item" data-ch="${c.id}">
-        <span class="bk-toc-emoji">${reader}</span>
+        <span class="bk-toc-emoji">📄</span>
         <span class="bk-toc-name">${c.title}</span>
-        <span class="bk-toc-meta">${c.minutes?`⏱ ${c.minutes} دقیقه`:""} ${done?"✅":""}</span>
+        <span class="bk-toc-meta">${c.minutes?`⏱ ${c.minutes} دقیقه`:""} ${cq?`🎯 ${cq}`:""} ${d?"✅":""}</span>
       </div>`;
     });
   });
 
   main.innerHTML = `
-    <div class="card" style="background:linear-gradient(135deg,${color}22,transparent);border-color:${color}44;margin-bottom:16px">
+    <div class="card" style="background:linear-gradient(135deg,${s.color||"#38bdf8"}22,transparent);border-color:${s.color||"#38bdf8"}44;margin-bottom:16px">
       <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
-        <div style="font-size:56px">${s.emoji}</div>
+        <div style="font-size:56px">${bk.icon||s.emoji}</div>
         <div style="flex:1;min-width:240px">
           <h2 style="font-size:22px;margin-bottom:6px">${bk.title}</h2>
           <div style="color:var(--muted);font-size:13px;line-height:1.9">
-            ${bk.subtitle||""}<br>
-            📚 ${bk.parts.length} بخش • ${flat.length} فصل • ${flat.reduce((a,c)=>a+(c.minutes||0),0)} دقیقه مطالعه
+            ${bk.sub||""}<br>
+            📚 ${bk.parts.length} بخش • ${flat.length} فصل • ⏱ ${bk.minutes} دقیقه • 🏷 ${bk.level}
+            ${qn?`<br>🎯 ${qn} سؤال اختصاصی این کتاب`:""}
           </div>
         </div>
-        <button class="btn btn-ghost" onclick="setView('subject-detail')">🔙 برگشت به درس</button>
+        <button class="btn btn-ghost" onclick="openBookHome('${bk.sid}')">🔙 کتاب‌های ${subName(bk.sid)}</button>
       </div>
       <div style="margin-top:14px">
         <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px">
-          <span>پیشرفت مطالعه کتاب</span><span>${doneCount} از ${flat.length} فصل (${pct}%)</span>
+          <span>پیشرفت مطالعه این کتاب</span><span>${doneCount.toLocaleString("fa-IR")} از ${flat.length.toLocaleString("fa-IR")} فصل (${pct}٪)</span>
         </div>
         <div class="progress"><div class="progress-bar" style="width:${pct}%;background:linear-gradient(90deg,#facc15,#22c55e)"></div></div>
       </div>
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="openBookChapter('${bk.sid}','${flat[0].id}')">📖 شروع از فصل اول</button>
+        <button class="btn" style="background:var(--warning);color:#0f172a" onclick="openTeacherBook('${bk.id}')">🧑‍🏫 کلاس استاد این کتاب</button>
+        <button class="btn btn-ghost" onclick="showJozve('${bk.id}')">📝 جزوه این کتاب</button>
+        ${qn?`<button class="btn btn-secondary" onclick="startBookQuiz('${bk.id}')">🎯 آزمون کتاب</button>`:""}
+      </div>
     </div>
-
-    ${flat.length ? `<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
-      <button class="btn btn-primary" onclick="openBookChapter('${sid}', '${flat[0].id}')">📖 شروع مطالعه از فصل اول</button>
-      ${doneCount>0 && doneCount<flat.length ? `<button class="btn" style="background:var(--warning);color:#0f172a" onclick="openBookChapter('${sid}','${(flat.find(c=>!STATE.progress.completed_lessons.includes(chapterKey(sid,c.id)))||flat[0]).id}')">▶️ ادامه از جایی که ماندم</button>`:""}
-    </div>` : ""}
-
     <div class="section-title">📑 فهرست مطالب</div>
-    <div class="bk-toc">${toc}</div>
-  `;
+    <div class="bk-toc">${toc}</div>`;
 
-  $$(".bk-toc-item").forEach(el=>{
-    el.onclick = ()=> openBookChapter(sid, el.dataset.ch);
-  });
+  $$(".bk-toc-item").forEach(el=>{ el.onclick = ()=> openBookChapter(bk.sid, el.dataset.ch); });
 }
 
 /* آیکون فصل‌ها (اختیاری) */
@@ -193,7 +238,7 @@ function renderBookChapter(sid, chId){
     <aside class="bk-side">${sideToc}</aside>
     <article class="bk-read">
       <div class="bk-crumb">
-        <span onclick="openBookHome('${sid}')" style="cursor:pointer;color:var(--accent)">${bk.title}</span>
+        <span onclick="openBookHome('${sid}', '${(bookOfChapter(sid,ch.id)||{}).id||""}')" style="cursor:pointer;color:var(--accent)">${(bookOfChapter(sid,ch.id)||{}).title || (BOOK_DATA[sid]||{}).title || ""}</span>
         <span class="bk-crumb-sep">›</span><span>${ch.partTitle}</span>
       </div>
       <h1 class="bk-ch-title">${ch.title}</h1>
@@ -210,7 +255,8 @@ function renderBookChapter(sid, chId){
         <button class="btn ${done?'btn-success':'btn-ghost'}" id="bkDone">
           ${done?"✅ این فصل را خوانده‌ام":"⬜ علامت بزن: خوانده شد"}</button>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn btn-ghost" onclick="openBookHome('${sid}')">📑 فهرست کتاب</button>
+          <button class="btn btn-ghost" onclick="openBookHome('${sid}', '${(bookOfChapter(sid,ch.id)||{}).id||""}')">📑 فهرست کتاب</button>
+          ${chapterQuizCount(sid, ch.id) ? `<button class="btn" style="background:var(--accent2);color:#fff" onclick="startChapterQuiz('${(bookOfChapter(sid,ch.id)||{}).id||""}','${ch.id}')">🎯 تست این فصل (${chapterQuizCount(sid,ch.id)})</button>` : ""}
           ${next?`<button class="btn btn-primary" id="bkNextChapter">فصل بعدی: ${next.title.slice(0,22)}${next.title.length>22?"…":""} ➡️</button>`:""}
         </div>
       </div>
@@ -237,12 +283,24 @@ function renderBookChapter(sid, chId){
   if(act && act.scrollIntoView) act.scrollIntoView({block:"center"});
 }
 
+function chapterOf(sid, chId){
+  const bk = BOOK_DATA[sid]; if(!bk) return null;
+  for(const p of bk.parts) for(const c of p.chapters) if(c.id===chId) return c;
+  return null;
+}
+function chapterQuizCount(sid, chId){
+  if(typeof QB === "undefined") return 0;
+  const bs = (typeof bookList === "function") ? bookList(sid) : [];
+  return bs.reduce((a,b)=>a + ((QB[b.id]||[]).filter(q=>q.ch===chId).length), 0);
+}
+
 function toggleBookDone(sid, chId){
   const key = chapterKey(sid, chId);
   const arr = STATE.progress.completed_lessons;
   const i = arr.indexOf(key);
-  if(i>=0){ arr.splice(i,1); toast("علامت برداشته شد"); }
-  else { arr.push(key); toast("✅ فصل خوانده‌شده علامت خورد"); }
+  const chMin = (chapterOf(sid, chId)||{}).minutes || 30;
+  if(i>=0){ arr.splice(i,1); logStudy(-chMin, true); toast("علامت برداشته شد"); }
+  else { arr.push(key); logStudy(chMin, true); toast(`✅ فصل خوانده شد (+${chMin} دقیقه مطالعه)`); }
   saveProgress();
   renderBookChapter(sid, chId);
 }
@@ -252,4 +310,30 @@ function openBookChapter(sid, chId){
   STATE.activeSubject = sid;
   setView("book-chapter");
 }
-function openBookHome(sid){ STATE.activeSubject = sid; setView("book"); }
+function openBookHome(sid, bookId){ STATE.activeSubject = sid; STATE._bookId = bookId || null; setView("book"); }
+/* کتابی که فصل جاری به آن تعلق دارد */
+function bookOfChapter(sid, chId){
+  const bs = (typeof bookList === "function") ? bookList(sid) : [];
+  return bs.find(b => b.chapters.some(c=>c.id===chId)) || bs[0] || null;
+}
+/* تست یک فصل از یک کتاب */
+function startChapterQuiz(bookId, chId){
+  const qs = (typeof QB!=="undefined" && QB[bookId]) ? QB[bookId].filter(q=>q.ch===chId) : [];
+  if(!qs.length) return;
+  const sid = (findBook(bookId)||{}).sid;
+  STATE.quiz = { questions: qs.map(q=>bookQ(q, bookId, sid)), idx:0, correct:0,
+                 subject: (findBook(bookId)||{}).title || "", book:{ bookId: bookId, chId: chId } };
+  setView("quiz-playing");
+}
+function bookQ(q, bookId, sid){
+  return { q:q.q, choices:q.c, answer:q.a, subject:sid, year:"", konkori:q.k||"", full_solution:q.s||"", book:bookId };
+}
+/* آزمون کامل یک کتاب */
+function startBookQuiz(bookId){
+  const qs = (typeof QB!=="undefined" && QB[bookId]) ? QB[bookId] : [];
+  const bk = findBook(bookId);
+  if(!qs.length || !bk) return;
+  STATE.quiz = { questions: shuffle(qs).map(q=>bookQ(q, bookId, bk.sid)), idx:0, correct:0,
+                 subject: bk.title, book:{ bookId: bookId, chId:null } };
+  setView("quiz-playing");
+}

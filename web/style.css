@@ -53,6 +53,7 @@ main{overflow-y:auto;padding:30px 40px;}
 
 /* stat rows */
 .big-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0 24px;}
+.big-stats.st4{grid-template-columns:repeat(4,1fr);}
 .big-stat{background:var(--card);border-radius:14px;padding:22px;text-align:center;}
 .big-stat .num{font-size:36px;font-weight:800;}
 .big-stat .lbl{color:var(--muted);font-size:12px;margin-top:4px;}
@@ -312,4 +313,118 @@ body.pwa-installed{padding-bottom:env(safe-area-inset-bottom);}
   .bk-ch-foot .btn{width:100%;}
   .bk-nav .btn{flex:1;font-size:12px;padding:9px 8px;}
   .bk-intro{font-size:13px;padding:12px 14px;}
+}
+
+/* =====================================================
+   v1.3.0 — کلاس استاد، جزوه، شکل‌های تصویری، زمان مطالعه
+===================================================== */
+/* --- ناوبری موبایل: ۲ ردیف تا همه دکمه‌ها جا شوند --- */
+@media (max-width:960px){
+  .sidebar{padding:4px 6px 6px;}
+  nav{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;width:100%;flex:none;}
+  .nav-btn{width:auto;height:46px;padding:0;}
+  main{padding-bottom:118px;}
+}
+@media (max-width:600px){
+  nav{grid-template-columns:repeat(7,1fr);}
+  .nav-btn{height:44px;}
+  .nav-btn span{font-size:17px;}
+  main{padding-bottom:112px;}
+}
+
+/* --- کلاس استاد --- */
+.lecture-card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:18px;padding:26px 28px;box-shadow:var(--shadow);}
+.lecture-kind{font-size:12.5px;font-weight:800;letter-spacing:.4px;margin-bottom:8px}
+.lecture-title{font-size:23px;font-weight:800;margin-bottom:16px;line-height:1.6}
+.lecture-body{font-size:15.5px;line-height:2.5;white-space:pre-wrap;text-align:justify;color:var(--text);max-width:900px}
+.lecture-nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:18px 0 40px;max-width:900px;margin-inline:auto}
+.ln-dot{width:13px;height:13px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s;display:inline-block}
+.ln-dot:hover{transform:scale(1.35)}
+.ln-dot.done{background:rgba(34,197,94,.45)}
+.ln-dot.on{background:linear-gradient(135deg,var(--warning),var(--accent));transform:scale(1.3)}
+.study-note{margin-top:18px;font-size:13px;color:var(--muted);background:rgba(56,189,248,.08);border-right:3px solid var(--accent);padding:8px 12px;border-radius:8px}
+
+/* --- جزوه --- */
+.jozve-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.jozve{background:#fff;color:#0f172a;border-radius:16px;padding:34px 38px;max-width:1000px;box-shadow:0 10px 40px rgba(0,0,0,.35);line-height:2.05}
+.jozve-head{border-bottom:3px double #94a3b8;padding-bottom:16px;margin-bottom:22px}
+.jozve-badge{display:inline-block;background:#1e293b;color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:12px}
+.jozve h1{font-size:27px;margin-bottom:8px;line-height:1.5}
+.jozve-sub{color:#475569;font-size:14px}
+.jozve-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#334155;margin-top:12px}
+.jz-sec{margin-bottom:26px}
+.jz-sec h2{font-size:18px;margin-bottom:12px;color:#0b3b6f;border-right:5px solid #2563eb;padding-right:10px}
+.jz-formula{background:#f1f5f9;border:1px solid #cbd5e1;border-right:4px solid #2563eb;border-radius:10px;padding:10px 14px;margin-bottom:9px}
+.jz-f-label{font-weight:800;font-size:13.5px;color:#1e3a8a}
+.jz-f-body{font-size:14.5px;font-weight:600;margin-top:4px;direction:ltr;text-align:left;line-height:1.9}
+.jz-f-desc{font-size:13px;color:#334155;margin-top:4px}
+.jz-f-ch{font-size:11.5px;color:#64748b;margin-top:5px}
+.jz-note{font-size:13.5px;border-radius:9px;padding:9px 12px;margin-bottom:8px}
+.jz-note.jz-note{background:#eff6ff;border-right:4px solid #3b82f6}
+.jz-note.jz-warn{background:#fef3c7;border-right:4px solid #f59e0b}
+.jz-note.jz-tip{background:#ecfdf5;border-right:4px solid #10b981}
+.jz-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+.jz-table th,.jz-table td{border:1px solid #cbd5e1;padding:7px 9px;text-align:right}
+.jz-table th{background:#e2e8f0;font-weight:800}
+.jz-ex{background:#f8fafc;border:1px dashed #94a3b8;border-radius:9px;padding:9px 12px;margin-bottom:8px;font-size:13.5px}
+.jz-ans{color:#15803d;font-weight:700}
+.jz-sum{margin-bottom:10px;font-size:13.5px}
+.jz-sum ul{margin:6px 18px 0 0}
+.jz-q{border-bottom:1px dotted #cbd5e1;padding:8px 0;font-size:13.5px}
+.jz-q-a{color:#15803d;font-weight:700;margin-top:4px}
+.jz-q-k{color:#7c2d12;font-size:12.5px;margin-top:2px}
+.jz-part{margin-bottom:12px;font-size:13.5px}
+.jz-part ol{margin:6px 20px 0 0}
+.jz-min{color:#64748b;font-size:11.5px}
+.jz-key{margin:8px 20px 0 0;font-size:13.5px}
+.jz-ch-item{display:flex;gap:10px;align-items:center;font-size:13.5px;border-bottom:1px dotted #cbd5e1;padding:6px 0}
+.jz-ch-name{cursor:pointer;color:#1d4ed8;flex:1}
+.jz-foot{margin-top:22px;padding-top:14px;border-top:2px solid #94a3b8;font-size:12px;color:#64748b;text-align:center}
+.bk-fig{margin:22px 0;background:linear-gradient(160deg,rgba(56,189,248,.07),rgba(167,139,250,.05));border-radius:14px;padding:16px;text-align:center;border:1px solid var(--border);overflow-x:auto}
+.bk-fig svg,.bk-figure svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.bk-fig svg text{font-family:Vazirmatn,system-ui,sans-serif}
+.bk-fig-cap{font-size:13.5px;color:var(--muted);margin-top:10px;font-weight:600}
+@media print{
+  .no-print,.sidebar,#toast,.nav-bar{display:none!important}
+  main{padding:0!important;height:auto!important;overflow:visible!important}
+  body,#app{overflow:visible!important;height:auto!important;background:#fff!important}
+  .jozve{box-shadow:none;padding:0;max-width:100%}
+  .jozve-toolbar{display:none}
+}
+
+/* --- زمان مطالعه و پیشرفت --- */
+.st-card{border-right:4px solid var(--accent)}
+.st-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.st-box{background:var(--card2);border-radius:12px;padding:12px;text-align:center}
+.st-num{font-size:19px;font-weight:800}
+.st-lbl2{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+.st-chart{display:flex;gap:6px;align-items:flex-end;height:150px;padding:8px 2px 0}
+.st-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%}
+.st-bar-wrap{flex:1;width:100%;display:flex;align-items:flex-end;background:rgba(148,163,184,.08);border-radius:6px 6px 0 0;overflow:hidden}
+.st-bar{width:100%;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:6px 6px 0 0;min-height:2px}
+.st-lbl{font-size:10px;color:var(--muted);white-space:nowrap}
+.st-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;max-width:360px}
+.cal-cell{aspect-ratio:1;border-radius:5px;background:rgba(148,163,184,.14)}
+.cal-cell.lv1{background:rgba(34,197,94,.28)}
+.cal-cell.lv2{background:rgba(34,197,94,.5)}
+.cal-cell.lv3{background:rgba(34,197,94,.72)}
+.cal-cell.lv4{background:#22c55e}
+.st-legend{display:flex;gap:6px;align-items:center;font-size:11.5px;color:var(--muted);margin-top:12px}
+.st-legend .cal-cell{width:16px;height:16px;aspect-ratio:auto}
+.st-row{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dotted var(--border);font-size:12.5px}
+.st-row-n{min-width:150px;font-weight:700}
+.st-row-b{flex:1}
+.st-row-b .bar{height:8px}
+.st-row-v{color:var(--muted);font-size:11.5px;min-width:190px;text-align:left}
+@media (max-width:960px){
+  .big-stats.st4{grid-template-columns:1fr 1fr}
+  .st-grid{grid-template-columns:1fr 1fr}
+  .st-row{flex-wrap:wrap}
+  .st-row-n{min-width:100%}
+  .st-row-v{min-width:100%;text-align:right}
+  .lecture-card{padding:16px}
+  .lecture-title{font-size:18px}
+  .lecture-body{font-size:14px;line-height:2.3}
+  .jozve{padding:18px}
+  .jozve h1{font-size:20px}
 }

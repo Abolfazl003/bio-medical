@@ -103,8 +103,17 @@ function appBack(){
     "practice-result":"practice",
     "savedq":"dashboard",
     "bookmarks":"dashboard",
-    "freebooks":"dashboard"
+    "freebooks":"dashboard",
+    "jozve-sub":"teacher",
+    "progress":"dashboard"
   };
+  if(v==="jozve"){
+    if(STATE._jozveBookId){
+      const bk=findBook(STATE._jozveBookId);
+      if(bk){ STATE.activeSubject=bk.sid; STATE._bookId=bk.id; }
+    }
+    setView("book"); return true;
+  }
   if(map[v]){
     if(STATE.timerHandle){clearInterval(STATE.timerHandle);STATE.timerHandle=null;}
     setView(map[v]);
@@ -123,7 +132,7 @@ function render(){
   const v=STATE.view;
   if(v==="dashboard") renderDashboard(main);
   else if(v==="subjects") renderSubjects(main);
-  else if(v==="book") renderBookHome(STATE.activeSubject);
+  else if(v==="book") renderBookHome(STATE.activeSubject, STATE._bookId);
   else if(v==="book-chapter"){const o=STATE._bookOpen; if(o) renderBookChapter(o.sid,o.chId); else setView("subjects");}
   else if(v==="subject-detail") renderSubjectDetail(main);
   else if(v==="quiz") renderQuizHome(main);
@@ -146,6 +155,9 @@ function render(){
   else if(v==="practice-playing") renderPracticeQuiz(main);
   else if(v==="practice-result") renderPracticeResult(main);
   else if(v==="settings") renderSettings(main);
+  else if(v==="jozve") renderJozve(main);
+  else if(v==="jozve-sub") renderJozveSubject(main);
+  else if(v==="progress") renderProgress(main);
   updateSidebarStat();
 }
 
@@ -164,6 +176,7 @@ function renderDashboard(main){
       <div class="big-stat"><div class="num" style="color:var(--accent2)">${totalQ}</div><div class="lbl">سوال تستی 📝</div></div>
       <div class="big-stat"><div class="num" style="color:var(--success)">${acc}%</div><div class="lbl">درصد صحیح ✅</div></div>
     </div>
+    ${progressCardHTML()}
     <div class="section-title">🚀 شروع سریع</div>
     <div class="grid-cards">
       <div class="card clickable" onclick="setView('foundation')"><div class="emoji">🎒</div><h3>دوره پایه تا پیشرفته</h3><p>از صفرِ صفر درس بخون، انگار هیچی بلد نیستی، برو تا سطح کنکور</p>
@@ -176,7 +189,7 @@ function renderDashboard(main){
         <div class="card-actions"><button class="btn btn-secondary">آزمون جامع</button></div></div>
       <div class="card clickable" onclick="setView('teacher')"><div class="emoji">🧑‍🏫</div><h3>کلاس با استاد</h3><p>تدریس تعاملی درس به درس</p>
         <div class="card-actions"><button class="btn" style="background:var(--warning);color:#0f172a">شروع کلاس</button></div></div>
-      <div class="card clickable" onclick="setView('books')"><div class="emoji">📕</div><h3>کتاب درسی کامل</h3><p>۱۰ کتاب با ۴۰ فصل، فرمول و مثال حل‌شده</p>
+      <div class="card clickable" onclick="setView('books')"><div class="emoji">📕</div><h3>کتابخانه: ${(typeof bookTotalCount==="function"?bookTotalCount():0)} کتاب</h3><p>${(typeof allBooks==="function"?allBooks().reduce((a,b)=>a+b.chapters.length,0):0)} فصل، شکل‌های واقعی، فرمول و مثال حل‌شده — هر کتاب تست اختصاصی دارد</p>
         <div class="card-actions"><button class="btn btn-primary">مطالعه کتاب</button></div></div>
       <div class="card clickable" onclick="setView('freebooks')"><div class="emoji">🔗</div><h3>کتاب‌های رایگان</h3><p>لینک منابع آزاد قانونی برای مطالعه عمیق</p>
         <div class="card-actions"><button class="btn btn-ghost">مشاهده</button></div></div>
@@ -187,7 +200,8 @@ function renderDashboard(main){
     <div class="grid-cards">
       <div class="card clickable" onclick="setView('savedq')"><div class="emoji">💾</div><h3>سوالات ذخیره‌شده (${(STATE.progress.saved_questions||[]).length})</h3><p>سوالات مهمی که ذخیره کردی برای مرور</p></div>
       <div class="card clickable" onclick="setView('freebooks')"><div class="emoji">🔗</div><h3>کتاب‌های رایگان</h3><p>لینک‌های قانونی و آزاد منابع درسی</p></div>
-      <div class="card clickable" onclick="setView('books')"><div class="emoji">📕</div><h3>کتابخانه درسی (۱۰ کتاب کامل)</h3><p>کتاب کامل هر درس + معرفی ۲۰ منبع مرجع کنکور</p></div>
+      <div class="card clickable" onclick="setView('books')"><div class="emoji">📕</div><h3>کتابخانه درسی (${(typeof bookTotalCount==="function"?bookTotalCount():0)} کتاب)</h3><p>چند کتاب برای هر درس + ۲۰ منبع مرجع کنکور</p></div>
+      <div class="card clickable" onclick="setView('progress')"><div class="emoji">⏱</div><h3>زمان مطالعه و برنامه</h3><p>چقدر خواندی و چند روز دیگر تمام می‌شود</p></div>
     </div>
     ${last?`<div class="section-title">🏅 آخرین آزمون</div>
       <div class="card"><div style="font-weight:700;font-size:18px;color:var(--warning)">دوره ${last.year} — ${last.score} از ${last.total} (${Math.round(last.score*100/last.total)}%) <span style="font-size:12px;color:var(--muted)">${last.date||""}</span></div></div>`:""}
@@ -397,6 +411,7 @@ function checkAnswer(){
     if(idx===chosen && chosen!==q.answer) c.classList.add("wrong");
     c.style.pointerEvents="none";
   });
+  logStudy(q.year?3:2, true);   // هر سؤال ≈ ۲ دقیقه، سؤال کنکور ۳ دقیقه
   const ex=$("#explain");
   const correct_letter = letterOf(q.answer);
   const konkori = q.konkori||"";
@@ -576,7 +591,7 @@ function renderBooks(main){
 
   main.innerHTML=`
     <div class="page-head"><h1>📕 کتابخانه درسی</h1>
-      <p>۱۰ کتاب کامل — نه خلاصه. ${totCh} فصل و حدود ${Math.round(totMin/60)} ساعت مطالعه.</p></div>
+      <p>${(typeof bookTotalCount==="function"?bookTotalCount():0)} کتاب کامل — نه خلاصه. ${totCh} فصل و حدود ${Math.round(totMin/60)} ساعت مطالعه. برای هر درس چند کتاب و هر کتاب تست‌های اختصاصی خودش را دارد.</p></div>
     <div class="card" style="background:linear-gradient(135deg,var(--accent)22,transparent);border-color:var(--accent)44">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
         <div style="font-weight:800;font-size:16px">پیشرفت کل کتاب‌ها: ${doneCh} از ${totCh} فصل (${pct}%)</div>
@@ -584,7 +599,7 @@ function renderBooks(main){
       </div>
       <div class="bar" style="margin-top:12px"><div class="bar-fill" style="width:${pct}%"></div></div>
     </div>
-    <div class="section-title">📚 کتاب‌های کامل هر درس</div>
+    <div class="section-title">📚 قفسه کتاب‌های هر درس</div>
     <div class="grid-cards" id="fullbooks"></div>
     <div class="section-title">📖 منابع مرجع کنکور ارشد (۲۰ کتاب)</div>
     <div id="books"></div>`;
@@ -595,15 +610,20 @@ function renderBooks(main){
     const chAll=bookFlatChapters(bk);
     const done=chAll.filter(c=>STATE.progress.completed_lessons.includes(chapterKey(s.id,c.id))).length;
     const pc=chAll.length?Math.round(done*100/chAll.length):0;
+    const bs=(typeof bookList==="function")?bookList(s.id):[];
+    const qb=bs.reduce((a,b)=>a+(((typeof QB!=="undefined"&&QB[b.id])||[]).length),0);
     const el=document.createElement("div"); el.className="card clickable";
-    el.onclick=()=>openBookHome(s.id);
+    el.onclick=(ev)=>{ const a=ev.target.getAttribute&&ev.target.getAttribute("data-act");
+      if(a==="teach") openTeacherBook(bs[0].id); else openBookHome(s.id); };
     el.innerHTML=`<div class="emoji">${s.emoji}</div>
-      <h3>${bk.title}</h3>
+      <h3>${s.name}</h3>
       <p>${bk.subtitle||""}</p>
-      <div style="color:var(--muted);font-size:12.5px;margin:8px 0">📚 ${bk.parts.length} بخش • ${chAll.length} فصل • ⏱ ${bookMinutes(s.id)} دقیقه مطالعه</div>
+      <div style="color:var(--muted);font-size:12.5px;margin:8px 0">📚 ${bs.length} کتاب • ${chAll.length} فصل • ⏱ ${bookMinutes(s.id)} دقیقه${qb?` • 🎯 ${qb} تست اختصاصی`:""}</div>
+      <div style="color:var(--muted);font-size:11.5px;margin-bottom:8px">${bs.map(b=>`${b.icon||"📕"} ${b.title}`).join(" • ")}</div>
       <div class="bar"><div class="bar-fill" style="width:${pc}%"></div></div>
       <div style="font-size:12px;color:var(--muted);margin-top:6px">${done} از ${chAll.length} فصل خوانده‌شده (${pc}%)</div>
-      <div class="card-actions"><button class="btn btn-primary">📖 باز کردن کتاب</button></div>`;
+      <div class="card-actions"><button class="btn btn-primary">📖 باز کردن قفسه (${bs.length} کتاب)</button>
+        ${bs.length>1?`<button class="btn btn-ghost" data-act="teach">🧑‍🏫 کلاس استاد</button>`:""}</div>`;
     fb.appendChild(el);
   });
 
@@ -665,51 +685,44 @@ function removeSaved(i){STATE.progress.saved_questions.splice(i,1);saveProgress(
 
 /* ---- Teacher Mode ---- */
 function renderTeacherHome(main){
+  const totBooks = (typeof bookTotalCount === "function") ? bookTotalCount() : 0;
   main.innerHTML=`<div class="page-head"><h1>🧑‍🏫 کلاس درس با استاد</h1>
-    <p>تدریس تعاملی هر درس از صفر تا صد، با زبان ساده و نکات کنکوری. یک درس را انتخاب کن:</p></div>
+    <p>استاد کل ${totBooks} کتاب را فصل‌به‌فصل درس می‌دهد — مثل کسی که از روی کتاب و جزوه برایت می‌خواند. هر درس را انتخاب کن:</p></div>
+    ${progressCardHTML()}
+    <div class="section-title">📚 کلاس‌های درس</div>
     <div class="grid-cards" id="tg"></div>`;
   const g=$("#tg");
   APP_DATA.subjects.forEach(s=>{
-    const tc=APP_DATA.teacher[s.id];
+    const bs = (typeof bookList === "function") ? bookList(s.id) : [];
+    const chCount = bs.reduce((a,b)=>a+b.chapters.length,0);
+    const mins = bs.reduce((a,b)=>a+b.minutes,0);
+    const qCount = bs.reduce((a,b)=>a+(((typeof QB!=="undefined"&&QB[b.id])||[]).length),0);
+    const L = (typeof buildCourseLecture === "function") ? buildCourseLecture(s.id) : {slides:[]};
     const el=document.createElement("div");el.className="card clickable";
-    el.innerHTML=`<div class="emoji">🧑‍🏫</div><h3>${s.emoji} ${s.name}</h3><p>${(tc.slides||[]).length} بخش تدریس تعاملی</p>
-      <div class="card-actions"><button class="btn" style="background:var(--warning);color:#0f172a">شروع کلاس</button></div>`;
-    el.onclick=()=>openTeacher(s.id);
+    el.innerHTML=`<div class="emoji">🧑‍🏫</div><h3>${s.emoji} ${s.name}</h3>
+      <p>${bs.length} کتاب • ${chCount} فصل • ${mins} دقیقه تدریس کامل</p>
+      <div style="color:var(--muted);font-size:12.5px;margin:8px 0">🎬 ${L.slides.length} بخش کلاس${qCount?` • 🎯 ${qCount} تست اختصاصی`:""}<br>
+      ${bs.map(b=>b.icon+" "+b.title).join(" • ")}</div>
+      <div class="card-actions">
+        <button class="btn" style="background:var(--warning);color:#0f172a" data-act="start">▶️ شروع کلاس کامل</button>
+        <button class="btn btn-ghost" data-act="jozve">📝 جزوه کل درس</button>
+      </div>`;
+    el.onclick=(ev)=>{
+      const a=ev.target.getAttribute&&ev.target.getAttribute("data-act");
+      if(a==="jozve") showJozveSubject(s.id); else openTeacher(s.id);
+    };
     g.appendChild(el);
   });
 }
 function openTeacher(sid){
-  STATE.teacher={subject:sid, slide:0};
+  STATE.teacher={subject:sid, bookId:null, slide:0};
+  STATE._lecture=null;
   setView("teacher-lesson");
 }
 function renderTeacherLesson(main){
-  const T=APP_DATA.teacher[STATE.teacher.subject];
-  const s=APP_DATA.subjects.find(x=>x.id===STATE.teacher.subject);
-  const si=STATE.teacher.slide;
-  const slides=T.slides||[];
-  const isIntro=(si===0);
-  const total=slides.length+1; // intro + slides
-  const currentSlide = isIntro? null:slides[si-1];
-  const pct = (si/(total-1))*100;
-  main.innerHTML=`
-    <div class="quiz-wrap">
-      <div class="quiz-meta">
-        <div style="color:${s.color}">🧑‍🏫 ${s.emoji} ${s.name}</div>
-        <div>بخش ${si+1} از ${total}</div>
-      </div>
-      <div class="progress"><div class="progress-bar" style="width:${pct}%;background:linear-gradient(90deg,var(--warning),var(--accent))"></div></div>
-      <div class="q-card" style="padding:30px">
-        <div style="font-size:22px;font-weight:800;margin-bottom:16px;color:var(--warning)">${isIntro?"👋 سلام":"📘 "+currentSlide.title}</div>
-        <div style="font-size:15px;line-height:2.4;white-space:pre-wrap;text-align:justify;color:var(--text)">${isIntro?T.intro:currentSlide.body}</div>
-        <div class="q-actions" style="margin-top:24px">
-          <button class="btn btn-ghost" onclick="setView('teacher')">🔙 لیست دروس</button>
-          <div style="display:flex;gap:8px">
-            ${si>0?`<button class="btn btn-ghost" onclick="teacherSlide(-1)">⬅️ قبلی</button>`:""}
-            ${si<total-1?`<button class="btn btn-primary" onclick="teacherSlide(1)">بعدی ➡️</button>`:`<button class="btn btn-success" onclick="finishTeacher()">✅ پایان درس + شروع تست</button>`}
-          </div>
-        </div>
-      </div>
-    </div>`;
+  /* تدریس کامل: از کتاب‌ها (teacher_jozve.js) */
+  if(typeof renderTeacherLecture === "function"){ renderTeacherLecture(main); return; }
+  setView("teacher");
 }
 function teacherSlide(delta){STATE.teacher.slide+=delta;render();}
 function finishTeacher(){
@@ -738,7 +751,7 @@ function renderSettings(main){
       </div>
       <h3 style="margin:16px 0 8px">درباره</h3>
       <p style="font-size:13px;line-height:2;color:var(--muted)">
-      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۲.۰ (موبایل/آفلاین/PWA)<br>
+      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۰ (موبایل/آفلاین/PWA)<br>
       شامل: ۱۰ کتاب درسی کامل (۴۰ فصل)، دوره پایه تا پیشرفته، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
       </p>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -1174,7 +1187,8 @@ updateSidebarStat();
 // allow shortcuts via ?view=xxx
 const urlParams = new URLSearchParams(window.location.search);
 const initView = urlParams.get('view');
-if(initView && ["dashboard","subjects","quiz","exams","books","freebooks","bookmarks","savedq","teacher","foundation","practice","settings"].includes(initView)){
+seedStudyLog();
+if(initView && ["dashboard","subjects","quiz","exams","books","freebooks","bookmarks","savedq","teacher","foundation","practice","settings","progress","konkur"].includes(initView)){
   setView(initView);
 } else {
   setView("dashboard");
