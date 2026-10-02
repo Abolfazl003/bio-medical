@@ -22116,9 +22116,12 @@ function renderTeacherLesson(main){
 }
 function teacherSlide(delta){STATE.teacher.slide+=delta;render();}
 function finishTeacher(){
-  const sid=STATE.teacher.subject;
+  const T=STATE.teacher||{};
+  const sid=T.subject, bid=T.bookId;
   STATE.teacher=null;
-  startQuiz(sid);
+  if(bid && typeof startBookQuiz==="function") startBookQuiz(bid);
+  else if(sid) startQuiz(sid);
+  else setView("teacher");
 }
 
 /* ---- Settings ---- */
