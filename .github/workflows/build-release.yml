@@ -5,20 +5,18 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'نسخه (مثلاً v1.0.0)'
-        required: true
-        default: 'v1.0.0'
 
 permissions:
   contents: write
 
+env:
+  VERSION: v1.0.0
+
 jobs:
   # ─────────────────────────────────────────────
-  # آماده‌سازی فایل تک‌صفحه‌ای مشترک
+  # 📱 اندروید — APK واقعی و کامل (۱۰۰٪ آفلاین)
   # ─────────────────────────────────────────────
-  prepare:
+  android:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,34 +28,7 @@ jobs:
       - name: Install Pillow
         run: pip install pillow
 
-      - name: Build single-file offline app
-        run: python build_single.py
-
-      - name: Upload shared asset
-        uses: actions/upload-artifact@v4
-        with:
-          name: offline-html
-          path: |
-            bme-konkur-offline.html
-            android/app/src/main/assets/index.html
-            desktop_app/web/index.html
-          retention-days: 5
-
-  # ─────────────────────────────────────────────
-  # اندروید — APK واقعی و کامل (۱۰۰٪ آفلاین)
-  # ─────────────────────────────────────────────
-  android:
-    needs: prepare
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - run: pip install pillow
-      - name: Rebuild assets
+      - name: Build single-file offline app (assets)
         run: python build_single.py
 
       - uses: actions/setup-java@v4
@@ -65,10 +36,31 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: android-actions/setup-android@v3
+      - name: Configure Android SDK (pre-installed on runner)
+        run: |
+          if [ -z "$ANDROID_HOME" ] || [ ! -d "$ANDROID_HOME" ]; then
+            export ANDROID_HOME=/usr/local/lib/android/sdk
+          fi
+          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> $GITHUB_ENV
+          CT=$(ls -d $ANDROID_HOME/cmdline-tools/* 2>/dev/null | head -1)
+          [ -n "$CT" ] && echo "$CT/bin" >> $GITHUB_PATH
+          echo "$ANDROID_HOME/platform-tools" >> $GITHUB_PATH
+          BT=$(ls -d $ANDROID_HOME/build-tools/* 2>/dev/null | head -1)
+          [ -n "$BT" ] && echo "$BT" >> $GITHUB_PATH
+          echo "--- SDK contents ---"
+          ls "$ANDROID_HOME" || true
+          echo "--- build-tools ---"
+          ls "$ANDROID_HOME/build-tools" || true
+          echo "--- platforms ---"
+          ls "$ANDROID_HOME/platforms" || true
 
-      - name: Install SDK packages
-        run: sdkmanager "platforms;android-34" "build-tools;34.0.0" "platform-tools"
+      - name: Accept licenses & ensure packages
+        run: |
+          CT=$(ls -d $ANDROID_HOME/cmdline-tools/* 2>/dev/null | head -1)
+          yes | "$CT/bin/sdkmanager" --licenses > /dev/null 2>&1 || true
+          "$CT/bin/sdkmanager" "platforms;android-34" "build-tools;34.0.0" "platform-tools" 2>&1 | tail -3 || true
+          echo "platforms:"; ls "$ANDROID_HOME/platforms"
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -79,7 +71,7 @@ jobs:
           key: gradle-${{ runner.os }}-${{ hashFiles('android/**/*.gradle*') }}
           restore-keys: gradle-${{ runner.os }}-
 
-      - name: Setup Gradle
+      - name: Setup Gradle 8.7
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.7'
@@ -94,44 +86,40 @@ jobs:
             -storepass bmekonkur123 -keypass bmekonkur123 \
             -dname "CN=BME Konkur, OU=App, O=BME, L=Tehran, S=Tehran, C=IR"
 
-      - name: Build Release APK
+      - name: Build signed Release APK
         working-directory: android
         env:
           KEYSTORE_FILE: release.keystore
           KEYSTORE_PASSWORD: bmekonkur123
           KEY_ALIAS: bmekonkur
           KEY_PASSWORD: bmekonkur123
-        run: gradle assembleRelease --no-daemon
+        run: gradle assembleRelease --no-daemon --stacktrace
 
-      - name: Build Debug APK (نصب سریع بدون امضا)
+      - name: Build Debug APK (نصب سریع)
         working-directory: android
         run: gradle assembleDebug --no-daemon
 
-      - name: Collect APKs
+      - name: Collect & rename APKs
         run: |
           mkdir -p out
-          find android/app/build/outputs/apk -name "*.apk" -exec cp {} out/ \;
+          cp android/app/build/outputs/apk/release/app-release.apk "out/BME-Konkur-Android-v1.0.0.apk" 2>/dev/null || \
+          cp android/app/build/outputs/apk/release/*.apk "out/BME-Konkur-Android-v1.0.0.apk"
+          cp android/app/build/outputs/apk/debug/app-debug.apk "out/BME-Konkur-Android-Debug-v1.0.0.apk" 2>/dev/null || true
           ls -la out/
+          APKSIGNER=$(ls $ANDROID_HOME/build-tools/*/apksigner | head -1)
+          "$APKSIGNER" verify --print-certs "out/BME-Konkur-Android-v1.0.0.apk" | head -4 || true
 
-      - name: Sign release APK (apksigner)
-        run: |
-          BT=$(ls -d $ANDROID_HOME/build-tools/* | head -1)
-          APK=$(ls out/*release*.apk | head -1)
-          $BT/apksigner sign --ks android/release.keystore --ks-pass pass:bmekonkur123 \
-            --key-pass pass:bmekonkur123 --ks-key-alias bmekonkur --out out/BME-Konkur-Android-v1.0.0.apk "$APK"
-          $BT/apksigner verify --print-certs out/BME-Konkur-Android-v1.0.0.apk | head -5
-
-      - name: Upload APK
+      - name: Upload APKs
         uses: actions/upload-artifact@v4
         with:
           name: android-apk
-          path: out/BME-Konkur-Android-v1.0.0.apk
+          path: out/*.apk
+          retention-days: 30
 
   # ─────────────────────────────────────────────
-  # ویندوز — فایل اجرایی کامل (exe)
+  # 💻 ویندوز — فایل اجرایی کامل (exe)
   # ─────────────────────────────────────────────
   windows:
-    needs: prepare
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -148,45 +136,34 @@ jobs:
       - name: Build single-file offline app
         run: python build_single.py
 
-      - name: Build EXE with PyInstaller
+      - name: Build EXE (folder version)
         working-directory: desktop_app
-        run: |
-          pyinstaller --noconfirm --clean --windowed --name "BME-Konkur" ^
-            --add-data "web;web" ^
-            --hidden-import webview.platforms.edgechromium ^
-            --hidden-import webview.platforms.winforms ^
-            --hidden-import clr ^
-            app.py
+        run: pyinstaller --noconfirm --clean --windowed --name BME-Konkur --add-data "web;web" --hidden-import webview.platforms.edgechromium --hidden-import webview.platforms.winforms --hidden-import clr app.py
 
-      - name: Create installer ZIP
+      - name: Build EXE (portable single file)
+        working-directory: desktop_app
+        run: pyinstaller --noconfirm --clean --onefile --windowed --name BME-Konkur-Portable --add-data "web;web" --hidden-import webview.platforms.edgechromium --hidden-import webview.platforms.winforms --hidden-import clr app.py
+
+      - name: Package for release
         working-directory: desktop_app
         run: |
           Compress-Archive -Path "dist/BME-Konkur/*" -DestinationPath "dist/BME-Konkur-Windows-v1.0.0.zip" -Force
-
-      - name: Also build single-file EXE
-        working-directory: desktop_app
-        run: |
-          pyinstaller --noconfirm --clean --onefile --windowed --name "BME-Konkur-Portable" ^
-            --add-data "web;web" ^
-            --hidden-import webview.platforms.edgechromium ^
-            --hidden-import webview.platforms.winforms ^
-            --hidden-import clr ^
-            app.py
           Copy-Item "dist/BME-Konkur-Portable.exe" "dist/BME-Konkur-Portable-Windows-v1.0.0.exe" -Force
+          Get-ChildItem dist | Select-Object Name, Length
 
-      - name: Upload Windows files
+      - name: Upload Windows builds
         uses: actions/upload-artifact@v4
         with:
           name: windows-build
           path: |
             desktop_app/dist/BME-Konkur-Windows-v1.0.0.zip
             desktop_app/dist/BME-Konkur-Portable-Windows-v1.0.0.exe
+          retention-days: 30
 
   # ─────────────────────────────────────────────
-  # لینوکس
+  # 🐧 لینوکس
   # ─────────────────────────────────────────────
   linux:
-    needs: prepare
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -195,39 +172,57 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install GTK/WebKit + tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-webkit2-4.1
+          sudo apt-get install -y python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-webkit2-4.1 zip
           pip install pywebview pillow pyinstaller
 
       - name: Build single-file offline app
         run: python build_single.py
 
-      - name: Build binary
+      - name: Build Linux binary
         working-directory: desktop_app
-        run: |
-          pyinstaller --noconfirm --clean --windowed --name "BME-Konkur" \
-            --add-data "web:web" \
-            --hidden-import webview.platforms.gtk \
-            app.py
+        run: pyinstaller --noconfirm --clean --windowed --name BME-Konkur --add-data "web:web" --hidden-import webview.platforms.gtk app.py
 
       - name: Package
         working-directory: desktop_app
-        run: |
-          cd dist && zip -r "../BME-Konkur-Linux-v1.0.0.zip" "BME-Konkur"
+        run: cd dist && zip -r "../BME-Konkur-Linux-v1.0.0.zip" "BME-Konkur"
 
       - name: Upload Linux build
         uses: actions/upload-artifact@v4
         with:
           name: linux-build
           path: desktop_app/BME-Konkur-Linux-v1.0.0.zip
+          retention-days: 30
 
   # ─────────────────────────────────────────────
-  # انتشار ریلیز
+  # 🌐 فایل تک‌صفحه‌ای آفلاین (برای هر دستگاهی)
+  # ─────────────────────────────────────────────
+  singlefile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pillow
+      - name: Build
+        run: |
+          python build_single.py
+          cp bme-konkur-offline.html BME-Konkur-Offline-SingleFile.html
+          ls -la BME-Konkur-Offline-SingleFile.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: singlefile
+          path: BME-Konkur-Offline-SingleFile.html
+          retention-days: 30
+
+  # ─────────────────────────────────────────────
+  # 🚀 انتشار ریلیز
   # ─────────────────────────────────────────────
   release:
-    needs: [android, windows, linux]
+    needs: [android, windows, linux, singlefile]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -240,15 +235,13 @@ jobs:
       - name: Organize release assets
         run: |
           mkdir -p release
-          find artifacts -type f \( -name "*.apk" -o -name "*.exe" -o -name "*.zip" \) -exec cp {} release/ \;
-          cd release && ls -la
-          # نسخه تک‌فایلی آفلاین هم ضمیمه شود
-          cp ../bme-konkur-offline.html ./BME-Konkur-Offline-SingleFile.html 2>/dev/null || true
+          find artifacts -type f \( -name "*.apk" -o -name "*.exe" -o -name "*.zip" -o -name "*.html" \) -exec cp {} release/ \;
+          ls -la release/
 
       - name: Get version tag
         id: ver
         run: |
-          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
             echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
           else
             echo "tag=v1.0.0" >> $GITHUB_OUTPUT
@@ -260,57 +253,57 @@ jobs:
           tag_name: ${{ steps.ver.outputs.tag }}
           name: "کنکور ارشد مهندسی پزشکی — نسخه ${{ steps.ver.outputs.tag }}"
           body: |
-            # 🩺📚 اپلیکیشن آمادگی کنکور ارشد مهندسی پزشکی
+            # 🩺📚 اپلیکیشن کامل آمادگی کنکور ارشد مهندسی پزشکی
 
-            نسخه کامل و **کاملاً آفلاین** — همه محتوا، فونت و موتورها از قبل داخل فایل نصبی قرار دارند.
-            **هیچ نیازی به اینترنت، سرور یا نصب اضافه نیست.**
+            نسخه **کاملاً آفلاین** — تمام محتوا، فونت فارسی و موتور نمایش از قبل داخل فایل نصبی قرار دارند.
+            **هیچ نیازی به اینترنت، سرور، پایتون یا نصب اضافه نیست.**
 
             ---
 
-            ## 📱 اندروید
-            **`BME-Konkur-Android-v1.0.0.apk`**
+            ## 📱 اندروید — `BME-Konkur-Android-v1.0.0.apk`
             1. فایل APK را روی گوشی کپی کن
-            2. از تنظیمات، «نصب از منابع نامشخص» را برای فایل‌منیجر فعال کن
-            3. روی APK بزن و نصب کن ✅
-            - اپ کامل آفلاین کار می‌کند (بدون اینترنت)
-            - پیشرفت به صورت خودکار ذخیره می‌شود
+            2. اگر خواست، «نصب از منابع نامشخص» را برای مرورگر/فایل‌منیجر فعال کن
+            3. روی فایل بزن ← نصب ← تمام ✅
+
+            *کار می‌کند روی اندروید ۵ (API 21) و بالاتر — بدون اینترنت*
 
             ## 💻 ویندوز
-            **`BME-Konkur-Portable-Windows-v1.0.0.exe`** ← تک‌فایل، بدون نصب (پیشنهادی)
-            **`BME-Konkur-Windows-v1.0.0.zip`** ← پوشه کامل برنامه
-            1. فایل را دانلود کن
-            2. دابل‌کلیک کن — تمام! 🎉
-            - WebView2 در ویندوز ۱۰/۱۱ از قبل نصب است
-            - نیازی به پایتون یا هیچ چیز دیگری نیست
+            | فایل | توضیح |
+            |---|---|
+            | **`BME-Konkur-Portable-Windows-v1.0.0.exe`** | 🏆 تک‌فایل — دابل‌کلیک کن، بدون نصب |
+            | `BME-Konkur-Windows-v1.0.0.zip` | پوشه کامل — بعد از استخراج `BME-Konkur.exe` را اجرا کن |
 
-            ## 🐧 لینوکس
-            **`BME-Konkur-Linux-v1.0.0.zip`** — از حالت فشرده خارج کن و `BME-Konkur` را اجرا کن
+            *بدون نیاز به پایتون — WebView2 در ویندوز ۱۰/۱۱ از قبل موجود است*
 
-            ## 🌐 نسخه تک‌فایل
-            **`BME-Konkur-Offline-SingleFile.html`** — فقط دابل‌کلیک کن! روی هر دستگاهی (گوشی/تبلت/کامپیوتر) در هر مرورگری باز می‌شود، کاملاً آفلاین.
+            ## 🐧 لینوکس — `BME-Konkur-Linux-v1.0.0.zip`
+            استخراج کن و فایل `BME-Konkur` را اجرا کن (نیاز به `gir1.2-webkit2-4.1`)
+
+            ## 🌐 هر دستگاهی — `BME-Konkur-Offline-SingleFile.html`
+            فقط دابل‌کلیک کن! روی گوشی، تبلت و کامپیوتر در هر مرورگری باز می‌شود — کاملاً آفلاین.
+            برای موبایل: می‌توانی آن را «افزودن به صفحه اصلی» کنی و مثل اپ استفاده کنی.
 
             ---
 
             ## 📚 محتوای اپ
+
             | بخش | توضیح |
             |---|---|
-            | 🎒 دوره پایه تا پیشرفته | آموزش از صفرِ صفر با زبان ساده و مثال |
-            | 📚 درس‌نامه | ۱۰ درس، ۴۱ درس‌نامه دانشگاهی |
-            | 📝 بانک سوال | ۹۷ تست کنکوری با دو توضیح (ترفند کنکوری + حل کامل) |
-            | ✏️ سوالات تمرینی تالیفی | ۴۷ سوال تمرینی برای تسلط |
-            | 🎓 آزمون‌های ۱۰ ساله | ۱۰ آزمون، هر کدام ۲۵ سوال |
-            | 🧑‍🏫 استاد | تدریس فعال و پرسش‌پاسخ |
-            | 🔗 کتاب‌های رایگان | لینک منابع معتبر |
-            | 💾 ذخیره‌سازی | نشان‌گذاری، مرور، پشتیبان‌گیری |
+            | 🎒 **دوره پایه تا پیشرفته** | آموزش از صفرِ صفر به زبان ساده با مثال و تشبیه — ۳ سطح برای هر درس |
+            | 📚 **درس‌نامه** | ۱۰ درس، ۴۱ درس‌نامه دانشگاهی |
+            | 📝 **بانک سوال** | ۹۷ تست کنکوری با **دو توضیح** (ترفند کنکوری ⚡ + حل کامل 📖) |
+            | ✏️ **سوالات تمرینی تالیفی** | ۴۷ سوال برای تسلط، با کادر آموزش قبل از پاسخ |
+            | 🎓 **آزمون‌های ۱۰ ساله** | ۱۰ آزمون (۱۳۹۴–۱۴۰۳)، هر کدام ۲۵ سوال با تایمر و کارنامه |
+            | 🧑‍🏫 **استاد** | تدریس فعال، پرسش و اصلاح اشتباه |
+            | 🔗 **کتاب‌های رایگان** | لینک منابع معتبر دانشگاهی |
+            | 💾 **مدیریت پیشرفت** | نشان‌گذاری، ذخیره سوال، پشتیبان‌گیری، تم تاریک/روشن |
 
-            **۱۰ درس:** ریاضی، مدار، سیگنال، الکترونیک، فیزیک، الکترومغناطیس، کنترل، پزشکی، بیومکانیک، کامپیوتر
+            **۱۰ درس:** ریاضی مهندسی • مدار الکتریکی • سیگنال و سیستم • الکترونیک • فیزیک • الکترومغناطیس • کنترل • فیزیولوژی پزشکی • بیومکانیک • برنامه‌نویسی
 
             ---
-            ⚕️ *ساخته شده برای استفاده شخصی و مطالعه.*
+            ⚕️ *ساخته شده برای مطالعه شخصی — موفق باشی در کنکور!*
           files: release/*
           draft: false
           prerelease: false
-          generate_release_notes: true
           fail_on_unmatched_files: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
