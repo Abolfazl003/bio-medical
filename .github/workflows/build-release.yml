@@ -110,7 +110,6 @@ jobs:
       - name: Collect APKs
         run: |
           mkdir -p out
-          cp android/app/build/outputs/apk/release/*.apk out/BME-Konkur-v1.0.0-unsigned-check.apk 2>/dev/null || true
           find android/app/build/outputs/apk -name "*.apk" -exec cp {} out/ \;
           ls -la out/
 

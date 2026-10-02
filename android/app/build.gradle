@@ -12,7 +12,6 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0.0"
-        resConfigs "fa", "en"
     }
 
     signingConfigs {
@@ -53,8 +52,9 @@ android {
     }
 
     // همه فایل‌های اپ داخل assets بسته‌بندی می‌شوند => کاملاً آفلاین
+    // (فشرده‌سازی نمی‌شوند تا سریع‌تر لود شوند)
     androidResources {
-        noCompress 'html', 'js', 'css', 'woff2'
+        noCompress += ['html', 'js', 'css', 'woff2', 'svg', 'png']
     }
 }
 
