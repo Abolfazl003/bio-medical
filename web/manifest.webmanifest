@@ -1,0 +1,33 @@
+{
+  "name": "کنکور ارشد مهندسی پزشکی",
+  "short_name": "BME کنکور",
+  "description": "اپلیکیشن کامل آمادگی کنکور کارشناسی ارشد مهندسی پزشکی — درس‌نامه، تست، آزمون، استاد",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "lang": "fa",
+  "dir": "rtl",
+  "categories": ["education", "medical"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {"name":"تست ترکیبی", "url":"./?view=quiz", "description":"شروع تست شافل"},
+    {"name":"دوره پایه", "url":"./?view=foundation", "description":"آموزش از صفر"},
+    {"name":"آزمون", "url":"./?view=exams", "description":"آزمون‌های ۱۰ ساله"}
+  ]
+}
