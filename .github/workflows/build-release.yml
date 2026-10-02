@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 env:
-  VERSION: v1.0.0
+  VERSION: v1.1.0
 
 jobs:
   # ─────────────────────────────────────────────
@@ -232,20 +232,32 @@ jobs:
         with:
           path: artifacts
 
-      - name: Organize release assets
-        run: |
-          mkdir -p release
-          find artifacts -type f \( -name "*.apk" -o -name "*.exe" -o -name "*.zip" -o -name "*.html" \) -exec cp {} release/ \;
-          ls -la release/
-
       - name: Get version tag
         id: ver
         run: |
           if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
             echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
           else
-            echo "tag=v1.0.0" >> $GITHUB_OUTPUT
+            echo "tag=v1.1.0" >> $GITHUB_OUTPUT
           fi
+
+      - name: Organize release assets
+        run: |
+          mkdir -p release
+          find artifacts -type f \( -name "*.apk" -o -name "*.exe" -o -name "*.zip" -o -name "*.html" \) -exec cp {} release/ \;
+          # نام همه فایل‌ها با شماره نسخه واقعی (تگ) هم‌نام می‌شود
+          TAG="${{ steps.ver.outputs.tag }}"
+          cd release
+          for f in *; do
+            if [[ "$f" == *"v1.0.0"* ]]; then
+              mv "$f" "${f//v1.0.0/$TAG}"
+            fi
+          done
+          # فایل تک‌فایل آفلاین هم با نسخه برچسب می‌خورد
+          if [ -f "BME-Konkur-Offline-SingleFile.html" ]; then
+            mv "BME-Konkur-Offline-SingleFile.html" "BME-Konkur-Offline-SingleFile-${TAG}.html"
+          fi
+          ls -la
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -260,7 +272,7 @@ jobs:
 
             ---
 
-            ## 📱 اندروید — `BME-Konkur-Android-v1.0.0.apk`
+            ## 📱 اندروید — `BME-Konkur-Android-${{ steps.ver.outputs.tag }}.apk`
             1. فایل APK را روی گوشی کپی کن
             2. اگر خواست، «نصب از منابع نامشخص» را برای مرورگر/فایل‌منیجر فعال کن
             3. روی فایل بزن ← نصب ← تمام ✅
@@ -270,15 +282,15 @@ jobs:
             ## 💻 ویندوز
             | فایل | توضیح |
             |---|---|
-            | **`BME-Konkur-Portable-Windows-v1.0.0.exe`** | 🏆 تک‌فایل — دابل‌کلیک کن، بدون نصب |
-            | `BME-Konkur-Windows-v1.0.0.zip` | پوشه کامل — بعد از استخراج `BME-Konkur.exe` را اجرا کن |
+            | **`BME-Konkur-Portable-Windows-${{ steps.ver.outputs.tag }}.exe`** | 🏆 تک‌فایل — دابل‌کلیک کن، بدون نصب |
+            | `BME-Konkur-Windows-${{ steps.ver.outputs.tag }}.zip` | پوشه کامل — بعد از استخراج `BME-Konkur.exe` را اجرا کن |
 
             *بدون نیاز به پایتون — WebView2 در ویندوز ۱۰/۱۱ از قبل موجود است*
 
-            ## 🐧 لینوکس — `BME-Konkur-Linux-v1.0.0.zip`
+            ## 🐧 لینوکس — `BME-Konkur-Linux-${{ steps.ver.outputs.tag }}.zip`
             استخراج کن و فایل `BME-Konkur` را اجرا کن (نیاز به `gir1.2-webkit2-4.1`)
 
-            ## 🌐 هر دستگاهی — `BME-Konkur-Offline-SingleFile.html`
+            ## 🌐 هر دستگاهی — `BME-Konkur-Offline-SingleFile-${{ steps.ver.outputs.tag }}.html`
             فقط دابل‌کلیک کن! روی گوشی، تبلت و کامپیوتر در هر مرورگری باز می‌شود — کاملاً آفلاین.
             برای موبایل: می‌توانی آن را «افزودن به صفحه اصلی» کنی و مثل اپ استفاده کنی.
 
