@@ -21640,19 +21640,25 @@ function openSubject(id){STATE.activeSubject=id;setView("subject-detail");}
 function renderSubjectDetail(main){
   const s=APP_DATA.subjects.find(x=>x.id===STATE.activeSubject);
   const qc=(APP_DATA.question_bank[s.id]||[]).length;
+  const bs=(typeof bookList==="function")?bookList(s.id):[];
+  const qbk=bs.reduce((a,b)=>a+(((typeof QB!=="undefined"&&QB[b.id])||[]).length),0);
+  const mins=bs.reduce((a,b)=>a+b.minutes,0);
   main.innerHTML=`
     <div class="card" style="background:linear-gradient(135deg,${s.color}22,transparent);border-color:${s.color}44;margin-bottom:16px">
       <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
         <div style="font-size:56px">${s.emoji}</div>
         <div style="flex:1;min-width:240px"><h2 style="font-size:22px">${s.name}</h2>
-        <div style="color:var(--muted);font-size:13px">${s.lessons.length} فصل • ${qc} سوال</div></div>
+        <div style="color:var(--muted);font-size:13px;line-height:1.9">${s.lessons.length} فصل درس‌نامه • ${qc} سوال${bs.length?`<br>📚 ${bs.length} کتاب (${bookChapterCount(s.id)} فصل، ⏱ ${mins} دقیقه)${qbk?` • 🎯 ${qbk} تست اختصاصی کتاب‌ها`:""}`:""}</div></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          ${hasBook(s.id)?`<button class="btn btn-primary" onclick="openBookHome('${s.id}')">📕 کتاب کامل (${bookChapterCount(s.id)} فصل)</button>`:""}
+          ${hasBook(s.id)?`<button class="btn btn-primary" onclick="openBookHome('${s.id}')">📚 قفسه کتاب‌ها (${bs.length} کتاب)</button>`:""}
           <button class="btn" style="background:var(--accent2);color:#fff" onclick="startQuiz('${s.id}')">📝 تست این درس</button>
-          <button class="btn" style="background:var(--warning);color:#0f172a" onclick="openTeacher('${s.id}')">🧑‍🏫 تدریس استاد</button>
+          <button class="btn" style="background:var(--warning);color:#0f172a" onclick="openTeacher('${s.id}')">🧑‍🏫 کلاس کامل استاد</button>
+          ${bs.length?`<button class="btn btn-ghost" onclick="showJozveSubject('${s.id}')">📝 جزوه کل درس</button>`:""}
+          ${qbk?`<button class="btn btn-success" onclick="startBookQuiz('${bs[0].id}')">🎯 تست کتاب</button>`:""}
           <button class="btn btn-ghost" onclick="setView('subjects')">🔙</button>
         </div>
       </div>
+      ${bs.length?`<div style="font-size:12px;color:var(--muted);margin-top:12px">${bs.map(b=>`${b.icon} ${b.title}`).join(" • ")}</div>`:""}
     </div>
     <div class="section-title">📖 سرفصل‌ها</div><div id="lessons"></div>`;
   const box=$("#lessons");
