@@ -44,7 +44,7 @@ function totalProgramMinutes(){
   if(typeof allBooks === "function"){
     allBooks().forEach(b=>{ bookMin += b.minutes; chs += b.chapters.length; });
   }
-  const konkur = (typeof KONKUR_TOTAL !== "undefined" ? KONKUR_TOTAL : 440) * 3;   // هر سؤال کنکور ≈ ۳ دقیقه
+  const konkur = (typeof KONKUR_TOTAL !== "undefined" ? KONKUR_TOTAL : 1200) * 3;   // هر سؤال کنکور ≈ ۳ دقیقه
   return { bookMin: bookMin, chs: chs, konkurMin: konkur, total: bookMin + konkur };
 }
 

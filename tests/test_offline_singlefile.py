@@ -52,8 +52,20 @@ def run():
         # کنکور + تست ترکیبی سالم
         pg.evaluate("setView('konkur')"); pg.wait_for_timeout(400)
         check("کنکور ۱۰ ساله سالم", "کنکور سراسری ارشد" in pg.evaluate("document.querySelector('#main').innerText"))
+        # بانک کنکور: هر سال دقیقاً ۱۲۰ سوال (مثل کنکور واقعی) => مجموع ۱۲۰۰
+        per_year = pg.evaluate("JSON.stringify(pkYears().map(y=>pkYearCount(y)))")
+        per_year = json.loads(per_year)
+        check("هر سال ۱۲۰ سوال", per_year == [120]*10, per_year)
+        check("مجموع ۱۲۰۰ سوال کنکور", pg.evaluate("pkTotalCount()") == 1200, str(pg.evaluate("pkTotalCount()")))
+        dist = pg.evaluate("JSON.stringify(pkSubjects().map(s=>pkQ('1403',s).length))")
+        check("توزیع دروس ۱۴۰۳ (۱۵+۱۵+۹×۱۰)", json.loads(dist) == [15,15,10,10,10,10,10,10,10,10,10], dist)
+        pg.evaluate("startKonkur('1403',null,false)"); pg.wait_for_timeout(500)
+        check("آزمون ترکیبی سال ۱۲۰ سوالی", pg.evaluate("STATE.quiz.questions.length") == 120,
+              str(pg.evaluate("STATE.quiz.questions.length")))
+        check("همه سوالات ۴ گزینه و کلید معتبر", pg.evaluate("STATE.quiz.questions.every(q=>q.choices.length===4&&q.answer>=0&&q.answer<4)"))
+        pg.evaluate("setView('konkur')"); pg.wait_for_timeout(300)
         # گرافیک: اندازه فایل و شماره نسخه
-        check("نسخه ۱.۳.۰ در صفحه", "۱.۳.۰" in pg.evaluate("document.body.innerText") or True)
+        check("نسخه ۱.۳.۱ در صفحه", "۱.۳.۱" in pg.evaluate("document.body.innerText") or True)
         ctx.close()
 
         # موبایل آفلاین

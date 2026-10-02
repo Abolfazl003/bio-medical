@@ -204,7 +204,7 @@ function renderDashboard(main){
       <div class="card clickable" onclick="setView('progress')"><div class="emoji">⏱</div><h3>زمان مطالعه و برنامه</h3><p>چقدر خواندی و چند روز دیگر تمام می‌شود</p></div>
     </div>
     ${last?`<div class="section-title">🏅 آخرین آزمون</div>
-      <div class="card"><div style="font-weight:700;font-size:18px;color:var(--warning)">دوره ${last.year} — ${last.score} از ${last.total} (${Math.round(last.score*100/last.total)}%) <span style="font-size:12px;color:var(--muted)">${last.date||""}</span></div></div>`:""}
+      <div class="card"><div style="font-weight:700;font-size:18px;color:var(--warning)">دوره ${last.year} — ${pkFa(last.score)} از ${pkFa(last.total)} (${pkFa(Math.round(last.score*100/last.total))}%) <span style="font-size:12px;color:var(--muted)">${last.date||""}</span></div></div>`:""}
   `;
   const g=$("#subjects-grid");
   APP_DATA.subjects.forEach(s=>{
@@ -370,7 +370,7 @@ function renderQuiz(main){
   main.innerHTML=`
     <div class="quiz-wrap">
       <div class="quiz-meta">
-        <div>سوال <b>${Q.idx+1}</b> از ${Q.questions.length} — <span style="color:${subColor(q.subject)}">${subEmoji(q.subject)} ${subName(q.subject)}</span>${q.year?` <span style="color:var(--muted);font-size:12px">• کنکور ${q.year}</span>`:""}</div>
+        <div>سوال <b>${pkFa(Q.idx+1)}</b> از ${pkFa(Q.questions.length)} — <span style="color:${subColor(q.subject)}">${subEmoji(q.subject)} ${subName(q.subject)}</span>${q.year?` <span style="color:var(--muted);font-size:12px">• کنکور ${q.year}</span>`:""}</div>
         <div>درست: <b style="color:var(--success)">${Q.correct}</b></div>
       </div>
       <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
@@ -456,7 +456,7 @@ function renderQuizResult(main){
   const msg = pct>=75?"عالی بود! 👏":pct>=50?"خوب بود، بیشتر تمرین کن 💪":"لازم است درس‌نامه را مرور کنی 📖";
   main.innerHTML=`<div class="quiz-wrap"><div class="result">
     <h2>🎉 پایان تست</h2><div class="score">${pct}%</div>
-    <div>${Q.correct} درست از ${Q.questions.length} سوال — ${Q.subject}</div>
+    <div>${pkFa(Q.correct)} درست از ${pkFa(Q.questions.length)} سوال — ${Q.subject}</div>
     <div class="msg">${msg}</div>
     <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
       <button class="btn btn-primary" onclick="${Q.subject.includes('ترکیبی')?'startMixedQuiz()':`startQuiz('${Q.questions[0].subject}')`}">🔁 تست مجدد</button>
@@ -504,7 +504,7 @@ function renderExam(main){
   const q=E.questions[E.idx];const pct=((E.idx+1)/E.questions.length)*100;
   const answered=E.answers.filter(a=>a!==-1).length;
   main.innerHTML=`<div class="quiz-wrap">
-    <div class="quiz-meta"><div>دوره ${E.year} • سوال <b>${E.idx+1}</b> از ${E.questions.length}</div><div class="timer" id="ex-timer"></div></div>
+    <div class="quiz-meta"><div>دوره ${E.year} • سوال <b>${pkFa(E.idx+1)}</b> از ${pkFa(E.questions.length)}</div><div class="timer" id="ex-timer"></div></div>
     <div class="progress"><div class="progress-bar" style="width:${pct}%;background:linear-gradient(90deg,var(--accent2),var(--warning))"></div></div>
     <div class="q-nav" id="qnav">${E.questions.map((_,qi)=>{
       const ans=E.answers[qi];const cls=qi===E.idx?"active":(ans!==-1?"answered":"");
@@ -521,7 +521,7 @@ function renderExam(main){
           ${E.idx>0?'<button class="btn btn-ghost" onclick="jumpQ('+(E.idx-1)+')">⬅️ قبلی</button>':""}
           ${E.idx<E.questions.length-1?'<button class="btn btn-secondary" onclick="saveAndNext()">ذخیره و بعدی ➡️</button>':'<button class="btn btn-success" onclick="submitExam(false)">✅ ثبت و پایان</button>'}
         </div></div></div>
-    <div style="margin-top:10px;color:var(--muted);font-size:12px">پاسخ‌داده: ${answered} از ${E.questions.length}</div></div>`;
+    <div style="margin-top:10px;color:var(--muted);font-size:12px">پاسخ‌داده: ${pkFa(answered)} از ${pkFa(E.questions.length)}</div></div>`;
   const m=Math.floor(E.remaining/60),s=E.remaining%60;
   $("#ex-timer").textContent=`⏱️  ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   $$("#choices .choice").forEach(c=>c.onclick=()=>{
@@ -563,7 +563,7 @@ function renderExamResult(main){
   const E=STATE.exam;const pct=Math.round(E.correct*100/E.questions.length);
   const msg=pct>=80?"ممتاز! 🏆":pct>=60?"خوب! 💪":pct>=40?"نیاز به مطالعه 📚":"بیشتر تلاش کن 🎯";
   main.innerHTML=`<div class="page-head"><h1>🎓 کارنامه دوره ${E.year}</h1>
-    <p>${E.correct} درست از ${E.questions.length} — <b style="color:var(--warning)">${pct}%</b></p></div>
+    <p>${pkFa(E.correct)} درست از ${pkFa(E.questions.length)} — <b style="color:var(--warning)">${pkFa(pct)}%</b></p></div>
     <div class="result"><div class="score">${pct}%</div><div style="font-size:18px;margin-top:8px">${msg}</div>
       <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
         <button class="btn btn-secondary" onclick="restartExam()">🔁 آزمون مجدد</button>
@@ -573,7 +573,7 @@ function renderExamResult(main){
   E.details.forEach((d,i)=>{
     const sid=d.q.subject||"math";
     const el=document.createElement("div");el.className="q-result "+(d.ok?"ok":"bad");
-    el.innerHTML=`<div><span class="mark" style="color:${d.ok?'var(--success)':'var(--danger)'}">${d.ok?'✅':'❌'} سوال ${i+1}</span>
+    el.innerHTML=`<div><span class="mark" style="color:${d.ok?'var(--success)':'var(--danger)'}">${d.ok?'✅':'❌'} سوال ${pkFa(i+1)}</span>
       <span class="sub-dot" style="background:${subColor(sid)}"></span>
       <span style="font-size:11px;color:var(--muted)">${subName(sid)}</span></div>
       <p>${d.q.q}</p>
@@ -600,7 +600,7 @@ function renderBooks(main){
       <p>${(typeof bookTotalCount==="function"?bookTotalCount():0)} کتاب کامل — نه خلاصه. ${totCh} فصل و حدود ${Math.round(totMin/60)} ساعت مطالعه. برای هر درس چند کتاب و هر کتاب تست‌های اختصاصی خودش را دارد.</p></div>
     <div class="card" style="background:linear-gradient(135deg,var(--accent)22,transparent);border-color:var(--accent)44">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <div style="font-weight:800;font-size:16px">پیشرفت کل کتاب‌ها: ${doneCh} از ${totCh} فصل (${pct}%)</div>
+        <div style="font-weight:800;font-size:16px">پیشرفت کل کتاب‌ها: ${pkFa(doneCh)} از ${pkFa(totCh)} فصل (${pkFa(pct)}%)</div>
         <button class="btn btn-primary" onclick="setView('freebooks')">🔗 منابع آزاد و رایگان</button>
       </div>
       <div class="bar" style="margin-top:12px"><div class="bar-fill" style="width:${pct}%"></div></div>
@@ -627,7 +627,7 @@ function renderBooks(main){
       <div style="color:var(--muted);font-size:12.5px;margin:8px 0">📚 ${bs.length} کتاب • ${chAll.length} فصل • ⏱ ${bookMinutes(s.id)} دقیقه${qb?` • 🎯 ${qb} تست اختصاصی`:""}</div>
       <div style="color:var(--muted);font-size:11.5px;margin-bottom:8px">${bs.map(b=>`${b.icon||"📕"} ${b.title}`).join(" • ")}</div>
       <div class="bar"><div class="bar-fill" style="width:${pc}%"></div></div>
-      <div style="font-size:12px;color:var(--muted);margin-top:6px">${done} از ${chAll.length} فصل خوانده‌شده (${pc}%)</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">${pkFa(done)} از ${pkFa(chAll.length)} فصل خوانده‌شده (${pkFa(pc)}%)</div>
       <div class="card-actions"><button class="btn btn-primary">📖 باز کردن قفسه (${bs.length} کتاب)</button>
         ${bs.length>1?`<button class="btn btn-ghost" data-act="teach">🧑‍🏫 کلاس استاد</button>`:""}</div>`;
     fb.appendChild(el);
@@ -760,7 +760,7 @@ function renderSettings(main){
       </div>
       <h3 style="margin:16px 0 8px">درباره</h3>
       <p style="font-size:13px;line-height:2;color:var(--muted)">
-      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۰ (موبایل/آفلاین/PWA)<br>
+      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۱ (موبایل/آفلاین/PWA)<br>
       شامل: ۱۰ کتاب درسی کامل (۴۰ فصل)، دوره پایه تا پیشرفته، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
       </p>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -978,7 +978,7 @@ function renderPracticeQuiz(main){
   const pct=(P.idx/P.questions.length)*100;
   main.innerHTML=`<div class="quiz-wrap">
     <div class="quiz-meta">
-      <div>سوال <b>${P.idx+1}</b> از ${P.questions.length} — ${q.difficulty?`<span style="background:var(--warning);color:#0f172a;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700">${q.difficulty}</span>`:""}
+      <div>سوال <b>${pkFa(P.idx+1)}</b> از ${pkFa(P.questions.length)} — ${q.difficulty?`<span style="background:var(--warning);color:#0f172a;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700">${q.difficulty}</span>`:""}
         <span style="color:${subColor(q.subject)}">${subEmoji(q.subject)} ${subName(q.subject)}</span></div>
       <div>درست: <b style="color:var(--success)">${P.correct}</b></div>
     </div>
@@ -1037,7 +1037,7 @@ function renderPracticeResult(main){
   const msg=pct>=80?"عالی تسلط داری! 💪":pct>=60?"خوب، کمی بیشتر تمرین کن":pct>=40?"بهتره برگردی دوره پایه رو دوباره ببینی 🎒":"نگران نباش، برو سراغ دوره پایه از صفر شروع کن 🎒";
   main.innerHTML=`<div class="quiz-wrap"><div class="result">
     <h2>🎉 پایان تمرین</h2><div class="score">${pct}%</div>
-    <div>${P.correct} درست از ${P.questions.length}</div><div class="msg">${msg}</div>
+    <div>${pkFa(P.correct)} درست از ${pkFa(P.questions.length)}</div><div class="msg">${msg}</div>
     <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
       <button class="btn btn-primary" onclick="${P.subject.includes('ترکیبی')?'startPractice(null)':`startPractice('${P.questions[0].subject}')`}">🔁 تمرین مجدد</button>
       <button class="btn" style="background:var(--warning);color:#0f172a" onclick="setView('foundation')">🎒 مرور دوره پایه</button>
@@ -1091,7 +1091,7 @@ function renderKonkurHome(main){
 
   main.innerHTML=`
     <div class="page-head"><h1>🏛 کنکورهای ۱۰ سال اخیر</h1>
-      <p>سوالات سال به سال، درس به درس — هر سال ${pkSubjects().length} درس و ${pkYearCount(pkYears()[0]||"0")} سوال</p>
+      <p>سوالات سال به سال، درس به درس — هر سال ${pkFa(pkSubjects().length)} درس و ${pkFa(pkYearCount(pkYears().sort()[pkYears().length-1]||"0"))} سوال، دقیقاً به اندازه کنکور واقعی (۱۲۰ سوال)</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="startKonkurAll()">🎲 همه سال‌ها — تست ترکیبی</button>
         <button class="btn btn-ghost" onclick="setView('exams')">🎓 آزمون‌های جامع ۲۵ سوالی</button>
