@@ -14,6 +14,8 @@
 
 از صفحه **[Releases](../../releases/latest)** فایل مناسب خودت را دانلود کن:
 
+> 🔗 **لینک مستقیم صفحه دانلود:** https://github.com/Abolfazl003/bio-medical/releases/latest
+
 | پلتفرم | فایل | نحوه نصب |
 |---|---|---|
 | 📱 **اندروید** | `BME-Konkur-Android-v1.0.0.apk` | دانلود ← نصب ← تمام (بدون اینترنت کار می‌کند) |
