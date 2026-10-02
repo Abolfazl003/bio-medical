@@ -174,13 +174,15 @@ body.pwa-installed{padding-bottom:env(safe-area-inset-bottom);}
 .install-banner button{background:#0f172a;color:white;border:none;padding:6px 14px;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:600}
 
 @media (max-width: 960px){
-  #app{grid-template-columns:78px 1fr;}
+  /* سایدبار در موبایل به پایین صفحه منتقل می‌شود (position:fixed)
+     پس دیگر نباید هیچ ستونی در گرید اشغال کند => تک‌ستونه */
+  #app{grid-template-columns:1fr;height:100dvh;}
+  main{height:100dvh;padding:12px 12px 84px 12px;-webkit-overflow-scrolling:touch;}
   .brand-title, .nav-btn span + span, .sidebar-stat{display:none;}
   .nav-btn{justify-content:center;padding:12px 8px;}
   .nav-btn span{margin:0;font-size:20px;}
   .brand{justify-content:center;padding:10px 0;}
   .logo{font-size:28px;}
-  main{padding:16px;}
   .grid-cards{grid-template-columns:1fr 1fr;gap:10px;}
   .big-stats{grid-template-columns:1fr 1fr 1fr;gap:8px;}
   .big-stat{padding:12px 6px;}
@@ -206,7 +208,6 @@ body.pwa-installed{padding-bottom:env(safe-area-inset-bottom);}
   .nav-btn span{display:block;font-size:18px;margin:0 0 2px 0;}
   .nav-btn span + span{display:block;font-size:8px;color:var(--muted);font-weight:500;font-family:inherit;}
   .sidebar-stat{display:none;}
-  main{padding:12px 12px 80px 12px;}
   /* touch targets larger */
   .choice{margin-bottom:8px;min-height:48px;}
   .btn{min-height:42px;}
