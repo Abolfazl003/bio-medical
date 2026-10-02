@@ -89,7 +89,7 @@ jobs:
       - name: Build signed Release APK
         working-directory: android
         env:
-          KEYSTORE_FILE: release.keystore
+          KEYSTORE_FILE: ${{ github.workspace }}/android/release.keystore
           KEYSTORE_PASSWORD: bmekonkur123
           KEY_ALIAS: bmekonkur
           KEY_PASSWORD: bmekonkur123
