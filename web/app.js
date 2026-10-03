@@ -800,7 +800,7 @@ function renderSettings(main){
       </div>
       <h3 style="margin:16px 0 8px">درباره</h3>
       <p style="font-size:13px;line-height:2;color:var(--muted)">
-      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۴ (موبایل/آفلاین/PWA)<br>
+      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۵ (موبایل/آفلاین/PWA)<br>
       شامل: ۱۰ کتاب درسی کامل (۴۰ فصل)، دوره پایه تا پیشرفته، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
       </p>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -1202,6 +1202,7 @@ function prReceived(){ return PKR_YEARS.filter(y=>PKR_EXAM_COUNT[y]).length; }
 function prYearCount(year){ return prSubjects().reduce((a,s)=>a+prQ(year,s).length,0); }
 function prTotalCount(){ return PKR_YEARS.reduce((a,y)=>a+prYearCount(y),0); }
 function prHas(){ return typeof PKR!=="undefined" && prTotalCount()>0; }
+function prNewestYear(){ for(let i=PKR_YEARS.length-1;i>=0;i--){ if(prYearCount(PKR_YEARS[i])>0) return PKR_YEARS[i]; } return null; }
 
 function renderKonkurOfficial(main){
   const total=prTotalCount();
@@ -1211,7 +1212,7 @@ function renderKonkurOfficial(main){
       <p>سوالات <b>واقعی دفترچه‌های کنکور ارشد مهندسی پزشکی (بیوالکتریک) از ۱۳۸۷ تا ۱۴۰۴ (۱۸ دوره)</b> — با شماره سوال اصلی، گزینه‌های دقیق، کلید و حل تشریحی</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="setView('mock')">🎯 کنکور آزمایشی — ۱۲۰۰ سوال شبیه‌ساز (۱۰ سال)</button>
-        ${prHas()?'<button class="btn btn-ghost" onclick="startOfficial(PKR_YEARS[PKR_YEARS.length-1])">📜 آزمون رسمی جدیدترین سال</button>':''}
+        ${prHas()?'<button class="btn btn-ghost" onclick="startOfficial(prNewestYear())">📜 آزمون رسمی جدیدترین دفترچه درج‌شده</button>':''}
       </div></div>
     <div class="big-stats">
       <div class="big-stat"><div class="num" style="color:var(--accent)">${pkFa(total)}</div><div class="lbl">سوال رسمی 📜</div></div>

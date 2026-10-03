@@ -74,6 +74,18 @@ async def main():
         for probe in ["۱۳۸۷", "۱۴۰۴", "۱۸ دوره", "۱۴۰۲", "حل مؤلف", "۱۵۰ دقیقه"]:
             check(f"متن صفحه شامل {probe}", probe in txt)
 
+        print("— داده‌های درج‌شده ۱۴۰۰ —")
+        d2 = await pg.evaluate("""({total: prTotalCount(), y: prYearCount('1400'),
+             math: prQ('1400','math').length, phy: prQ('1400','physics').length,
+             no1: (prQ('1400','math')[0]||{}).no, newest: prNewestYear()})""")
+        check("۳۰ سوال رسمی درج‌شده", d2["total"] == 30, d2["total"])
+        check("ریاضیات ۱۴۰۰ = ۱۵ سوال", d2["math"] == 15, d2["math"])
+        check("فیزیک ۱۴۰۰ = ۱۵ سوال", d2["phy"] == 15, d2["phy"])
+        check("شماره اولین سوال = ۱", d2["no1"] == 1, d2["no1"])
+        check("جدیدترین دفترچه درج‌شده = ۱۴۰۰", d2["newest"] == "1400", d2["newest"])
+        sol = await pg.evaluate("(prQ('1400','math')[0]||{}).s || ''")
+        check("هر سوال حل مؤلف دارد", len(sol) > 40, len(sol))
+
         print("— بخش آزمایشی دست‌نخورده —")
         check("۱۲۰۰ سوال آزمایشی سر جایش", await pg.evaluate("pkTotalCount()") == 1200)
         check("۱۰ سال آزمایشی", await pg.evaluate("pkYears().length") == 10)
