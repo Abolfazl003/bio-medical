@@ -76,6 +76,7 @@ function updateSidebarStat(){
 
 /* ---- nav ---- */
 function setView(v){
+  if(typeof pkStopTimer==="function" && v!=="quiz-playing") pkStopTimer();
   STATE.view = v;
   $$(".nav-btn").forEach(b=>b.classList.toggle("active", b.dataset.view===v));
   render();
@@ -371,7 +372,10 @@ function renderQuiz(main){
     <div class="quiz-wrap">
       <div class="quiz-meta">
         <div>سوال <b>${pkFa(Q.idx+1)}</b> از ${pkFa(Q.questions.length)} — <span style="color:${subColor(q.subject)}">${subEmoji(q.subject)} ${subName(q.subject)}</span>${q.year?` <span style="color:var(--muted);font-size:12px">• کنکور ${q.year}</span>`:""}</div>
-        <div>درست: <b style="color:var(--success)">${Q.correct}</b></div>
+        <div style="display:flex;align-items:center;gap:10px">
+          ${Q.exam?`<div id="examTimer" class="exam-timer">⏱ ${pkFmtTime(Q.exam.remaining)}</div>`:""}
+          <div>درست: <b style="color:var(--success)">${pkFa(Q.correct)}</b></div>
+        </div>
       </div>
       <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
       <div class="q-card">
@@ -384,7 +388,7 @@ function renderQuiz(main){
         </div>
         <div class="explain" id="explain" style="display:none"></div>
         <div class="q-actions">
-          <button class="btn btn-ghost" onclick="setView('quiz')">🔙 انصراف</button>
+          <button class="btn btn-ghost" onclick="pkStopTimer();setView('quiz')">🔙 انصراف</button>
           <div style="display:flex;gap:8px">
             <button class="btn btn-success" id="checkBtn" onclick="checkAnswer()">✅ ثبت پاسخ</button>
             <button class="btn btn-primary" id="nextBtn" style="display:none" onclick="nextQuestion()">بعدی ➡️</button>
@@ -454,10 +458,33 @@ function renderQuizResult(main){
     saveProgress();
   }
   const msg = pct>=75?"عالی بود! 👏":pct>=50?"خوب بود، بیشتر تمرین کن 💪":"لازم است درس‌نامه را مرور کنی 📖";
+  // ── کارنامه زمان (حالت آزمون واقعی) ──
+  let examRep = "";
+  if(Q.exam){
+    const used = Q.exam.limit - Q.exam.remaining;
+    const answered = Object.values(Q.exam.bySub).reduce((a,e)=>a+e.n,0);
+    const rows = Object.keys(Q.exam.bySub).map(sid=>{
+      const e=Q.exam.bySub[sid];
+      const avg = e.n? Math.round(e.t/e.n) : 0;
+      return `<tr><td>${subEmoji(sid)} ${subName(sid)}</td><td>${pkFa(e.n)}</td><td>${pkFmtTime(e.t)}</td>
+        <td style="color:${avg<=PK_EXAM_SEC_PER_Q?'var(--success)':'var(--warning)'};font-weight:700">${pkFa(avg)} ثانیه</td></tr>`;
+    }).join("");
+    examRep = `
+    <div class="exam-report">
+      <div class="exam-report-head">⏱ کارنامه آزمون واقعی ${Q.exam.timeUp?"— ⏰ زمان تمام شد":""}</div>
+      <div class="exam-report-stats">
+        <span>زمان کل آزمون: <b>${pkFmtTime(Q.exam.limit)}</b></span>
+        <span>زمان صرف‌شده: <b>${pkFmtTime(used)}</b></span>
+        <span>سوال پاسخ‌داده: <b>${pkFa(answered)} از ${pkFa(Q.questions.length)}</b></span>
+        <span>میانگین هر سوال: <b>${pkFa(answered?Math.round(used/answered):0)} ثانیه</b> (هدف: ${pkFa(PK_EXAM_SEC_PER_Q)} ثانیه)</span>
+      </div>
+      ${rows?`<table class="exam-table"><thead><tr><th>درس</th><th>تعداد</th><th>زمان</th><th>میانگین/سوال</th></tr></thead><tbody>${rows}</tbody></table>`:""}
+    </div>`;
+  }
   main.innerHTML=`<div class="quiz-wrap"><div class="result">
     <h2>🎉 پایان تست</h2><div class="score">${pct}%</div>
     <div>${pkFa(Q.correct)} درست از ${pkFa(Q.questions.length)} سوال — ${Q.subject}</div>
-    <div class="msg">${msg}</div>
+    <div class="msg">${msg}</div>${examRep}
     <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
       <button class="btn btn-primary" onclick="${Q.subject.includes('ترکیبی')?'startMixedQuiz()':`startQuiz('${Q.questions[0].subject}')`}">🔁 تست مجدد</button>
       <button class="btn" style="background:var(--warning);color:#0f172a" onclick="setView('savedq')">💾 مرور سوالات ذخیره‌شده</button>
@@ -760,7 +787,7 @@ function renderSettings(main){
       </div>
       <h3 style="margin:16px 0 8px">درباره</h3>
       <p style="font-size:13px;line-height:2;color:var(--muted)">
-      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۱ (موبایل/آفلاین/PWA)<br>
+      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۲ (موبایل/آفلاین/PWA)<br>
       شامل: ۱۰ کتاب درسی کامل (۴۰ فصل)، دوره پایه تا پیشرفته، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
       </p>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -1054,6 +1081,75 @@ $$(".nav-btn").forEach(b=>b.addEventListener("click",()=>{
   setView(v);
 }));
 
+/* ═══ ⏱ حالت آزمون واقعی (تایمر ۱۶۰ دقیقه برای ۱۲۰ سوال) ═══ */
+
+const PK_EXAM_SEC_PER_Q = 80;      // کنکور واقعی: ۱۲۰ سوال در ۱۶۰ دقیقه = ۸۰ ثانیه برای هر سوال
+let _pkTimer = null;
+
+function pkExamOn(){ return !!STATE.pkExam; }
+function pkExamToggle(){
+  STATE.pkExam = !STATE.pkExam;
+  STATE.progress.pk_exam = STATE.pkExam;
+  saveProgress();
+  render();
+}
+function pkFmtTime(sec){
+  sec = Math.max(0, Math.round(sec));
+  const m = Math.floor(sec/60), r = sec%60;
+  return pkFa(String(m).padStart(2,"0")) + ":" + pkFa(String(r).padStart(2,"0"));
+}
+function pkStopTimer(){ if(_pkTimer){ clearInterval(_pkTimer); _pkTimer=null; } }
+
+/* زمان صرف‌شده سوال جاری را در آمار همان درس ثبت می‌کند */
+function pkAccrueTime(){
+  const Q = STATE.quiz;
+  if(!Q || !Q.exam || !Q.exam.qStart) return;
+  const now = Date.now();
+  const q = Q.questions[Q.idx];
+  if(q && q.subject){
+    const e = Q.exam.bySub[q.subject] || (Q.exam.bySub[q.subject] = {t:0, n:0});
+    e.t += (now - Q.exam.qStart)/1000;
+    e.n++;
+  }
+  Q.exam.qStart = now;
+}
+
+function pkStartTimer(){
+  pkStopTimer();
+  const Q = STATE.quiz;
+  if(!Q || !Q.exam) return;
+  Q.exam.endsAt = Date.now() + Q.exam.remaining*1000;
+  Q.exam.qStart = Date.now();
+  const tick = () => {
+    const q = STATE.quiz;
+    if(!q || !q.exam || STATE.view!=="quiz-playing"){ pkStopTimer(); return; }
+    pkAccrueTime();
+    q.exam.remaining = Math.max(0, (q.exam.endsAt - Date.now())/1000);
+    const el = document.getElementById("examTimer");
+    if(el){
+      el.textContent = "⏱ " + pkFmtTime(q.exam.remaining);
+      el.classList.toggle("danger", q.exam.remaining <= 600);
+    }
+    if(q.exam.remaining <= 0){
+      pkStopTimer();
+      q.exam.timeUp = true;
+      q.exam.remaining = 0;
+      q.idx = q.questions.length;     // اتمام خودکار آزمون
+      alert("⏰ زمان آزمون تمام شد!\nپاسخ‌های ثبت‌شده تصحیح و کارنامه نمایش داده می‌شود.");
+      render();
+    }
+  };
+  _pkTimer = setInterval(tick, 1000);
+  tick();
+}
+
+/* دسترسی دستی به باقی‌مانده زمان برای آزمون‌های کنکور */
+function pkAttachExam(Q, nQuestions){
+  Q.exam = {limit: nQuestions*PK_EXAM_SEC_PER_Q, remaining: nQuestions*PK_EXAM_SEC_PER_Q,
+            bySub:{}, qStart:0, startedAt:Date.now()};
+  return Q;
+}
+
 /* ═══ کنکورهای ۱۰ سال اخیر ═══ */
 
 /* ---- توابع پایه ---- */
@@ -1095,6 +1191,7 @@ function renderKonkurHome(main){
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="startKonkurAll()">🎲 همه سال‌ها — تست ترکیبی</button>
         <button class="btn btn-ghost" onclick="setView('exams')">🎓 آزمون‌های جامع ۲۵ سوالی</button>
+        <button class="btn ${pkExamOn()?'btn-secondary':'btn-ghost'}" onclick="pkExamToggle()">${pkExamOn()?'⏱ حالت آزمون واقعی: روشن (۸۰ ثانیه برای هر سوال)':'⏱ حالت آزمون واقعی: خاموش'}</button>
       </div></div>
     <div class="big-stats">
       <div class="big-stat"><div class="num" style="color:var(--accent)">${pkFa(pkTotalCount())}</div><div class="lbl">سوال کنکوری 🗂</div></div>
@@ -1132,6 +1229,7 @@ function renderKonkurYear(main){
       <p>${pkFa(subs.length)} درس • ${pkFa(pkYearCount(year))} سوال — برای هر درس یک آزمون با تصحیح و توضیح کامل</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="startKonkur('${year}')">🎲 آزمون ترکیبی همین سال (${pkFa(pkYearCount(year))} سوال)</button>
+        <button class="btn ${pkExamOn()?'btn-secondary':'btn-ghost'}" onclick="pkExamToggle()">${pkExamOn()?'⏱ آزمون واقعی روشن — '+pkFa(Math.round(pkYearCount(year)*PK_EXAM_SEC_PER_Q/60))+' دقیقه':'⏱ آزمون واقعی: خاموش'}</button>
         <button class="btn btn-ghost" onclick="setView('konkur')">🔙 فهرست سال‌ها</button>
       </div></div>
     <div class="grid-cards" id="sg"></div>`;
@@ -1165,7 +1263,9 @@ function startKonkur(year, sid, shuffleQ){
   if(!qs.length) return;
   if(shuffleQ) qs=shuffle(qs);
   STATE.quiz={questions:qs, idx:0, correct:0, subject: sid?subName(sid):("کنکور "+pkFa(year)), konkur:{year:year, sid:sid}};
+  if(pkExamOn()) pkAttachExam(STATE.quiz, qs.length);
   setView("quiz-playing");
+  if(pkExamOn()) pkStartTimer();
 }
 
 /* ---- تست ترکیبی همه سال‌ها ---- */
@@ -1175,7 +1275,9 @@ function startKonkurAll(){
   if(!qs.length) return;
   qs=shuffle(qs).slice(0,20);
   STATE.quiz={questions:qs, idx:0, correct:0, subject:"کنکورهای ۱۰ سال اخیر (ترکیبی)", konkur:{year:null,sid:null}};
+  if(pkExamOn()) pkAttachExam(STATE.quiz, qs.length);
   setView("quiz-playing");
+  if(pkExamOn()) pkStartTimer();
 }
 
 /* ---- ثبت نتیجه آزمون کنکور در پیشرفت (از checkAnswer فراخوانی می‌شود) ---- */
@@ -1191,6 +1293,7 @@ function __unused_pkRecord(isCorrect){
 }
 
 /* init */
+if(STATE.progress.pk_exam) STATE.pkExam = true;
 applyTheme(STATE.progress.theme||"dark");
 updateSidebarStat();
 // allow shortcuts via ?view=xxx

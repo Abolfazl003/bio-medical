@@ -428,3 +428,25 @@ body.pwa-installed{padding-bottom:env(safe-area-inset-bottom);}
   .jozve{padding:18px}
   .jozve h1{font-size:20px}
 }
+
+/* ═══ v1.3.2 — تایمر حالت آزمون واقعی + کارنامه زمان ═══ */
+.exam-timer{
+  background:rgba(56,189,248,.12);border:1.5px solid var(--accent);color:var(--accent);
+  font-weight:800;font-size:15px;padding:6px 12px;border-radius:12px;
+  font-variant-numeric:tabular-nums;letter-spacing:.5px;direction:ltr;
+}
+.exam-timer.danger{
+  background:rgba(239,68,68,.14);border-color:var(--danger);color:var(--danger);
+  animation:pulseTime 1.2s ease-in-out infinite;
+}
+@keyframes pulseTime{0%,100%{opacity:1}50%{opacity:.55}}
+.exam-report{
+  margin-top:16px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-align:right;
+}
+.exam-report-head{font-weight:800;color:var(--accent);margin-bottom:8px;font-size:15px}
+.exam-report-stats{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13px;color:var(--muted);margin-bottom:10px}
+.exam-report-stats b{color:var(--text)}
+.exam-table{width:100%;border-collapse:collapse;font-size:13px}
+.exam-table th,.exam-table td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right}
+.exam-table th{color:var(--muted);font-weight:700;background:rgba(148,163,184,.07)}
+.exam-table td:first-child{font-weight:700}
