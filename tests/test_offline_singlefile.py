@@ -68,7 +68,7 @@ def run():
         check("همه سوالات ۴ گزینه و کلید معتبر", pg.evaluate("STATE.quiz.questions.every(q=>q.choices.length===4&&q.answer>=0&&q.answer<4)"))
         pg.evaluate("setView('mock')"); pg.wait_for_timeout(300)
         # گرافیک: اندازه فایل و شماره نسخه
-        check("نسخه ۱.۳.۳ در صفحه", "۱.۳.۳" in pg.evaluate("document.body.innerText") or True)
+        check("نسخه ۱.۳.۴ در صفحه", "۱.۳.۴" in pg.evaluate("document.body.innerText") or True)
         ctx.close()
 
         # موبایل آفلاین
