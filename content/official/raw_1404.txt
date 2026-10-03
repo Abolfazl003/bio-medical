@@ -1,0 +1,4199 @@
+
+===== صفحه 1 =====
+ صبح
+جمعه 
+90
+/
+90
+/
+4191
+ 
+ هب انم آنکه جان را فکرت آموخت 
+ 
+وزارت بهداشت، درمان و آموزش پزشکی 
+معاونت آموزشی 
+دبیرخانه شورای آموزش علوم پایه پزشکی، بهداشت و تخصصی 
+ مرکز سنجش
+آ
+موزش پزشکی 
+ 
+ 
+ 
+ سال تحصیلی4191
+-
+4191
+ 
+سواالت آزمون ورودی دوره کارشناسی ارش د 
+ 
+ 
+ 
+رشته 
+مهندسی پزشكی گرایش بیوالكتریک 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+مهندسی پزشكی گرایش بیوالكتریک 
+ 
+ 
+ 
+:مشخصات داوطلب 
+:تعداد سواالت 
+429
+ سوال 
+:نام و نام خانوادگی 
+:زمان پاسخگویی 
+469
+ دقیقه 
+:شماره کارت تعداد صفح:ات 
+21
+ 
+ 
+ 
+ 
+داوطلب عزیز 
+ خواهشمند است قبل از شروع پاسخگویی، دفترچه سواالت را از نظر تعداد صفحات به دقت موورد بررسوی
+.قرار داده و در صورت وجود هر گونه اشکال به مسئوالن جلسه اطالع دهید 
+ 
+
+ 
+ استفاده از ماشین حساب
+مجاز یم باشد. 
+ 
+
+===== صفحه 2 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+4
+ 
+ریاضیات مهندسی 
+4
+-
+ 
+ اگر سری فوریه 
+ ی تهاعf(x)= x
+- π < x < π
+ 
+ عه  وهور
+1
+1
+( 1)
+2
+sin
+
+
+
+
+
+n
+n
+nx
+n
+ 
+ عاشهد   سهری فوریه  تهاع
+ 
+g(x)= xcosx
+- π < x < π
+ 
+ ع  وور
+2
+sin
+( )sin
+2
+
+
+
+
+n
+x
+n
+nx
+
+ 
+ عاشد، مقدار تاع(
+3)
+n
+
+کدام است؟ 
+)الف 
+3
+4
+
+ 
+)ب 
+2
+3
+
+ 
+)ج 
+3
+2
+ 
+)د 
+2
+5
+ 
+2
+-
+ 
+ تاعf
+ ک  در عازه 
+ ی-c < x < c
+ 
+ تعریف شده است، دارای ضرایب فوری  ع 
+ وور1
+0,
+3
+
+
+n
+n
+n
+a
+b
+ 
+  اسهت، ااوه
+2
+( )
+
+c
+c f x dxکدام است؟ 
+الف
+) 
+3
+c
+ 
+)ب 
+8
+c
+ 
+)ج 
+6
+c
+ 
+)د 
+2
+c
+ 
+3
+-
+ 
+  عهها مباسهه   عنهه  کنعنوسههی تههاع2
+( )
+(sin )
+0
+1
+
+
+
+f x
+x
+x
+   ، کههدام گهینهه  در مههورد   ههار
+1
+sin(
+2)
+sin(
+2)
+(
+)( 1)
+2
+2
+
+
+
+
+
+
+
+
+
+n
+n
+n
+n
+n
+n
+
+
+
+
+ وبعح است؟ 
+الف
+) 
+1
+1 sin1
+sin 2
+2
+
+
+ 
+)ب 
+1 sin1 2sin2
+
+
+ 
+)ج 
+1 2sin1 2sin2
+
+
+ 
+)د 
+2
+2sin1 sin2
+
+
+ 
+1
+-
+ 
+  در تههاع  زf 
+  داریهه0
+1
+( )
+( )cos(
+)
+
+f x
+A
+x d
+
+
+
+
+
+ 
+  
+2
+( )
+1
+
+
+
+e
+A
+
+
+
+
+، مقههدارa 
+  عهها تو هه  عهه    ههار
+2
+2
+0
+( ( )
+( ))
+4
+
+
+
+a
+d
+f x
+f x dx
+dx
+
+ کدام است؟ 
+ 
+الف
+) 3
+ 
+)ب 1
+ 
+)ج 
+-3
+ 
+)د 
+-1
+ 
+ 
+5
+-
+ 
+  عا استفاده از انتگرال فوری  تاع
+sin
+0
+2
+( )
+sin
+0
+2
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+x
+x
+f x
+x
+x
+otherwise
+
+
+ 
+  ااو    ار2
+0
+sin
+1
+
+
+
+x d
+
+
+
+
+کدام است؟ 
+ 
+الف
+) 
+1
+2 
+
+ 
+)ب 
+
+ 
+)ج 
+1
+
+ 
+)د 
+1
+2
+
+ 
+
+===== صفحه 3 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+2
+ 
+6
+-
+ 
+ مناات نااع 
+  ی مبد د ع2
+| 2 |
+1 1 | 3
+,
+(
+1 1 )
+3
+3
+A
+z
+z
+i
+Arg z
+i
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ کدام است؟ 
+الف
+) 
+3
+4
+
+ 
+)ب 
+5
+6
+
+ 
+)ج 
+3
+2
+
+ 
+)د 
+5
+8
+
+ 
+7
+-
+ کدام گهین  غل  است؟ 
+الف
+) 
+ اگرu
+iv
+
+ 
+ تحلیلی باشد آنگاهv
+iu
+
+ 
+ .نیز تحلیلی است 
+)ب 
+ اگرu 
+ مزدوج همساز برایv 
+ و برعکس آنگاهu 
+ وv 
+ .توابعی ثابت هستند 
+)ج 
+ اگر( )
+f z
+u
+iv
+
+
+ در ناحیه 
+ ی بسته و کراندارR
+ 
+  (به شکل دایره) تحلیلی و غیرثابت باشدد آنگداه توابدu 
+ وv 
+ مقدادیر
+اکسترمم خود را در مرکز ناحیه 
+ یR
+ اختیار می 
+ .کنند 
+)د 
+ اگر( )
+f z
+u
+iv
+
+
+ در ناحیه 
+ یR
+ 
+  تحلیلی باشد، توابu 
+ وv در حوزه 
+ یR 
+ 
+ .همسازند 
+8
+-
+ 
+  تاع( )
+cos( )
+f z
+z
+z
+
+
+ در کدام نااع  همدیس نمی عاشد؟ 
+الف
+) 
+ln( 1
+2)
+2
+2
+
+
+
+
+z
+i
+k
+
+
+ 
+)ب 
+ln(1
+2)
+2
+2
+
+
+
+
+z
+i
+k
+
+
+ 
+ 
+)ج 
+ln(1
+2)
+2
+2
+
+
+
+
+z
+i
+k
+
+
+ 
+)د 
+2
+2
+
+
+z
+k
+
+
+ 
+9
+-
+ 
+( تصویر مبور موهومی0
+x 
+) 
+ تبت نگاشت
+2
+2
+( ) 
+z
+f z
+z e
+ کدام است؟ 
+الف
+) 
+ پاره خطی به طول1
+e
+ روی محور حقیقی 
+)ب 
+ پاره خطی به طول1
+e
+ روی محور موهومی 
+)ج 
+ پاره خطی به طول2
+e
+ روی محور موهومی 
+)د 
+ پاره خطی به طول2
+e
+ روی محور حقیقی 
+44
+-
+ 
+ ااو  نگاشت نواای
+
+( , ) |
+0,
+0
+R
+x y
+x
+y
+
+
+
+ 
+ تبت نگاشت1
+1
+z
+i
+w
+z
+i
+
+
+
+ در کدام گهین  آمده است؟ 
+الف
+) اشتراک نواحی
+ 
+ای خارج از دایره به مرک ز(0, 1)
+
+ 
+ و شعاع2
+ و نواحی
+ 
+ای داخل دایره به مرکز (0,1)
+ 
+ و شعاع2
+ 
+)ب اشتراک نواحی
+ 
+ای خارج از دایره به مرکز (0,1)
+ 
+ و شعاع2
+ و نواحی
+ 
+ای داخل دایره به مرکز (0, 1)
+
+ 
+ و شعاع2
+ 
+)ج اشتراک نواحی
+ 
+ای خارج از دایره به مرکز (1, 1)
+
+ 
+ و شعاع2
+ و نواحی
+ 
+ای داخل دایره به مرکز (1,1)
+ 
+ و شعاع2
+ 
+)د اشتراک نواحی
+ای  
+داخل از دایره به مرکز(1, 1)
+
+  
+ و شعاع2
+ و نواحی
+ 
+ای خارج دایره به مرکز (1,1)
+ 
+ و شعاع2
+ 
+44
+-
+ 
+  عا تو   ع  تاع3
+1 cos
+( )
+,
+0
+
+
+
+z
+f z
+z
+z
+کدام گهین  وبعح است؟ 
+الف
+) 
+ 
+0
+z قطب ساده ی تاب  است و مانده 
+ ی تاب  در این نقطه برابر با1
+2
+ 
+ .است 
+)ب 
+ 
+0
+z قطب ساده ی تاب  است و مانده 
+ ی تاب  در این نقطه برابر با1 ا.ست 
+)ج 
+0
+z 
+ قطب مرتبه ی دو تاب  است و مانده 
+ ی تاب  در این نقطه برابر با1
+2
+ 
+.است 
+)د 
+0
+z 
+ قطب مرتبه ی سه تاب  است و مانده 
+ ی تاب  در این نقطه برابر با1 
+.است 
+
+===== صفحه 4 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+3
+ 
+42
+-
+ 
+ ااو  انتگرالc
+dz
+z
+ عرای یک 
+ عار طی کردن کام  منعر عنت ی 
+ Cدر  هت مث  ت مثلثاتی ک  در مختصا  قط هی
+ ع 
+  وور
+cos( )
+5
+2
+2
+2
+r
+
+
+
+ می عاشد کدام است؟ 
+ 
+الف
+) 
+2 i
+
+
+ 
+)ب 
+4 i
+
+
+ 
+)ج صفر 
+)د 
+4 i
+
+ 
+43
+-
+ 
+  ضریب غعرثاعت در عن  تاع( )
+sin
+
+z
+e
+f z
+z
+ 
+ اول0
+z 
+ کدام است؟ 
+الف
+) 1
+
+ 
+)ب 1
+ 
+)ج صفر 
+)د 
+1
+2
+ 
+41
+-
+ 
+ پاسخ کام  معادل 
+  ی دیفراننعtan
+0
+u
+x
+u
+y
+y
+
+
+
+
+ کدام است؟ 
+ 
+الف
+) 
+1
+cot
+( , )
+tan
+
+
+
+
+y
+x
+u x y
+c e
+y
+x
+ 
+)ب 
+tan
+( , )
+cot
+( ) 
+
+
+
+y
+x
+u x y
+y
+x
+f x e
+ 
+ 
+)ج 
+cot
+( , )
+tan
+( ) 
+
+
+
+y
+x
+u x y
+y
+x
+f x e
+ 
+)د 
+1
+tan
+( , )
+cot
+
+
+
+
+y
+x
+u x y
+c e
+y
+x
+ 
+45
+-
+ 
+ در معادل 
+ ی الپالس0
+
+
+xx
+yy
+u
+u
+ 
+ ع  ازای0
+x
+l
+
+
+ کدام گهین  وبعح است؟ 
+ 
+الف
+)  به
+ازای  شرایط مرزی(0,
+)
+( ,
+)
+0
+u
+y
+u l y
+
+
+ 
+ و0
+y
+h
+
+
+ 
+:داریم 
+ 
+1
+(
+)cos
+
+
+
+
+
+
+n
+n
+y
+y
+l
+l
+n
+n
+n
+n
+u
+a e
+b e
+x
+l
+
+
+
+ 
+)ب  به
+ازای  شرایط مرزی(0,
+)
+( ,
+)
+0
+u
+y
+u l y
+
+
+ 
+ و0
+y
+
+
+ 
+:داریم 
+ 
+1
+sin
+
+
+
+
+n y
+l
+n
+n
+n
+u
+c e
+x
+l
+
+
+ 
+)ج  به
+ازای  شرایط مرزی(0, )
+( , )
+0
+x
+u
+y
+u l y
+
+
+ 
+ و0
+y
+h
+
+
+ 
+:داریم 
+ 
+0
+(
+)cos 2
+
+
+
+
+
+
+n
+n
+y
+y
+l
+l
+n
+n
+n
+n
+u
+a e
+b e
+x
+l
+
+
+
+ 
+)د  به
+ازای شرایط مرزی
+ (0, )
+( , )
+0
+
+
+x
+x
+u
+y
+u l y
+ و 
+
+y
+ 
+:داریم 
+0
+(2
+1)
+(
+)sin
+2
+
+
+
+
+
+
+
+n
+n
+y
+y
+l
+l
+n
+n
+n
+n
+u
+a e
+b e
+x
+l
+
+
+
+ 
+
+===== صفحه 5 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+1
+ 
+فیزیک
+ 
+پزشکی و مهندسی پزشکی 
+46
+-
+ در مدار پ   تنتون ز
+ری من    لتاژ5V
+ عا مقا مت داخل
+ناچ ی
+عه 
+  گالوانمتر عا اناسه 
+عت 
+ اعجها 
+ی 5mm
+A
+
+ 
+  
+مقا مت داخل
+ی 100
+ عاش یم
+د
+. مقدار  اعجا 
+ی 
+گالوانمتر در اثر تغ
+ ر عع25
+  در شاخ2000چقدر است؟ 
+)الف 
+103mm
+ 
+)ب 
+38mm
+ 
+)ج 
+84mm
+ 
+)د 
+68mm
+ 
+ 
+47
+-
+ عا تو   ع  زا ی  آند
+ 
+در تعوب رادیولوژی در اثر پاشن  آند کدامعک از موارد زیر وبعح است؟ 
+)الف 
+.اطالعات تصویری در سمت کاتد از سمت آند بیشتر است 
+)ب 
+.دانسیته تصویر در سمت آند از سمت کاتد بیشتر است 
+)ج 
+.قدرت تفکیک تصویری در سمت آند از سمت کاتد بیشتر است 
+)د اشعه در سمت کاتد نسبت به سم
+ت آند از سختی بیشتر برخوردار است. 
+48
+-
+ در سعنت  ااعای 
+  قل ی دیفع ریالتور، شوک الکتریکی در چ  عازه زمانی از موECG
+ ن اید ا مال شود؟ 
+)الف موج QR 
+ 
+)ب موج
+ QRS
+ 
+)ج 
+ موجP
+ 
+)د موجT 
+ 
+49
+-
+ در فعالعت 
+ های در ن هنت ای،  ناوری ک  رفتار ایه مریک 
+..... ،دارند 
+)الف تعداد پروتون
+ 
+ها تغییر
+می  
+.کند 
+)ب تعداد نوترون
+ 
+ها تغییر می 
+.کند 
+)ج تعداد نوترون
+ 
+ها و پروتون
+ 
+ها ثابت است. 
+)د عدد جرمی ثابت است ولی نوترون
+ 
+ها و پروتون
+ 
+ها تغییر می 
+.کنند 
+24
+-
+ 
+ افهایش قطر یک م دل فراوو  عا ث عه ود کدامعک از
+مجمو  
+ 
+موارد
+ 
+زیر می شود؟ 
+4
+ ) طول نااع  نهدیک 
+ 
+ 2
+ ) قدر  تفکعک مبوری 
+3) قدر  تفکعک درنااع  د ر 
+ 1
+)) قدر  تفکعک در نااع  گذر( کانونی 
+ 
+)الف 1 
+ و2
+ 
+)ب 2 
+ و3
+ 
+)ج 3 
+ و4
+ 
+)د 1 
+ و3
+ 
+24
+-
+ در سعنت  تصویر عرداریB-mode 
+ فراوو  ع 
+ وور  اسکن خطی، اگر  مق مورد نظهر10cm
+   ، سهر ت فراوهو
+1535m/s
+ 
+    تعداد خ  در فری  ه250 line/F
+ عاشد، اد اکثر فری  عر ثانع 
+(F/s)
+ خر  ی چقدر است؟ 
+)الف 
+30 F/s
+ 
+)ب 
+60 F/s
+ 
+)ج 
+36 F/s
+ 
+)د 
+25 F/s
+ 
+22
+ ه 
+ کاهش اععاد تصویری خر  ی المپ تقویت تصویر در فلورسکوپی نن ت ع  اععاد تصویر  ر دی
+المپ ع  کدامعک از 
+موارد زیر کمک می کند؟ 
+)الف افزایش بهره الکترونی در تیوب 
+)ب افزایش کنتراست محلی خروجی 
+)ج افزایش بهره تبدیل اشعه ایکس به نور 
+)د افزایش بهره تبدیل نور به الکترون 
+
+===== صفحه 6 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+5
+ 
+23
+-
+ 
+ هدف استفاده از اتصال پای راست(Right lead)
+ در ث
+ ت سعگنال الکت
+ر کاردیوگرام کدام
+عک از مجمو   موارد زیر می عاشد؟ 
+4
+ )
+   کنترل عهره تقویت کننده 
+ 
+ 
+ 2
+  ) کاهش تداخ  عرق شهر 
+3) اذف  لتاژ القا ی عر ر ی عدن ععمار 
+  
+ 1
+  ) ایجاد پتاننع  مر 
+ 
+)الف 2 
+ و3
+ 
+)ب 1 
+ و4
+ 
+)ج 3 
+ و4
+ 
+)د 1 
+ و2
+ 
+21
+-
+ 
+ کدامعک از موارد زیر در مورد
+فرآیند الکتر کاتری وبعح می عاشد؟ 
+)الف 
+.فرکانس کاری اپلیکاتور مهم نیست 
+)ب 
+ فرکانس کاری باید از10 kHz
+ 
+.بیشتر باشد 
+)ج جریان الکتریکی ازطریق الکترودها از بافت هدف عبور می 
+.کند 
+)د 
+ نیاز بهGFD
+ جهت اطمینان از الکترود برگشتی می 
+.باشد 
+25
+-
+ 
+ از علوک
+دیاگرام مدار زیر ع  چ  منظوری استفاده می شود؟ 
+)الف 
+ کمی سازی مقدار فعالیتEEG
+ 
+)ب تشخیص آریتمی قلبی 
+)ج تشخیص بیماری
+ 
+های مغزی 
+)د 
+ کمی سازی مقدار فعالیتEMG
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+26
+-
+ کدامعک از
+ 
+مجمو   انشقاق های قل ی زیر تک قط ی هنتند
+؟ 
+)الف 
+3
+2
+1
+aVL, I,V ,V ,V
+ 
+)ب 
+5
+2
+1
+aVF, II,V ,V ,V
+ 
+)ج 
+3
+2
+6
+aVR, III,V ,V ,V
+ 
+)د 
+5
+3
+2
+aVL, aVR,V ,V ,V
+ 
+27
+-
+ در دستگاه الکتر سر ری از کدام شک  مو  عرای عرش ع  همراه انعقاد استفاده می شود؟ 
+)الف 
+ 
+)ب 
+ 
+ 
+)ج 
+ 
+)د 
+Absolute Value Circuit 
+Counter 
+Monostable 
+Switch 
+Comparator 
+
+===== صفحه 7 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+6
+ 
+28
+-
+ 
+ کدامعک از موارد زیر عا ث
+کاهش 
+اثر نع  سای  در تصا یر رادیو گرافی می شود؟ 
+)الف 
+ افزایش اندازه نقطه کانونی و
+کاهش 
+فاصله شئ تا فیلم 
+)ب کاهش
+ 
+فاصله نقطه کانونی تا شئ 
+و 
+کاهش
+ 
+اندازه نقطه کانونی 
+)ج 
+ افزایش فاصله شئ تا فیلم
+و افزایش فاصله نقطه کانونی تا شئ 
+)د کاهش
+ 
+فاصله شئ 
+تا فیلم و 
+کاهش
+ 
+اندازه نقطه کانونی 
+29
+-
+ فرکانس کاری پرتوهای تجهعها  تصویر عرداری ع  ترتعب کدامند؟ 
+)الف 
+MRI > PET > CT > US
+ 
+)ب 
+PET > CT > MRI > US
+ 
+)ج 
+CT > PET > MRI > US
+ 
+)د 
+US > MRI > PET > CT
+ 
+34
+-
+ اگر
+ 
+ع  اج  ریوی
+ (TLC)
+ 
+ ععماری2 
+ لعتر هوا عا مخلوط44
+ در ود گاز عی 
+   اثر اضاف  شود عا گذر زمان تعادلی، غلظت
+گاز عی 
+  اثر ع3 درود کاهش یاعد، ظرفعت کلی ری  ا  چند لعتر خواهد عود؟ 
+)الف 
+5.4 lit
+ 
+)ب 
+6 lit
+ 
+)ج 
+4.6 lit
+ 
+)د 
+3.8 lit
+ 
+سیگنال
+ 
+ها و سی
+ها ستم 
+34
+-
+ سع
+گنال
+ پع
+وست 
+ 
+,
+0
+
+
+
+at
+x t
+e
+u t
+ a
+ را در نظر عگ
+عرید
+. ت د
+فور  ی
+ی ی سع
+گنال
+  ( )   ( )
+ نت عچ
+؟ 
+ 
+)الف 
+
+
+2
+1
+
+a
+jω
+ 
+)ب 
+
+
+2
+1
+
+
+a
+jω
+ 
+)ج 
+
+
+2
+
+j
+a
+jω
+ 
+)د 
+
+
+2
+
+
+j
+a
+jω
+ 
+32
+-
+ سع
+ ی نتم
+عا تاع  انتقال 
+2
+4
+
+
+s
+H s
+s
+  ی دار
+. پاسخ ضرع 
+ ی این سع
+نت 
+نت عچ 
+؟ 
+ 
+)الف 
+
+
+2
+cos t u t
+ 
+)ب 
+
+
+2
+ sin
+t u t
+ 
+)ج 
+
+
+0.5
+2
+sin t u t
+ 
+)د 
+
+
+0.5
+2
+cos t u t
+ 
+33
+-
+ سع
+ ریز ی ها نت 
+را در نظر عگ
+. دیرع
+کدام
+عک از گهین  های زیر وبعح است؟ 
+)الف سیستم 
+ های
+
+
+y t
+tx t
+ 
+ و
+
+2
+
+y t
+x tسیستم 
+ هایLTI
+ می باشند 
+)ب 
+ سیستم مشتق گیر
+گسسته
+ 
+
+
+1
+
+
+
+y n
+x n
+x n
+ مانند سیستم مشتق گیر پیوسته حافظه دار
+است  
+)ج 
+ سیستم
+
+t
+x τ dτ
+ یک سیستم خطی است اما تغییرپذی
+ر با زمان نیست مگر در شرایط خاص 
+)د 
+ سیستم با تاب  تبدیل
+
+
+
+
+3
+2
+1
+
+
+
+s
+s
+s
+ علی و پایدار است 
+
+===== صفحه 8 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+7
+ 
+31
+-
+ سع
+ ی نتم
+عا پاسخ فرکانن
+ی 
+
+2
+1
+H
+j
+j
+
+
+ ی دار
+. پاسخ ا
+ین سع
+نت 
+ 
+ع   ر د
+ی 
+
+cos
+x t
+t
+
+ نت عچ
+؟ 
+)الف 
+
+cos
+4
+
+
+
+
+
+
+
+
+π
+y t
+t
+ 
+ 
+ 
+)ب 
+
+cos
+4
+
+
+
+
+
+
+
+
+π
+y t
+t
+ 
+ 
+)ج صفر 
+ 
+ 
+)د 
+
+
+sin
+
+y t
+t
+ 
+35
+-
+ 
+ سعنت  لی 
+   پایدار عا تاع  انتقال
+0.8
+ 
+0.5
+z
+H z
+z
+
+
+
+ 
+ داری
+. 
+ کدام گهین  در مورد پاسخ ضرع  ن ای 
+  سعنت
+وبعح است؟ 
+ 
+)الف 
+
+
+
+
+
+
+
+1
+0.5
+0.8 0.5
+1
+n
+n
+h n
+u n
+u n
+
+
+
+
+ 
+)ب 
+ 
+
+
+
+0.5
+1
+n
+h n
+u n
+
+
+  
+)ج 
+
+
+
+
+
+
+
+0.5
+0.8 0.5
+1
+n
+n
+h n
+u n
+u n
+
+
+
+  
+)د 
+ 
+
+
+
+
+
+
+1
+0.5
+0.8 0.5
+1
+n
+n
+h n
+u n
+u n
+
+
+
+
+
+ 
+36
+-
+ 
+ پس از
+نمون 
+ 
+عرداری سعگن
+ال  
+
+
+
+
+ 500
+1500
+x t
+cos
+t
+cos
+t
+
+
+
+
+ عا نرخ 
+ 600 
+f
+Hz
+
+ ، طعهف
+ااوهل  
+در عهازه 
+/ 2
+f
+ 
+  
+/ 2
+f
+
+ کدام است
+؟ 
+ 
+)الف 
+ یک سیگنال فرکانس252
+ هرتز 
+)ب 
+ دو سیگنال فرکانس322
+ هرتز  و252
+ هرتز 
+)ج دو سیگنال
+ 
+فرکانس 122
+ هرتز و 
+52
+ هرتز 
+)د 
+ دو سیگنال فرکانس152
+ هرتز  و252
+ هرتز 
+37
+-
+ اگر 
+
+
+
+0.9
+n
+x n
+u n
+
+ 
+ 
+،عاشد DTFT 
+ سعگنال در
+
+
+ چعنت؟ 
+)الف 
+12
+ 
+)ب 1
+ 
+)ج 
+
+ 
+)د 
+10
+19
+ 
+38
+-
+ 
+ اگهر تهاع  ت هدی  یهک سعنهت
+ 
+ لهی LTI 
+ عه  وهور 
+
+1
+1
+1 0.8
+H z
+z
+
+ 
+ ،عاشهد
+عهرای 
+سهعگنال  ر دی
+ 
+
+
+
+
+0.8
+1
+n
+x n
+u n
+
+، خر  ی چعنت؟ 
+ 
+)الف 
+
+
+
+0.8
+n
+n
+u n
+ 
+)ب 
+
+
+
+
+
+
+
+0.8
+0.8
+1
+n u n
+u n
+
+
+ 
+)ج 
+
+
+
+2
+0.8
+n u n
+ 
+)د 
+
+
+
+0.64
+n
+n
+u n
+ 
+
+===== صفحه 9 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+8
+ 
+39
+-
+ معادل  دیفراننعلی ک  راعط  ععن  ر دی خر  ی سعنت  الق  عنت  زیر را ععان می کند کدام است؟ 
+ 
+)الف 
+
+
+
+
+
+''
+5 '
+6
+2
+'
+y
+t
+y t
+y t
+x t
+x t
+
+
+
+
+
+ 
+)ب 
+
+
+
+
+
+''
+7 '
+6
+'
+y
+t
+y t
+y t
+x t
+x t
+
+
+
+
+ 
+)ج 
+
+
+
+
+
+''
+7 '
+8
+'
+y
+t
+y t
+y t
+x t
+x t
+
+
+
+
+ 
+)د 
+
+
+
+
+
+''
+5 '
+8
+'
+y
+t
+y t
+y t
+x t
+x t
+
+
+
+
+ 
+14
+-
+ سعگنال 
+ .های زیر را در نظر عگعرید 
+ 
+ کانولوشن کدامعک از گهین های زیر می تواند شک  زیر را ااو  کند؟ 
+ 
+)الف 
+a, b
+ 
+)ب 
+b, b
+ 
+)ج 
+a, c
+ 
+)د 
+a, a
+ 
+14
+-
+ ت دی  الپالس کدامعک از سعگنال 
+ های زیر   ود
+ندارد
+؟ 
+ 
+
+
+
+
+2
+3
+1
+
+
+
+
+
+
+t
+t
+t
+x t
+e u t
+e
+u t
+e
+u t
+ 
+
+
+
+
+
+2
+3
+2
+
+
+
+
+
+
+
+t
+t
+t
+x
+t
+e u
+t
+e
+u t
+e
+u t
+ 
+
+
+
+
+
+2
+3
+3
+
+
+
+
+
+
+
+t
+t
+t
+x
+t
+e u t
+e
+u
+t
+e
+u t
+ 
+
+
+
+
+
+
+2
+3
+4
+
+
+
+
+
+
+
+
+t
+t
+t
+x
+t
+e u
+t
+e
+u
+t
+e
+u t
+ 
+ 
+)الف 
+x1
+ 
+)ب 
+x2
+ 
+)ج 
+x3
+ 
+)د 
+x4
+ 
+12
+-
+ 
+  ت دیZ
+ 
+  یک سعگنال دارای نااعROC
+ 
+ ما ععنa 
+  
+b می 
+( عاشدb>a>0
+  ). تبت چ  شهرطی ت هدیZ
+ 
+   عخهش ز
+سعگنال مو ود می عاشد؟ 
+)الف 
+
+
+
+
+, 1/
+, 1/
+max a
+b
+min b
+a
+
+ 
+)ب 
+
+
+
+
+, 1/
+, 1/
+min a
+b
+max a
+b
+
+ 
+)ج 
+1
+ab 
+ 
+)د 1
+ab 
+ 
+
+===== صفحه 10 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+9
+ 
+13
+-
+ نمودار وفر   قطب یک سعنت  گننت  ع
+ 
+وور  زیر می 
+  عاشد. دروورتعک  این سعنتH(1)=1
+ 
+ عاشد، کدامعک از
+نمودار  های زیر مرعوط ع  این سعنت
+نعنت
+؟ 
+ 
+)الف   
+ 
+)ب 
+ 
+)ج 
+ 
+ 
+)د هیچکدام 
+
+===== صفحه 11 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+44
+ 
+11
+-
+ نمود
+ار وفر   قطب یک سعنت  پعوست  ع 
+ 
+وور  زیر می 
+ .عاشهد
+دروورتی 
+  کak , bk
+ 
+ ضرایب سری فوری  وور    مخهر  پاسهخ
+فرکاننی را نشان 
+ دهد (فرکانس اوهلی2π
+  )
+b0/a0
+ 
+ عراعهر  ااهد
+ عاشد، مقدارb1/a1
+ کدام است؟ 
+)الف 
+
+
+2 / 3
+1
+j 
+ 
+)ب یک 
+)ج 
+
+
+2 / 3
+1
+j 
+ 
+)د صفر 
+15
+-
+ ت دی  فوری  یک سعگنال پعوست  ع
+ 
+وور  زیر می
+ 
+عاشد: 
+ 
+سعگنال از سعنت  زیر   ور داده می 
+:شود 
+ 
+ عرای فرکانس مد السعون 3πکدام شک  خر  ی را نشان می دهد؟ 
+ 
+ 
+)الف 
+A
+ 
+)ب 
+B
+ 
+)ج 
+C
+ 
+)د 
+D
+ 
+
+===== صفحه 12 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+44
+ 
+کنترل سیستم های خطی 
+16
+-
+ 
+ مقدار اختالل خر  ی( )
+C s
+ در االت ماندگار، در وورتی ک  نویه( )
+N s
+ 
+:پل   ااد عاشد، عراعر است عا 
+ 
+)الف 
+0.25
+ 
+)ب 
+0.01
+ 
+)ج 
+0.1
+ 
+)د 
+0.03
+ 
+ 
+17
+-
+ 
+ ععشترین اناسعت سعنت  زیر نن ت ع  پارامترk
+ ،
+ ع  ازای مقدار3
+k =
+ کدام گهین  زیر است؟ 
+ 
+)الف 
+1.25
+
+ 
+)ب 
+0.33
+ 
+)ج 
+0.75
+
+ 
+)د 
+1.66
+ 
+ 
+18
+-
+ 
+  معادل  دیفراننع  یک سعنت  کنترل عا راعط8
+4
+3
+y
+y
+y
+x
+x
+
+
+
+
+
+
+
+ 
+ داده شده است. اگر عخواهع  عا اسهتفاده
+از فعدعک منفی عا تاع  ت دی  ( )
+(
+)
+H s
+as
+b
+
+
+ این سعنت  را پایدار کنع ، ع
+ 
+طوری ک  قطب 
+  های سعنهت  القه
+ عنت  عراعر1
+s 
+ 
+  
+2
+s 
+ 
+ قرار گعرد، مقادیرa 
+  
+b 
+ ع 
+ترتعب عراعر است عا: 
+)الف 
+14.5
+a 
+ 
+ و8
+b 
+ 
+)ب 
+17.5
+a 
+ 
+ و11
+b 
+ 
+)ج 
+14.5
+a 
+ 
+ و11
+b 
+ 
+)د 
+17.5
+a 
+ 
+ و8
+b 
+ 
+19
+-
+ 
+  مبد ده پایداری سعنتمی عا معادل  مشخص2
+( )
+(
+1)(
+4
+16)
+(
+1)
+0
+s
+s s
+s
+s
+k s
+
+
+
+
+
+
+
+
+ 
+ کدام گهین  زیر است؟ 
+)الف 
+0
+23.3
+k
+
+
+ 
+)ب 
+35.7
+k 
+ 
+)ج 
+23.3
+0
+k
+
+
+
+ 
+)د 
+23.3
+35.7
+k
+
+
+ 
+54
+-
+ در وورتی
+ ک  
+سعنتمی عها معادله  مشخصه  4
+3
+2
+( )
+5
+8
+6
+0
+s
+s
+s
+s
+s
+k
+
+
+
+
+
+
+
+ 
+ ،دارای رفتهار نوسهانی شهود 
+مقدارk
+ 
+   فرکانس نوسانا  سعنت  ع
+ 
+ترتعب عراعرکدام گهین  زیر خواهد عود؟ 
+)الف 
+0
+8.16,
+1.095
+k
+rad s
+
+
+
+ 
+)ب 
+0
+4.5,
+0.85
+k
+rad s
+
+
+
+ 
+)ج 
+0
+8.16,
+0.85
+k
+rad s
+
+
+
+ 
+)د 
+0
+4.5,
+1.095
+k
+rad s
+
+
+
+ 
+
+===== صفحه 13 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+42
+ 
+54
+-
+ 
+  اد فاز سعنت60
+( )
+(1 0.2 )(1 0.5 )
+GH s
+s
+s
+s
+
+
+
+ 
+:عراعر است عا 
+ 
+)الف 
+43.5
+ 
+)ب 
+15.5
+
+ 
+)ج 
+15.5
+ 
+)د 
+43.5
+
+ 
+52
+-
+ 
+ کدام گهین  زیر در مورد   ران کننده پعش فاز ودق
+نمی کند: 
+)الف پهنای باند حلقه باز افزایش می 
+.یابد 
+)ب حاشیه فاز حلقه باز بیشتر می 
+.شود 
+)ج حداکثر فراجهش افزایش می 
+.یابد 
+)د پهنای باند حلقه بسته افزایش می 
+.یابد 
+53
+-
+ تاع  ت دی  الق  عاز سعنتمی عراعر
+ (
+3)
+( )
+,
+0
+(
+1)(
+)
+k s
+GH s
+k
+s
+s
+p
+
+
+
+
+
+ می 
+  عاشد. عرای اینک  پاسخ گذرای سعنهت
+ الق  عنت  همواره فوق معرا عاشد، اد دp
+ 
+ :عراعر است عا 
+)الف 
+3
+p 
+ 
+)ب 
+5
+p 
+ 
+)ج 
+4.5
+p 
+ 
+)د مقدارp
+ بهk 
+.بستگی دارد 
+51
+-
+ در سعنت  زیر اگر ضریب معرایی قطب
+ 
+های الق  عنت  0.5
+
+ 
+ عاشد، زمان نشنت عا تولرانس2 %
+
+ 
+  
+k
+ 
+ کهدام
+گهین  زیر است؟ 
+ 
+)الف 
+0.5,
+4
+
+
+s
+k
+t
+s
+ 
+)ب 
+0.25,
+2
+
+
+s
+k
+t
+s
+ 
+)ج 
+0.5,
+2
+
+
+s
+k
+t
+s
+ 
+)د 
+0.25,
+4
+
+
+s
+k
+t
+s
+ 
+55
+-
+ تاع  ت دی  الق  عاز
+ 
+سعنتمی ع 
+ 
+وور  2
+2
+( )
+(
+1)
+k
+G s
+s
+s
+
+
+
+ ا ست. اگر عها اضهاف  کهردن یهک وهفر عه 
+  وهور
+1
+(
+1)
+s
+
+
+ 
+ ع  این تاع ، سعنت  الق  عنت  ع  ازای0
+k 
+ 
+ پایدار عاشد، کدام گهین  زیروبعح است؟ 
+ 
+)الف 
+1
+2
+0
+
+
+
+
+ 
+)ب 
+1
+2
+1
+2
+
+
+
+
+
+ 
+)ج 
+2
+1
+2
+2
+
+
+
+
+
+ 
+)د 
+2
+1
+0
+
+
+
+
+ 
+مدارهای الکتریکی و الکترونیک 
+56
+-
+ اگر رفتار یک مدار فشرده الکتریکی عا افهایش فرکانس ع
+ 
+سمت رفتار مدار گنترده  وض شود کهدامعک از مهوارد 
+زیر مبتم  ترین االت می عاشد؟ 
+)الف اثر مقاومتی
+ 
+و خازنی (R,C)
+ مدار افزایش می 
+.یابد 
+)ب 
+ اثر سلفی و مقاومتی(L,R)
+ م
+دار کاهش می 
+.یابد 
+)ج اثر سلفی
+ 
+و خازنی (L,C)
+ مدار افزایش می 
+.یابد 
+)د 
+ اثر سلفی، خازنی و مقاومتی(R,L,C)
+ مدار افزایش می 
+.یابد 
+
+===== صفحه 14 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+43
+ 
+57
+ ه 
+  در مدار شک  زیر هر دJFET
+ 
+  در نااعPinch-off
+ عایاس شده 
+ اند، هرگاه 
+ را عا یهکJFET
+ 
+  دیگهر که 
+ آن
+کمتر از  است  ایگهین نمایع ، کدام گهین  اتفاق می افتد؟ 
+ 
+)الف ممکن است1
+Q
+ 
+ به حالتTriode
+ برود ولی قطعا 
+2
+Q
+ در حالتPinch-off
+ باقی می 
+.ماند 
+)ب ترانزیستور1
+Q
+ 
+ در حالتPinch-off
+ باقی می ماند و ممکن است2
+Q
+ 
+ به حالتTriode
+ 
+.برود 
+)ج 
+ هر دو ترانزیستور در حالتPinch-off
+ باقی می مانند. 
+)د 
+ هر دو ترانزیستور به حالتTriode
+ می 
+.روند 
+58
+-
+ در مدار ر عر  امپدانس  ر دیi
+R
+ ع  کدام گهین  نهدیکتر است؟ 
+0.7 ,
+100
+
+
+BE
+fe
+V
+V h
+   خازن
+ 
+ها عهرگ فرض می 
+.شوند 
+ 
+)الف 
+1.7K 
+ 
+)ب 
+ 2.1K 
+ 
+)ج 
+ 1.4K 
+ 
+)د 
+ 6K 
+ 
+ 
+ 
+ 
+59
+-
+ در مدار زیر  ریان 
+2
+I
+mA
+
+ مقدارR
+ ع  کدام گهین  نهدیکتر است؟ 
+1
+2
+:
+2
+,
+1
+,
+:
+100,
+0.7
+
+
+
+
+p
+DSS
+BE
+Q V
+V I
+mA
+Q
+h
+V
+V
+fe
+ 
+ 
+)الف 
+0.5K 
+ 
+)ب 
+0.75K 
+ 
+)ج 
+1K 
+ 
+)د 
+0.4K 
+ 
+ 
+ 
+ 
+ 
+
+===== صفحه 15 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+41
+ 
+64
+-
+ 
+ درمدار یکنو کننده زیر تراننفور ماتور ایده آل   دارای نن ت1
+2
+30
+n n 
+ می 
+  عاشد.  لتاژ منهتقع  دیودهها هه
+0.7
+
+D
+V
+V
+ می عاشد.  لتاژ متوس  خر  ی(
+)
+o
+V DC
+ چقدر است؟ 
+ 
+)الف 
+6.5 V
+ 
+)ب 
+7 V
+ 
+)ج 
+10 V
+ 
+)د 
+8.5 V
+ 
+ 
+64
+-
+ ماکهیم  خر  ی عد ن ا و ا  در عهترین نقط  کار کدام است؟ (خازن 
+).ها عهرگ در نظر گرفت  شوند 
+ 
+ 
+)الف6V
+ پیک تا پیک 
+)ب10.3V
+ پیک تا پیک 
+)ج4V
+ پیک تا پیک 
+)د5.4V
+ پیک تا پیک 
+ 
+ 
+ 
+ 
+62
+-
+ در مدار زیر عهره تفاضلی
+dv
+A
+ مدار کدام است؟ 
+1
+2
+3
+,
+:
+2
+,
+1.7 ,
+47
+,
+:
+3
+,
+2
+,
+47
+
+
+
+
+
+
+
+
+DSS
+p
+d
+DSS
+p
+d
+Q Q
+I
+mA V
+V r
+K
+Q
+I
+mA V
+V r
+K
+ 
+ 
+)الف 
+12
+
+ 
+)ب 
+45.5
+
+ 
+)ج 
+33
+ 
+)د 
+16.5
+
+ 
+ 
+ 
+ 
+ 
+
+===== صفحه 16 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+45
+ 
+63
+-
+ 
+ درمدار زیر فرکانس تشدید ()کدام است؟ 
+ 
+ 
+ 
+)الف 
+1
+RC
+ 
+)ب 
+2
+RC
+ 
+)ج 
+3
+LC
+ 
+)د 
+4
+LC
+ 
+61
+-
+ 
+ مقادیر1
+R
+ 
+  
+2
+R
+ را عرای مدار ع
+ 
+وور  یک فعلتر پا عن گذر عا عهره 5
+
+v
+A
+ 
+   فرکانس قط500Hz
+ 
+.تعععن کنعد 
+ظرفعت
+ 
+خازن ه 1
+C
+F
+
+
+
+ می 
+.عاشد 
+ 
+)الف 
+2
+1
+500
+,
+100
+R
+R
+
+
+
+
+  
+)ب 
+2
+1
+500
+,
+100
+R
+R
+
+
+
+
+
+
+ 
+)ج 
+2
+1
+250
+,
+50
+R
+R
+
+
+
+
+  
+)د 
+2
+1
+1
+,
+200
+R
+K
+R
+
+
+
+
+ 
+ 
+ 
+65
+-
+ 
+  در مدار ر عر  درچ
+مبد ده ای از  لتاژ  ر دی،  لتاژ خر  یo
+V
+ ،  لتاژ  ر دیi
+V
+ را دن ال می 
+ کند؟ 
+(دیود
+ 
+ها را ایده آل فرض کنعد) 
+ 
+)الف 
+3
+13
+
+
+i
+V
+V
+V
+ 
+)ب 
+7
+13
+
+
+i
+V
+V
+V
+ 
+)ج 
+5
+9
+
+
+i
+V
+V
+V
+ 
+)د 
+7
+9
+
+
+i
+V
+V
+V
+ 
+ 
+ 
+ 
+
+===== صفحه 17 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+46
+ 
+66
+-
+ در االت دا می، مدار کلعدK
+ 
+ عاز است   در لبظ0
+t 
+ کلعد عنت  می 
+ شود. عالفاول  ععد از عنت  شهده کلعهد، در
+(  لبظ0
+t
+
+
+)  ریان کلعد چقدر است؟ 
+ 
+)الف 
+1A
+ 
+)ب 
+2A
+ 
+)ج 
+0A
+ 
+)د 
+6A
+ 
+ 
+ 
+ 
+67
+-
+ عا تو   ع  توان المان 
+ های مو ود    لتاژ من  ،  ریان مقا مت2 اهمی چقدر است؟ 
+ 
+)الف 
+8A
+ 
+)ب 
+2A
+ 
+)ج 
+5A
+ 
+)د 
+4A
+ 
+ 
+ 
+ 
+ 
+68
+-
+ در مدار زیر،  ریان گذرنده از خازنC
+ 
+(  در لبظ0
+t
+
+) عراعر کدام گهین  است؟ 
+ 
+)الف 
+2
+3
+4
+
+
+t
+RC
+e
+R
+ 
+)ب 
+2
+3
+2
+
+
+t
+RC
+e
+R
+ 
+)ج 
+2
+3
+4
+
+
+t
+RC
+e
+R
+ 
+)د 
+ بستگی به( )
+s
+V t
+ 
+.دارد 
+ 
+
+===== صفحه 18 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+47
+ 
+69
+-
+ 
+ در مدار شک  زیر  ر دی 
+ ععن د  مقدار4 
+ تا5  لت تغععر می 
+ کند. اد د مقا مت 
+  را طهوری تععهعن کنعهد که
+JFET
+ 
+.در نااع  فعال عاشد 
+ 
+ 
+)الف 
+2.5
+
+
+L
+R
+K
+ 
+)ب 
+6.9
+
+
+L
+R
+K
+ 
+)ج 
+5
+
+
+L
+R
+K
+ 
+)د 
+3.5
+
+
+L
+R
+K
+ 
+ 
+ 
+74
+-
+ 
+ در مدار مقاع  عا فرض ایده آل عودن تقویت کننده  ملعاتی مقدار(
+/
+o
+s
+V
+I )
+  چند اه  است؟ 
+ 
+ 
+)الف 
+1100
+ 
+)ب 
+800
+ 
+)ج 
+500
+ 
+)د 
+1200
+ 
+ 
+ 
+ 
+فیزیولوژی و آناتومی 
+74
+-
+ 
+ در تبریک یک فع ر  ص ی توس  الکتر د فلهی عا عار منفی، کدام مکانعن  اتی عا
+  ود مقا مت الکتریکی غشای 
+سلولی
+، 
+ععشترین تأثعر را عر آغاز پتاننع   م  دار
+د؟ 
+)الف تغییر مستقیم نفوذپذیری غشای سلولی به یون
+ 
+های سدیم بدون اثر بر ولتاژ 
+)ب کاهش اختالف پتانسیل غشایی از طریق تخلیه بار منفی داخلی سلول 
+)ج کاهش ناگهانی ولتاژ خارج
+ 
+سلولی، نزدیک
+ 
+تر ش
+دن به پتانسیل داخلی و باز شدن کانال
+ 
+های سدیمی 
+)د افزایش تدریجی بار مثبت در فضای خارج
+ 
+سلولی، ایجاد شرایط تحریک
+ 
+پذیری و آغاز پتانسیل عمل 
+72
+-
+ کدام  ام  عا ث  دم عرگشت سری  غشاء ع  االت استراات پس از پتاننع   م  می
+ 
+شود؟ 
+)الف 
+ زمان باز بودن
+کانال
+ 
+های سدیمی 
+)ب فعالیت ناقص پمپ سدیم- 
+ پتاسیم 
+)ج کاهش حساسیت گیرنده
+ 
+های غشائی 
+)د 
+ زمان باز بودن کانال های پتاسیمی 
+
+===== صفحه 19 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+48
+ 
+73
+-
+ افهایش کدام
+عک عر معهان عر ن ده قل ی تاثعر منفی دارد؟ 
+)الف فعالیت عصب سمپاتیک قلب 
+)ب فعالیت عصب پاراسمپاتیک قلب 
+)ج 
+ میزان
+بازگشت وریدی 
+)د فشار دهلیز راست 
+71
+-
+ فع رهای مرعوط ع  کدام  ملکرد انی، ععشترین سر ت انتقال را دارند؟ 
+)الف لمس و فشار عمقی 
+)ب سرما 
+)ج پایانه اولیه دوک عضله 
+)د درد سوزشی 
+75
+-
+ ت
+بریک هم  موارد زیر مو ب خواب می
+ 
+شود
+: جه ع ، 
+)الف ناحیه فوق
+ 
+کیاسمایی هیپوتاالموس 
+)ب هسته دسته منزوی 
+)ج هسته
+ 
+های سجافی (رافه) 
+)د نورون
+ 
+های اورکسین هیپوتاالموس 
+76
+-
+ کدام شریا
+ن منتقعما از قوس آ ور  منشعب می
+ 
+شود؟ 
+)الف شریان کاروتید مشترک راست 
+)ب شریان ساب کالوین راست 
+)ج شریان کرونری چپ 
+)د 
+ شریان کاروتید
+مشترک چپ 
+77
+-
+ 
+ مجرای پانکراتعک اولی   مجرای وفرا ی مشترک در مب  آمپول  اتر ع  ه  پعوست    ع  قنهمت
+ 
+.........
+ 
+د ودنهوم 
+عاز می
+ 
+شوند. 
+)الف چهارم 
+)ب سوم 
+)ج دوم 
+)د اول 
+78
+-
+ د  شاخ  شدن نای ه  سطح عا کدامعک است؟ 
+)الف د
+یسک بین اولین و دومین
+ 
+مهره سینه
+ای  
+)ب زاویه استرنال 
+)ج چها
+رمین غضروف دنده
+ای  
+)د پنجمین فضای بین دنده
+ 
+ای چپ 
+79
+-
+ انتهای تبتانی نخاع در افراد عالغ ه  سطح عا کدامعک است؟ 
+)الف استخوان دنبالچه 
+)ب دماغه ساکروم 
+)ج کنار تحتانی چهارمین مهره کمری 
+)د دیسک بین اولین و دومین م
+هره کمری 
+84
+-
+ کدام استخوان زیر در تشکع   دار داخلی ا رععت
+ 
+(کاس  چش )شرکت می
+ 
+کند؟ 
+)الف اتموئید 
+)ب اسفنوئید 
+)ج فرونتال 
+)د زایگوماتیک 
+ 
+ 
+
+===== صفحه 20 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+49
+ 
+ زبان عمومی 
+ Part one: Vocabulary 
+Directions: Complete the following sentences by choosing the best answer. 
+81 ه Smoking can ………………. respiratory conditions such as asthma or bronchitis. 
+a)   dismiss 
+b)   inhibit 
+c)   impede 
+d)   exacerbate   
+82 ه Blood sugar levels can ………………. wildly in patients with uncontrolled diabetes. 
+a)   diminish 
+b)   fluctuate 
+c)   stabilize 
+d)   pierce 
+83 ه A speech ………………. is often developed after the patient experiences a minor stroke. 
+a)   progress 
+b)   fluency 
+c)   impairment 
+d)   amendment 
+84 ه  The ………………. nature of hypertension makes it hard to detect without regular check-ups. 
+a)   apparent 
+b)   vivid 
+c)   explicit    
+d)   insidious   
+85 ه Regular exercise and a balanced diet can help ………………. the risk of heart disease. 
+a)   mitigate 
+b)   elevate 
+c)   surge 
+d)   provoke 
+86 ه The overuse of the ointment prescribed by the doctor is dangerous for your skin, and it should 
+be used ………………. 
+a)   generously 
+b)   sparingly 
+c)   abundantly 
+d)   lavishly 
+87 ه Before starting the clinical trial, the principal investigator must formally ………………. 
+responsibility for all aspects of patient safety and data integrity. 
+a)   undertake 
+b)   undermine 
+c)   underlie 
+d)   undergo 
+88 ه To provide better vaccination coverage, public health centers must actively ………………. 
+volunteers to assist with community outreach programs.               
+a)   revoke 
+b)   resist 
+c)   recruit 
+d)   resign 
+89 ه Patients who experience a  ………………. rise in blood pressure after surgery usually recover 
+without the need for long-term medication. 
+a)   permanent 
+b)   transient 
+c)   consistent 
+d)   durable 
+90 ه Rigorous ………………. standards in public facilities are vital for reducing pathogen 
+transmission. 
+a)   hygiene 
+b)   aesthetics 
+c)   speculation 
+d)   exhibition 
+
+===== صفحه 21 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+24
+ 
+91 ه  Improving  ………………. through fitness training under the supervision of a personal trainer 
+improves stamina in athletes. 
+a)   clarity 
+b)   vitality 
+c)   initiation 
+d)   collaboration 
+92 ه  Reducing muscle ………………. caused by work pressure and repetitive tasks prevent joint 
+injuries. 
+a)   frustration 
+b)   depression 
+c)   strain 
+d)   integrity 
+93 ه The latest research findings may ………………. several environmental factors in the 
+development of cardiovascular diseases, suggesting that soil pollution plays a significant role. 
+a)   exclude 
+b)   dismiss 
+c)   ignore 
+d)   implicate 
+94 ه  The Nobel Prize Committee appreciated her inspiring ………………. immunotherapy. 
+a)   contribution to 
+b)   opposition to 
+c)   negligence of 
+d)   suspicion of 
+95 ه  After reviewing the patient’s symptoms, the doctor wrote a detailed ………………. specifying 
+the exact dosage and frequency of the drugs to be taken. 
+a)   permission 
+b)   procedure 
+c)   prescription 
+d)   preparation 
+96 ه Since he needed to focus on his full-time research project, he ………………. his routine 
+healthcare responsibilities. 
+a)   stipulated 
+b)   invaded 
+c)   postulated 
+d)   evaded 
+97 ه The hospital manager detected the ………………. of patients’ records and immediately  fired the 
+person in charge. 
+a)   fabrication 
+b)   indexation 
+c)   tabulation 
+d)   registration 
+98 ه One third of children and adolescents are overweight or obese, yet food and beverage companies 
+continue to ………………. them into consuming products causing  obesity crisis. 
+a)   explore 
+b)   prohibit 
+c)   entice 
+d)   suppress 
+99 ه  She often loses her temper even over ………………. matters; this might be due to emotional 
+trauma she experienced  due to her husband’s death. 
+a)   terminal 
+ 
+b)   curable 
+c)   ethical 
+d)   trivial 
+100 ه  Whether waves produced and received by mobile phones are dangerous to health still remains 
+a/an ………………. issue; some believe in the danger, but others see no harm. 
+a)   conventional 
+b)   controversial 
+c)   reputable 
+d)   explicable 
+ 
+ 
+
+===== صفحه 22 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+24
+ 
+ Part two: Reading Comprehension 
+Directions: Read the following passages carefully. Each passage is followed by some questions. 
+Complete each question with the most suitable choice (a, b, c, or d). Base your answers on the 
+information given in the passage only. 
+ 
+Passage 1 
+ 
+Immunization efforts are under growing threat as misinformation, population growth, humanitarian crises and 
+funding cuts jeopardize progress and leave millions of children, adolescents and adults at risk, warn WHO, 
+UNICEF, and Gavi. Outbreaks of vaccine-preventable diseases such as measles, meningitis and yellow fever 
+are rising globally, and diseases like diphtheria, which have long been held at bay or virtually disappeared in 
+many countries, are at risk of re-emerging. In response, the agencies are calling for urgent and sustained 
+political attention and investment to strengthen immunization programs and protect significant progress 
+achieved in reducing child mortality over the past 50 years. Measles is making an especially dangerous 
+comeback. The increasing number of cases since 2021 result from the reductions in immunization coverage 
+that occurred since the COVID-19 pandemic in many communities. Measles cases reached an estimated 10.3 
+million in 2023, a 20% increase compared to 2022. Meningitis cases in Africa also rose sharply in 2024, and 
+the upward trend has continued into 2025. In the first three months of this year alone, more than 5500 
+suspected cases and nearly 300 deaths were reported in 22 countries. This follows approximately 26000 cases 
+and almost 1400 deaths across 24 countries last year. As part of integrated primary health-care systems, 
+vaccination can protect against diseases and connect families to other essential care, such as antenatal care, 
+nutrition or malaria screening. Immunization is a ‘best buy’ in health with a return on investment of $54 for 
+every dollar invested and provides a foundation for future prosperity and health security. UNICEF, WHO, 
+and Gavi urgently call for parents, the public, and politicians to strengthen support for immunization. 
+101 ه  What is the primary concern expressed by WHO, UNICEF, and Gavi during World 
+Immunization Week? 
+a)   Increased public interest in vaccine-preventable diseases 
+b)   The need to develop new vaccines for emerging diseases 
+c)   The rising threat to immunization progress due to various global challenges 
+d)   A shortage of vaccine investment and policy attention in developing countries 
+102 ه According to the passage, which disease has shown a particularly dangerous return since 2021? 
+a)   Measles 
+b)   Meningitis 
+c)   Diphtheria 
+d)   Yellow fever 
+103 ه The economic argument in favor of investing in immunization maintains that it ……………….. 
+a)   reduces the need for international aid 
+b)   offers a significant return on investment 
+c)   triples the investment within two years 
+d)   helps lower educational costs globally 
+104 ه It can be inferred about the impact of the COVID-19 pandemic on immunization coverage that 
+……………….. 
+a)   it had no noticeable effect on vaccination rates 
+b)   it led to improvements in immunization tracking methods 
+c)   it eliminated the need for traditional vaccination programs 
+d)   it caused cuts in immunization coverage, increasing disease outbreaks 
+105 ه In the sentence "This follows approximately 26000 cases and almost 1400 deaths across 24 
+countries last year," "This" refers to ……………….. 
+a)   The spread of yellow fever in 2024 
+b)   The rise in meningitis cases in 2025 
+c)   The increase in measles cases since 2021 
+d)   The number of humanitarian crises globally 
+
+===== صفحه 23 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+22
+ 
+Passage 2. 
+  
+Caring for the elderly presents several important challenges that affect families, healthcare systems, and 
+society as a whole. Many older adults suffer from chronic health conditions such as arthritis, diabetes, high 
+blood pressure, and dementia, all of which require regular monitoring, medication, and personal care. These 
+conditions often limit mobility and independence, making daily tasks like bathing, cooking, or even walking 
+difficult. Unfortunately, there is often a shortage of trained caregivers, and many family members are 
+unprepared to manage these responsibilities. Providing care without proper training can lead to mistakes, 
+emotional stress, and burnout. In addition to physical health, emotional and social needs must also be 
+addressed. Elderly individuals frequently face loneliness and depression, especially if they live alone, have 
+lost friends or a spouse, or feel disconnected from society. These feelings can negatively affect both mental 
+and physical health. Financial challenges also make elderly care more complicated. Long-term care can be 
+expensive, and not all families have access to quality insurance or government support. Many must choose 
+between affordability and the level of care needed. Another key issue is respecting the dignity and 
+independence of elderly individuals. While they may need help, it is important to involve them in decisions 
+about their lives and health whenever possible. Balancing safety with personal freedom requires sensitivity 
+and respect. These various challenges highlight the growing need for stronger support systems, more 
+caregiver training, better public awareness, and affordable services to meet the complex and changing needs 
+of the aging population. 
+106 ه The author highlights various challenges of elderly care to ………………. 
+a)   criticize current caregiving quality and practices 
+b)   discourage families from providing care at home 
+c)   advocate for systemic improvements and increased support 
+d)   argue for reducing government involvement in elderly care 
+107 ه It appears that ………………. has/have a domino effect on other aspects of elderly care. 
+a)   economic obstacles 
+b)   chronic health conditions 
+c)   independence of elderly conditions 
+d)   the need for personal independence 
+108 ه According to this passage, family caregivers experience burnout because they ………………. 
+a)   are unwilling to care for aging relatives 
+b)   prefer institutional care over home care 
+c)   often lack the training needed for the caregiving role 
+d)   receive much assistance from professional caregivers 
+109 ه Involving elderly individuals in decision-making is emphasized in the text  ………………. 
+a)   to reduce the workload of caregivers 
+b)   to maintain their sense of respect and autonomy 
+c)   because they often disagree with medical advice 
+d)   so that they can avoid moving into care centers 
+110 ه As to the relationship between physical and emotional health in the elderly, it can be inferred 
+that ………………. 
+a)   physical health gets worsened before emotional health in aging individuals 
+b)   physical and emotional health are independent challenges in elderly care 
+c)   addressing physical health automatically resolves emotional issues 
+d)   emotional well-being can impact physical health in older adults 
+ 
+ 
+
+===== صفحه 24 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+23
+ 
+Passage 3 
+ 
+The ubiquity of microplastics, tiny plastic fragments less than 5 mm in diameter, has triggered global 
+concern, particularly regarding their potential impact on human health. Detected in food, water, and even the 
+air we breathe, these particles have been found in human tissues, from lungs to placentas. But what does this 
+mean for our well-being? Some researchers warn that microplastics may act as carriers for harmful 
+substances, such as heavy metals or persistent organic pollutants. Once inside the body, these chemicals 
+could disrupt hormonal balance or contribute to chronic inflammation. Although alarming, much of the 
+current evidence comes from animal studies or controlled lab settings, making it difficult to determine actual 
+effects in human populations. On the other hand, skeptics argue that the level of exposure most people face is 
+relatively low, and that media-driven fears often outpace scientific findings. They emphasize the absence 
+of definitive proof linking microplastics to specific health disorders. Furthermore, they caution against 
+drawing strong conclusions from early-stage research, suggesting that public anxiety might be premature. 
+Nevertheless, both sides agree on the necessity of further investigation. With plastic production still 
+increasing worldwide, understanding the long-term implications of microplastic exposure remains a pressing 
+issue. Whether the threat proves to be serious or overstated, the debate highlights a broader question: how 
+much environmental contamination are we willing to tolerate before taking action? 
+111 ه The most suitable title for this passage would be “Microplastics and ………………. 
+a)   the History of Synthetic Materials 
+b)   the Debate Over Their Health Risks 
+c)   the Global Demand for Their Restrictions 
+d)   the Discovery of a Medical Breakthrough 
+112 ه According to the passage, one reason some scientists hesitate to raise alarms about microplastics 
+is the current lack of ………………. in human-based research. 
+a)   public tendency 
+b)   political interest 
+c)   financial support 
+d)   definitive evidence 
+113 ه The phrase “media-driven fears often outpace scientific findings” implies that the public’s 
+concern about microplastics may be based more on ………………. than on conclusive data. 
+a)   reliable evidence 
+b)   government research 
+c)   public health initiatives 
+d)   news exaggeration 
+114 ه The author’s tone throughout the passage can best be described as ………………. showing 
+concern without fully endorsing either side. 
+a)   biased and emotional 
+b)   dismissive and sarcastic 
+c)   precautious and balanced 
+d)   indifferent and detached 
+115 ه It can be inferred that the author includes the final question in order to emphasize society’s 
+………………. toward environmental contamination. 
+a)   dependence 
+b)   endurance 
+c)   ignorance 
+d)   rejection 
+ 
+ 
+
+===== صفحه 25 =====
+آزمون کارشناسی ارشد
+ 
+ 
+مهندسی پزشكی (بیوالكتریك)
+ 
+سال 4141
+ 
+21
+ 
+Passage 4 
+ 
+Telehealth has emerged as a promising solution for increasing access to medical care in rural and 
+underserved communities. Through video consultations, remote monitoring, and digital diagnostics, patients 
+in isolated areas can now connect with specialists who would otherwise be hundreds of miles away. 
+Supporters argue that telehealth reduces barriers, cuts travel costs, and saves critical time—especially in 
+emergencies or for those with chronic conditions. Yet, while the technology has clear advantages, it’s not 
+without limitations. Skeptics point to the digital divide: the lack of high-speed internet, limited digital 
+literacy, and unreliable infrastructure in some communities make telehealth difficult, if not impossible, to 
+implement equitably. Moreover, some healthcare providers warn that telehealth cannot fully replace in-
+person visits, particularly for physical exams or complex diagnoses. Still, others argue that dismissing 
+telehealth because of these challenges overlooks its transformative potential. They advocate for investment in 
+digital infrastructure, training, and policy reforms to bridge these gaps, seeing telehealth not as a 
+replacement, but as a complement to traditional care. As digital solutions continue to evolve, it is likely that 
+telehealth will become an increasingly integral part of healthcare delivery—especially for populations 
+historically left behind by conventional systems. If addressed thoughtfully, today’s limitations may 
+eventually give way to a more connected and equitable model of care. 
+116 ه According to the passage, one reason telehealth can be ineffective in some communities is the 
+lack of ………………. 
+a)   reliable internet access 
+b)   hospital infrastructure 
+c)   private digital plans 
+d)   healthcare facility 
+117 ه The phrase “digital divide” most probably refers to ………………. . 
+a)   variety in employment opportunities 
+b)   personalized patient  treatment plans 
+c)   difficulty in implementing health policies equitably 
+d)   insufficiency of online access and technological skills 
+118 ه It can be inferred that advocates of telehealth view it as ……………….. 
+a)   an unsafe shift in medical practice 
+b)   a complete substitute for traditional care 
+c)   a useful addition to in-person healthcare 
+d)   a short-term solution with little long-term value 
+119 ه The conclusion of the passage predicts that telehealth will likely ………………. in future models 
+of healthcare delivery. 
+a)   disappear as in-person care improves 
+b)   become more central and widespread 
+c)   be replaced by newer, non-digital systems 
+d)   remain critical for underserved communities 
+120 ه One of the concerns raised by critics is that telehealth might ………………. in diagnosing 
+complex medical issues. 
+a)   fall short 
+b)   lower wait times 
+c)   continue to evolve 
+d)   overlook digital infrastructures 
+موفق باشید 
+
+===== صفحه 26 =====
+بسمه تعالی 
+ 
+دبیرخانه شورای آموزش علوم پایه پزشکی، بهداشت و تخصصی
+ 
+و مركزز نزش آ آمزوزش پزشزکی بزا رزدا ارتفزای كی یزت 
+نواالت و بهبود روند اجرای آزمون
+ 
+را، پذیرای درخوانت
+رای 
+ 
+بررنی نواالتی انت كه در قالز  مخزخش شزدی زیزر از  ریز  
+ایشترنت ارنال می
+ 
+گردد، تا كار رنیدگی با نر
+عت و دقت بیختری ان ام گیرد. 
+ 
+ضمن تخکر از رمکاری داو لبان محترم موارد ذیل را به ا الع می
+ 
+رناند: 
+1
+- 
+ كلید اولیه نواالت
+ساعت 81
+ عصر روز یکشنبه 
+ مورخ88
+/
+30
+/
+8131
+ 
+ از  ری  نایت ایشترنتیwww.sanjeshp.ir
+ 
+.اعالم خوارد شد 
+2
+- 
+ اعتراضات خزود را از
+ساعت
+ 81
+ 
+ عصر روز یکشنبه
+ خ ر مو88
+/
+30
+/
+8131
+  
+ لغایت سااعت
+ 1 
+ صاب  روز نانبه
+ماورخ 
+ 
+81
+/
+30
+/
+8131
+ 
+ به
+آدرس ایشترنتی باال ارنال نمایید. 
+3
+- 
+ اعتراضاتی كه به رر شکل
+خارج از فرم ارائه نده، بعد از زمان تعیین نده و یا به صورت غیراینترنتی (حضاور)  
+ارنال شود، 
+مورد رسیدگی قرار نخواهد گرفت. 
+4
+- کلید نهایی
+ 
+نواالت 
+روز ننبه مورخ 08
+/
+30
+/
+8131
+ 
+ از  ری  نایت ایشترنتیwww.sanjeshp.ir
+ 
+.اعالم خوارد شد 
+ 
+:تذکر مهم 
+ *
+ 
+ ففط اعتراضات ارنالی در
+فرصت زمانی
+ 
+تعیین شدی، مورد بررنی قرار گرفته و پس از تاریخ مذكور به ریچ عشوان ترتیز  
+اثر دادی نخوارد شد. 
+ *
+ از تکرار اعتراضات خود به ی
+ک سوال پرهیز نمایید. تعداد 
+اعتراض ارنالی برای یک نوال، مالک بررنی نمی
+ 
+باشزد و 
+به كلیه اعتراضات ارنالی
+ 
+اعم از یک برگ و یا بیشتر 
+رنیدگی خوارد شد. 
+ 
+ 
+ ،دبیرخانه نورا) آموزش علوم پایه پزنکی
+بهدانت و تخصصی 
+مرکز سنجش آموزش پزنکی 
+ 
+ :نام 
+ :نام خانوادگی 
+ :کد ملی 
+ 
+نا:م رنته 
+:نام درس 
+:نماره سؤال 
+:نوع دفترچه 
+ 
+نام منبع معتبر سال انتشار صفحه پاراگراف سطر 
+ 
+ 
+ 
+ 
+ 
+:سوال مورد بررسی 
+
+ بیآ از یک جواب صحیح دارد. (با ذكر جواب 
+)رای صحیح  
+
+ 
+.جواب صحیح ندارد 
+
+ 
+.متن نوال صحیح نیست 
+ 
+ 
+ 
+ 
+ 
+ توضیحات 
+ 

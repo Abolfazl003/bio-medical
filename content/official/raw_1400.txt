@@ -1,0 +1,3599 @@
+
+===== صفحه 1 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+0
+ 
+ر
+یاضیات
+ 
+مهندس
+ی 
+0 ـ تابع(
+-
+,
+-
+,
+-
+)
+
+w
+f
+y
+z z
+x x
+y، جواب کدام
+یک از معادالت با مشتقات جزیی زیر است
+؟ 
+)الف 
+1
+w
+w
+w
+x
+y
+z
+
+
+
+
+
+
+
+
+
+ 
+)ب 
+0
+w
+w
+w
+x
+y
+z
+
+
+
+
+
+
+
+
+
+ 
+)ج 
+0
+w
+w
+w
+x
+y
+z
+
+
+
+
+
+
+
+
+
+
+ 
+)د 
+0
+w
+w
+w
+x
+y
+z
+
+
+
+
+
+
+
+
+
+ 
+2 ـ بسط فوریه تابع دلتای دیراک عبارت
+: از ند 
+)الف 
+1
+1
+1
+(
+cos
+)
+2
+
+
+n
+n t
+n
+ 
+)ب 
+1
+1
+sin
+
+
+n
+n t
+ 
+)ج 
+0 sin
+
+
+n
+n t
+ 
+)د 
+0 cos
+
+
+n
+n t
+ 
+3 ـ 
+ رابطه(
+)
+x y z
+x
+y
+z
+
+
+
+
+ ، جواب
+کدام
+یک
+ 
+از معادالت زیر است
+؟ 
+)الف 
+z
+z
+y
+x
+z
+x
+y
+
+
+
+
+
+
+ 
+)ب 
+(
+)
+2
+z
+z
+x
+z
+x
+y
+
+
+
+
+
+
+ 
+)ج 
+(
+)
+(
+)
+z
+z
+x y
+z
+x
+y
+x
+y
+
+
+
+
+
+
+
+ 
+)د 
+0
+z
+z
+x
+y
+x
+y
+
+
+
+
+
+
+ 
+0 ـ 
+ کدام گزینه زیر، مکان
+1
+R e (
+)
+1
+z
+
+ 
+ در صفحهz را مشخص می
+کند؟ 
+)الف داخل دایره به شعاع 
+1 و به مرکز 
+(1, 0 )
+ 
+)ب خارج دایره به شعاع 
+1 و به مرکز 
+(0,1)
+ 
+)ج داخل دایره به شعاع 
+1
+2
+ و به مرکز 
+1
+(
+, 0 )
+2
+ 
+)د خارج دایره به شعاع 
+1
+2
+ و به مرکز 
+1
+(0,
+)
+2
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 2 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+2
+ 
+5 ـ ه
+رگاه C
+ کران مربعی با راس
+های 
+2
+i
+2
+
+
+ باشد، آنگاه
+ 
+c osh
+(
+)
+
+
+
+2
+C
+z
+d z
+z z
+1
+ 
+ که در آن انتگرال گیری در جهـت
+مثلثاتی است عبارت
+ند 
+: از 
+)الف 
+-2𝜋
+ 
+)ب 
+4𝜋
+ 
+)ج 
+2𝜋
+ 
+)د 
+-4𝜋
+ 
+6 ـ برای معادله دیفرانسیل با مشتقات جزی
+ی 
+2
+2
+2
+2
+2
+2
+2
+2
+0
+
+
+
+
+
+
+
+
+
+
+x
+y
+y
+x
+u
+u
+u
+e
+x e
+e
+x y
+x
+y
+ 
+)الف به ازای هر
+ x وy 
+.از نوع هذلولی گون است 
+)ب 
+ به ازایy
+1
+
+ 
+.از نوع سهمی گون است 
+)ج به ازای
+ 1
+x
+1
+
+
+
+ 
+.از نوع بیضی گون است 
+)د به ازایx
+y
+
+ 
+.از نوع هذلولی گون است 
+7 ـ 
+ پتانسیل دو خط منبعz
+a
+
+ وz
+a
+
+ که بارشان یکسان باشد
+، 
+برابر است ب
+ا: 
+)الف 
+z
+a
+u
+c ln |
+|
+z
+a
+
+
+
+ 
+)ب 
+2
+2
+u
+c ln | z
+a
+|
+
+
+ 
+)ج 
+2
+2
+u
+c ln | z
+a
+|
+
+
+ 
+)د 
+z
+a
+u
+c ln |
+|
+z
+a
+
+
+
+ 
+8 ـ 
+ در حل معادله موج در مختصات قطبی𝒖𝒓𝒓+
+𝟏
+𝒓𝒖𝒓+
+𝟏
+𝒓𝟐𝒖𝜽𝜽=
+𝟏
+𝒄𝟐𝒖𝒕𝒕
+ 
+ به روش تفکیک متغیرها به
+کدام
+یک 
+ از
+معادالت زیر مواجه می
+شویم؟ 
+)الف خطی با ضرایب ثابت بسل 
+)ب خطی با ضرایب ثابت برنولی 
+)ج 
+ خطی با ضرایب
+ثابت لژاندر 
+)د خطی با ضرایب ثابت اویلر 
+9 ـ 
+ در بســط تــابع متنــاوب
+ (
+)
+f x
+ 
+ بــه ســری فوریــه، کــه در آن  ــرای
+ (
+)
+(
+)
+(
+)
+1
+n
+2
+2
+2 1
+e
+a
+n
+0
+1
+4
+n
+
+
+
+
+
+
+ و 
+(
+)
+(
+)
+1
+n
+2
+2
+4
+n 1
+e
+b
+1
+4
+n
+
+
+
+
+
+
+ 
+ ،هستند
+کدام
+یک
+ 
+از جمالت زیر درست
+تر است؟ 
+)الف تابع
+ f ( x )
+ و مشتقات مرتبه اول و دوم آن پیوسته بوده ولی مشتقات مراتب باالتر ناپیوسته می.باشند 
+)ب عبارت
+ه
+ای داده شده برای ضرایب باال نمی
+توانند بیانگر ضرایب فوریه برای تابع
+ f ( x )
+ 
+.باشند 
+)ج تابع
+ f ( x )
+ حداقل دارای یک نقطه انفصال در تناوب اصلی خود
+می 
+باشد. 
+)د ضرایب فوریه به تنهایی نمی
+توانند پیوسته یا ناپیوسته بودن تابع متناوب را مشخص نمایند. 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 3 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+3
+ 
+01
+ ـ مقدار انتگرال
+ ∮
+𝒅𝒛
+𝒄𝒐𝒔𝒉𝟐𝝅𝒛+𝒔𝒊𝒏𝒉𝟐𝝅𝒛
+ 
+ روی|
+|
+2
+z
+n
+
+ ، که در آنn، اعداد صحیح
+می 
+باشد، برابر است با
+: 
+)الف صفر 
+)ب 
+2
+
+ 
+)ج 
+i
+
+ 
+)د 
+2
+i
+
+ 
+00
+ ـ 
+ اگر2
+(
+) 
+f
+x
+x
+ 
+ در فاصـله(
+,
+)
+
+
+ 
+ تعریـ  شـود و دوره تنـاوب ایـب تـابع2
+ 
+ باشـد آنگـاه حاصـل سـری
+1
+1
+S
+1
+....
+4
+9
+
+
+
+
+ با استفاده از سری فوریه کدام گزینه خواهد بود؟ 
+)الف 
+2
+9
+
+ 
+)ب 
+2
+6
+
+ 
+)ج 
+2
+8
+
+ 
+)د 
+2
+1 6
+
+ 
+02
+ ـ 
+ نگاشت3
+z
+i
+w
+z
+i
+
+
+
+ 
+ نیم صفحهIm (
+)
+0
+z
+
+ را به کدام ناحیه
+می 
+نگارد؟ 
+)الف داخل دایره
+ای به مرکز مبدا و شعاع واحد 
+)ب خارج دایره
+ای 
+به مرکز مبدا و شعاع واحد 
+)ج داخل دایره
+ای 
+به مرکز 
+مبدا و شعاع سه 
+)د خارج دایره
+ای 
+به مرکز مبدا و شعاع سه 
+03
+ ـ سری لوران
+ 
+
+1
+z
+4
+ برای ناحیه
+ 
+z
+4
+ کدام گزینه است؟ 
+)الف 
+n
+n
+1
+n
+0
+4
+z
+
+
+
+ 
+)ب 
+n
+1
+n
+n
+0
+4
+z
+
+
+
+ 
+)ج 
+n
+1
+n
+1
+n
+1
+4
+z
+
+
+
+
+ 
+)د 
+n
+1
+n
+1
+n
+1
+4
+z
+
+
+
+
+ 
+00
+ ـ 
+ حاصل انتگرال
+(
+)
+
+
+z
+3
+2
+c
+e
+d z
+z
+z
+1
+ 
+ و:
+
+1
+c
+z
+2
+ در جهت مثبت کدام گزینه است؟ 
+)الف 
+0
+ 
+)ب 
+i
+2
+
+ 
+)ج 
+i
+
+ 
+)د 
+i
+2
+
+ 
+05
+ ـ 
+ برای تابعf ( x )
+x
+
+ 
+ در فاصله
+
+,
+
+ 
+ و با دوره تناوب2 
+ ، سری فوریهf ( x )
+ کدام گزینه است؟ 
+)الف 
+2
+n
+0
+4
+cos(2 n
+1)x
+2
+(2 n
+1)
+
+
+
+
+
+
+
+
+ 
+)ب 
+2
+n
+1
+4
+cos nx
+2
+(2 n )
+
+
+
+
+ 
+)ج 
+2
+n
+1
+4
+cos(2 n
+1)x
+2
+(2 n )
+
+
+
+
+
+
+ 
+)د 
+2
+n
+0
+4
+cos nx
+2
+(2 n
+1)
+
+
+
+
+
+
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 4 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+0
+ 
+فیزیک پزشکی و مهندسی پزشکی 
+06
+ ـ کدام مجموعه از
+ 
+ساختارهای تقویت
+کننده
+های زیر برای دریافت سیگنال
+های حیاتی از منابع با امپـدان  خروجـی 
+بسیار باال مناس 
+ست ه تر
+ند؟ 
+)الف معکوس
+کننده و غیرمعکوس
+کننده                            
+ 
+)ب ابزار دقیق و معکوس
+کننده 
+)ج غیرمعکوس
+کننده و ابزار دقیق 
+)د تفاضلی یک طبقه و ابزار دقیق 
+07
+ ـ 
+ فرکان  قطع فیلتر زیر چقدر است؟ 
+ 
+)الف 
+1.2Hz
+  
+)ب 
+0.64Hz
+ 
+)ج 
+2.0Hz
+  
+)د 
+0.32Hz
+ 
+08
+ ـ 
+ در یک دماسنج تشعشعی غیر تماسی
+کدام
+یک
+ 
+از موارد زیر 
+صحیح
+ تر
+است؟ 
+)الف سطح آشکار
+ساز و سطح مورد اندازه
+گیری باید کامال موازی باشند. 
+)ب سطح آشکارساز باید با سطح مورد اندازه
+گیری برابر باشد. 
+)ج 
+ با افزایش زاویه
+بین سطح آشکار
+ساز و مورد 
+اندازه
+گیری
+، 
+خطا افزایش
+می 
+یابد. 
+)د هنگام اندازه
+گیری
+، 
+تمام سطح آشکا
+رساز باید تحت پوشش مورد اندازه
+گیری قرار گیرد. 
+09
+ ـ نفش مواد میراکننده در پشت کریستال مبدل فراصوت
+، 
+کدام
+یک
+ 
+از موارد زیر است؟ 
+)الف 
+ افزایش دقت جانبی 
+)ب افزایش انرژی خروجی 
+)ج کاهش پهنای باند خروجی 
+)د افزایش دقت محوری 
+21
+ ـ در خروجی تیوب اشعه ایک  انرژی فوتون
+های با حداکثر انرژی به 
+کدام
+یک
+ 
+از موارد زیر مربوط
+می 
+شود؟ 
+)الف باالترین انرژی مشخصه ماده هدف  
+)ب ا حد
+کثر اثر پدیده ترمزی 
+)ج فاصله آند و کاتد 
+)د 
+ دمای
+فیالمنت 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 5 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+5
+ 
+20
+ ـ 
+ در جراحی الکتریکی
+کدام
+یک
+ 
+از موارد زیر بیشتریب اثر برشی
+ 
+(جداکنندگی بافت)، بدون آ
+سی  به بافت
+های مجاور 
+می را
+تواند داشته باشد؟ 
+)الف جریان فرکانس باال با دامنه باال ب
+ه
+صورت ممتد
+  
+)ب جریان فرکانس باال با دامنه کم پالسی با دوره کو
+تاه 
+)ج جریان فرکانس پا
+ی
+ین با دامنه 
+ کم
+پالسی با دوره کوتاه 
+)د جریان فرکانس باال با دامنه زیاد پالسی با دوره کوتاه 
+22
+ ـ کدام
+یک
+ 
+از موارد زیر به حدت بینا
+ی
+ی مربوط 
+نمی
+شود
+؟ 
+)الف پیرچشمی  
+)ب فراوانی سلول
+های مخروطی 
+)ج خطای انکساری 
+)د چارت اسنل 
+23
+ ـ در استیگمات مخلوط با قاعده تصویر یک نقطه در فاصله دور
+بی ( 
+نهایت) یک پاره خط افقی در ... و یک پـاره خـط 
+عمودی در
+ .
+........
+.. شبکیه
+می 
+باشد
+. 
+)الف 
+ جلو-  جلو 
+)ب 
+ جلو– پشت 
+)ج 
+ پشت– جلو 
+)د 
+ پشت– پشت 
+20
+ ـ 
+ با افزایش شدت جریان51
+ 
+ هرتز221
+،ولت ورودی به بدن یک بیمار از دست راست و چپ
+ 
+از شدت 0 
+ میکروآمپر تا01
+ 
+ آمپر به ترتی  کدام مشکالت
+را  زیر
+که با حروف الفبا مشخص
+ 
+شده
+اند،
+ 
+مشاهده خواهیم کرد؟ 
+فیبریالسیون بطنیA = 
+ 
+سوختگی و جراحتB = 
+ 
+انقباض پیوسته قلبی
+ = 
+C
+ 
+پارالیز سیستم تنفسی
+ = 
+D
+ 
+)الف 
+D, C, B, A
+ 
+)ب 
+B, A, D, C
+ 
+)ج 
+B, C, A, D
+ 
+)د 
+A, B, C, D
+ 
+25
+ ـ 
+ اگـر
+ 
+میزان کمتریب شدت صوتی قابل شنیده شدن یک دانشجو توسط گوش
+های راست و چپ مطـاب  جـدول 
+زیـر 
+ 
+باشد، کدام گزینه زیر در مورد میزان شنوایی ایب دانشجو صحیح است؟ 
+0111
+ 
+2111
+ 
+0111
+ 
+511
+ 
+ (  فرکان)هرتز 
+ 
+31
+ 
+21
+ 
+31
+ 
+05
+ 
+)گوش راست (دسی بل 
+5
+ 
+5
+ 
+01
+ 
+05
+ 
+)گوش چپ (دسی بل 
+)الف 
+.هر دو گوش دانشجو ضعف شنوایی دارد 
+)ب 
+.هر دو گوش دانشجو حساسیت شنوایی خوبی دارد 
+)ج 
+.گوش راست دانشجو حساسیت شنوایی بیشتری دارد 
+)د 
+.گوش چپ دانشجو حساسیت شنوایی بیشتری دارد 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 6 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+6
+ 
+26
+ ـ در یک کلینیک
+ 
+توانبخشی جهت
+ 
+اندازه
+گیری قدرت نیروی انقبا ی ماهیچه بازوی
+ 
+یک بیمار، وزنه 0 
+ کیلـوگرمی در
+ک  دست 
+ او
+گذاشته شده و بیمار با افزایش قدرت انقبا ی ماهیچه بازو سعی دارد ساعد
+ 
+دست خود را در زاویه نود 
+درجه نسبت به بازو نگه
+دارد
+. 
+اگر فاصله ک  دست
+ 
+تا مفصل آرنج 01
+ سانتی
+متر و فاصله محـل اتصـال ماهیچـه بـه 
+ساعد 2 سانتی
+متر از مفصل باشد میزان نیروی ا افه تولید شده در ماهیچه بازوی
+ 
+بیمار 
+با گرفتب ایـب وزنـه 
+چنـد 
+نیوتب است؟
+ 
+(شتاب جاذبه 9
+/
+8 متر
+، 
+بر مجذور ثانیه است
+.) 
+)الف 
+۱۳۱۳
+ 
+)ب 
+۴۸۷
+ 
+)ج 
+۱۲۳
+ 
+)د 
+۸۳
+ 
+27
+ ـ 
+GSR
+ 
+ نمایشگر کدام مورد
+زیر است؟ 
+)الف پاسخ پتانسیل گالوانیک گوش در اثر محرک صوتی 
+)ب پاسخ پتانسیل گالوانیک پوست در اثر تغییرات روانی یا محرک
+های بیرونی 
+)ج پاسخ پتانسیل گالوانیک چشم
+ 
+در اثر تابش نور
+های متغیر 
+)د پاسخ پتانسیل گالوانیک مغز در اثر محرک
+ه
+ای مخدر 
+28
+ ـ اگر در یک آزمایشگاه پزشکی هسته
+ای 
+جهت موارد تشخیص بیما
+ری
+ها مقدار یک گرم پتانسـیم رادیو 
+اکتیـو 01
+ 
+ بـا
+شدت 011111
+ تشعشع بتا در ثانیه موجود باشد، پایای دگرگونی
+ 
+یا  ری  تابش ایب ماده رادیواکتیو چند تشعشع بـر 
+ثانیه است؟ 
+(
+عدد آووگادرو ب
+رابر 
+23
+10
+×
+6.02 
+ 
+.است)
+ 
+)الف 
+28
+10
+×
+6.02 
+ 
+)ب 
+28
+10
+×
+240.8 
+ 
+)ج 
+18
+-
+10
+×
+6.7 
+ 
+)د 
+23
+-
+10
+×
+6.7 
+ 
+29
+ ـ 
+ اگر یک الکترون با انرژی005
+ کیلو الکترون ولت  مب برخورد به هدف تنگستب در المپ مولد
+ 
+اشعه ایک  به یـک 
+الکترون مداری
+  K
+ 
+ با انرژی پیوستگی71
+ کیلو
+الکترون ولت 
+ برخورد نماید، کدام مورد زیر در رابطه بـا تولیـد اشـعه
+ایک  در ایب نمونه برخورد بیشتر محتمل است؟ 
+)الف فقط یک فوتون پرتو ایکس
+ 
+اختصاصی با انرژی ۴۳
+ کیلو الکترون
+ولت  
+)ب فقط یک فوتون پرتو ایکس
+ 
+عمومی یا ترمزی
+ 
+با انرژی ۳۳1
+ کیلو الکترون
+ولت  
+)ج یک فوتون
+ 
+پرتو
+ایکس 
+ 
+اختصاصی
+ ۷1
+ کیلو الکترون
+ولت 
+ 
+و یک
+ 
+فوتون پرتو
+ 
+ایکس عمومی با انرژی ۴۳
+ کیلو الکترون
+ولت  
+)د یک فوتون
+ 
+پرتو
+ایکس 
+ 
+عمومی
+ ۷1
+ کیلو الکترون
+ولت 
+و یک 
+ 
+فوتون پرتو
+ 
+ایکس 
+ا
+ختصاصی با انرژی ۴۳
+ کیلو الکترون
+ولت  
+31
+ ـ کدام گزینه زیر در رابطه با شمارش گلبول
+های خون 
+غلط
+ 
+است؟ 
+)الف می
+توان با تغییر شدت نور عبوری از گلبول
+های نمونه خون رقیق شده در مقابل یک شکاف، گلبول
+ها را شمارش کرد. 
+)ب می
+توان با استفاده از تغییر پتانسیل بین دو الکترود که خون رقیق شده از بین آنها عبور می
+کند، گلبول.ها را شمارش کرد 
+)ج می
+توان 
+زیر میکروسکوپ قوی در یک سطح مشخص، گلبول
+ها را شمارش کرد. 
+)د می
+توان با کمک دستگاه اسپکتروفوتومتر گلبول
+ها را مستقیم
+ا 
+شمارش کرد. 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 7 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+7
+ 
+سیگنال
+ها و سیستم
+ها 
+30
+ ـ اگر
+ z ( t )
+x ( t ) * y ( t )
+
+ باشد آنگاه
+ 1
+z ( t)
+x (3t) * y (3t)
+
+ 
+ برابر خواهد بود
+با: 
+)الف 
+z (9 t )
+ 
+)ب 
+3z (3t )
+ 
+)ج 
+1 / 3z (3t)
+ 
+)د 
+1 / 9 z (9 t )
+ 
+32
+ ـ 
+ سیستمی با معادله
+x [ n
+2 ]
+y[n ]
+z
+
+
+ در دسترس داریم با
+ 
+فرض | z |
+2
+
+ کدام
+یک
+ 
+از گزینه
+های زیر در مورد ایـب 
+سیستم صحیح است
+؟ 
+)الف غیرخطی، تغییرپذیر با زمان، علّی و ناپایدار  
+)ب خطی، تغییرپذیر با زمان، علّی و پایدار 
+)ج غیرخطی، تغییرناپذیر با زمان، غیرعلّی و ناپایدار 
+)د غیرخطی، تغییرناپذیر با زمان، غیرعلّی و پایدار 
+33
+ ـ 
+ در خصوص معکوس علّی سیستم[
+]
+[
+]
+7 / 2
+[
+1]
+3 / 2
+[
+2 ]
+h n
+n
+n
+n
+
+
+
+
+
+
+
+ کدام
+یـک 
+ 
+از گزینـه 
+هـای زیـر 
+صحیح است؟ 
+)الف دارای پاسخ ضربه محدود و پایدار است
+.  
+)ب دارای پاسخ ضربه نامحدود و ناپایدار است
+. 
+)ج دارای پاسخ ضربه نامحدود و پایدار است
+. 
+)د معکوس علّی ندارد
+. 
+30
+ ـ 
+  چنانچه از یک سیگنال ورودی با فرکان22KHz
+ 
+ توسط یک مبدل آنالوگ به دیجیتال (بـدون فیلتـر ورودی) بـا
+فرکان  نمونه برداری10KHz
+ نمونه
+برداری شود و داده های
+نمونه برداری شده توسط یک مبدل دیجیتال به آنـالوگ
+با همان فرکان  نمونه برداری10KHz
+ 
+ به سیگنال آنـالوگ تبـدیل شـوند، 
+ سـیگنال آنـالوگ خروجـی دارای چـه
+مولفه های
+فرکانسی خواهد بود؟ 
+)الف 
+ خروجی برابر صفر است 
+)ب 
+2KHz
+ 
+)ج 
+3KHz
+  
+)د 
+2KHz
+ و 
+3KHz
+ 
+35
+ ـ ّاگر پاسخ  ربه یک سیستم عل
+ی و پایدار و LTI
+ 
+ سری زمانیh[n]
+ 
+ باشد و پ  از اعمال ورودیx[n]=h[-n]
+ 
+ به ایب
+ سیستم خروجی سیستم در حوزهZ
+ به
+صورت 
+4 z
+Y (z )
+(2
+z )(2 z
+1)
+
+
+
+ مقدار
+ 
+n
+0
+h[n ]
+
+
+ کدام
+یک
+ 
+از گزینه
+های 
+زیر 
+خواهد بود؟ 
+)الف 
+1/2
+  
+)ب 2
+ 
+)ج 
+1/4
+ 
+)د 4
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 8 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+8
+ 
+36
+ ـ 
+ حاصل اعمال ورودی[
+]
+2
+[
+2 ]
+2
+[2
+1]
+n
+n
+x n
+u n
+u
+n
+
+
+
+
+ 
+ به سیستمی با پاسخ  ربهh[n]
+ 
+:برابر است با 
+)الف 
+4 [
+2 ]
+2 [
+1]
+1
+
+
+
+
+h n
+h n
+ 
+)ب 
+1 / 4
+[
+2 ]
+1 / 2
+[
+1]
+1
+h n
+h n
+
+
+
+
+ 
+)ج 
+4
+[
+2 ]
+2
+[
+1]
+1
+h n
+h n
+
+
+
+
+ 
+)د 
+1 / 4
+[
+2 ]
+1 / 2
+[
+1]
+1
+h n
+h n
+
+
+
+
+ 
+37
+ ـ در مورد سیستمی با پاسخ  ربه
+ 
+cos(3
+t ) sin (
+t )
+h ( t )
+t
+
+
+
+
+ کدام گزینه صحیح است؟ 
+)الف از این سیستم
+می 
+توان ب
+ه
+عنوان فیلتر پایین
+گذر با فرکانس
+های
+قطع 
+ 3 
+ استفاده نمود. 
+)ب از این سیستم می
+توان 
+به
+عنوان 
+فیلتر میان
+گذر با فرکانس
+های قطع
+ 3
+
+
+ استفاده نمود
+. 
+)ج از این سیستم می
+توان 
+به
+عنوان 
+فیلتر میان
+گذر با 
+فرکانس
+های قطع
+ 2
+4
+
+
+ استفاده نمود
+. 
+)د از این سیستم می
+توان 
+به
+عنوان 
+فیلتر باالگذر با فرکانس
+های قطع
+  استفاده نمود
+. 
+38
+ ـ مقدار انتگرال
+  ∫
+𝒆−𝟐𝒕𝜹(𝒕−𝟏)𝒅𝒕
+𝟔
+−𝟓
++ ∫
+𝒆−𝒕𝜹(𝟐𝒕−𝟐)𝒅𝒕
++∞
+−∞
+ کدام است؟ 
+)الف 
+𝑒−2 + 0.5𝑒−1
+ 
+)ب 
+2𝑒−2
+ 
+)ج صفر 
+)د 
+𝑒−2 + 𝑒−1
+ 
+39
+ ـ 
+ تابع میانگیب متحرک توسط رابطه𝒚(𝒕) =
+𝟏
+𝑻∫
+𝒖(𝝉)𝒅𝝉
+𝒕
+𝒕−𝑻
+ 
+ توصی می شود. اگر ورودی ایب تابع یک سینوسی با
+  فرکان
+𝟏
+𝟐𝑻
+ 
+ هرتز باشد، در حالت پایدار خروجی𝒚 چقدر تاخیر فاز بر حس  درجه ایجاد می
+نماید؟ 
+)الف 
+4 5
+ 
+)ب 
+9 0
+ 
+)ج 
+0
+ 
+)د 
+1 3 5
+ 
+01
+ ـ در مورد سیستم
+های زیر کدام گزینه صحیح است؟ 
+𝒚𝟏[𝒏] = (𝟏+ (−𝟏)𝒏)𝒙[𝒏] 
+𝒚𝟐[𝒏] = 𝒙[𝒏]𝒙[𝒏−𝟏] + 𝐜𝐨𝐬(𝟑𝝅𝒏−𝝅
+𝟑) 
+)الف 
+y1
+ معکوس
+پذیر و نامتغیر بازمان و 
+y2
+ معکوس ناپذیر و متغیر بازمان است. 
+)ب 
+y1
+ معکوس
+نا
+پذیر و متغیر بازمان و 
+y2
+ معکوس پذیر و
+نا
+متغیر بازمان است. 
+)ج 
+y1
+ 
+ وy2
+ معکوس ناپذیر و متغیر بازمان و
+علّی 
+.هستند 
+)د 
+y1
+ 
+ وy2
+ معکوس( ناپذیر و متغیر بازمان و پایدارBIBO) هس.تند 
+00
+ ـ 
+ سیگنال ورودی𝒙(𝒕) = 𝟐+ 𝟓𝐬𝐢𝐧⁡(𝟏𝟎𝟎𝝅𝒕)
+ با فرکان  نمونه برداری011
+ هرتز نمونه برداری شده و وارد سیستم
+ با پاسخ فرکانسی
+𝒀(𝒛)
+𝑿(𝒛) =
+𝟏
+𝑵
+𝟏−𝒁−𝑵
+𝟏−𝒁−𝟏
+ می شود کهN
+ نشان دهنده تعداد نمونه ها در هر سیکل اسـت. خروجـی حالـت
+ پایدار
+سیستم کدام است؟ 
+)الف صفر 
+)ب یک 
+)ج دو 
+)د چهار 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 9 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+9
+ 
+02
+ ـ 
+ با داشتبg(t) , f(t)
+ 
+  به شکل زیر کدام گزینه در مورد توصیg(t)
+ صحیح است؟ 
+ 
+)الف 
+𝑔(𝑡) = 𝑓(2𝑡−3)
+ 
+)ب 
+𝑔(𝑡) = 𝑓(
+𝑡
+2 −3)
+ 
+)ج 
+𝑔(𝑡) = 𝑓(2𝑡−
+3
+2)
+ 
+)د 
+𝑔(𝑡) = 𝑓(
+𝑡
+2 −
+3
+2)
+ 
+03
+ ـ 
+ تابع انتقال یک فیلتر
+به
+صورت
+ 𝑯(𝒁) =
+𝒃
+𝟏+𝒂𝒁−𝟏
+ می  باشد.  رایa, b
+ درصورتی که سیستم پایدار و
+علّی 
+ بوده و
+ مقدار تابع انتقال در فرکان  صفر روی دایره واحد برابر0 
+  و مربع اندازه تابع انتقال در فرکان91
+ 
+ درجه روی دایـره
+واحد 5
+/1 باشد، کدام است؟ 
+)الف 
+𝑎= −2 + √3,⁡⁡⁡⁡𝑏= −1 + √3
+ 
+)ب 
+𝑎= −2 −√3,⁡⁡⁡⁡𝑏= −1 −√3
+ 
+)ج 
+𝑎= −1 + √2,⁡⁡⁡⁡𝑏= −2 + √2
+ 
+)د 
+𝑎= 1 −√2,⁡⁡⁡⁡𝑏= −2 + √2
+ 
+00
+ ـ 
+  رای  سری فوریه سیگنال پریودیکx(t)
+ به
+صورت زیر می .باشد
+کدام
+یک از گزینه های
+زیر صحیح است؟ 
+𝒂𝟎= 𝒋𝟐 
+𝒂𝟏= 𝟎. 𝟓−𝒋𝟎. 𝟐 
+𝒂𝟐= 𝟐+ 𝒋𝟏 
+𝒂−𝟏= 𝟎. 𝟓+ 𝒋𝟎. 𝟐 
+𝒂−𝟐= 𝟐−𝒋𝟏 
+𝒂𝒌= 𝟎, 𝒇𝒐𝒓⁡|𝒌| > 𝟐 
+)الف 
+x(t)
+ 
+ دارای انرژی به میزان۳۳
+ می.باشد 
+)ب 
+ قسمت موهومیx(t)
+ 
+.ثابت است 
+)ج 
+ قسمت حقیقیx(t)
+ 
+.زوج است 
+)د 
+x(t)
+ 
+.دارای میانگین صفر است 
+05
+ ـ 
+ در مورد یک سیگنال با تبدیلz به فرم زیر کدام گزینه درخصوص م شت  مرتبه اول گسسته آن صحیح
+نمی باشـد ؟
+(first difference of x[n])
+ 
+
+
+2
+4
+3
+X
+Z
+2 Z
+4
+Z
+Z
+
+
+
+
+ 
+)الف 
+ تبدیلZ
+ این سیگنال برابر است با 
+2
+3
+8
+7
+3
+2 Z
+2
+Z
+Z
+Z
+
+
+
+
+ 
+)ب 
+ مقدار این
+سیگنال در نقاط ۷ به بعد صفر است 
+)ج 
+ این سیگنال دارای انرژی۳۱۳
+ می
+باشد 
+)د 
+ گرچه سیگنال اولیهx[n]
+ پایدا
+ر است ولی این سیگنال پایدار نمی
+باشد 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 10 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+01
+ 
+کنترل سیستم
+های خطی 
+06
+ ـ 
+ در مورد قط
+های سیستم حلقه بسته فیدبک واحد منفی، با تابع تبدیل حلقه باز
+ 4
+3
+2
+1
+( )
+(
+2
+2
+1)
+G s
+s s
+s
+s
+s
+
+
+
+
+
+ 
+کدام گزینه درست است؟ 
+)الف 
+ سیستم دارای۷ 
+ قطب نوسانی و۳ 
+.قطب ناپایدار است 
+)ب 
+ سیستم دارای1 
+.قطب پایدار است 
+)ج 
+ سیستم دارای۲ 
+ قطب نوسانی مضاعف و۳ 
+.قطب پایدار است 
+)د 
+ سیستم دارای۲ 
+ قطب مضاعف پایدار و۱ 
+.قطب ناپایدار است 
+07
+ ـ درصورتی
+که در یک
+ 
+سیستم حلقه بسته فیدبک منفی،
+ 
+تابع تبدیل مسیر پیشرو
+ 2
+( )
+(2
+1)
+k
+G s
+s
+
+
+ 
+ و تابع تبدیل مسـیر
+فیدبک 
+2
+( )
+2
+1
+H
+s
+s
+
+
+ باشد، برای اینکه رفتار سیستم نوسانی باشد، مقدار k 
+:و فرکان  نوسان سیستم برابر است با 
+)الف 
+0
+1
+4 .5
+,
+/ sec
+2
+
+
+k
+ra d
+
+ 
+)ب 
+0
+3
+3
+,
+/ sec
+2
+
+
+k
+ra d
+
+ 
+)ج 
+0
+1
+3
+,
+/ sec
+2
+
+
+k
+ra d
+
+ 
+)د 
+0
+3
+4 .5
+,
+/ sec
+2
+
+
+k
+ra d
+
+ 
+08
+ ـ درصورتی
+که میزان فراجهش، زمان رسیدن به مقدار حداکثر و مقدار ماندگار یک سیستم حلقه باز به ترتیـ  برابـر 
+. .
+,
+sec,
+.
+
+
+
+p
+ss
+1
+o s
+t
+1
+y
+0 9
+9
+ 
+  باشد، میزان فراجهش و زمان نشست (با تـولران2
+%
+) 
+ سیسـتم حلقـه بسـته بـا
+فیدبک واحد منفی برابراست با: 
+)الف 
+s
+o.s.
+24.3%
+,
+t
+1.86 sec
+
+
+ 
+)ب 
+s
+o.s.
+16.8%
+,
+t
+1.23 sec
+
+
+ 
+)ج 
+s
+o.s.
+24.3%
+,
+t
+1.23 sec
+
+
+ 
+)د 
+s
+o.s.
+16.8%
+,
+t
+1.86 sec
+
+
+ 
+09
+ ـ 
+ اثر ا افه کردن یک صفر به تابع تبدیل سیستم چه تاثیری بر روی
+نمودار نایکوئیست آن تابع خواهد گذاشت؟ 
+)الف 
+ محل برخورد نمودار با محور حقیقی منفی به نقطه۳
+- نزدیک
+ترر و از مبردا دورترر شرده و در نتیجره احتمرال دور زدن  
+ عدد۳
+- توسط نمودار
+ 
+کمتر
+می 
+شود. 
+)ب 
+ محل برخورد نمودار با محور حقیقی منفی از نقطه۳
+- دورتر و به مبردا نزدیرک
+ترر 
+شرده و در نتیجره احتمرال دور زدن 
+عدد
+ ۳
+- توسط نمودار
+ 
+کمتر
+می 
+شود. 
+)ج 
+ محل برخورد نمودار با محور حقیقی منفی از نقطه۳
+- دورتر و به مبردا نزدیرک
+ترر شرده و در نتیجره احتمرال دور زدن 
+عدد
+ ۳
+- توسط نمودار
+ 
+بیشتر
+می 
+شود. 
+)د 
+ محل برخورد نمودار با محور حقیقی منفی به نقطه۳
+- نزدی
+ک
+ترر و از مبردا دورترر شرده و در نتیجره احتمرال دور زدن 
+عدد
+ ۳
+- توسط نمودار بیشتر می.شود 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 11 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+00
+ 
+51
+ ـ 
+ برای یک سیستم با فیدبک واحد منفی و تابع تبدیل حلقه باز
+10
+( )
+(1
+0.02 )(1
+0.2 )
+G s
+s
+s
+s
+
+
+
+ ، حد بهـره سیسـتم
+برابر است با 
+)الف 
+1 4 .8 2 d B
+ 
+)ب 
+1 6 .2 2 d B
+ 
+)ج 
+9 .5 6 d B
+ 
+)د 
+1 5 .1 5 d B
+ 
+50
+ ـ خطای حالت ماندگار سیستمی با فیدبک واحد منفی و تابع تبدیل حلقه بسته3
+2
+4 (
+1)
+( )
+2
+4
+4
+
+
+
+
+
+s
+T
+s
+s
+s
+s
+ 
+ به ورودی
+2
+( )
+(5
+3
+2
+)
+( )
+
+
+
+r t
+t
+t
+u t
+ برابر
+ 
+است با
+: 
+)الف 
+2
+ 
+)ب 
+1
+2
+ 
+)ج 
+0
+ 
+)د 
+1
+3
+ 
+52
+ ـ به ازای چه محدوده
+ای 
+از k
+ ، سیستمی با معادله مشخصه
+3
+2
+( )
+0.02
+0.3
+
+
+
+
+
+s
+s
+s
+s
+k
+ پایدار است؟ 
+)الف 
+0
+2 0
+k
+
+
+ 
+)ب 
+1 0
+k 
+ 
+)ج 
+1 5
+k 
+ 
+)د 
+0
+1 5
+k
+
+
+ 
+53
+ ـ 
+ زاویه خروج از قط
+ها در نمودار مکان ریشه سیستمی با تابع حلقه باز 2
+2
+4
+( )
+(
+2
+5)
+
+
+
+
+s
+G H
+s
+s
+s
+ 
+ به کـدام گزینـه
+نزدیک
+تر است؟ 
+)الف 
+3 0
+
+ 
+)ب 
+1 7
+
+ 
+)ج 
+24
+
+ 
+)د 
+4 5
+
+ 
+50
+ ـ 
+ نمودار مکان ریشه سیستمی با تابع حلقه باز
+2
+( )
+(
+1)(
+)
+G H
+s
+s
+s
+k
+
+
+
+ دارای چند مجان  است؟ 
+)الف سه 
+)ب دو 
+)ج یک 
+)د 
+ مجانب
+ندارد 
+55
+ ـ کدام
+یک
+ 
+از گزینه
+های 
+زیر اشتباه است؟ 
+)الف کنترل
+کننده PI
+ پهنای باند و سرعت را کاهش می.دهد 
+)ب کنترل
+کننده پیش فاز پاسخ حالت ماندگار را بهبود می.بخشد و اثری در پاسخ گذرا ندارد 
+)ج کنترل
+کننده پس فاز، فاز منفی به سیستم وارد می.کند 
+)د کنترل
+کننده PD
+ پهنای باند را افزایش می.دهد 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 12 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+02
+ 
+مدارهای الکتریکی و الکترونیک 
+56
+ ـ 
+ در مدار شکل زیر نسبت دورهای اولیه به ثانویه)
+2
+/n
+1
+(a=n
+ و مقدار 
+L
+ 
+ را چنان تعییب کنید که توان انتقالی از اولیـه
+.به ثانویه حداکثر گردد 
+ 
+)الف 
+L=4H , a=1
+  
+)ب 
+L=5H , a=1
+ 
+)ج 
+L=5H , a=2
+                            
+ 
+)د 
+L=4H , a=4
+  
+57
+ ـ در 
+ مدار شکل زیر
+جریان اشباع معکوس دیود هایD1
+ 
+ تا D4
+:عبارتند از 
+ 
+=12nA
+s4
+=15nA, I
+s3
+=12nA, I
+s2
+=25nA, I
+s1
+I
+ 
+  در
+ایب مدار جریان عبوری از دیود D1
+ کدام است؟  
+ 
+)الف 
+10nA
+ 
+)ب 
+12nA
+ 
+)ج 
+15nA
+ 
+)د 
+25nA
+ 
+58
+ ـ درصورتی
+که Vi
+ ورودی سیگنال کوچک باشد و ظرفیت خازن ها هم به اندازه کـافی بـز
+ر گ باشـند و دیـود از 
+ نـوع
+سیلیکون و مقاومت ها هم برحس  اهم باشند، بهره ولتاژ سیگنال کوچک مدار(
+Vo/Vi) چقدر است؟ 
+ 
+)الف 
+0.05
+  
+)ب 
+0.02
+ 
+)ج 
+0.005
+ 
+)د 
+0.01
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 13 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+03
+ 
+59
+ ـ 
+( بهره ولتاژi
+/V
+o
+V) مدار سیگنال زیر به کدام گزینه نزدیکتر است؟ 
+=130
+fe
+=25mV, h
+T
+=3mA, V
+C2
+=2mA, I
+C1
+I
+ 
+ 
+)الف 
+68
+ 
+)ب 
+180
+ 
+)ج 
+680
+ 
+)د 
+10
+ 
+61
+ ـ با فرض ایده
+آل بودن تقویت
+کننده
+ها 
+جریان Li کدام است؟ 
+ 
+)الف 
+(-Vi)/R
+ 
+)ب 
+(-Vi)/(2R)
+ 
+)ج 
+(-4Vi)/R
+ 
+)د 
+(-2Vi)/R
+ 
+60
+ ـ 
+ در شکل زیر مقدار)
++
+)(0
+di/dt
+( 
+ کدام است؟(مقاومت ها.بر حس  اهم هستند)
+ 
+𝒊𝒔(𝒕) = 𝟏𝟎+ 𝟓𝐞−𝐭𝒄𝒐𝒔𝒕⁡𝒖(𝒕) 
+ 
+)الف 
+15
+ 
+)ب 
+75
+ 
+)ج 
+25
+ 
+)د 
+100
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 14 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+00
+ 
+62
+ ـ 
+ در مدار زیرMOSFET
+ 
+ ،از نوع افزایشی=0.4mA
+DS
+I و2
+=0.4mA/V
+K
+ می باشند. مقاومت ورودی مدارi
+R
+ 
+ چقدر است؟ 
+ 
+ 
+)الف 
+1M
+ 
+ 
+)ب 
+1.33M
+ 
+)ج 
+1.67M
+ 
+)د 
+5M
+ 
+63
+ ـ در مدار زیر آمپرمتر چه عددی را نشان
+می 
+دهد؟ 
+3 A
+2 Ω
+3 Ω
+4 Ω
+30 V
+A
+ 
+)الف 
+۳1
+ آمپر 
+)ب 
+۲۳
+ آمپر 
+)ج 
+۲۳
+ آمپر 
+)د 
+۲۲
+ آمپر 
+60
+ ـ ماتری  امپدان  دوقطبی زیر کدام است؟ (آپ امپ ایده
+آل است و i+=i-=0 , V+=V-
+)
+ 
+V+
+V-
+i+
+i-
+1 Ω
+R
+R
+V1
+V2
+ 
+)الف 
+[⁡⁡⁡1
+⁡⁡⁡1
+−1
+−1]
+ 
+)ب 
+[𝑅
+−1
+𝑅
+⁡⁡⁡0]
+ 
+)ج 
+[⁡⁡⁡1
+⁡⁡⁡0
+−1
+−1]
+ 
+)د 
+[−1
+1
+−1
+1]
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 15 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+05
+ 
+65
+ ـ 
+ در مدار تفا لی مقابل با فرض=25mV
+T
+V
+ ، اگر=1.995V
+2
+V
+ 
+ و=2V
+1
+V
+ ، آنگاه مقدارout
+V
+ به کدام گزینه نزدیک تـر
+است؟ 
+0.2 mA
+Q1
+Q2
+Vout 
+10k
+10k
+20 k
+VCC = 5V
+V1 
+V2 
+ 
+)الف 
+0.5 V
+ 
+)ب 
+0.6 V
+ 
+)ج 
+0.85 V
+ 
+)د 
+0.95 V
+ 
+ 
+ 
+66
+ ـ 
+.در مدار زیر مقاومت ورودی حلقه بسته را بیابید 
+is
+2k
+Q1
+VOUT
+Vcc
+8k
+2k
+Ri-CL
+rπ=1k  ,  β=100
+ 
+)الف 
+Ri-CL = 8 Ω
+ 
+)ب 
+Ri-CL = 12.5 Ω
+ 
+)ج 
+Ri-CL = 250 Ω
+ 
+)د 
+Ri-CL = 500 Ω
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 16 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+06
+ 
+67
+ ـ 
+ در مدار شکل زیر
+درحالی
+که سل 
+ها و خازن
+ها 
+بدون انرژی هستند کلیـد 
+هـای 1
+K
+ 
+ و2
+K
+ 
+ بـه وـور همزمـان بسـته
+می شوند. پ  از رسیدن مدار به حالت دائمی، کلید2
+K
+ را باز می کنیم. در لحظه باز شدن ایب کلید، ولتاژ دو سـر2
+K
+ 
+کدام است؟ 
+ 
+)الف 0  
+)ب 2
+ 
+)ج 4
+ 
+)د 8
+ 
+ 
+ 
+68
+ ـ 
+ در مدار شکل مقابل خازن دارای ولتاژ اولیه0
+v 
+ است. اگـرA
+2
+=
+sI 
+ وV
+4
+=
+s
+V
+ 
+ ،باشـدt/τ
+-e
+2
++
+4
+=
+)t(
+cv 
+ مـی شـود. اگـر
+A
+4
+=
+sI 
+ وV
+8
+=
+s
+V
+ 
+ شود، ولتاژ)t(
+cv کدام است؟ 
+ 
+)الف 
+8 + 2e−t
+T
+ 
+)ب 
+8 −2e−t
+T
+ 
+)ج 
+8 −4e−t
+T
+ 
+)د 
+8 + 4e−t
+T
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 17 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+07
+ 
+69
+ ـ 
+ در مدار زیر سطح مقطع امیتر1
+Q
+ چهار برابر 
+ سطح مقطع امیتر2
+Q
+ می باشد. مینیمم مقدار1
+R
+ 
+ و2
+R
+ 
+ را به ترتی  بـر
+ حس  اهم چنان بیابید کهEQ2
+=I
+EQ1
+I 
+( باشد𝑽𝑻= 𝟐𝟔⁡𝒎𝒗
+)  
+ 
+)الف ۳
+=
+1min
+R
+ 
+ و۱۳
+=
+2min
+R
+  
+)ب ۳
+=
+1min
+R
+ 
+ و۳
+=
+2min
+R
+ 
+)ج 
+۱۳
+=
+1min
+R
+ و۳
+=
+2min
+R
+ 
+)د 
+۷۳
+=
+1min
+R
+ 
+ و۳۳
+=
+2min
+R
+ 
+71
+ ـ ماکزیمم دامنه سوئینگ متقارن ولتاژ خروجی مدار تقویت
+کننده شکل زیر کدام است؟
+ 1
+
+=
+2
+
+=
+100
+ 
+Vin
+10k
+Q1
+VOUT
+Vcc = 6V
+1.25k
+VBE(on)=0.7V  ,VCE(sat)=0.2V  ,  β=100  
+Q2
+1.6V
+Vm
+Vm
+ 
+)الف 
+Vm=2.1V
+ 
+)ب 
+Vm=2.5V
+ 
+)ج 
+Vm=3.5V
+ 
+)د 
+Vm=3.1V
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 18 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+08
+ 
+فیزیولوژی و آناتومی 
+70
+ ـ کانال
+های 
+کلسیمی دریچه
+دار وابسته به ولتاژ در کدام مرحله از پتانسیل عمل عضله بطنی به آهستگی شروع به باز 
+شدن
+می 
+کنند؟ 
+)الف صفر 
+)ب یک 
+)ج دو 
+)د سه 
+72
+ ـ کدام ماده کمتریب درصد بازجذب را در توبول پروگزیمال دارد؟ 
+)الف 
+ گلوکز 
+)ب بیکربنات 
+)ج سدیم 
+)د اسید آمینه 
+73
+ ـ در یک انسان سالم، کدام حجم ریوی بیشتر است؟ 
+)الف ذخیره دمی
+  
+)ب ذخیره بازدمی 
+)ج باقیمانده 
+)د جاری 
+70
+ ـ 
+ کدام عبارت
+زیر در مورد گردش خون صحیح 
+نمی
+باشد
+؟ 
+)الف افزایش فشارخون شریانی تا حدود
+ ۳1۳
+ میلی
+متر جیوه ت
+أ
+ثیری بر برون
+ده قلب ندارد
+. 
+)ب به
+طور طبیعی فشار نبض در شریان
+های 
+بزرگ بیشتر از 
+آ
+ئورت است
+. 
+)ج خونی که در هر دقیقه از ریه
+ 
+عبور
+می 
+کند معادل گردش خون عمومی است
+. 
+)د قطع یک اندام
+، 
+برون
+ده قلب را افزایش و مقاومت عروقی را کاهش می
+دهد. 
+75
+ ـ کدام گزینه در
+ 
+حیب خواب REM
+ رخ می
+دهد؟ 
+)الف فرکانس امواج دلتا افزایش
+می 
+یابد. 
+)ب متابولیزم مغز افزایش پیدا می
+کند. 
+)ج غلظت خونی سروتونین بیشتر از زمان بیداری می
+شود. 
+)د داروهای مقلد استیل کولین مدت زمان آن را کاهش می
+دهند. 
+76
+ ـ شریان
+های 
+ و سر
+گردن از کدام قسمت آئورت مبداء
+می 
+گیرند؟ 
+)الف آئورت نزولی  
+)ب آئورت صعودی  
+)ج قوس آئورت  
+)د آئورت سینه
+ای 
+77
+ ـ وسیع
+تریب عص  پاراسمپاتیک بدن، کدام زوج مغزی است؟ 
+)الف واگ 
+)ب تریژمینال 
+)ج فاسیال 
+)د گلوسوفارینژئال 
+78
+ ـ قطورتریب عص  بدن کدام است؟ 
+)الف سیاتیک 
+)ب فمورال 
+)ج مدیان 
+)د ابتوراتور 
+79
+ ـ عص  حرکتی دیافراگم کدام است؟ 
+)الف رادیال 
+)ب واگ 
+)ج مدیان 
+)د فرنیک 
+81
+ ـ ناحیه حرکتی اولیه قشر مخ در کدام لوب مغزی است؟ 
+)الف فرونتال 
+)ب پاریتال 
+)ج تمپورال 
+)د اکسی
+پیتال  
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 19 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+09
+ 
+زبان عمومی 
+ Part one: Reading Comprehension 
+Directions: Read the following passages carefully. Each passage is followed by some questions. 
+Complete the questions with the most suitable words or phrases (a, b, c, or d). Base your answers 
+on the information given in the passage only. 
+Passage 1 
+Although cholesterol has received a lot of bad press in recent years, it is a necessary substance in the body. 
+It is found in bile salts needed for digestion of fats, in hormones, and in the cell’s plasma membrane. 
+However, high levels of cholesterol in the blood have been associated with atherosclerosis and heart disease. 
+It now appears that the total amount of blood cholesterol is not as important as the form in which it occurs. 
+Cholesterol is transported in the blood in combination with other lipids and with protein, forming compounds 
+called lipoproteins. These compounds are distinguished by their relative density. High-density lipoprotein 
+(HDL) is composed of a high proportion of protein and relatively little cholesterol. HDLs remove cholesterol 
+from the tissues, including the arterial walls, and carry it back to the liver for reuse or disposal. In contrast, 
+low-density lipoprotein (LDL) contains less protein and a higher proportion of cholesterol. LDLs carry 
+cholesterol from the liver to the tissues, making it available for membrane or hormone synthesis. However, 
+excess LDLs can deposit cholesterol along the lining of the arterial walls. Thus, high levels of HDLs indicate 
+efficient removal of arterial plaques, whereas high levels of LDLs suggest that arteries will become clogged.  
+81ـ 
+According to the passage……… . 
+a)   different forms of cholesterol in the body have similar features 
+b)   cholesterol density fails to indicate how healthy an individual is 
+c)   cholesterol is not so significant in maintaining personal health 
+d)   the form of cholesterol is more important than its amount 
+82ـ 
+The phrase received a lot of bad press in the first line means to ......... . 
+a)   be criticized in mass media 
+b)   present unwelcome consequences 
+c)   include pressure over time 
+d)   indicate undesirable effects 
+83ـ 
+Which of the following statements is TRUE based on the passage? 
+a)   Atherosclerosis is associated with HDLs as opposed to LDLs. 
+b)   Cholesterol is carried in the blood in two forms, namely HDL and LDL. 
+c)   Thickening of the arterial wall results mainly from high levels of HDLs.  
+d)   The proportion of cholesterol is higher in HDLs compared with LDLs. 
+84ـ  The word deposit in line 11 is closest in meaning to ......... . 
+a)   stimulate 
+b)   assimilate 
+c)   accumulate 
+d)   postulate  
+85ـ  According to the passage, ......... is NOT associated with high HDL levels. 
+a)   reducing arterial plaques 
+b)   clogging arteries with cholesterol 
+c)   carrying cholesterol to the liver 
+d)   removing cholesterol from the tissues 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 20 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+21
+ 
+Passage 2 
+ 
+The Internet greatly influences people’s attitudes about their heath and health care. They can search almost 
+any topic of interest and become researchers for their own problems. In the present busy world, doctors do 
+not always take the time to explain illnesses and possible remedies to their patients; they may not give 
+scientific details in simple words, either. Accordingly, many people use Internet resources to find what they 
+need to know for better medical decisions. But are the recommendations of “experts” on the Net always 
+accurate and reliable? Are they helpful to everyone that needs advice on a specific medical condition? The 
+online health products or information that seem most wonderful are often the most fraudulent.  
+Many specialists have their own theories about illness and health. For example, a California physiologist 
+stated two causes for diseases: (1) pollution of the environment, and (2) parasites inside the human body. She 
+offers two kinds of health products on the Internet: electronic machines and herbal medicine which clean out 
+the body (free it of parasites) and rebuild new healthy living cells. Moreover, there are medical experts who 
+recommend kinds of natural, non-western remedies for modern health disorders. Their advice might include 
+special diet plans with added vitamins and minerals, folk medicine, environmental changes, or unusual 
+therapies that patients do not get from typical doctors. 
+86 ـ The California physiologist believes that one of the main reasons of diseases is ......... . 
+a)   living things in the environment 
+ 
+ 
+ 
+ 
+b)   parasites in the environment 
+ 
+ 
+c)   environmental pollution 
+d)   animals and plants 
+87ـ  The word fraudulent in paragraph 1 is closest in meaning to ......... . 
+a)   available 
+ 
+ 
+ 
+ 
+ 
+ 
+b)   dishonest 
+ 
+ 
+c)   significant 
+d)   attractive 
+88ـ  It is stated in the passage that a reason for the patients’ use of the Internet to know more about 
+their diseases is that ......... . 
+a)   they can find information on the Internet which is more culturally appropriate 
+b)   they can use Internet resources to make the best decision at a reasonable price 
+c)   doctors use a technical language to explain their problems 
+d)   doctors fail to take enough time to examine their patients completely 
+89ـ  The word they in paragraph 1 refers to ......... . 
+a)   some medical decisions made by the doctors who use the Internet 
+ 
+ 
+b)   medical suggestions of the experts on the Internet 
+c)   some experts on the Internet 
+ 
+d)   the online health products 
+90ـ  The medical experts favoring natural remedies suggest all of the following interventions, 
+EXCEPT ......... . 
+a)   unconventional therapies 
+ 
+ 
+ 
+b)   rebuilding new living cells 
+ 
+ 
+ 
+ 
+c)   added vitamins and minerals 
+d)   changing the patient’s place of living 
+ 
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 21 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+20
+ 
+Passage 3 
+ 
+Ultraviolet (UV) radiation covers the wavelength range of 100–400 nm, which is a higher frequency and 
+lower wavelength than visible light. UV radiation comes naturally from the Sun, but it can also be created by 
+artificial sources used in industry, commerce, and recreation. The UV region covers the wavelength range 
+100-400 nm and is divided into three bands: UVA (315-400 nm), UVB (280-315 nm), and UVC (100-280 
+nm). 
+As sunlight passes through the atmosphere, all UVC and approximately 90% of UVB radiation is absorbed 
+by ozone, water vapor, oxygen and carbon dioxide. UVA radiation is less affected by the atmosphere. 
+Therefore, the UV radiation reaching the Earth’s surface is largely composed of UVA with a small UVB 
+component. 
+The amount of UV radiation from the Sun that hits the Earth’s surface depends on several factors, including 
+the Sun’s height in the sky, latitude, cloud cover, altitude, the thickness of the ozone layer and ground 
+reflection. Reductions in the ozone layer due to human-created pollution increase the amount of UVA and 
+UVB that reaches the surface. This can impact human health, animals, marine organisms and plant life. In 
+humans, increased UV exposure can cause skin cancers, cataracts, and immune system damage. 
+91ـ  According to the passage, excessive exposure to UV is unlikely to cause ......... .  
+a)   cataract 
+b)   skin tumors 
+c)   immune disorders 
+d)   digestive disorders 
+92ـ  It is stated in the passage that the visible light ......... the Ultraviolet (UV) radiation. 
+a)   falls below the wavelength range of 
+b)   falls within the same wavelength as 
+c)   has a higher frequency than  
+d)   contains all wavelength ranges of 
+93ـ  Which of the following factors does NOT affect the amount of UV radiation that hits the Earth’s 
+surface? 
+a)   height above the sea level  
+b)   cloud cover of the area 
+c)   marine organisms and plant life 
+d)   ground reflection of the rays   
+94ـ  It is stated in the passage that the UV radiation which reaches the Earth’s surface is mostly 
+composed of ......... .  
+a)   UVA with a small UVB component 
+b)   UVB and large amounts of UVC 
+c)   equal amounts of UVC and UVA  
+d)   UVA, UVB and UVC altogether 
+95ـ  The underlined word this refers to ......... . 
+a)   the amount of UV radiation  
+b)   Ozone layer  
+c)   an increase in the amount of UVA and UVB 
+d)   an increase in the amount of human-related pollution   
+ 
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 22 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+22
+ 
+Passage 4 
+ 
+In the summer of 1976, a mysterious epidemic suddenly attacked two central African towns and killed the 
+majority of its victims. Medical researchers suspected the deadly Marburg virus to be the cause, but what 
+they saw in microscope images was entirely a new pathogen which would be named after the nearby Ebola 
+River. Like Yellow fever and Dengue, the disease caused by Ebola virus is a severe type of hemorrhagic 
+fever. It begins by attacking the immune system cells and neutralizing its responses, allowing the virus to 
+multiply. Starting anywhere from 2 to 20 days after contraction, initial symptoms like high temperature, 
+aching, and sore throat resemble those of a typical flu, but quickly increase to vomiting, rashes, and diarrhea, 
+and as the virus spreads, it invades the lymph nodes and vital organs such as the kidney and liver, causing 
+them to lose function. But the virus itself is not what kills Ebola victims. Instead, the mounting cell deaths 
+trigger the immune system overload, known as cytokine storm, an explosion of immune responses that 
+damage blood vessels causing both internal and external bleeding. The excessive fluid loss and resulting 
+complications can be fatal within 6 to 16 days of the first symptoms; however, proper care and rehydration 
+therapy can significantly reduce mortality rates in patients.   
+96ـ  The cytokine storm is ......... . 
+a)   a type of external bleeding 
+b)   an explosion in the blood vessels  
+c)   the consequence of increased cell deaths 
+d)   the damage recovered by the immune system  
+97ـ  According to this paragraph, Ebola ......... . 
+a)   is easily distinguished from the flu in its initial stages 
+b)   presents with symptoms like typical flu in the early stages 
+c)   has symptoms like the typical flu as the disease progresses  
+d)   is another name for Dengue, as used in medical context by clinicians 
+98ـ  Bleeding in Ebola could be attributed to ......... . 
+a)   the fever resembling Dengue and Yellow fever  
+b)   deadly Marburg virus as a new pathogen 
+c)   increased immune system response  
+d)   vomiting due to the disease  
+99ـ  The Ebola virus increases through ......... . 
+a)   the kidney and liver  
+b)   the internal and external bleeding 
+c)   counteracting the immune system responses 
+d)   invading the lymph nodes and other organs  
+100ـ  The death rate following Ebola disease ......... .  
+a)   is definitely predictable depending on the affected area  
+b)   is highly increased in the first few days of contraction  
+c)   fails to be controlled under the current circumstances 
+d)   could be controlled through proper care and therapy  
+ 
+ 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 23 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+23
+ 
+ Part two: Vocabulary 
+Directions: Complete the following sentences by choosing the best answer. 
+101ـ  Health problems of the poor people can only be ......... through proper strategies and measures 
+taken by the government. 
+a)   exaggerated 
+b)   enhanced 
+c)   complicated  
+d)   alleviated  
+102ـ  Regular sleep, eating patterns, and exercise help people ......... the bad effects of stress. 
+a)   intensify 
+b)   counteract 
+c)   prolong 
+d)   imitate 
+103ـ  In order not to involve your personal attitudes in the results, you need to be ......... when doing 
+research. 
+a)   disoriented 
+b)   ignorant 
+c)   impartial 
+d)   biased  
+ 
+104ـ  University lecturers have the main role in ......... knowledge in all fields to the students.  
+a)   imparting 
+b)   announcing 
+c)   degrading 
+d)   consuming 
+105ـ  Although scientists have detected many secrets of the central nervous system, there are still  
+some ......... points which need to be clarified. 
+a)   transparent 
+b)   obvious 
+c)   evident 
+d)   obscure 
+106ـ  While taking your exam, you need to block ......... thoughts by concentrating on what you are 
+doing. 
+a)   constructive 
+b)   intrusive 
+c)   supportive 
+d)   inspiring 
+107ـ  He was not able to cope with the stress and ......... of his job; therefore, he decided to retire. 
+a)   comfort 
+b)   recreation 
+c)   strain 
+d)   tranquility 
+108ـ  The health authorities have emphasized that priority should be given to the ......... which help the 
+improvement of health in the country. 
+a)   initiatives 
+b)   compartments 
+c)   obstacles 
+d)   redundancies 
+109ـ  Some people think that the most essential ......... for good managers is their organizational 
+abilities. 
+a)   associate 
+b)   complication 
+c)   repression  
+d)   attribute 
+110ـ  Some bacteria are not responsive to antibiotic therapy because they have gradually developed 
+......... to antibiotics. 
+a)   existence 
+b)   assistance 
+c)   resistance 
+d)   prevalence 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
+
+===== صفحه 24 =====
+ 
+ آزمون
+کارشناسی ارشد
+ 
+مهندس
+ی 
+پزشک
+(ب ی
+یوالکتریک
+)
+ 
+سال 0011
+ 
+20
+ 
+111ـ  The lecturer was asked to steer the discussion back to the ......... topic of main importance by 
+avoiding unrelated issues. 
+a)   superficial 
+b)   original 
+c)   trivial 
+d)   redundant 
+112ـ  The health providers are forced to answer any ......... the patients have about their treatment. 
+a)   queries 
+b)   intimacies 
+c)   contributions 
+d)   modifications 
+113ـ  The student received a lot of  ......... comments from his supervisor helping him improve the 
+quality of his work.  
+a)   disruptive 
+b)   constructive 
+c)   disappointing 
+d)   debilitating 
+114ـ  The instructor advised students to avoid ......... by strictly following note-taking standards.  
+a)   frankness 
+b)   truthfulness 
+c)   plagiarism 
+d)   precision 
+115ـ  The Corona virus is a dangerous, highly ......... viral infection that can easily spread to other 
+people. 
+a)   transmissible 
+b)   dismissible 
+c)   ignorable  
+d)   valuable 
+116ـ  Numerous theories have been ......... on the exact cause of Corona virus which is yet to be 
+identified.  
+a)   abandoned  
+b)   avoided 
+c)   proposed 
+d)   oppressed  
+117ـ  Prevention rather than treatment must be the first ......... of all those involved in health. 
+a)   census  
+b)   concern 
+c)   burden 
+d)   invention  
+118ـ  With simple ......... measures, the side effects of the lesions under the skin can be reduced. 
+a)   threatening  
+b)   destructive 
+c)   preventive 
+d)   obsessive 
+119ـ  A damaging decline in blood products can cause huge ......... when caring for pregnant women 
+with pre-existing medical conditions. 
+a)   contributions  
+b)   profits 
+c)   opportunities 
+d)   challenges 
+120ـ  We can keep away from infectious diseases by enhancing our ......... disease-causing 
+microorganisms.  
+a)   resistance to 
+b)   assistance to 
+c)   combination of 
+d)   contraction of 
+موفق باشید 
+moshaveshaveranetahsili.ir
+moshaveshaveranetahsili.ir
