@@ -1,0 +1,70 @@
+name: Fetch Official Assets
+
+# دانلود کلیدهای رسمی و دفترچه‌های پاسخ (فقط دستی)
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "یادداشت (اختیاری)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download assets
+        run: |
+          set +e
+          mkdir -p content/official/keys
+          echo "=== دانلود فایل‌ها ==="
+          ok=0; fail=0
+          while IFS= read -r url; do
+            [ -z "$url" ] && continue
+            case "$url" in \#*) continue;; esac
+            name=$(echo "$url" | sed 's|.*/||' | sed 's|%[0-9A-Fa-f][0-9A-Fa-f]|_|g')
+            code=$(curl -sSL -m 120 -A "Mozilla/5.0" -w "%{http_code}" -o "content/official/keys/$name" "$url")
+            rc=$?
+            size=$(stat -c%s "content/official/keys/$name" 2>/dev/null || echo 0)
+            echo "RESULT code=$code rc=$rc size=$size name=$name"
+            if [ "$code" = "200" ] && [ "$size" -gt 2000 ]; then
+              ok=$((ok+1))
+            else
+              rm -f "content/official/keys/$name"
+              fail=$((fail+1))
+            fi
+          done < content/official/keys/urls.txt
+          echo "SUMMARY ok=$ok fail=$fail"
+          ls -la content/official/keys/ || true
+
+      - name: Probe index pages for key links
+        run: |
+          set +e
+          echo "=== جست‌وجوی لینک کلیدها در صفحات ==="
+          mkdir -p /tmp/probe
+          i=0
+          while IFS= read -r url; do
+            [ -z "$url" ] && continue
+            case "$url" in \#*) continue;; esac
+            i=$((i+1))
+            curl -sSL -m 60 -A "Mozilla/5.0" -o "/tmp/probe/p$i.html" "$url"
+            echo "--- PAGE $i: $url (size=$(stat -c%s /tmp/probe/p$i.html 2>/dev/null || echo 0))"
+            grep -oE 'https?://[^"'"'"' ]*(key|kelid|klid)[^"'"'"' ]*\.(jpg|jpeg|png|pdf)' "/tmp/probe/p$i.html" 2>/dev/null | sort -u | grep -iE 'bio|bioelectric|bioelektrik|elektrik|arshad-9|arshad-1' | head -40
+            grep -oE 'href="[^"]*(bioelectric|bio-elektrik|biomedical)[^"]*"' "/tmp/probe/p$i.html" 2>/dev/null | sort -u | head -25
+          done < content/official/keys/pages.txt
+          echo "=== پایان بررسی صفحه‌ها ==="
+
+      - name: Commit results
+        run: |
+          set +e
+          git config user.name "Abolfazl003"
+          git config user.email "abolfazl@bme.app"
+          git add -A content/official/keys
+          git commit -m "official keys fetched (auto)" || echo "no changes"
+          git push origin HEAD:assets/keys --force
+          echo "pushed to branch assets/keys"
