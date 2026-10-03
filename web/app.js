@@ -387,9 +387,10 @@ function renderQuiz(main){
       <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
       <div class="q-card">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
-          <div class="q-text" style="flex:1">${q.q}</div>
+          <div class="q-text" style="flex:1">${q.no?`<span style="color:var(--muted);font-size:12.5px">سوال ${pkFa(q.no)}${q.src?` — ${q.src}`:""}</span><br>`:""}${q.q}</div>
           <button class="btn btn-sm ${isSaved?'btn-primary':'btn-ghost'}" id="saveBtn" title="ذخیره برای مرور">${isSaved?'💾 ذخیره شد':'💾 ذخیره'}</button>
         </div>
+        ${q.img?`<div style="text-align:center;margin:10px 0"><img src="${q.img}" alt="شکل سوال" style="max-width:100%;border-radius:10px;background:#fff;padding:6px"></div>`:""}
         <div id="choices">
           ${q.choices.map((c,i)=>`<div class="choice" data-i="${i}"><div class="letter">${letterOf(i)}</div><div>${c}</div></div>`).join("")}
         </div>
@@ -799,7 +800,7 @@ function renderSettings(main){
       </div>
       <h3 style="margin:16px 0 8px">درباره</h3>
       <p style="font-size:13px;line-height:2;color:var(--muted)">
-      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۳ (موبایل/آفلاین/PWA)<br>
+      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۵ (موبایل/آفلاین/PWA)<br>
       شامل: ۱۰ کتاب درسی کامل (۴۰ فصل)، دوره پایه تا پیشرفته، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
       </p>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -1156,9 +1157,9 @@ function pkStartTimer(){
 }
 
 /* دسترسی دستی به باقی‌مانده زمان برای آزمون‌های کنکور */
-function pkAttachExam(Q, nQuestions){
-  Q.exam = {limit: nQuestions*PK_EXAM_SEC_PER_Q, remaining: nQuestions*PK_EXAM_SEC_PER_Q,
-            bySub:{}, qStart:0, startedAt:Date.now()};
+function pkAttachExam(Q, nQuestions, totalSec){
+  const sec = totalSec || (nQuestions*PK_EXAM_SEC_PER_Q);
+  Q.exam = {limit: sec, remaining: sec, bySub:{}, qStart:0, startedAt:Date.now()};
   return Q;
 }
 
@@ -1169,10 +1170,19 @@ function pkAttachExam(Q, nQuestions){
    (هر سوال رسمی با شماره اصلی خودش؛ k = کلید رسمی، s = حل تشریحی)
    بخش «کنکور آزمایشی» جداگانه است و دست‌نخورده می‌ماند.
    ═══════════════════════════════════════════════════════════ */
-const PKR_YEARS = ["1392","1393","1394","1395","1396","1397","1398","1399","1400","1401","1402","1403","1404"];
-/* تعداد سوال رسمی هر دفترچه (از روی جلد خودِ دفترچه‌ها) — null = هنوز دریافت نشده */
-const PKR_EXAM_COUNT = {"1392":130,"1393":130,"1394":null,"1395":130,"1396":null,"1397":140,"1398":null,
-                        "1399":null,"1400":120,"1401":null,"1402":null,"1403":120,"1404":120};
+const PKR_YEARS = ["1387","1388","1389","1390","1391","1392","1393","1394","1395","1396","1397","1398",
+                   "1399","1400","1401","1402","1403","1404"];
+/* تعداد سوال هر دفترچه — خوانده‌شده از جلد خودِ دفترچه‌های رسمی وزارت بهداشت — null = هنوز دریافت نشده */
+const PKR_EXAM_COUNT = {"1387":110,"1388":130,"1389":130,"1390":130,"1391":130,"1392":130,"1393":130,
+                        "1394":130,"1395":130,"1396":135,"1397":140,"1398":130,"1399":130,"1400":120,
+                        "1401":120,"1402":null,"1403":120,"1404":120};
+/* زمان واقعی هر دفترچه (دقیقه) — از جلد دفترچه‌ها؛ پیش‌فرض ۱۶۰ دقیقه */
+const PKR_EXAM_TIME = {"1387":150};
+const PKR_TIME_DEFAULT = 160;
+/* دفترچه‌هایی که هنوز به دست ما نرسیده‌اند */
+const PKR_MISSING = ["1402"];
+/* سیاست پاسخ‌نامه: دفترچه‌های رسمی «کلید» ندارند (کلید سنجش جداگانه منتشر می‌شود) */
+const PKR_KEY_POLICY = "حل مؤلف (غیررسمی) — تا رسیدن کلید رسمی سنجش";
 const PKR_PER_YEAR = 120;                    // آخرین ساختار: ۱۲۰ سوال / ۱۶۰ دقیقه
 const PKR_STRUCTURE = [
   ["ریاضیات مهندسی", "math", 20], ["فیزیک پزشکی", "physics", 20], ["سیگنال‌ها و سیستم‌ها", "signals", 20],
@@ -1185,47 +1195,57 @@ function prSubjects(){
   return ["math","physics","signals","control","circuits","anatomy","english"];
 }
 function prQ(year, sid){ return (typeof PKR!=="undefined" && PKR[year] && PKR[year][sid]) || []; }
+function prTimeMin(year){ return PKR_EXAM_TIME[year] || PKR_TIME_DEFAULT; }
+/* مجموع سوال دفترچه‌های دریافت‌شده (سال‌های نامعلوم شمرده نمی‌شوند) */
+function prCapacity(){ return PKR_YEARS.reduce((a,y)=>a+(PKR_EXAM_COUNT[y]||0),0); }
+function prReceived(){ return PKR_YEARS.filter(y=>PKR_EXAM_COUNT[y]).length; }
 function prYearCount(year){ return prSubjects().reduce((a,s)=>a+prQ(year,s).length,0); }
 function prTotalCount(){ return PKR_YEARS.reduce((a,y)=>a+prYearCount(y),0); }
 function prHas(){ return typeof PKR!=="undefined" && prTotalCount()>0; }
+function prNewestYear(){ for(let i=PKR_YEARS.length-1;i>=0;i--){ if(prYearCount(PKR_YEARS[i])>0) return PKR_YEARS[i]; } return null; }
 
 function renderKonkurOfficial(main){
   const total=prTotalCount();
   const years=PKR_YEARS.slice().reverse();
   main.innerHTML=`
     <div class="page-head"><h1>📜 بانک سوالات رسمی کنکور</h1>
-      <p>سوالات <b>واقعی دفترچه‌های کنکور ارشد مهندسی پزشکی (بیوالکتریک) از ۱۳۹۲ تا ۱۴۰۴</b> — با شماره سوال اصلی، کلید رسمی و حل تشریحی</p>
+      <p>سوالات <b>واقعی دفترچه‌های کنکور ارشد مهندسی پزشکی (بیوالکتریک) از ۱۳۸۷ تا ۱۴۰۴ (۱۸ دوره)</b> — با شماره سوال اصلی، گزینه‌های دقیق، کلید و حل تشریحی</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="setView('mock')">🎯 کنکور آزمایشی — ۱۲۰۰ سوال شبیه‌ساز (۱۰ سال)</button>
-        ${prHas()?'<button class="btn btn-ghost" onclick="startOfficial(PKR_YEARS[PKR_YEARS.length-1])">📜 آزمون رسمی جدیدترین سال</button>':''}
+        ${prHas()?'<button class="btn btn-ghost" onclick="startOfficial(prNewestYear())">📜 آزمون رسمی جدیدترین دفترچه درج‌شده</button>':''}
       </div></div>
     <div class="big-stats">
       <div class="big-stat"><div class="num" style="color:var(--accent)">${pkFa(total)}</div><div class="lbl">سوال رسمی 📜</div></div>
-      <div class="big-stat"><div class="num" style="color:var(--accent2)">${pkFa(PKR_YEARS.length)}</div><div class="lbl">دوره (سال) 📅</div></div>
-      <div class="big-stat"><div class="num" style="color:var(--warning)">${pkFa(PKR_YEARS.reduce((a,y)=>a+(PKR_EXAM_COUNT[y]||PKR_PER_YEAR),0))}</div><div class="lbl">ظرفیت دفترچه‌ها 🎯</div></div>
+      <div class="big-stat"><div class="num" style="color:var(--accent2)">${pkFa(prReceived())}<span style="font-size:16px;color:var(--muted)">/${pkFa(PKR_YEARS.length)}</span></div><div class="lbl">دفترچه دریافت‌شده 📚</div></div>
+      <div class="big-stat"><div class="num" style="color:var(--warning)">${pkFa(prCapacity())}</div><div class="lbl">سوال رسمی دفترچه‌های موجود 🎯</div></div>
+    </div>
+    <div class="card" style="border-color:var(--accent2);background:rgba(56,189,248,.06);margin-bottom:14px">
+      <p style="line-height:2;margin:0">✅ <b>${pkFa(prReceived())} دفترچه رسمی</b> در اختیار ماست (۱۳۸۷ تا ۱۴۰۴) و سوالاتشان با شماره اصلی در همین صفحه درج می‌شود.
+      ${PKR_MISSING.length?`⏳ تنها دفترچه‌های باقی‌مانده: <b>${PKR_MISSING.map(pkFa).join("، ")}</b>.`:""}
+      🔑 کلید رسمی سنجش داخل دفترچه‌ها چاپ نشده؛ بنابراین پاسخ‌ها با عنوان <b>«${PKR_KEY_POLICY}»</b> ارائه می‌شوند و به‌محض دریافت کلید رسمی، جایگزین می‌گردند.</p>
     </div>
     ${total===0?`
     <div class="card" style="border-color:var(--warning);background:rgba(245,158,11,.07)">
-      <h3 style="color:var(--warning)">⏳ این بخش در انتظار سوالات رسمی است</h3>
-      <p style="line-height:2">سوالات <b>کنکور آزمایشی</b> (۱۲۰۰ سوال) دست‌نخورده در بخش «کنکور آزمایشی» باقی مانده است.
-      برای پر کردن این بخش با <b>متن و گزینه‌های دقیق دفترچه‌های رسمی</b>:</p>
-      <ol style="line-height:2.1;padding-inline-start:20px">
-        <li>دفترچه PDF همان سال (رشته مهندسی پزشکی بیوالکتریک) را دانلود کن — رایگان از آرشیوهای سنجش پزشکی</li>
-        <li>فایل PDF (یا حتی عکس صفحه‌های دفترچه) را در چت بفرست</li>
-        <li>سوال‌ها با شماره اصلی، گزینه‌های دقیق، کلید رسمی و حل تشریحی داخل همین صفحه درج می‌شوند</li>
-      </ol>
-      <p style="color:var(--muted);font-size:13px">تا آن زمان، تمرین با بخش «🎯 کنکور آزمایشی» (۱۲۰۰ سوال، هر سال ۱۲۰ سوال + تایمر ۱۶۰ دقیقه‌ای) را ادامه بده.</p>
+      <h3 style="color:var(--warning)">⏳ در حال درج سوالات رسمی</h3>
+      <p style="line-height:2">هر ${pkFa(prReceived())} دفترچه رسمی دریافت شده و <b>سال به سال</b> در حال تایپ و درج در همین صفحه است.
+      بخش «🎯 کنکور آزمایشی» (۱۲۰۰ سوال) دست‌نخورده سر جای خودش است.</p>
+      <ul style="line-height:2.1;padding-inline-start:20px">
+        <li>هر سوال با <b>شماره اصلی دفترچه</b> و گزینه‌های دقیق درج می‌شود</li>
+        <li>آزمون هر سال با <b>زمان واقعی همان دفترچه</b> (۱۶۰ دقیقه؛ سال ۸۷: ۱۵۰ دقیقه) برگزار می‌شود</li>
+        <li>پاسخ تشریحی و کلید زیر هر سوال نمایش داده می‌شود</li>
+      </ul>
     </div>`:""}
-    <div class="section-title">سال‌های کنکور رسمی (۱۳۹۲ تا ۱۴۰۴)</div>
+    <div class="section-title">سال‌های کنکور رسمی (۱۳۸۷ تا ۱۴۰۴ — ۱۸ دوره)</div>
     <div class="grid-cards" id="prg"></div>
-    <div class="section-title">ساختار دفترچه رسمی بیوالکتریک (۱۲۰ سوال — ۱۶۰ دقیقه)</div>
+    <div class="section-title">ساختار دفترچه رسمی بیوالکتریک (ساختار ۱۲۰ سوالی امروز)</div>
     <div class="card"><table class="exam-table"><thead><tr><th>درس</th><th>تعداد سوال</th></tr></thead><tbody>
       ${PKR_STRUCTURE.map(([name,,n])=>`<tr><td>${name}</td><td>${pkFa(n)}</td></tr>`).join("")}
       <tr><td><b>جمع</b></td><td><b>${pkFa(120)}</b></td></tr>
     </tbody></table>
     <p style="color:var(--muted);font-size:12.5px;margin-top:10px;line-height:2">
-      توجه: ساختار دفترچه در سال‌های مختلف تفاوت داشته است؛ مثلاً دفترچه ۹۷-۹۸ شامل ۱۶۰ سوال بود
-      (ریاضیات مهندسی ۲۰، فیزیک پزشکی ۲۰، سیگنال‌ها ۲۰، سیستم‌های خطی ۱۰، مدار و الکترونیک ۲۰، فیزیولوژی و آناتومی ۱۰ و زبان عمومی ۴۰).
+      توجه: ساختار دفترچه در سال‌ها متفاوت بوده است — ۱۳۸۷: ۱۱۰ سوال (۱۵۰ دقیقه)، ۱۳۸۸ تا ۱۳۹۵ و ۱۳۹۸-۹۹: ۱۳۰ سوال،
+      ۱۳۹۶: ۱۳۵ سوال، ۱۳۹۷: ۱۴۰ سوال (زبان عمومی ۴۰ سوال) و ۱۴۰۰ به بعد: ۱۲۰ سوال — همه با ۱۶۰ دقیقه.
+      تعداد دقیق هر سال از جلد همان دفترچه خوانده شده است.
     </p></div>`;
 
   const g=$("#prg");
@@ -1235,12 +1255,12 @@ function renderKonkurOfficial(main){
     const el=document.createElement("div"); el.className="card"+(n?" clickable":"");
     el.innerHTML=`<div style="font-size:30px;font-weight:800;color:var(--accent2);line-height:1.3">${pkFa(y)}</div>
       <h3>کنکور سراسری ارشد — رسمی</h3>
-      <p>${pkFa(n)} از ${pkFa(cap)} سوال رسمی${PKR_EXAM_COUNT[y]?"":" (تعداد نامشخص)"}</p>
+      <p>${PKR_EXAM_COUNT[y]?`${pkFa(n)} از ${pkFa(cap)} سوال رسمی`:`دفترچه رسمی ${pkFa(y)} در راه است`}</p>
       <div class="bar" style="margin:8px 0"><div class="bar-fill" style="width:${Math.round(n*100/cap)}%"></div></div>
-      <div style="font-size:12px;color:${n?"var(--success)":"var(--muted)"}">${n?"آماده تمرین ✅":"در انتظار افزودن دفترچه ⏳"}</div>
-      <div class="card-actions"><button class="btn ${n?'btn-secondary':'btn-ghost'}">${n?"شروع آزمون رسمی":"راهنمای افزودن"}</button></div>`;
+      <div style="font-size:12px;color:${n?"var(--success)":"var(--muted)"}">${n?"آماده تمرین ✅":(PKR_EXAM_COUNT[y]?"دفترچه موجود — در حال درج سوالات ✍️":"هنوز دریافت نشده ⏳")}</div>
+      <div class="card-actions"><button class="btn ${n?'btn-secondary':'btn-ghost'}">${n?"شروع آزمون رسمی":(PKR_EXAM_COUNT[y]?"مشاهده وضعیت":"راهنمای تهیه")}</button></div>`;
     el.onclick=()=>{
-      if(!n){ toast("⏳ هنوز سوال رسمی این سال اضافه نشده — PDF دفترچه را در چت بفرست"); return; }
+      if(!n){ toast(PKR_EXAM_COUNT[y]?"✍️ دفترچه این سال موجود است و سوالاتش در نوبت درج قرار دارد":"⏳ دفترچه این سال هنوز دریافت نشده"); return; }
       setView("konkur-official-year"); STATE._offYear=y;
     };
     g.appendChild(el);
@@ -1253,7 +1273,7 @@ function renderKonkurOfficialYear(main){
   const subs=prSubjects().filter(s=>prQ(year,s).length);
   main.innerHTML=`
     <div class="page-head"><h1>📜 کنکور رسمی ${pkFa(year)}</h1>
-      <p>${pkFa(prYearCount(year))} سوال رسمی از دفترچه — با شماره سوال اصلی</p>
+      <p>${pkFa(prYearCount(year))} از ${pkFa(PKR_EXAM_COUNT[year]||PKR_PER_YEAR)} سوال رسمی دفترچه — با شماره سوال اصلی · زمان آزمون ${pkFa(prTimeMin(year))} دقیقه</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="startOfficial('${year}')">🎲 آزمون رسمی همین سال (${pkFa(prYearCount(year))} سوال)</button>
         <button class="btn btn-ghost" onclick="setView('konkur')">🔙 فهرست سال‌ها</button>
@@ -1278,9 +1298,9 @@ function startOfficial(year, sid){
   STATE.quiz={questions:qs, idx:0, correct:0,
               subject: sid?subName(sid):("کنکور رسمی "+pkFa(year)),
               konkur:{year:year, sid:sid, official:true}};
-  if(pkExamOn()) pkAttachExam(STATE.quiz, qs.length);
+  pkAttachExam(STATE.quiz, qs.length, prTimeMin(year)*60);   // آزمون رسمی همیشه زمان‌دار با زمان واقعی دفترچه
   setView("quiz-playing");
-  if(pkExamOn()) pkStartTimer();
+  pkStartTimer();
 }
 
 /* ═══ کنکورهای آزمایشی (۱۲۰۰ سوال — ۱۰ سال) ═══ */
@@ -1306,6 +1326,9 @@ function pkToQuiz(year, sid, list){
     answer: q.a,
     subject: sid,
     year: pkFa(year),
+    no: q.no || null,
+    src: "دفترچه رسمی " + pkFa(year),
+    img: q.img || null,
     konkori: q.k || "",
     full_solution: q.s || ""
   }));

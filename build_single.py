@@ -20,6 +20,12 @@ def read(p, enc='utf-8'):
     with open(p, encoding=enc) as f:
         return f.read()
 
+def collect_official_js():
+    """دفترچه‌های رسمی کنکور (PKR) — فایل‌های konkur_official_*.js"""
+    import glob
+    return sorted(glob.glob(os.path.join(WEB, 'konkur_official_*.js')))
+
+
 def collect_konkur_js():
     import glob
     return sorted(glob.glob(os.path.join(WEB, 'konkur_*.js')))
@@ -62,6 +68,10 @@ def main():
         kf = collect_konkur_js()
         konkurjs = "\n".join(read(f) for f in kf)
         konkurfiles = [os.path.basename(f) for f in kf]
+    offjs = ""
+    offfiles = collect_official_js()
+    if offfiles:
+        offjs = "\n".join(read(f) for f in offfiles)
     fontcss= read(os.path.join(FONTS, 'vazirmatn-embedded.css'))
     icon   = "data:image/png;base64," + base64.b64encode(open(os.path.join(WEB,'icon-192.png'),'rb').read()).decode()
 
@@ -116,6 +126,7 @@ __CSS__</style>
 <script>__NEWJS__</script>
 <script>__READER__</script>
 <script>__KONKUR__</script>
+<script>__OFFICIAL__</script>
 <script>__JS__</script>
 <script>
 /* ناوبری */
@@ -151,6 +162,7 @@ document.addEventListener("touchend", function(e){
               .replace("__NEWJS__", newjs)
               .replace("__READER__", reader)
               .replace("__KONKUR__", konkurjs or "")
+              .replace("__OFFICIAL__", offjs)
               .replace("__FONT__", fontcss)
               .replace("__CSS__", css)
               .replace("__DATA__", data)
