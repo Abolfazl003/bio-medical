@@ -387,9 +387,10 @@ function renderQuiz(main){
       <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
       <div class="q-card">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
-          <div class="q-text" style="flex:1">${q.q}</div>
+          <div class="q-text" style="flex:1">${q.no?`<span style="color:var(--muted);font-size:12.5px">سوال ${pkFa(q.no)}${q.src?` — ${q.src}`:""}</span><br>`:""}${q.q}</div>
           <button class="btn btn-sm ${isSaved?'btn-primary':'btn-ghost'}" id="saveBtn" title="ذخیره برای مرور">${isSaved?'💾 ذخیره شد':'💾 ذخیره'}</button>
         </div>
+        ${q.img?`<div style="text-align:center;margin:10px 0"><img src="${q.img}" alt="شکل سوال" style="max-width:100%;border-radius:10px;background:#fff;padding:6px"></div>`:""}
         <div id="choices">
           ${q.choices.map((c,i)=>`<div class="choice" data-i="${i}"><div class="letter">${letterOf(i)}</div><div>${c}</div></div>`).join("")}
         </div>
@@ -1324,6 +1325,9 @@ function pkToQuiz(year, sid, list){
     answer: q.a,
     subject: sid,
     year: pkFa(year),
+    no: q.no || null,
+    src: "دفترچه رسمی " + pkFa(year),
+    img: q.img || null,
     konkori: q.k || "",
     full_solution: q.s || ""
   }));
