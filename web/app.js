@@ -199,7 +199,7 @@ function renderDashboard(main){
         <div class="card-actions"><button class="btn" style="background:var(--warning);color:#0f172a">شروع کلاس</button></div></div>
       <div class="card clickable" onclick="setView('books')"><div class="emoji">📕</div><h3>کتابخانه: ${(typeof bookTotalCount==="function"?bookTotalCount():0)} کتاب</h3><p>${(typeof allBooks==="function"?allBooks().reduce((a,b)=>a+b.chapters.length,0):0)} فصل، شکل‌های واقعی، فرمول و مثال حل‌شده — هر کتاب تست اختصاصی دارد</p>
         <div class="card-actions"><button class="btn btn-primary">مطالعه کتاب</button></div></div>
-      <div class="card clickable" onclick="setView('freebooks')"><div class="emoji">🔗</div><h3>کتاب‌های رایگان</h3><p>لینک منابع آزاد قانونی برای مطالعه عمیق</p>
+      <div class="card clickable" onclick="setView('freebooks')"><div class="emoji">🏛</div><h3>منابع رسمی سنجش</h3><p>${(typeof orAll==="function")?pkFa(orCount()):"۰"} منبع رسمی اعلام‌شدهٔ وزارت بهداشت — ${(typeof orWait==="function")?pkFa(orWait().length):"۰"} مورد در انتظار PDF</p>
         <div class="card-actions"><button class="btn btn-ghost">مشاهده</button></div></div>
     </div>
     <div class="section-title">📚 دروس</div>
@@ -207,7 +207,7 @@ function renderDashboard(main){
     <div class="section-title">⭐ دسترسی سریع</div>
     <div class="grid-cards">
       <div class="card clickable" onclick="setView('savedq')"><div class="emoji">💾</div><h3>سوالات ذخیره‌شده (${(STATE.progress.saved_questions||[]).length})</h3><p>سوالات مهمی که ذخیره کردی برای مرور</p></div>
-      <div class="card clickable" onclick="setView('freebooks')"><div class="emoji">🔗</div><h3>کتاب‌های رایگان</h3><p>لینک‌های قانونی و آزاد منابع درسی</p></div>
+      <div class="card clickable" onclick="setView('freebooks')"><div class="emoji">🏛</div><h3>منابع رسمی و کتاب‌های رایگان</h3><p>منابع مصوب سنجش + لینک‌های قانونی و آزاد منابع درسی</p></div>
       <div class="card clickable" onclick="setView('books')"><div class="emoji">📕</div><h3>کتابخانه درسی (${(typeof bookTotalCount==="function"?bookTotalCount():0)} کتاب)</h3><p>چند کتاب برای هر درس + ۲۰ منبع مرجع کنکور</p></div>
       <div class="card clickable" onclick="setView('progress')"><div class="emoji">⏱</div><h3>زمان مطالعه و برنامه</h3><p>چقدر خواندی و چند روز دیگر تمام می‌شود</p></div>
     </div>
@@ -267,6 +267,31 @@ function renderSubjectDetail(main){
   const bs=(typeof bookList==="function")?bookList(s.id):[];
   const qbk=bs.reduce((a,b)=>a+(((typeof QB!=="undefined"&&QB[b.id])||[]).length),0);
   const mins=bs.reduce((a,b)=>a+b.minutes,0);
+  const refGroups=(typeof orForSubject==="function")?orForSubject(s.id):[];
+  const refsCard=refGroups.length?`
+    <div class="section-title">🏛 منابع رسمی اعلام‌شدهٔ سنجش برای این درس</div>
+    ${refGroups.map(g=>`
+    <div class="card" style="border-color:${g.color}44;margin-bottom:12px">
+      <h3 style="color:${g.color}">${g.emoji} ${g.group}</h3>
+      <div style="margin-top:8px">
+      ${g.refs.map(r=>`
+        <div style="padding:10px 0;border-bottom:1px dashed var(--border)">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <b style="font-size:14.5px">${r.title}</b>
+            <span class="badge" style="background:${r.status==="inapp"?"rgba(16,185,129,.18)":"rgba(245,158,11,.18)"};color:${r.status==="inapp"?"var(--success)":"var(--warning)"}">
+              ${r.status==="inapp"?"✅ در اپ موجود":"⏳ در انتظار PDF"}</span>
+          </div>
+          <div style="color:var(--muted);font-size:12.5px;margin-top:4px">✍️ ${r.author}${r.meta?" — "+r.meta:""}</div>
+          <div style="font-size:12.5px;line-height:1.95;margin-top:4px">${r.note||""}</div>
+          ${r.inApp?`<div style="font-size:12px;color:var(--success);margin-top:3px">📌 ${r.inApp}</div>`:""}
+        </div>`).join("")}
+      </div>
+    </div>`).join("")}
+    <div class="card" style="background:rgba(245,158,11,.07);border-color:rgba(245,158,11,.35);margin-bottom:20px">
+      <div style="font-size:13px;line-height:2">⏳ منابعی که با برچسب «در انتظار PDF» هستند هنوز به اپ اضافه نشده‌اند —
+      فایل PDF آن‌ها را بفرست تا درس‌نامه، تدریس استاد و تست‌های همان منبع داخل اپ ساخته شود.</div>
+      <div style="margin-top:8px"><button class="btn btn-ghost" onclick="setView('freebooks')">🏛 فهرست کامل منابع رسمی همهٔ درس‌ها</button></div>
+    </div>`:"";
   main.innerHTML=`
     <div class="card" style="background:linear-gradient(135deg,${s.color}22,transparent);border-color:${s.color}44;margin-bottom:16px">
       <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
@@ -284,6 +309,7 @@ function renderSubjectDetail(main){
       </div>
       ${bs.length?`<div style="font-size:12px;color:var(--muted);margin-top:12px">${bs.map(b=>`${b.icon} ${b.title}`).join(" • ")}</div>`:""}
     </div>
+    ${refsCard}
     <div class="section-title">📖 سرفصل‌ها</div><div id="lessons"></div>`;
   const box=$("#lessons");
   s.lessons.forEach((L,i)=>{
@@ -681,9 +707,44 @@ function renderBooks(main){
   });
 }
 function renderFreeBooks(main){
-  main.innerHTML=`<div class="page-head"><h1>🔗 کتاب‌های رایگان و منابع آزاد</h1>
-    <p>این منابع همگی به صورت قانونی توسط نویسندگان/دانشگاه‌ها به صورت آزاد یا پیش‌نمایش در دسترس قرار گرفته‌اند. برای استفاده شخصی خودت ازشون استفاده کن.</p></div>
+  const hasRefs=(typeof OFFICIAL_REFS!=="undefined");
+  const all=hasRefs?orAll():[];
+  const waiting=all.filter(r=>r.status!=="inapp");
+  main.innerHTML=`<div class="page-head"><h1>🏛 منابع رسمی و 🔗 کتاب‌های رایگان</h1>
+    <p>فهرست <b>منابع رسمی اعلام‌شدهٔ وزارت بهداشت</b> برای آزمون ارشد مهندسی پزشکی (بیوالکتریک) — به‌همراه منابع آزاد قانونی برای مطالعهٔ عمیق‌تر. این‌ها برای استفادهٔ شخصی خودت هستند.</p></div>
+    ${hasRefs?`
+    <div class="big-stats">
+      <div class="big-stat"><div class="num" style="color:var(--accent2)">${pkFa(all.length)}</div><div class="lbl">منبع رسمی 📌</div></div>
+      <div class="big-stat"><div class="num" style="color:var(--success)">${pkFa(all.length-waiting.length)}</div><div class="lbl">در اپ موجود ✅</div></div>
+      <div class="big-stat"><div class="num" style="color:var(--warning)">${pkFa(waiting.length)}</div><div class="lbl">در انتظار PDF ⏳</div></div>
+    </div>
+    <div class="section-title">📌 منابع رسمی اعلام‌شدهٔ سنجش (وزارت بهداشت)</div>
+    <div id="orl"></div>`:""}
+    <div class="section-title">🔗 کتاب‌های رایگان و منابع آزاد</div>
     <div id="fb"></div>`;
+  if(hasRefs){
+    const obox=$("#orl");
+    orGroups().forEach(g=>{
+      const el=document.createElement("div"); el.className="card";
+      el.style.cssText=`border-color:${g.color}44;margin-bottom:14px`;
+      el.innerHTML=`<h3 style="color:${g.color}">${g.emoji} ${g.title}</h3>
+        <div style="margin-top:6px">${g.refs.map(r=>`
+          <div style="padding:9px 0;border-bottom:1px dashed var(--border);font-size:13px;line-height:1.95">
+            <b>${r.title}</b>
+            <span class="badge" style="margin-inline-start:6px;background:${r.status==="inapp"?"rgba(16,185,129,.18)":"rgba(245,158,11,.18)"};color:${r.status==="inapp"?"var(--success)":"var(--warning)"}">
+              ${r.status==="inapp"?"✅ موجود در اپ":"⏳ در انتظار PDF"}</span>
+            <div style="color:var(--muted);font-size:12.5px">✍️ ${r.author}${r.meta?" — "+r.meta:""}</div>
+          </div>`).join("")}</div>`;
+      obox.appendChild(el);
+    });
+    if(waiting.length){
+      const el=document.createElement("div"); el.className="card";
+      el.style.cssText="background:rgba(245,158,11,.07);border-color:rgba(245,158,11,.35);margin-bottom:20px";
+      el.innerHTML=`<h3 style="color:var(--warning)">⏳ ${pkFa(waiting.length)} منبع رسمی هنوز به اپ اضافه نشده</h3>
+        <div style="font-size:13px;line-height:2">فایل PDF این منابع را بفرست تا بر اساس هر کدام، کتاب/درس‌نامه، تدریس استاد و تست‌های اختصاصی داخل اپ ساخته شود.</div>`;
+      obox.appendChild(el);
+    }
+  }
   const box=$("#fb");
   (APP_DATA.free_books||[]).forEach(b=>{
     const el=document.createElement("div");el.className="book";
@@ -800,7 +861,7 @@ function renderSettings(main){
       </div>
       <h3 style="margin:16px 0 8px">درباره</h3>
       <p style="font-size:13px;line-height:2;color:var(--muted)">
-      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۵ (موبایل/آفلاین/PWA)<br>
+      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۶ (موبایل/آفلاین/PWA)<br>
       شامل: ۱۰ کتاب درسی کامل (۴۰ فصل)، دوره پایه تا پیشرفته، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
       </p>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">

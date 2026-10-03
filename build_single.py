@@ -30,7 +30,7 @@ def collect_konkur_js():
     import glob
     return sorted(glob.glob(os.path.join(WEB, 'konkur_*.js')))
 
-NEW_FAMILIES = ['figures.js','figures2.js','figures_fit.js','book_manifest.js',
+NEW_FAMILIES = ['official_refs.js','figures.js','figures2.js','figures_fit.js','book_manifest.js',
                 'qbook_a.js','qbook_b.js','qbook_c.js','qbook_d.js','qbook_e.js',
                 'study_progress.js','teacher_jozve.js']
 
