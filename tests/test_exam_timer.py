@@ -16,15 +16,15 @@ with sync_playwright() as pw:
     pg.on("console", lambda m: errs.append(m.text) if m.type == "error" else None)
     pg.goto(FILE); pg.wait_for_timeout(1800)
 
-    pg.evaluate("setView('konkur')"); pg.wait_for_timeout(500)
+    pg.evaluate("setView('mock')"); pg.wait_for_timeout(500)
     check("دکمه حالت آزمون واقعی", "حالت آزمون واقعی" in pg.evaluate("document.querySelector('#main').innerText"))
     pg.evaluate("pkExamToggle()"); pg.wait_for_timeout(400)
     check("روشن شدن حالت آزمون", pg.evaluate("pkExamOn()") is True)
 
-    pg.evaluate("openKonkurYear('1403')"); pg.wait_for_timeout(400)
+    pg.evaluate("openMockYear('1403')"); pg.wait_for_timeout(400)
     check("نمایش زمان ۱۶۰ دقیقه در صفحه سال", "۱۶۰ دقیقه" in pg.evaluate("document.querySelector('#main').innerText"))
 
-    pg.evaluate("startKonkur('1403',null,false)"); pg.wait_for_timeout(1200)
+    pg.evaluate("startMock('1403',null,false)"); pg.wait_for_timeout(1200)
     check("نمایش تایمر روی آزمون", pg.query_selector("#examTimer") is not None)
     check("محدودیت ۹۶۰۰ ثانیه (۱۶۰ دقیقه برای ۱۲۰ سوال)", pg.evaluate("STATE.quiz.exam.limit") == 9600)
     check("۱۲۰ سوال در آزمون سال", pg.evaluate("STATE.quiz.questions.length") == 120)
@@ -46,10 +46,10 @@ with sync_playwright() as pw:
     check("گزارش زمان کل و میانگین", "زمان کل آزمون" in res and "میانگین هر سوال" in res)
     check("جدول زمان هر درس", "exam-table" in pg.evaluate("document.querySelector('#main').innerHTML"))
 
-    pg.evaluate("setView('konkur')"); pg.wait_for_timeout(300)
+    pg.evaluate("setView('mock')"); pg.wait_for_timeout(300)
     pg.evaluate("pkExamToggle()"); pg.wait_for_timeout(300)
     check("خاموش شدن حالت آزمون", pg.evaluate("pkExamOn()") is False)
-    pg.evaluate("startKonkur('1402','math',false)"); pg.wait_for_timeout(600)
+    pg.evaluate("startMock('1402','math',false)"); pg.wait_for_timeout(600)
     check("آزمون آزاد بدون تایمر", pg.query_selector("#examTimer") is None and pg.evaluate("STATE.quiz.exam") is None)
     check("۱۵ سوال ریاضی ۱۴۰۲", pg.evaluate("STATE.quiz.questions.length") == 15)
     check("بدون خطای کنسول", len(errs) == 0, str(errs[:2]))

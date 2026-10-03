@@ -32,6 +32,7 @@ function loadProgress(){
       if(!p.quiz_stats) p.quiz_stats = {correct:0,total:0};
       if(!p.exam_results) p.exam_results = [];
       if(!p.konkur_results) p.konkur_results = {};
+      if(!p.konkur_official_results) p.konkur_official_results = {};
       return p;
     }
   } catch(e){}
@@ -41,7 +42,8 @@ function loadProgress(){
     completed_lessons:[],
     quiz_stats:{correct:0,total:0},
     exam_results:[],
-    konkur_results:{},   // نتایج آزمون‌های درس‌به‌درس کنکورهای ۱۰ سال اخیر
+    konkur_results:{},            // نتایج کنکور آزمایشی (درس‌به‌درس)
+    konkur_official_results:{},   // نتایج آزمون‌های رسمی دفترچه
     theme:"dark"
   };
 }
@@ -56,7 +58,8 @@ const EXAM_META={
   signals:{n:"سیگنال‌ها و سیستم‌ها",e:"📡",c:"#10b981"}, control:{n:"کنترل سیستم‌ها",e:"🎛️",c:"#6366f1"},
   instrumentation:{n:"ابزار دقیق پزشکی",e:"🩺",c:"#06b6d4"}, imaging:{n:"تصویربرداری پزشکی",e:"🖼️",c:"#a855f7"},
   biomaterials:{n:"بیومواد",e:"🧪",c:"#f97316"}, biomechanics:{n:"بیومکانیک",e:"🦴",c:"#14b8a6"},
-  anatomy:{n:"آناتومی و فیزیولوژی",e:"🫀",c:"#ec4899"}
+  anatomy:{n:"آناتومی و فیزیولوژی",e:"🫀",c:"#ec4899"},
+  english:{n:"زبان عمومی",e:"🔤",c:"#94a3b8"}
 };
 function subColor(id){const s=APP_DATA.subjects.find(x=>x.id===id);return s?s.color:(EXAM_META[id]?EXAM_META[id].c:"#38bdf8");}
 function subName(id){const s=APP_DATA.subjects.find(x=>x.id===id);if(s)return s.name;
@@ -106,6 +109,8 @@ function appBack(){
     "bookmarks":"dashboard",
     "freebooks":"dashboard",
     "jozve-sub":"teacher",
+    "mock-year":"mock",
+    "konkur-official-year":"konkur",
     "progress":"dashboard"
   };
   if(v==="jozve"){
@@ -140,8 +145,10 @@ function render(){
   else if(v==="quiz-playing") renderQuiz(main);
   else if(v==="quiz-result") renderQuizResult(main);
   else if(v==="exams") renderExamsHome(main);
-  else if(v==="konkur") renderKonkurHome(main);
-  else if(v==="konkur-year") renderKonkurYear(main);
+  else if(v==="konkur") renderKonkurOfficial(main);
+  else if(v==="konkur-official-year") renderKonkurOfficialYear(main);
+  else if(v==="mock") renderMockHome(main);
+  else if(v==="mock-year") renderMockYear(main);
   else if(v==="exam-playing") renderExam(main);
   else if(v==="exam-result") renderExamResult(main);
   else if(v==="books") renderBooks(main);
@@ -450,7 +457,9 @@ function renderQuizResult(main){
   const Q=STATE.quiz;const pct=Math.round(Q.correct*100/Q.questions.length);
   // ثبت نتیجه آزمون کنکورهای ۱۰ سال اخیر
   if(Q.konkur && Q.konkur.year && Q.konkur.sid){
-    const all=(STATE.progress.konkur_results||(STATE.progress.konkur_results={}));
+    const all=Q.konkur.official
+      ? (STATE.progress.konkur_official_results||(STATE.progress.konkur_official_results={}))
+      : (STATE.progress.konkur_results||(STATE.progress.konkur_results={}));
     const key=Q.konkur.year+"__"+Q.konkur.sid;
     const prev=all[key];
     all[key]={score:Q.correct, total:Q.questions.length, date:new Date().toLocaleDateString("fa-IR"),
@@ -496,7 +505,10 @@ function renderQuizResult(main){
 /* ---- Exams (same as before, improved answer display) ---- */
 function renderExamsHome(main){
   main.innerHTML=`<div class="page-head"><h1>🎓 آزمون‌های ۱۰ سال اخیر</h1><p>۶۰ دقیقه، ۲۵ سوال — با کارنامه تشریحی</p>
-    <div style="margin-top:12px"><button class="btn btn-primary" onclick="setView('konkur')">🏛 بانک کامل کنکورهای ۱۰ سال — درس به درس</button></div></div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="setView('mock')">🎯 کنکور آزمایشی — ۱۲۰۰ سوال (۱۰ سال)</button>
+      <button class="btn btn-ghost" onclick="setView('konkur')">📜 سوالات رسمی دفترچه‌ها</button>
+    </div></div>
     <div class="section-title">📝 آزمون‌های جامع شبیه‌سازی‌شده</div><div class="grid-cards" id="eg"></div>`;
   const g=$("#eg");
   APP_DATA.exams.forEach((e,i)=>{
@@ -787,7 +799,7 @@ function renderSettings(main){
       </div>
       <h3 style="margin:16px 0 8px">درباره</h3>
       <p style="font-size:13px;line-height:2;color:var(--muted)">
-      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۲ (موبایل/آفلاین/PWA)<br>
+      اپلیکیشن شخصی آمادگی کنکور ارشد مهندسی پزشکی — نسخه ۱.۳.۳ (موبایل/آفلاین/PWA)<br>
       شامل: ۱۰ کتاب درسی کامل (۴۰ فصل)، دوره پایه تا پیشرفته، بانک سوال، تست ترکیبی شافل، سوالات تمرینی تالیفی، آزمون‌های ۱۰ ساله، استاد تدریس خصوصی، و حالت آفلاین.
       </p>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -1150,7 +1162,124 @@ function pkAttachExam(Q, nQuestions){
   return Q;
 }
 
-/* ═══ کنکورهای ۱۰ سال اخیر ═══ */
+
+/* ═══════════════════════════════════════════════════════════
+   📜 بانک سوالات رسمی کنکور (دفترچه‌های وزارت بهداشت)
+   ساختار داده: PKR[سال][درس] = [{no, q, c:[۴], a, k, s}, …]
+   (هر سوال رسمی با شماره اصلی خودش؛ k = کلید رسمی، s = حل تشریحی)
+   بخش «کنکور آزمایشی» جداگانه است و دست‌نخورده می‌ماند.
+   ═══════════════════════════════════════════════════════════ */
+const PKR_YEARS = ["1394","1395","1396","1397","1398","1399","1400","1401","1402","1403"];
+const PKR_PER_YEAR = 120;                    // دفترچه بیوالکتریک: ۱۲۰ سوال
+const PKR_STRUCTURE = [
+  ["ریاضیات مهندسی", "math", 20], ["فیزیک پزشکی", "physics", 20], ["سیگنال‌ها و سیستم‌ها", "signals", 20],
+  ["سیستم‌های خطی", "control", 10], ["مدار و الکترونیک", "circuits", 20], ["فیزیولوژی و آناتومی", "anatomy", 10],
+  ["زبان عمومی", "english", 20]
+];
+
+function prSubjects(){
+  if(typeof PKR!=="undefined" && PKR.subjects) return Object.keys(PKR.subjects);
+  return ["math","physics","signals","control","circuits","anatomy","english"];
+}
+function prQ(year, sid){ return (typeof PKR!=="undefined" && PKR[year] && PKR[year][sid]) || []; }
+function prYearCount(year){ return prSubjects().reduce((a,s)=>a+prQ(year,s).length,0); }
+function prTotalCount(){ return PKR_YEARS.reduce((a,y)=>a+prYearCount(y),0); }
+function prHas(){ return typeof PKR!=="undefined" && prTotalCount()>0; }
+
+function renderKonkurOfficial(main){
+  const total=prTotalCount();
+  const years=PKR_YEARS.slice().reverse();
+  main.innerHTML=`
+    <div class="page-head"><h1>📜 بانک سوالات رسمی کنکور</h1>
+      <p>سوالات <b>واقعی دفترچه‌های کنکور ارشد مهندسی پزشکی (بیوالکتریک)</b> — با شماره سوال اصلی، کلید رسمی و حل تشریحی</p>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="setView('mock')">🎯 کنکور آزمایشی — ۱۲۰۰ سوال شبیه‌ساز (۱۰ سال)</button>
+        ${prHas()?'<button class="btn btn-ghost" onclick="startOfficial(PKR_YEARS[PKR_YEARS.length-1])">📜 آزمون رسمی جدیدترین سال</button>':''}
+      </div></div>
+    <div class="big-stats">
+      <div class="big-stat"><div class="num" style="color:var(--accent)">${pkFa(total)}</div><div class="lbl">سوال رسمی 📜</div></div>
+      <div class="big-stat"><div class="num" style="color:var(--accent2)">${pkFa(PKR_YEARS.length)}</div><div class="lbl">دوره (سال) 📅</div></div>
+      <div class="big-stat"><div class="num" style="color:var(--warning)">${pkFa(PKR_YEARS.length*PKR_PER_YEAR)}</div><div class="lbl">ظرفیت کل 🎯</div></div>
+    </div>
+    ${total===0?`
+    <div class="card" style="border-color:var(--warning);background:rgba(245,158,11,.07)">
+      <h3 style="color:var(--warning)">⏳ این بخش در انتظار سوالات رسمی است</h3>
+      <p style="line-height:2">سوالات <b>کنکور آزمایشی</b> (۱۲۰۰ سوال) دست‌نخورده در بخش «کنکور آزمایشی» باقی مانده است.
+      برای پر کردن این بخش با <b>متن و گزینه‌های دقیق دفترچه‌های رسمی</b>:</p>
+      <ol style="line-height:2.1;padding-inline-start:20px">
+        <li>دفترچه PDF همان سال (رشته مهندسی پزشکی بیوالکتریک) را دانلود کن — رایگان از آرشیوهای سنجش پزشکی</li>
+        <li>فایل PDF (یا حتی عکس صفحه‌های دفترچه) را در چت بفرست</li>
+        <li>سوال‌ها با شماره اصلی، گزینه‌های دقیق، کلید رسمی و حل تشریحی داخل همین صفحه درج می‌شوند</li>
+      </ol>
+      <p style="color:var(--muted);font-size:13px">تا آن زمان، تمرین با بخش «🎯 کنکور آزمایشی» (۱۲۰۰ سوال، هر سال ۱۲۰ سوال + تایمر ۱۶۰ دقیقه‌ای) را ادامه بده.</p>
+    </div>`:""}
+    <div class="section-title">سال‌های کنکور رسمی</div>
+    <div class="grid-cards" id="prg"></div>
+    <div class="section-title">ساختار دفترچه رسمی بیوالکتریک (۱۲۰ سوال — ۱۶۰ دقیقه)</div>
+    <div class="card"><table class="exam-table"><thead><tr><th>درس</th><th>تعداد سوال</th></tr></thead><tbody>
+      ${PKR_STRUCTURE.map(([name,,n])=>`<tr><td>${name}</td><td>${pkFa(n)}</td></tr>`).join("")}
+      <tr><td><b>جمع</b></td><td><b>${pkFa(120)}</b></td></tr>
+    </tbody></table>
+    <p style="color:var(--muted);font-size:12.5px;margin-top:10px;line-height:2">
+      توجه: ساختار دفترچه در سال‌های مختلف تفاوت داشته است؛ مثلاً دفترچه ۹۷-۹۸ شامل ۱۶۰ سوال بود
+      (ریاضیات مهندسی ۲۰، فیزیک پزشکی ۲۰، سیگنال‌ها ۲۰، سیستم‌های خطی ۱۰، مدار و الکترونیک ۲۰، فیزیولوژی و آناتومی ۱۰ و زبان عمومی ۴۰).
+    </p></div>`;
+
+  const g=$("#prg");
+  years.forEach(y=>{
+    const n=prYearCount(y);
+    const el=document.createElement("div"); el.className="card"+(n?" clickable":"");
+    el.innerHTML=`<div style="font-size:30px;font-weight:800;color:var(--accent2);line-height:1.3">${pkFa(y)}</div>
+      <h3>کنکور سراسری ارشد — رسمی</h3>
+      <p>${pkFa(n)} از ${pkFa(PKR_PER_YEAR)} سوال رسمی</p>
+      <div class="bar" style="margin:8px 0"><div class="bar-fill" style="width:${Math.round(n*100/PKR_PER_YEAR)}%"></div></div>
+      <div style="font-size:12px;color:${n?"var(--success)":"var(--muted)"}">${n?"آماده تمرین ✅":"در انتظار افزودن دفترچه ⏳"}</div>
+      <div class="card-actions"><button class="btn ${n?'btn-secondary':'btn-ghost'}">${n?"شروع آزمون رسمی":"راهنمای افزودن"}</button></div>`;
+    el.onclick=()=>{
+      if(!n){ toast("⏳ هنوز سوال رسمی این سال اضافه نشده — PDF دفترچه را در چت بفرست"); return; }
+      setView("konkur-official-year"); STATE._offYear=y;
+    };
+    g.appendChild(el);
+  });
+}
+
+function renderKonkurOfficialYear(main){
+  const year=STATE._offYear;
+  if(!year || !prQ(year,"math").length && prYearCount(year)===0){ setView("konkur"); return; }
+  const subs=prSubjects().filter(s=>prQ(year,s).length);
+  main.innerHTML=`
+    <div class="page-head"><h1>📜 کنکور رسمی ${pkFa(year)}</h1>
+      <p>${pkFa(prYearCount(year))} سوال رسمی از دفترچه — با شماره سوال اصلی</p>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="startOfficial('${year}')">🎲 آزمون رسمی همین سال (${pkFa(prYearCount(year))} سوال)</button>
+        <button class="btn btn-ghost" onclick="setView('konkur')">🔙 فهرست سال‌ها</button>
+      </div></div>
+    <div class="grid-cards" id="osg"></div>`;
+  const g=$("#osg");
+  subs.forEach(sid=>{
+    const el=document.createElement("div"); el.className="card clickable";
+    el.innerHTML=`<div class="emoji">${subEmoji(sid)}</div><h3>${subName(sid)}</h3>
+      <p>${pkFa(prQ(year,sid).length)} سوال رسمی</p>
+      <div class="card-actions"><button class="btn btn-secondary">شروع آزمون</button></div>`;
+    el.onclick=()=>startOfficial(year,sid);
+    g.appendChild(el);
+  });
+}
+
+function startOfficial(year, sid){
+  let qs=[];
+  if(!sid) prSubjects().forEach(s=>{ qs=qs.concat(pkToQuiz(year,s,prQ(year,s))); });
+  else qs=pkToQuiz(year,sid,prQ(year,sid));
+  if(!qs.length){ toast("⏳ سوال رسمی این بخش هنوز اضافه نشده"); return; }
+  STATE.quiz={questions:qs, idx:0, correct:0,
+              subject: sid?subName(sid):("کنکور رسمی "+pkFa(year)),
+              konkur:{year:year, sid:sid, official:true}};
+  if(pkExamOn()) pkAttachExam(STATE.quiz, qs.length);
+  setView("quiz-playing");
+  if(pkExamOn()) pkStartTimer();
+}
+
+/* ═══ کنکورهای آزمایشی (۱۲۰۰ سوال — ۱۰ سال) ═══ */
 
 /* ---- توابع پایه ---- */
 function pkYears(){
@@ -1179,22 +1308,22 @@ function pkToQuiz(year, sid, list){
 }
 
 /* ---- صفحه اصلی: فهرست ۱۰ سال ---- */
-function renderKonkurHome(main){
+function renderMockHome(main){
   const years = pkYears().reverse();       // جدیدترین سال اول
   let doneCount=0, answeredYears=0;
   years.forEach(y=>{ if(pkSubjects().some(s=>pkRes(y,s))) answeredYears++; });
   pkSubjects().forEach(s=>years.forEach(y=>{ if(pkRes(y,s)) doneCount++; }));
 
   main.innerHTML=`
-    <div class="page-head"><h1>🏛 کنکورهای ۱۰ سال اخیر</h1>
-      <p>سوالات سال به سال، درس به درس — هر سال ${pkFa(pkSubjects().length)} درس و ${pkFa(pkYearCount(pkYears().sort()[pkYears().length-1]||"0"))} سوال، دقیقاً به اندازه کنکور واقعی (۱۲۰ سوال)</p>
+    <div class="page-head"><h1>🎯 کنکورهای آزمایشی — ۱۰ سال</h1>
+      <p>شبیه‌ساز کامل جلسه کنکور: درس به درس — هر سال ${pkFa(pkSubjects().length)} درس و ${pkFa(pkYearCount(pkYears().sort()[pkYears().length-1]||"0"))} سوال، با تایمر واقعی و کارنامه زمان</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="startKonkurAll()">🎲 همه سال‌ها — تست ترکیبی</button>
         <button class="btn btn-ghost" onclick="setView('exams')">🎓 آزمون‌های جامع ۲۵ سوالی</button>
         <button class="btn ${pkExamOn()?'btn-secondary':'btn-ghost'}" onclick="pkExamToggle()">${pkExamOn()?'⏱ حالت آزمون واقعی: روشن (۸۰ ثانیه برای هر سوال)':'⏱ حالت آزمون واقعی: خاموش'}</button>
       </div></div>
     <div class="big-stats">
-      <div class="big-stat"><div class="num" style="color:var(--accent)">${pkFa(pkTotalCount())}</div><div class="lbl">سوال کنکوری 🗂</div></div>
+      <div class="big-stat"><div class="num" style="color:var(--accent)">${pkFa(pkTotalCount())}</div><div class="lbl">سوال آزمایشی 🎯</div></div>
       <div class="big-stat"><div class="num" style="color:var(--accent2)">${pkFa(years.length)}</div><div class="lbl">دوره (سال) 📅</div></div>
       <div class="big-stat"><div class="num" style="color:var(--success)">${pkFa(doneCount)}</div><div class="lbl">درس آزمون‌داده‌شده ✅</div></div>
     </div>
@@ -1207,30 +1336,32 @@ function renderKonkurHome(main){
     const solved=pkSubjects().filter(s=>pkRes(y,s)).length;
     const el=document.createElement("div"); el.className="card clickable";
     el.innerHTML=`<div style="font-size:34px;font-weight:800;color:var(--accent2);line-height:1.25">${pkFa(y)}</div>
-      <h3>کنکور سراسری ارشد</h3>
+      <h3>کنکور آزمایشی ارشد</h3>
       <p>${pkFa(pkSubjects().length)} درس • ${pkFa(n)} سوال</p>
       <div class="bar" style="margin:8px 0"><div class="bar-fill" style="width:${Math.round(solved*100/pkSubjects().length)}%"></div></div>
       <div style="font-size:12px;color:var(--muted)">${pkFa(solved)} از ${pkFa(pkSubjects().length)} درس تمرین‌شده</div>
       <div class="card-actions"><button class="btn btn-primary">مشاهده سوالات</button></div>`;
-    el.onclick=()=>openKonkurYear(y);
+    el.onclick=()=>openMockYear(y);
     g.appendChild(el);
   });
 }
 
-function openKonkurYear(year){ STATE._konkurYear=year; setView("konkur-year"); }
+function openMockYear(year){ STATE._mockYear=year; setView("mock-year"); }
+/* سازگاری با نام‌های قبلی */
+function openKonkurYear(year){ return openMockYear(year); }
 
 /* ---- صفحه سال: درس‌ها ---- */
-function renderKonkurYear(main){
-  const year=STATE._konkurYear;
-  if(!year || pkYears().indexOf(year)<0){ setView("konkur"); return; }
+function renderMockYear(main){
+  const year=STATE._mockYear;
+  if(!year || pkYears().indexOf(year)<0){ setView("mock"); return; }
   const subs=pkSubjects();
   main.innerHTML=`
-    <div class="page-head"><h1>📅 کنکور ${pkFa(year)}</h1>
+    <div class="page-head"><h1>📅 کنکور آزمایشی ${pkFa(year)}</h1>
       <p>${pkFa(subs.length)} درس • ${pkFa(pkYearCount(year))} سوال — برای هر درس یک آزمون با تصحیح و توضیح کامل</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="startKonkur('${year}')">🎲 آزمون ترکیبی همین سال (${pkFa(pkYearCount(year))} سوال)</button>
+        <button class="btn btn-primary" onclick="startMock('${year}')">🎲 آزمون ترکیبی همین سال (${pkFa(pkYearCount(year))} سوال)</button>
         <button class="btn ${pkExamOn()?'btn-secondary':'btn-ghost'}" onclick="pkExamToggle()">${pkExamOn()?'⏱ آزمون واقعی روشن — '+pkFa(Math.round(pkYearCount(year)*PK_EXAM_SEC_PER_Q/60))+' دقیقه':'⏱ آزمون واقعی: خاموش'}</button>
-        <button class="btn btn-ghost" onclick="setView('konkur')">🔙 فهرست سال‌ها</button>
+        <button class="btn btn-ghost" onclick="setView('mock')">🔙 فهرست سال‌ها</button>
       </div></div>
     <div class="grid-cards" id="sg"></div>`;
 
@@ -1247,13 +1378,13 @@ function renderKonkurYear(main){
           <div style="font-size:12px;color:${pct>=50?'var(--success)':'var(--warning)'};font-weight:700">آخرین نتیجه: ${pkFa(pct)}٪ (${pkFa(r.score)} از ${pkFa(r.total)})</div>`
         :`<div style="font-size:12px;color:var(--muted)">هنوز تمرین نشده</div>`}
       <div class="card-actions"><button class="btn btn-secondary">شروع آزمون درس</button></div>`;
-    el.onclick=()=>startKonkur(year, sid);
+    el.onclick=()=>startMock(year, sid);
     g.appendChild(el);
   });
 }
 
 /* ---- شروع آزمون: یک درس از یک سال ---- */
-function startKonkur(year, sid, shuffleQ){
+function startMock(year, sid, shuffleQ){
   let qs=[];
   if(!sid){                       // همه درس‌های یک سال
     pkSubjects().forEach(s=>{ qs=qs.concat(pkToQuiz(year, s, pkQ(year,s))); });
@@ -1262,11 +1393,14 @@ function startKonkur(year, sid, shuffleQ){
   }
   if(!qs.length) return;
   if(shuffleQ) qs=shuffle(qs);
-  STATE.quiz={questions:qs, idx:0, correct:0, subject: sid?subName(sid):("کنکور "+pkFa(year)), konkur:{year:year, sid:sid}};
+  STATE.quiz={questions:qs, idx:0, correct:0, subject: sid?subName(sid):("کنکور آزمایشی "+pkFa(year)), konkur:{year:year, sid:sid}};
   if(pkExamOn()) pkAttachExam(STATE.quiz, qs.length);
   setView("quiz-playing");
   if(pkExamOn()) pkStartTimer();
 }
+
+/* سازگاری با نام قبلی */
+function startKonkur(year, sid, shuffleQ){ return startMock(year, sid, shuffleQ); }
 
 /* ---- تست ترکیبی همه سال‌ها ---- */
 function startKonkurAll(){
@@ -1274,7 +1408,7 @@ function startKonkurAll(){
   pkYears().forEach(y=>pkSubjects().forEach(s=>{ qs=qs.concat(pkToQuiz(y,s,pkQ(y,s))); }));
   if(!qs.length) return;
   qs=shuffle(qs).slice(0,20);
-  STATE.quiz={questions:qs, idx:0, correct:0, subject:"کنکورهای ۱۰ سال اخیر (ترکیبی)", konkur:{year:null,sid:null}};
+  STATE.quiz={questions:qs, idx:0, correct:0, subject:"کنکورهای آزمایشی ۱۰ سال (ترکیبی)", konkur:{year:null,sid:null}};
   if(pkExamOn()) pkAttachExam(STATE.quiz, qs.length);
   setView("quiz-playing");
   if(pkExamOn()) pkStartTimer();
@@ -1300,7 +1434,7 @@ updateSidebarStat();
 const urlParams = new URLSearchParams(window.location.search);
 const initView = urlParams.get('view');
 seedStudyLog();
-if(initView && ["dashboard","subjects","quiz","exams","books","freebooks","bookmarks","savedq","teacher","foundation","practice","settings","progress","konkur"].includes(initView)){
+if(initView && ["dashboard","subjects","quiz","exams","books","freebooks","bookmarks","savedq","teacher","foundation","practice","settings","progress","konkur","mock"].includes(initView)){
   setView(initView);
 } else {
   setView("dashboard");

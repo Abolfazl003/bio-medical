@@ -321,15 +321,15 @@ body.pwa-installed{padding-bottom:env(safe-area-inset-bottom);}
 /* --- ناوبری موبایل: ۲ ردیف تا همه دکمه‌ها جا شوند --- */
 @media (max-width:960px){
   .sidebar{padding:4px 6px 6px;}
-  nav{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;width:100%;flex:none;}
+  nav{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;width:100%;flex:none;}
   .nav-btn{width:auto;height:46px;padding:0;}
-  main{padding-bottom:118px;}
+  main{padding-bottom:166px;}
 }
 @media (max-width:600px){
-  nav{grid-template-columns:repeat(7,1fr);}
+  nav{grid-template-columns:repeat(5,1fr);}
   .nav-btn{height:44px;}
   .nav-btn span{font-size:17px;}
-  main{padding-bottom:112px;}
+  main{padding-bottom:160px;}
 }
 
 /* --- کلاس استاد --- */

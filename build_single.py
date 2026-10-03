@@ -72,6 +72,7 @@ def main():
 <button class="nav-btn" data-view="practice"><span>✏️</span><span>تمرین</span></button>
 <button class="nav-btn" data-view="exams"><span>🎓</span><span>آزمون</span></button>
 <button class="nav-btn" data-view="konkur"><span>🏛</span><span>کنکور</span></button>
+<button class="nav-btn" data-view="mock"><span>🎯</span><span>آزمایشی</span></button>
 <button class="nav-btn" data-view="subjects"><span>📚</span><span>درس</span></button>
 <button class="nav-btn" data-view="teacher"><span>🧑‍🏫</span><span>استاد</span></button>
 <button class="nav-btn" data-view="savedq"><span>💾</span><span>ذخیره</span></button>

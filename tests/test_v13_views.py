@@ -135,10 +135,15 @@ def run():
         check("خانه استاد: ۱۰ درس", tc==10, f"n={tc}")
         check("خانه استاد: کارت زمان مطالعه", pg.evaluate("document.querySelectorAll('.st-card').length")>0)
 
-        # ── کنکور سالم بماند ──
-        pg.evaluate("setView('konkur')"); pg.wait_for_timeout(600)
+        # ── کنکور آزمایشی سالم بماند (۱۲۰۰ سوال منتقل‌شده) ──
+        pg.evaluate("setView('mock')"); pg.wait_for_timeout(600)
         kg = pg.evaluate("document.querySelector('#main').innerText")
-        check("کنکور سراسری ارشد", "کنکور سراسری ارشد" in kg and "۱۴۰۳" in kg)
+        check("کنکور آزمایشی ارشد", "کنکور آزمایشی ارشد" in kg and "۱۴۰۳" in kg)
+        check("کنکور آزمایشی: ۱۲۰۰ سوال", pg.evaluate("pkTotalCount()") == 1200)
+        # ── بخش کنکور رسمی ──
+        pg.evaluate("setView('konkur')"); pg.wait_for_timeout(600)
+        ko = pg.evaluate("document.querySelector('#main').innerText")
+        check("بخش سوالات رسمی دفترچه", "بانک سوالات رسمی کنکور" in ko and "کنکور آزمایشی" in ko)
         # ── تست ترکیبی ──
         pg.evaluate("setView('quiz')"); pg.wait_for_timeout(400)
         check("بخش تست ترکیبی باز شد", pg.locator("#main").inner_text().strip()!="")
@@ -150,7 +155,7 @@ def run():
         nv = m.evaluate("document.querySelectorAll('.nav-btn').length")
         nb = m.evaluate("(()=>{const r=document.querySelector('.sidebar').getBoundingClientRect();return {w:Math.round(r.width),h:Math.round(r.height),top:Math.round(r.top)}})()")
         overflow = m.evaluate("document.querySelector('nav').scrollWidth - document.querySelector('nav').clientWidth")
-        check("موبایل: ۱۴ دکمه ناوبری", nv==14, f"n={nv}")
+        check("موبایل: ۱۵ دکمه ناوبری", nv==15, f"n={nv}")
         check("موبایل: نوار پایین بدون سرریز افقی", overflow<=2, f"overflow={overflow} navW={nb['w']}")
         m.evaluate("setView('progress')"); m.wait_for_timeout(500)
         mo = m.evaluate("document.documentElement.scrollWidth + '/' + window.innerWidth")

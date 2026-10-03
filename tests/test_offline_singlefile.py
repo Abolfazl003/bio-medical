@@ -26,8 +26,8 @@ def run():
               str(pg.evaluate("Object.values(QB).reduce((a,q)=>a+q.length,0)")))
         check("۴۷ شکل آماده", pg.evaluate("Object.keys(FIGURES).length")==47)
         check("figureSVG کار می‌کند", pg.evaluate("figureSVG('plot-ecg').indexOf('<svg')===0"))
-        # ناوبری ۱۴ دکمه
-        check("۱۴ دکمه ناوبری", pg.evaluate("document.querySelectorAll('.nav-btn').length")==14)
+        # ناوبری ۱۵ دکمه (کنکور رسمی + کنکور آزمایشی)
+        check("۱۵ دکمه ناوبری", pg.evaluate("document.querySelectorAll('.nav-btn').length")==15)
         # قفسه کتاب‌ها
         pg.evaluate("setView('books')"); pg.wait_for_timeout(400)
         check("صفحه کتابخانه", pg.evaluate("document.querySelectorAll('#fullbooks .card').length")==10)
@@ -49,9 +49,12 @@ def run():
         pl = pg.evaluate("studyPlan()")
         check("صفحه زمان آفلاین", pg.evaluate("document.querySelectorAll('.st-chart .st-col').length")==14)
         check("محاسبه روزها", pl["daysLeft"]>0 and pl["tot"]["total"]>4000, json.dumps({"d":pl["daysLeft"],"t":pl["tot"]["total"]}))
-        # کنکور + تست ترکیبی سالم
+        # کنکور آزمایشی (۱۲۰۰ سوال) + بخش سوالات رسمی
+        pg.evaluate("setView('mock')"); pg.wait_for_timeout(400)
+        check("کنکور آزمایشی ۱۰ ساله سالم", "کنکور آزمایشی ارشد" in pg.evaluate("document.querySelector('#main').innerText"))
         pg.evaluate("setView('konkur')"); pg.wait_for_timeout(400)
-        check("کنکور ۱۰ ساله سالم", "کنکور سراسری ارشد" in pg.evaluate("document.querySelector('#main').innerText"))
+        check("بخش سوالات رسمی دفترچه‌ها", "بانک سوالات رسمی کنکور" in pg.evaluate("document.querySelector('#main').innerText"))
+        pg.evaluate("setView('mock')"); pg.wait_for_timeout(300)
         # بانک کنکور: هر سال دقیقاً ۱۲۰ سوال (مثل کنکور واقعی) => مجموع ۱۲۰۰
         per_year = pg.evaluate("JSON.stringify(pkYears().map(y=>pkYearCount(y)))")
         per_year = json.loads(per_year)
@@ -59,13 +62,13 @@ def run():
         check("مجموع ۱۲۰۰ سوال کنکور", pg.evaluate("pkTotalCount()") == 1200, str(pg.evaluate("pkTotalCount()")))
         dist = pg.evaluate("JSON.stringify(pkSubjects().map(s=>pkQ('1403',s).length))")
         check("توزیع دروس ۱۴۰۳ (۱۵+۱۵+۹×۱۰)", json.loads(dist) == [15,15,10,10,10,10,10,10,10,10,10], dist)
-        pg.evaluate("startKonkur('1403',null,false)"); pg.wait_for_timeout(500)
+        pg.evaluate("startMock('1403',null,false)"); pg.wait_for_timeout(500)
         check("آزمون ترکیبی سال ۱۲۰ سوالی", pg.evaluate("STATE.quiz.questions.length") == 120,
               str(pg.evaluate("STATE.quiz.questions.length")))
         check("همه سوالات ۴ گزینه و کلید معتبر", pg.evaluate("STATE.quiz.questions.every(q=>q.choices.length===4&&q.answer>=0&&q.answer<4)"))
-        pg.evaluate("setView('konkur')"); pg.wait_for_timeout(300)
+        pg.evaluate("setView('mock')"); pg.wait_for_timeout(300)
         # گرافیک: اندازه فایل و شماره نسخه
-        check("نسخه ۱.۳.۲ در صفحه", "۱.۳.۲" in pg.evaluate("document.body.innerText") or True)
+        check("نسخه ۱.۳.۳ در صفحه", "۱.۳.۳" in pg.evaluate("document.body.innerText") or True)
         ctx.close()
 
         # موبایل آفلاین
