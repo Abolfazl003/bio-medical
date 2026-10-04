@@ -451,29 +451,50 @@ function checkAnswer(){
   STATE.progress.quiz_stats.total++;
   $$("#choices .choice").forEach(c=>{
     const idx=parseInt(c.dataset.i);
-    if(idx===q.answer) c.classList.add("correct");
-    if(idx===chosen && chosen!==q.answer) c.classList.add("wrong");
+    const letterEl=c.querySelector(".letter");
+    if(idx===q.answer) {
+      c.classList.add("correct");
+      if(letterEl) letterEl.innerHTML = letterOf(idx) + ' ✔';
+    }
+    if(idx===chosen && chosen!==q.answer) {
+      c.classList.add("wrong");
+      if(letterEl) letterEl.innerHTML = letterOf(idx) + ' ✖';
+    }
     c.style.pointerEvents="none";
   });
   logStudy(q.year?3:2, true);   // هر سؤال ≈ ۲ دقیقه، سؤال کنکور ۳ دقیقه
   const ex=$("#explain");
   const correct_letter = letterOf(q.answer);
-  const konkori = q.konkori||"";
-  const full_sol = q.full_solution||"";
-  if(chosen===q.answer){
-    Q.correct++;STATE.progress.quiz_stats.correct++;
-    ex.innerHTML = `<div style="color:var(--success);font-weight:700;margin-bottom:8px">✅ پاسخ صحیح بود!</div>
-      <div style="background:rgba(245,158,11,.1);padding:8px;border-radius:8px;margin-bottom:8px"><b style="color:var(--warning)">🎯 راه حل کنکوری:</b><br>${konkori}</div>
-      <div style="background:rgba(56,189,248,.08);padding:8px;border-radius:8px"><b style="color:var(--accent)">📚 توضیح کامل:</b><br>${full_sol}</div>`;
-    ex.style.borderColor="var(--success)";
-    ex.style.background="rgba(34,197,94,.10)";
-  } else {
-    ex.innerHTML = `<div style="color:var(--danger);font-weight:700;margin-bottom:8px">❌ پاسخ اشتباه! گزینه صحیح <b>${correct_letter}</b> بود.</div>
-      <div style="background:rgba(245,158,11,.1);padding:8px;border-radius:8px;margin-bottom:8px"><b style="color:var(--warning)">🎯 راه حل کنکوری:</b><br>${konkori}</div>
-      <div style="background:rgba(56,189,248,.08);padding:8px;border-radius:8px"><b style="color:var(--accent)">📚 توضیح کامل:</b><br>${full_sol}</div>`;
-    ex.style.borderColor="var(--danger)";
-    ex.style.background="rgba(239,68,68,.10)";
+  const konkori = q.konkori || q.k || "";
+  const full_sol = q.full_solution || q.s || "";
+  const tips = q.tips || q.notes || "";
+
+  let headHtml = (chosen===q.answer)
+    ? `<div class="explain-head success">✅ پاسخ شما <b>صحیح</b> است (گزینه ${correct_letter})</div>`
+    : `<div class="explain-head danger">❌ پاسخ شما <b>اشتباه</b> بود! گزینه صحیح <b>${correct_letter}</b> است.</div>`;
+
+  let bodyHtml = headHtml;
+  if(konkori){
+    bodyHtml += `<div class="explain-box test-trick">
+      <div class="box-title">⚡ راهکار و ترفند تستی (سرعت عمل در جلسه کنکور):</div>
+      <div class="box-content">${konkori}</div>
+    </div>`;
   }
+  if(full_sol){
+    bodyHtml += `<div class="explain-box full-sol">
+      <div class="box-title">📖 حل کامل و تشریحی (مفهومی و گام‌به‌گام):</div>
+      <div class="box-content">${full_sol}</div>
+    </div>`;
+  }
+  if(tips){
+    bodyHtml += `<div class="explain-box key-tips">
+      <div class="box-title">💡 نکات کلیدی و دام‌های تستی:</div>
+      <div class="box-content">${tips}</div>
+    </div>`;
+  }
+
+  ex.innerHTML = bodyHtml;
+  ex.className = "explain " + (chosen===q.answer ? "explain-correct" : "explain-wrong");
   ex.style.display="block";
   $("#checkBtn").disabled=true;$("#checkBtn").style.opacity=.4;
   $("#nextBtn").style.display="inline-block";
@@ -1390,8 +1411,9 @@ function pkToQuiz(year, sid, list){
     no: q.no || null,
     src: "دفترچه رسمی " + pkFa(year),
     img: q.img || null,
-    konkori: q.k || "",
-    full_solution: q.s || ""
+    konkori: q.k || q.konkori || "",
+    full_solution: q.s || q.full_solution || "",
+    tips: q.tips || q.notes || ""
   }));
 }
 
