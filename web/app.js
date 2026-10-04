@@ -1402,19 +1402,105 @@ function pkRes(year, sid){ return pkDone()[year+"__"+sid] || null; }
 
 /* هر سوال کنکور به شکل استاندارد موتور تست تبدیل می‌شود */
 function pkToQuiz(year, sid, list){
-  return list.map(q=>({
-    q: q.q,
-    choices: q.c,
-    answer: q.a,
-    subject: sid,
-    year: pkFa(year),
-    no: q.no || null,
-    src: "دفترچه رسمی " + pkFa(year),
-    img: q.img || null,
-    konkori: q.k || q.konkori || "",
-    full_solution: q.s || q.full_solution || "",
-    tips: q.tips || q.notes || ""
-  }));
+  return list.map(q=>{
+    // تشخیص خودکار ۰ یا ۱ بودن ایندکس پاسخ:
+    //   اگر همهٔ aها در بازهٔ ۱..۴ باشند و هیچ a=0 نباشد → 1-based است (مثل ۱۳۸۷)
+    //   در غیر این صورت 0-based (مثل ۱۳۸۵، ۱۳۸۶، ۱۴۰۴)
+    let ans = q.a;
+    if(ans===1||ans===2||ans===3||ans===4){
+      // چک کنیم آیا در لیست پاسخ هیچ a=0 یا a>4 نیست (در کل همان داده‌های سال)
+      // راه ساده: در ۴ گزینه الف/ب/ج/د، ایندکس معتبر ۰–۳ است؛ a=4 یعنی حتماً 1-based بوده
+      if(!list.some(x=>x.a===0 || x.a>4) || ans>3){
+        ans = ans - 1;
+      }
+    }
+    // اطمینان نهایی در بازه
+    if(ans<0||ans>=q.c.length) ans = 0;
+
+    // تفکیک خودکار فیلد «exp» که HTML ترکیبی از سه بخش است
+    // به سه قسمت: ترفند تستی (k) + حل تشریحی (s) + نکته کلیدی (tips)
+    let k = q.k || q.konkori || "";
+    let s = q.s || q.full_solution || "";
+    let tips = q.tips || q.notes || "";
+    if(q.exp && !k && !s && !tips){
+      const parsed = splitExpSections(q.exp);
+      k = parsed.k; s = parsed.s; tips = parsed.tips;
+    }else if(q.exp && !s){
+      s = q.exp;
+    }
+
+    return {
+      q: q.q,
+      choices: q.c,
+      answer: ans,
+      subject: sid,
+      year: pkFa(year),
+      no: q.no || null,
+      src: "دفترچه رسمی " + pkFa(year),
+      img: q.img || null,
+      konkori: k,
+      full_solution: s,
+      tips: tips
+    };
+  });
+}
+
+/* ت splitExpSections: یک بلوک HTML واحد را به سه بخش ترفند/حل/نکته می‌شکند.
+   این تابع برای سال‌هایی نوشته شده که همهٔ توضیحات در یک فیلد «exp» ذخیره شده
+   (مثل دفترچه‌های ۱۳۸۷ که هنوز تفکیک نشده‌اند). */
+function splitExpSections(html){
+  let rest = html||"";
+  let k="", s="", tips="";
+  // ۱) جدا کردن «ترفند تستی»
+  let m = rest.match(/<b>\s*⚡?\s*(?:ترفند\s*تستی|راهکار\s*و\s*ترفند\s*تستی|ترفند\s*و\s*رد\s*گزینه)[^<]*<\/b>\s*:?\s*<br\s*\/?>\s*([\s\S]*)$/i);
+  if(m){ k = m[1]; rest = rest.slice(0, rest.length - m[0].length + m[0].indexOf(m[1])); }
+  // تلاش دوم: split بر اساس تگ
+  const trickMarkers = ['<b>⚡ ترفند تستی', '<b>⚡ترفند تستی', '⚡ ترفند تستی', 'ترفند تستی'];
+  // روش ساده‌تر: تقسیم بر اساس section headers
+  const heads = [
+    {key:'k', re:/\s*(?:⚡\s*)?(?:ترفند\s*تستی|راهکار\s*و\s*ترفند\s*تستی|ترفند\s*و\s*رد\s*گزینه)\s*:?/},
+    {key:'s', re:/\s*(?:📖\s*)?(?:حل\s*(?:تشریحی|کامل)(?:\s*(?:و|:))?|حل\s*تشریحی\s*کامل\s*:?)/},
+    {key:'tips', re:/\s*(?:💡\s*)?(?:نکات?\s*(?:کلیدی|مهم)|دام‌?های\s*تستی)\s*:?/},
+    {key:'tr',  re:/\s*(?:📖\s*)?(?:ترجمه\s*و\s*بررسی\s*گزینه‌?ها|بررسی\s*گزینه‌?ها)\s*:?/},
+  ];
+  // پاکسازی اولیه
+  let body = rest;
+  // پیدا کردن هر هدر و برش بین آن‌ها
+  const pieces = [];
+  // regex همهٔ هدرها
+  const headerRe = /<b>([^<]*)<\/b>/g;
+  let hm;
+  const positions = [];
+  while((hm = headerRe.exec(body)) !== null){
+    const label = hm[1].replace(/[\s:]/g,'');
+    let key=null;
+    if(/ترفند/.test(label) && /تستی/.test(label)) key='k';
+    else if(/حل/.test(label) && /تشریحی/.test(label)) key='s';
+    else if(/نکته/.test(label) || /نکات/.test(label)) key='tips';
+    else if(/ترجمه|بررسی/.test(label) && /گزینه/.test(label)) key='s'; // انگلیسی را هم در حل می‌گذاریم
+    if(key) positions.push({start:hm.index, endHeader:hm.index+hm[0].length, key});
+  }
+  if(positions.length === 0){
+    // هیچ هدر بخشی پیدا نشد → کلش را به‌عنوان حل تشریحی
+    s = body;
+  }else{
+    // مرتب‌سازی و تقسیم
+    positions.sort((a,b)=>a.start-b.start);
+    // متن قبل از اولین هدر را در s می‌ریزیم (مثل مقدمه)
+    let pre = body.slice(0, positions[0].start).trim();
+    for(let i=0;i<positions.length;i++){
+      const p = positions[i];
+      const nxt = positions[i+1];
+      const pieceStart = p.endHeader;
+      const pieceEnd = nxt ? nxt.start : body.length;
+      let piece = body.slice(pieceStart, pieceEnd).replace(/^\s*:?\s*<br\s*\/?>\s*/,'').replace(/^\s*<br\s*\/?>\s*/,'').trim();
+      if(p.key==='k') k += (k?"<br>":"") + piece;
+      else if(p.key==='tips') tips += (tips?"<br>":"") + piece;
+      else s += (s?"<br>":"") + piece;
+    }
+    if(pre) s = pre + (s?"<br>":"") + s;
+  }
+  return {k:k.trim(), s:s.trim(), tips:tips.trim()};
 }
 
 /* ---- صفحه اصلی: فهرست ۱۰ سال ---- */
