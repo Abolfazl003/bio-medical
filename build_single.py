@@ -172,12 +172,7 @@ document.addEventListener("touchend", function(e){
 
     # ۱) نسخه تک‌فایل در ریشه پروژه
     outs = [
-        os.path.join(WEB, 'bme-konkur-offline.html'),
         os.path.join(ROOT, 'bme-konkur-offline.html'),
-        # ۲) assets اندروید => اپ کامل آفلاین
-        os.path.join(ROOT, 'android', 'app', 'src', 'main', 'assets', 'index.html'),
-        # ۳) نسخه دسکتاپ
-        os.path.join(ROOT, 'desktop_app', 'web', 'index.html'),
     ]
     for o in outs:
         os.makedirs(os.path.dirname(o), exist_ok=True)
