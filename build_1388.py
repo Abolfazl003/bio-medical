@@ -1027,427 +1027,402 @@ def build():
             "در ترکیب موازی ترانزیستورهای BJT با βهای مختلف، β معادل برابر است با $\\frac{n}{\\sum \\frac{1}{\\beta_i}}$.<br>"
             "برای βهای مساوی، β_eq = β می‌شود. گزینه **د**."))
 
-    # ═══════════════════ فیزیولوژی و آناتومی (۳۰ سوال: ۸۱-۱۱۰) ═══════════════════
-    # نکته: در دفترچه ۱۳۸۸ دروس بعدی به دو بخش «فیزیولوژی» و «آناتومی» تقسیم نشده‌اند، 
-    # و سوالات ۸۱-۱۱۰ تحت عنوان «فیزیولوژی و آناتومی/پزشکی» آمده‌اند.
+    # ═══════════════════ فیزیولوژی (۵ سوال: ۸۱-۸۵) ═══════════════════
     questions.append(dict(no=81, subject="anatomy",
-        q="منظور از دوره نهفته (Latent Period) در فعالیت الکتریکی نورونها چیست؟",
+        q="منظور از دوره نهفته (Latent Period) در فعالیت الکتریکی نورون‌ها چیست؟",
         c=["الف) فاصله زمانی بین دو پتانسیل عمل",
            "ب) مرحله غیر فعال شدن کانالهای یونی سدیمی وابسته به ولتاژ",
            "ج) فاصله زمانی بین تحریک نورون و شروع پتانسیل عمل",
-           "د) مرحله زمانی از آستانه تا قله پتانسیل عمل"],
+           "د) مرحله زمانی از آستانه تولید تا قله پتانسیل عمل"],
         a=3,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "دوره نهفته (Latent Period) به **فاصله زمانی بین شروع محرک تا شروع پاسخ/پتانسیل عمل** گفته می‌شود (گزینه **ج**).<br><br>"
-            "<b>💡 نکته:</b> در آزمایشگاه عصب-عضله، LP شامل زمان انتشار عصب و تأخیر تحریک-انقباض است."))
+            "دوره نهفته (Latent Period) به فاصله زمانی بین <b>شروع تحریک و شروع پاسخ (پتانسیل عمل)</b> گفته می‌شود (گزینه <b>ج</b>).<br><br>"
+            "<b>💡 نکته:</b> در آزمایش عصب-عضله، LP شامل زمان انتشار پتانسیل عمل در طول آکسون و تأخیر تحریک-انقباض اتصال عصب-عضله است."))
 
     questions.append(dict(no=82, subject="anatomy",
         q="کدام گزینه زیر در شل شدن عضله اسکلتی نقش دارد؟",
-        c=["الف) فسفوریلاسیون سرمیوزین",
+        c=["الف) فسفوریلاسیون سر میوزین",
            "ب) فعالیت کانالهای کلسیمی وابسته به ولتاژ",
-           "ج) فعالیت پمپ کلسیمی غشا سارکوپلاسمی",
+           "ج) فعالیت پمپ کلسیمی غشای شبکه سارکوپلاسمی",
            "د) تشکیل کمپلکس کلسیم-تروپونین"],
         a=3,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "شل شدن عضله با **بازگشت کلسیم به شبکه سارکوپلاسمی توسط پمپ Ca²⁺-ATPase** صورت می‌گیرد (گزینه **ج**)."))
+            "شل شدن عضله با <b>بازگشت فعال Ca²⁺ به شبکه سارکوپلاسمی توسط پمپ Ca²⁺-ATPase</b> رخ می‌دهد (گزینه <b>ج</b>).<br>"
+            "با کاهش کلسیم سیتوزولی، تروپونین-تروپومیوزین دوباره روی محل اتصال اکتین قرار گرفته و انقباض متوقف می‌شود."))
 
     questions.append(dict(no=83, subject="anatomy",
-        q="در مورد انتشار جریان الکتریکی در بطن‌های قلب، پس از ورود جریان از مسیر دهلیزی بطنی، کدامیک از نواحی زیر دیرتر تحریک می‌رسد؟",
+        q="در مورد انتشار جریان الکتریکی در بطن‌های قلب، پس از ورود جریان از مسیر دهلیزی-بطنی، کدامیک از نواحی زیر دیرتر تحریک می‌رسد؟",
         c=["الف) سپتوم بین بطنی",
-           "ب) نوک قلب",
-           "ج) قاعده بطن چپ",
-           "د) قاعده بطن راست"],
-        a=3,
+           "ب) نوک قلب (آپکس)",
+           "ج) قاعده بطن راست",
+           "د) قاعده بطن چپ"],
+        a=4,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "مسیر انتشار: گره AV → دسته هیس → شاخه‌های چپ/راست → فیبرهای پورکنژ.<br>"
-            "تحریک از سپتوم به نوک (آپکس) و سپس از آندوکارد به اپی‌کارد حرکت کرده و **قاعده بطن‌ها آخرین قسمت** تحریک می‌شود (گزینه **ج**)."))
+            "پس از عبور از گره AV، جریان از دسته هیس → شاخه‌های راست/چپ → فیبرهای پورکنژ عبور می‌کند.<br>"
+            "تحریک از سپتوم به <b>آپکس</b> رفته و از آندوکارد به اپی‌کارد منتشر می‌شود؛ آخرین بخشی که دپلاریزه می‌شود <b>قاعده بطن‌ها</b> (بخش خلفی/پایه بطن چپ) است (گزینه <b>د</b>)."))
 
     questions.append(dict(no=84, subject="anatomy",
         q="در رابطه با ثبت پتانسیل الکتریکی عضلانی بطنی دستگاه، اختلاف زمانی پتانسیل نشان می‌دهد که:",
-        c=["الف) یکی از قطبین دستگاه به بخش رپلاریزه متصل باشد",
+        c=["الف) یکی از قطبین دستگاه به بخش رپلاریزه و دیگری به بخش دپلاریزه متصل باشد",
            "ب) هر دو قطب دستگاه به بخش رپلاریزه متصل باشند",
            "ج) هر دو قطب دستگاه به بخش دپلاریزه متصل باشند",
-           "د) دستگاه به هر صورت متصل باشد اختلاف پتانسیل نشان می‌دهد"],
+           "د) دستگاه به هر صورت متصل باشد، اختلاف پتانسیل نشان می‌دهد"],
         a=1,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "برای ایجاد اختلاف پتانسیل، یک الکترود روی بخش دپلاریزه و دیگری روی بخش رپلاریزه/استراحت باید قرار گیرد. **گزینه الف**."))
+            "برای ثبت اختلاف پتانسیل (دوقطبی)، یک الکترود روی ناحیه دپلاریزه و الکترود دیگر روی ناحیه در حال استراحت/رپلاریزه باید قرار گیرد (گزینه <b>الف</b>).<br>"
+            "اگر هر دو قطب روی یک ناحیه همسان باشند، اختلاف پتانسیل صفر می‌شود."))
 
     questions.append(dict(no=85, subject="anatomy",
-        q="در هنگام فعالیت شدید مغزی، کدامیک از امواج مغزی ظاهر می‌گردد؟",
-        c=["الف) بتا",
-           "ب) آلفا",
-           "ج) دلتا",
+        q="در هنگام فعالیت شدید مغزی (هوشیاری و تمرکز)، کدامیک از امواج مغزی ظاهر می‌گردد؟",
+        c=["الف) بتا (β)",
+           "ب) آلفا (α)",
+           "ج) دلتا (δ)",
            "د) دلتا بتا"],
         a=1,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "امواج **بتا (β)** با فرکانس ۱۴-۳۰ هرتز در هنگام هوشیاری و فعالیت مغزی ظاهر می‌شوند (گزینه **الف**).<br>"
-            "آلفا در بیداری آرام، دلتا در خواب عمیق دیده می‌شود."))
+            "امواج <b>بتا (β)</b> با فرکانس ۱۴ تا ۳۰ هرتز، در هوشیاری کامل، تفکر فعال و تمرکز ذهنی غالب هستند (گزینه <b>الف</b>).<br>"
+            "آلفا در بیداری آرام با چشم بسته، تتا در خواب سبک و دلتا در خواب عمیق دیده می‌شود."))
 
+    # ═══════════════════ آناتومی (۵ سوال: ۸۶-۹۰) ═══════════════════
     questions.append(dict(no=86, subject="anatomy",
-        q="کدام‌یک از عضلات زیر در تغییر قطر عدسی چشم نقش دارد؟",
-        c=["الف) عضلات حلقوی مردمک",
-           "ب) عضلات شعاعی مردمک",
-           "ج) عضلات مژگانی",
+        q="کدام‌یک از عضلات زیر در تغییر قطر عدسی چشم (عمل تطابق) نقش دارد؟",
+        c=["الف) عضلات حلقوی عنبیه",
+           "ب) عضلات شعاعی عنبیه",
+           "ج) عضلات مژگانی (Ciliary)",
            "د) عضلات مایل فوقانی و تحتانی"],
         a=3,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "تطابق (تغییر قطر عدسی) توسط **عضلات مژگانی (ciliary muscles)** انجام می‌شود (گزینه **ج**)."))
+            "عمل تطابق (تغییر انحنای عدسی برای دور و نزدیک دیدن) با انقباض/انبساط <b>عضله مژگانی</b> و کشش رباط‌های زونول انجام می‌شود (گزینه <b>ج</b>).<br>"
+            "عضلات حلقوی/شعاعی عنبیه مربوط به تنگ و گشاد شدن مردمک هستند."))
 
     questions.append(dict(no=87, subject="anatomy",
-        q="کدامیک از مهره‌های زیر فاقد جسم مهره‌ای می‌باشد؟",
+        q="کدام‌یک از مهره‌های زیر فاقد جسم مهره‌ای (Body) می‌باشد؟",
         c=["الف) Axis (C2)",
            "ب) Atlas (C1)",
            "ج) اولین مهره سینه‌ای (T1)",
-           "د) اولین مهره کمری (C7)"],
+           "د) مهره هفتم گردنی (C7)"],
         a=2,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "**اطلس (C1)** فاقد تنه (Body) است و فقط قوس‌های قدامی و خلفی دارد (گزینه **ب**)."))
+            "<b>اطلس (C1)</b> فاقد تنه (Body) و خار خلفی بلند است و به صورت یک حلقه استخوانی با قوس قدامی و خلفی دیده می‌شود (گزینه <b>ب</b>).<br>"
+            "روی قوس قدامی اطلس، دندان آسه (Dens) از Axis قرار گرفته و مفصل گردشی ایجاد می‌کند."))
 
     questions.append(dict(no=88, subject="anatomy",
-        q="مخروط شریانی مربوط به کدام‌یک از حفرات قلب است؟",
+        q="مخروط شریانی (Conus Arteriosus) مربوط به کدام‌یک از حفرات قلب است؟",
         c=["الف) دهلیز راست",
            "ب) بطن راست",
-           "ج) بطن چپ",
-           "د) دهلیز چپ"],
+           "ج) دهلیز چپ",
+           "د) بطن چپ"],
         a=2,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "مخروط شریانی (Conus Arteriosus / Infundibulum) بخشی از **بطن راست** است که از آن تنه ریوی منشا می‌گیرد (گزینه **ب**)."))
+            "مخروط شریانی یا Infundibulum بخشی صاف و مخروطی‌شکل از سمت فوقانی <b>بطن راست</b> است که از آن تنه ریوی (Pulmonary Trunk) منشا می‌گیرد (گزینه <b>ب</b>).<br>"
+            "در بطن چپ، بخش ابتدایی آئورت را آئورت وست (Aortic Vestibule) می‌نامند."))
 
-    # Adding a batch to keep file manageable - Q89-110
     questions.append(dict(no=89, subject="anatomy",
-        q="در موج ECG، کمپلکس QRS نشان‌دهنده چیست؟",
-        c=["الف) دپلاریزاسیون دهلیزها",
-           "ب) دپلاریزاسیون بطن‌ها",
-           "ج) رپلاریزاسیون دهلیزها",
-           "د) رپلاریزاسیون بطن‌ها"],
-        a=2,
+        q="در مورد ریه‌ها کدام‌یک از عبارات زیر صحیح نمی‌باشد؟",
+        c=["الف) ریه راست حجیم‌تر از ریه چپ است",
+           "ب) ریه چپ طویل‌تر از ریه راست است",
+           "ج) اثر قلبی در ریه راست عمیق‌تر است",
+           "د) رأس ریه‌ها بالاتر از دنده اول قرار دارد"],
+        a=3,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "QRS مربوط به **دپلاریزاسیون بطن‌ها** (گزینه **ب**) است. موج P دپلاریزاسیون دهلیز و موج T رپلاریزاسیون بطن است."))
+            "گزینه <b>ج</b> نادرست است: قلب بیشتر به سمت چپ متمایل است، پس <b>شیار/اثر قلبی (Cardiac Notch)</b> در <b>ریه چپ</b> عمیق‌تر است نه در ریه راست.<br>"
+            "ریه راست ۳ لوب (حجیم‌تر اما کوتاه‌تر به‌خاطر کبد) و ریه چپ ۲ لوب (طویل‌تر) دارد. رأس هر دو ریه اندکی از دنده اول بالاتر می‌رود."))
 
     questions.append(dict(no=90, subject="anatomy",
-        q="مسیر عصب آپتیک (بینایی) به کدام بخش از مغز می‌رسد؟",
-        c=["الف) لوب پس‌سری",
-           "ب) تالاموس (ژنیکوله خارجی)",
-           "ج) بصل النخاع",
-           "د) مخچه"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "الیاف عصب بینایی از کیاسمای بینایی عبور کرده و به **هسته ژنیکوله خارجی تالاموس (LGN)** می‌رسند (گزینه **ب**). سپس به لوب اکسیپیتال می‌روند."))
-
-    questions.append(dict(no=91, subject="anatomy",
-        q="وجود شیار مرکزی (Central Sulcus) در مخ، کدام لوب را از هم جدا می‌کند؟",
-        c=["الف) پیشانی از آهیانه",
-           "ب) آهیانه از گیجگاهی",
-           "ج) پیشانی از گیجگاهی",
-           "د) پس‌سری از آهیانه"],
-        a=1,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "شیار مرکزی (Rolandic Sulcus) **لوب فرونتال (پیشانی)** را از **لوب پاریتال (آهیانه)** جدا می‌کند (گزینه **الف**)."))
-
-    questions.append(dict(no=92, subject="anatomy",
-        q="کدام لوب از ریه‌ها دارای سه زایده (لوب) است؟",
-        c=["الف) ریه راست",
-           "ب) ریه چپ",
-           "ج) هر دو",
-           "د) هیچ‌کدام"],
-        a=1,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "**ریه راست** دارای ۳ لوب (فوقانی، میانی، تحتانی) و ریه چپ ۲ لوب است (گزینه **الف**)."))
-
-    questions.append(dict(no=93, subject="anatomy",
-        q="کدامیک جزء دستگاه لنفاوی محسوب نمی‌شود؟",
-        c=["الف) طحال",
-           "ب) تیموس",
-           "ج) آپاندیس",
-           "د) پانکراس"],
+        q="زائده نیزه‌ای (Styloid Process) جزو کدام‌یک از استخوانهای زیر می‌باشد؟",
+        c=["الف) Frontal (پیشانی)",
+           "ب) Occipital (پس‌سری)",
+           "ج) Sphenoid (پروانه‌ای)",
+           "د) Temporal (گیجگاهی)"],
         a=4,
         exp="<b>📖 حل تشریحی:</b><br>"
-            "لوزوالمعده (پانکراس) غده گوارشی/اندوکرین است و جزء لنفاوی نیست (گزینه **د**)."))
+            "زائده نیزه‌ای (Styloid Process) زائده‌ای باریک و نوک‌تیز از <b>استخوان گیجگاهی (Temporal)</b> در قاعده جمجمه است (گزینه <b>د</b>).<br>"
+            "محل اتصال رباط‌ها و عضلات مربوط به زبان و حنجره است."))
 
-    questions.append(dict(no=94, subject="anatomy",
-        q="تبادل گازی در ریه در کدام بخش صورت می‌گیرد؟",
-        c=["الف) برونشیول‌های انتهایی",
-           "ب) نایژه‌های تنفسی و آلوئول‌ها",
-           "ج) نای",
-           "د) برونش اصلی"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "تبادل گاز در **آلوئول‌ها** صورت می‌گیرد (گزینه **ب**)."))
-
-    questions.append(dict(no=95, subject="anatomy",
-        q="کدام عضله در بازدم عادی (استراحت) نقش دارد؟",
-        c=["الف) دیافراگم",
-           "ب) عضلات بین‌دنده‌ای خارجی",
-           "ج) هیچ عضله‌ای، بازدم غیرفعال است",
-           "د) عضلات شکم"],
-        a=3,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "بازدم در تنفس آرام **غیرفعال** است؛ به‌خاطر خاصیت کشسانی ریه‌ها انجام می‌شود (گزینه **ج**)."))
-
-    questions.append(dict(no=96, subject="anatomy",
-        q="GFR به چه معناست؟",
-        c=["الف) سرعت فیلتراسیون گلومرولی",
-           "ب) سرعت بازجذب لوله‌ای",
-           "ج) سرعت ترشح",
-           "د) برون‌ده قلبی"],
-        a=1,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "GFR = **Glomerular Filtration Rate (سرعت فیلتراسیون گلومرولی)** (گزینه **الف**) که طبیعی حدود ۱۲۵mL/min است."))
-
-    questions.append(dict(no=97, subject="anatomy",
-        q="هورمون انسولین از کدام سلول‌های پانکراس ترشح می‌شود؟",
-        c=["الف) سلول‌های آلفا",
-           "ب) سلول‌های بتا",
-           "ج) سلول‌های دلتا",
-           "د) سلول‌های PP"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "انسولین از **سلول‌های بتا** جزایر لانگرهانس ترشح می‌شود (گزینه **ب**)."))
-
-    questions.append(dict(no=98, subject="anatomy",
-        q="کدام‌یک از اعصاب مغزی زیر نقش عمده در پاراسمپاتیک دارد؟",
-        c=["الف) عصب واگ (X)",
-           "ب) عصب تری‌ژمینال (V)",
-           "ج) عصب اپتیک (II)",
-           "د) عصب هیپوگلوسال (XII)"],
-        a=1,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "**عصب واگ (Vagus)** مهم‌ترین عصب پاراسمپاتیک است (گزینه **الف**)."))
-
-    questions.append(dict(no=99, subject="anatomy",
-        q="نورون‌های حرکتی در کدام شاخه نخاع قرار دارند؟",
-        c=["الف) شاخ پشتی (خلفی)",
-           "ب) شاخ شکمی (قدامی)",
-           "ج) شاخ جانبی",
-           "د) گانگلیون ریشه پشتی"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "نورون‌های حرکتی در **شاخ قدامی (شکمی)** نخاع قرار دارند (گزینه **ب**)."))
-
-    questions.append(dict(no=100, subject="anatomy",
-        q="محل اتصال عضله به استخوان که حرکت نمی‌کند چه نام دارد؟",
-        c=["الف) اصل (Origin)",
-           "ب) انتهای متحرک (Insertion)",
-           "ج) زردپی",
-           "د) رباط"],
-        a=1,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "نقطه اتصال ثابت **Origin (مبدأ)** است (گزینه **الف**)."))
-
-    questions.append(dict(no=101, subject="anatomy",
-        q="کدام‌یک از زیر لزوماً وظیفه سمپاتیک است؟",
-        c=["الف) کاهش ضربان قلب",
-           "ب) گشاد شدن مردمک",
-           "ج) انقباض برونش",
-           "د) افزایش گوارش"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "سیستم سمپاتیک در موقع جنگ یا فرار، **مردمک را گشاد می‌کند (گزینه ب)**. بقیه مربوط به پاراسمپاتیک هستند."))
-
-    questions.append(dict(no=102, subject="anatomy",
-        q="دریچه میترال (دولختی) بین کدام دو حفره قلب است؟",
-        c=["الف) دهلیز راست-بطن راست",
-           "ب) دهلیز راست-بطن چپ",
-           "ج) دهلیز چپ-بطن چپ",
-           "د) دهلیز چپ-بطن راست"],
-        a=3,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "دریچه میترال (دولختی / Bicuspid) بین **دهلیز چپ و بطن چپ** است (گزینه **ج**)."))
-
-    questions.append(dict(no=103, subject="anatomy",
-        q="گلبول‌های قرمز در کدام عضو تولید می‌شوند؟",
-        c=["الف) کبد",
-           "ب) طحال",
-           "ج) مغز استخوان",
-           "د) کلیه"],
-        a=3,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "اریتروپوئز در **مغز استخوان قرمز** انجام می‌شود (گزینه **ج**)."))
-
-    questions.append(dict(no=104, subject="anatomy",
-        q="کدام هورمون سبب افزایش قند خون می‌شود؟",
-        c=["الف) انسولین",
-           "ب) گلوکاگون",
-           "ج) کلسی‌تونین",
-           "د) آلدوسترون"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "**گلوکاگون** از سلول‌های آلفا، قند خون را افزایش می‌دهد (گزینه **ب**)."))
-
-    questions.append(dict(no=105, subject="anatomy",
-        q="در کدام بخش از نفرون، بازجذب حداکثری گلوکز انجام می‌شود؟",
-        c=["الف) لوله پیچیده نزدیک",
-           "ب) لوله پیچیده دور",
-           "ج) قوس هنله",
-           "د) لوله جمع‌کننده"],
-        a=1,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "بازجذب گلوکز تقریباً به‌طور کامل در **لوله پیچیده نزدیک (PCT)** انجام می‌شود (گزینه **الف**)."))
-
-    questions.append(dict(no=106, subject="anatomy",
-        q="مرکز تنظیم تنفس در کدام بخش مغز قرار دارد؟",
-        c=["الف) مخچه",
-           "ب) بصل النخاع و پل",
-           "ج) تالاموس",
-           "د) مخ"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "مراکز کنترل تنفس در **بصل‌النخاع (Medulla)** و پل مغز قرار دارند (گزینه **ب**)."))
-
-    questions.append(dict(no=107, subject="anatomy",
-        q="عمل اصلی میوگلوبین در عضله چیست؟",
-        c=["الف) انتقال اکسیژن در خون",
-           "ب) ذخیره اکسیژن در عضله",
-           "ج) انقباض عضله",
-           "د) تولید ATP"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "میوگلوبین **اکسیژن را در عضله ذخیره** می‌کند (گزینه **ب**)."))
-
-    questions.append(dict(no=108, subject="anatomy",
-        q="کدام عصب حرکات چشم را کنترل نمی‌کند؟",
-        c=["الف) Oculomotor (III)",
-           "ب) Trochlear (IV)",
-           "ج) Abducens (VI)",
-           "د) Vestibulocochlear (VIII)"],
-        a=4,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "اعصاب حرکتی چشم III, IV, VI هستند. **Vestibulocochlear (VIII)** عصب شنوایی-تعادلی است (گزینه **د**)."))
-
-    questions.append(dict(no=109, subject="anatomy",
-        q="بافت ____ مسوول انتقال پیام عصبی است.",
-        c=["الف) همبند",
-           "ب) پوششی",
-           "ج) عصبی",
-           "د) ماهیچه‌ای"],
-        a=3,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "بافت **عصبی** عهده‌دار انتقال پیام‌های الکتریکی است (گزینه **ج**)."))
-
-    questions.append(dict(no=110, subject="anatomy",
-        q="در یک چرخه قلبی، کدام واقعه اول رخ می‌دهد؟",
-        c=["الف) سیستول بطن",
-           "ب) سیستول دهلیز",
-           "ج) استراحت عمومی (دیاستول)",
-           "د) بسته شدن دریچه آئورت"],
-        a=2,
-        exp="<b>📖 حل تشریحی:</b><br>"
-            "سیکل قلبی با **سیستول دهلیزها** (انقباض دهلیزی) آغاز می‌شود (گزینه **ب**)."))
-
-    # ═══════════════════ زبان عمومی (۲۰ سوال: ۱۱۱-۱۳۰) ═══════════════════
-    questions.append(dict(no=111, subject="english",
-        q="(Reading Comprehension — Passage 1: Social determinants of health) It is implied that the childhood-to-adulthood transition period ... .",
+    # ═══════════════════ زبان عمومی - درک مطلب ۱: عوامل اجتماعی تعیین‌کننده سلامت (۹۱-۹۵) ═══════════════════
+    questions.append(dict(no=91, subject="english",
+        q="It is implied from the paragraph that the childhood-to-adulthood transition period ...... .",
         c=["a. happens quite smoothly",
            "b. is similar to other stages of life",
            "c. is of special significance",
            "d. easily overcomes psycho-social risks"],
         a=3,
         exp="<b>📖 ترجمه و بررسی:</b><br>"
-            "از متن: «young people face special challenges as they transit from childhood to adulthood» و «one of the most vulnerable stages»."
-            "<br>بنابراین این دوره **اهمیت ویژه‌ای** دارد (گزینه **ج**).<br><br>"
-            "<b>💡 نکته:</b> واژهٔ کلیدی «special challenges» و «vulnerable» گزینه c را تایید می‌کنند."))
+            "متن می‌گوید جوانان در گذار از کودکی به بزرگسالی با <i>special challenges</i> روبرو هستند و این مرحله «یکی از آسیب‌پذیرترین» مراحل زندگی است.<br>"
+            "بنابراین این دوره «اهمیت ویژه‌ای» دارد (گزینه <b>c</b>)."))
 
-    questions.append(dict(no=112, subject="english",
-        q="The text implies that at puberty, one is ... .",
+    questions.append(dict(no=92, subject="english",
+        q="The text implies that at puberty, one is ...... .",
         c=["a. particularly immune against social discomforts",
            "b. more vulnerable to psycho-social hazards",
            "c. still indifferent to social discomforts",
            "d. more likely to follow socioeconomic conventions"],
         a=2,
         exp="<b>📖 ترجمه و بررسی:</b><br>"
-            "در بلوغ فرد «آسیب‌پذیرتر» به مخاطرات روانی-اجتماعی است (گزینه **ب**)."))
+            "متن بلوغ را «one of the most vulnerable stages» معرفی می‌کند؛ یعنی فرد <b>آسیب‌پذیرتر</b> در برابر مخاطرات روانی-اجتماعی است (گزینه <b>b</b>)."))
+
+    questions.append(dict(no=93, subject="english",
+        q="The text ...... norms and values followed by males and females at puberty.",
+        c=["a. differentiates between",
+           "b. remains silent about",
+           "c. proves to be in favor of",
+           "d. categorically rejects"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن فقط تفاوت مشکلات را بیان می‌کند (خوردن در دختران، سوءمصرف/افسردگی/خودکشی در پسران) و <b>درباره هنجارها و ارزش‌ها ساکت است</b> (گزینه <b>b</b>)."))
+
+    questions.append(dict(no=94, subject="english",
+        q="Eating disorders among females at puberty are usually ...... self-esteem and body image issues common in this period.",
+        c=["a. independent of",
+           "b. irrelevant to",
+           "c. the consequence of",
+           "d. applied to"],
+        a=3,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «females tend to struggle ... with body image and self-esteem issues which <b>can lead to</b> dangerous eating disorders».<br>"
+            "یعنی اختلالات خوردن <b>نتیجه/پیامد</b> این مشکلات هستند (گزینه <b>c</b>)."))
+
+    questions.append(dict(no=95, subject="english",
+        q="Problems like depression and self-mutilation are ...... during puberty.",
+        c=["a. more prevalent among males",
+           "b. more common among females",
+           "c. nowadays less common among both sexes",
+           "d. equally distributed among males and females"],
+        a=1,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «substance abuse, depression, self-mutilation and suicide have <b>higher incident rates in males than females</b>» (گزینه <b>a</b>)."))
+
+    # ═══════════════════ درک مطلب ۲: نوجوانی، سازه فرهنگی و بار بیماری‌ها (۹۶-۱۰۰) ═══════════════════
+    questions.append(dict(no=96, subject="english",
+        q="According to this reading selection, adolescence is ...... .",
+        c=["a. overestimated in most settings and contexts",
+           "b. viewed differently in different cultures",
+           "c. paid adequate attention throughout the world",
+           "d. valued more in France than in South Korea"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "جمله اول پاراگراف ۲: «Adolescence itself is a cultural construct that <b>varies across settings and contexts</b>» یعنی در فرهنگ‌های گوناگون متفاوت نگریسته می‌شود (گزینه <b>b</b>)."))
+
+    questions.append(dict(no=97, subject="english",
+        q="The writer believes that adolescents and youth ...... .",
+        c=["a. deserve more attention than other age groups",
+           "b. should be included in one large category regarding key issues",
+           "c. have lost their productivity in some developed countries",
+           "d. are somehow ignored as distinct and separate groups"],
+        a=4,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «adolescents ... remain <b>largely invisible</b> and youth ... often <b>disappear</b> from the data screens because of inappropriate or convenience clustering». یعنی به عنوان گروه‌های مجزا <b>نادیده گرفته</b> می‌شوند (گزینه <b>d</b>)."))
+
+    questions.append(dict(no=98, subject="english",
+        q="Attention to adolescents and youth's key conditions ...... .",
+        c=["a. requires more consideration due to their large population",
+           "b. has led to rapid economic growth in some countries",
+           "c. must be independent of their population size",
+           "d. has been replaced by growing care for the aging population"],
+        a=3,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «Attention must be paid ... <b>irrespective of their size</b>» یعنی صرف‌نظر از اندازه/جمعیت آن‌ها باید توجه شود (گزینه <b>c</b>)."))
+
+    questions.append(dict(no=99, subject="english",
+        q="The reason why adolescents and youth remain invisible is ...... .",
+        c=["a. their making up a small population",
+           "b. their inclusion in a larger age category (inappropriate clustering)",
+           "c. drops in the productivity of some transitional economies",
+           "d. fewer international demographic and health surveys on them"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "علت پنهان ماندن آن‌ها «<b>inappropriate or convenience clustering</b>» یا تجمیع داده‌ها در رده سنی بزرگ‌تر ۱۵-۲۹ ساله است (گزینه <b>b</b>)."))
+
+    questions.append(dict(no=100, subject="english",
+        q="The second paragraph refers to the fact that in some countries the youth population ...... .",
+        c=["a. is increasing rapidly",
+           "b. exceeds the aging population",
+           "c. is managing the economy",
+           "d. has dropped significantly"],
+        a=1,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "پاراگراف دوم می‌گوید در هند/سنگال تا یک‌سوم جمعیت ۱۰-۲۴ ساله هستند و در برخی اقتصادهای درحال‌گذار باروری کاهش یافته «but still have a <b>sizeable youth population</b>».<br>"
+            "بهترین گزینه <b>a</b> (رشد سریع / قابل توجه) است."))
+
+    # ═══════════════════ درک مطلب ۳: اخلاق در بهداشت عمومی (۱۰۱-۱۰۵) ═══════════════════
+    questions.append(dict(no=101, subject="english",
+        q="An important part of public health ethics is having the ...... to implement effective policies.",
+        c=["a. obligation",
+           "b. insurance",
+           "c. protection",
+           "d. authority"],
+        a=4,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «it implies the possession of an element of <b>power</b> in order to carry out the mandate ... to avoid the potential abuses of power are at the crux of public health ethics».<br>"
+            "کلمه «power» با <b>authority</b> (اقتدار) مترادف است (گزینه <b>d</b>)."))
+
+    questions.append(dict(no=102, subject="english",
+        q="It is stated that new ethical dilemmas ...... .",
+        c=["a. have resulted in the abuse of power",
+           "b. are consequences of technological advances",
+           "c. have led to new challenges in health issues",
+           "d. are creating new possibilities in health strategies"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «This demand arises from: <b>technological advances that create new possibilities, and with them, new ethical dilemmas</b>; new challenges to health ...».<br>"
+            "یعنی معضلات اخلاقی جدید، پیامد پیشرفت‌های فناورانه هستند (گزینه <b>b</b>)."))
+
+    questions.append(dict(no=103, subject="english",
+        q="The writer believes that in a pluralistic society ...... .",
+        c=["a. one should look for a single culture",
+           "b. there are fewer dilemmas",
+           "c. there are more cases of power abuse",
+           "d. shared/common values help avoid dilemmas (we must work out our common values)"],
+        a=4,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "در جامعه کثرت‌گرا «we can no longer simply adopt the values from a single culture ... but we must work out our <b>common values</b> in the midst of diversity» یعنی <b>ارزش‌های مشترک</b> راه‌حل هستند (گزینه <b>d</b>)."))
+
+    questions.append(dict(no=104, subject="english",
+        q="The new technological advances ...... .",
+        c=["a. necessitate direct/explicit attention to ethics",
+           "b. have given rise to pluralistic societies",
+           "c. assist man to overcome new challenges to health",
+           "d. have contributed to the ethical nature of public health"],
+        a=1,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «society is demanding <b>explicit attention to ethics</b>. This demand arises from: technological advances ...»؛ یعنی پیشرفت‌های فناورانه، توجه صریح به اخلاق را <b>ایجاب می‌کنند</b> (گزینه <b>a</b>)."))
+
+    questions.append(dict(no=105, subject="english",
+        q="The underlined <b>it</b> (line 2 of passage 3: 'It carries with it an obligation ... and it implies the possession of an element of power') refers to ...... .",
+        c=["a. mandate",
+           "b. obligation",
+           "c. well being",
+           "d. public health"],
+        a=1,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "جمله اول: «The <b>mandate</b> to assure and protect the health of the public ... <b>It</b> carries with it an obligation ...» ضمیر «It» به <b>mandate</b> (مأموریت) برمی‌گردد (گزینه <b>a</b>)."))
+
+    # ═══════════════════ درک مطلب ۴: ویروس آنفولانزا و پرندگان مهاجر (۱۰۶-۱۱۰) ═══════════════════
+    questions.append(dict(no=106, subject="english",
+        q="According to the passage, scientists have discovered that influenza viruses ...... .",
+        c=["a. cause ill health in wild birds",
+           "b. do not necessarily cause symptoms in birds",
+           "c. are rarely present in wild birds",
+           "d. weaken when transferred from animals to man"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «a great number of <b>wild birds seem to carry the virus without showing any evidence of illness</b>»؛ یعنی لزوماً در پرندگان علائم ایجاد نمی‌کنند (گزینه <b>b</b>)."))
+
+    questions.append(dict(no=107, subject="english",
+        q="It is known that influenza virus ...... .",
+        c=["a. was found in a group of very old birds (evolved in the bird kingdom, a group 100 million years on earth)",
+           "b. are often found in wild diseased birds",
+           "c. evolved before 100 million years ago",
+           "d. can survive in many different places"],
+        a=1,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «a large family of influenza viruses may have <b>evolved in the bird kingdom, a group that has been on the earth 100 million years</b> and is able to carry the virus without contracting the disease» (گزینه <b>a</b>)."))
+
+    questions.append(dict(no=108, subject="english",
+        q="According to the passage, a great variety of influenza strains can appear after ...... .",
+        c=["a. H and N spikes are recombined",
+           "b. diseased animal viruses are combined",
+           "c. dissimilar types of virus recombine",
+           "d. two identical viruses are combined"],
+        a=3,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «It is known that <b>two influenza viruses can recombine</b> when both are present in an animal at the same time. The result ... is a great variety of strains containing different H and N spikes.»<br>"
+            "این واریته زمانی ایجاد می‌شود که <b>دو ویروس متفاوت بازترکیب شوند</b> (گزینه <b>c</b>)."))
+
+    questions.append(dict(no=109, subject="english",
+        q="New strains of viruses are produced by the combination of genes from ...... .",
+        c=["a. two groups of migrating birds",
+           "b. a human virus and an animal virus",
+           "c. diseased lower animals",
+           "d. people with influenza"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «a human influenza virus can recombine with an influenza virus from a lower animal to produce an entirely new spike» یعنی ترکیب <b>ویروس انسانی و حیوانی</b> (گزینه <b>b</b>)."))
+
+    questions.append(dict(no=110, subject="english",
+        q="According to this paragraph, influenza viruses are NOT produced when ...... .",
+        c=["a. two influenza viruses recombine in the same animal",
+           "b. animal viruses recombine with human viruses",
+           "c. two animal viruses recombine in one animal",
+           "d. two animal viruses recombine in a human"],
+        a=4,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن دو حالت را بیان می‌کند: (۱) دو ویروس در یک حیوان (not necessarily human)؛ (۲) ویروس انسانی با حیوانی؛ (۳) دو ویروس حیوانی در یک <b>حیوان</b> (مثلاً خوک) که سپس به انسان منتقل می‌شود.<br>"
+            "ترکیب دو ویروس حیوانی مستقیماً <b>در بدن انسان</b> در متن ذکر نشده (گزینه <b>d</b>)."))
+
+    # ═══════════════════ درک مطلب ۵: شستن دست‌ها (۱۱۱-۱۱۵) ═══════════════════
+    questions.append(dict(no=111, subject="english",
+        q="Most people wash their hands ...... .",
+        c=["a. as a force of habit (without thinking)",
+           "b. because they constantly think about infecting others",
+           "c. to avoid catching colds",
+           "d. because washing with water prevents dryness"],
+        a=1,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «Hand washing, a simple habit most people do <b>without thinking</b> ...»؛ یعنی از روی <b>عادت</b> (گزینه <b>a</b>)."))
+
+    questions.append(dict(no=112, subject="english",
+        q="Flu and cold ...... .",
+        c=["a. are common sources of daily infections",
+           "b. are both serious infections",
+           "c. can, in combination (with pneumonia), be extremely dangerous",
+           "d. can be prevented by using antibacterial soaps"],
+        a=3,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «While most people recover from a cold, <b>flu can be much more serious. Pneumonia and flu, in combination, rank high among mortality causes</b>» (گزینه <b>c</b>)."))
 
     questions.append(dict(no=113, subject="english",
-        q="According to the passage, females at puberty ... .",
-        c=["a. show more substance abuse than males",
-           "b. tend to have body image issues leading to eating disorders",
-           "c. show higher suicide rates than males",
-           "d. are generally protected from all mental health concerns"],
-        a=2,
+        q="The author implies that people ...... .",
+        c=["a. are aware of the advantages of various washing methods",
+           "b. prefer soap and water to alcohol to clean their hands",
+           "c. use alcohol-based sanitizers to clean doorknobs",
+           "d. fail to wash their hands often enough (which can spread infection)"],
+        a=4,
         exp="<b>📖 ترجمه و بررسی:</b><br>"
-            "متن: «females tend to struggle more than males with body image and self-esteem issues which can lead to dangerous eating disorders».<br>پس گزینه **ب**."))
+            "متن: «<b>if you don't wash your hands frequently enough</b>, you can infect yourself and others by touching common surfaces, such as doorknobs.» (گزینه <b>d</b>)."))
 
     questions.append(dict(no=114, subject="english",
-        q="Untreated psycho-social concerns in young people may lead to ... .",
-        c=["a. permanent mental and physical damage",
-           "b. a temporary decline in performance only",
-           "c. sudden immunity",
-           "d. better academic outcomes"],
-        a=1,
+        q="Towelettes / antimicrobial wipes are ...... .",
+        c=["a. alcohol-based soaps",
+           "b. better than soap and water",
+           "c. often commercially prepared and aggravate dryness",
+           "d. as good as soap and water, but less effective than alcohol-based sanitizers"],
+        a=4,
         exp="<b>📖 ترجمه و بررسی:</b><br>"
-            "متن: «these health concerns may lead to permanent mental and physical damage». گزینه **الف**."))
+            "متن: «Antimicrobial wipes or towelettes, although as effective as soap and water, <b>are not as good as alcohol-based sanitizers</b> ... they are actually more effective in killing bacteria and viruses.» (گزینه <b>d</b>)."))
 
     questions.append(dict(no=115, subject="english",
-        q="The word 'determinants' in passage is closest in meaning to ... .",
-        c=["a. factors",
-           "b. results",
-           "c. treatments",
-           "d. symptoms"],
-        a=1,
-        exp="<b>📖 واژگان:</b><br>"
-            "Determinants یعنی عوامل تعیین‌کننده، مترادف با **factors (گزینه الف)**."))
+        q="The text says that washing with ...... can often make germs resistant.",
+        c=["a. alcohol-based sanitizers",
+           "b. antibacterial soaps",
+           "c. regular soaps",
+           "d. antimicrobial wipes"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «<b>Antibacterial soaps</b>, increasingly popular today and no more effective ... often make bacteria <b>immune</b> to the products' antimicrobial agents — making it even harder to fight these germs» (گزینه <b>b</b>)."))
 
+    # ═══════════════════ واژگان زبان عمومی (۱۵ سوال: ۱۱۶-۱۳۰) ═══════════════════
     questions.append(dict(no=116, subject="english",
-        q="Certain solvents are highly ....... . Therefore, to prevent fires, read the labels and follow the directions for proper storage and disposal.",
-        c=["a. irresistible",
-           "b. irresponsible",
-           "c. combustible",
-           "d. compatible"],
-        a=3,
-        exp="<b>📖 واژگان:</b><br>"
-            "جمله درباره جلوگیری از آتش‌سوزی است، پس solvents به‌شدت **قابل اشتعال (combustible)** هستند (گزینه **ج**)."))
-
-    questions.append(dict(no=117, subject="english",
-        q="Signs and symptoms of passive-aggressive behavior include ......, resentment and opposition to the demands of others.",
-        c=["a. collaboration",
-           "b. compliance",
-           "c. stubbornness",
-           "d. submission"],
-        a=3,
-        exp="<b>📖 واژگان:</b><br>"
-            "رفتار منفعل-پرخاشگر شامل **لجبازی (stubbornness)**، رنجش و مخالفت است (گزینه **ج**)."))
-
-    questions.append(dict(no=118, subject="english",
-        q="An unconscious coping mechanism known as denial gives you time to adjust to a(n) ...... situation.",
-        c=["a. distressing",
-           "b. persuasive",
-           "c. acceptable",
-           "d. exceptional"],
-        a=1,
-        exp="<b>📖 واژگان:</b><br>"
-            "مکانیزم انکار به شما وقت می‌دهد تا با موقعیت‌های **پریشان‌کننده (distressing)** سازگار شوید (گزینه **الف**)."))
-
-    questions.append(dict(no=119, subject="english",
-        q="After the appropriate prescription, the injured man's wounds are ..... rapidly.",
-        c=["a. healing",
-           "b. vanishing",
-           "c. relapsing",
-           "d. deteriorating"],
-        a=1,
-        exp="<b>📖 واژگان:</b><br>"
-            "زخم‌ها پس از تجویز مناسب **التیام (healing)** می‌یابند (گزینه **الف**)."))
-
-    questions.append(dict(no=120, subject="english",
-        q="The kidney ..... any products the body needs and secretes waste materials as urine.",
-        c=["a. releases",
-           "b. resurfaces",
-           "c. reabsorbs",
-           "d. removes"],
-        a=3,
-        exp="<b>📖 واژگان:</b><br>"
-            "کلیه مواد مورد نیاز بدن را **بازجذب (reabsorbs)** می‌کند (گزینه **ج**)."))
-
-    questions.append(dict(no=121, subject="english",
-        q="In many countries, patient education is an important nursing ...... .",
-        c=["a. campus",
-           "b. focus",
-           "c. locus",
-           "d. bonus"],
+        q="All victims of illness or injury exposed to a cold environment for ...... periods of time should always be suspected for hypothermia.",
+        c=["a. negligible",
+           "b. prolonged",
+           "c. contracted",
+           "d. instant"],
         a=2,
         exp="<b>📖 واژگان:</b><br>"
-            "آموزش بیمار **تمرکز / محور (focus)** مهم پرستاری است (گزینه **ب**)."))
+            "هیپوترمی در اثر قرار گرفتن <b>طولانی‌مدت (prolonged)</b> در محیط سرد ایجاد می‌شود (گزینه <b>b</b>)."))
 
-    questions.append(dict(no=122, subject="english",
+    questions.append(dict(no=117, subject="english",
+        q="The aged lose important ...... mechanisms that increase heat production when going from a warm to a cold environment.",
+        c=["a. compensatory",
+           "b. entertaining",
+           "c. supplementary",
+           "d. refraining"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "سازوکارهای <b>جبرانی (compensatory)</b> افزایش تولید گرما در افراد مسن تضعیف می‌شوند (گزینه <b>a</b>)."))
+
+    questions.append(dict(no=118, subject="english",
         q="When one ...... and the sweat reaches the skin surface, the water vaporizes and evaporates as the wind sweeps across the body.",
         c=["a. expires",
            "b. inspires",
@@ -1455,9 +1430,9 @@ def build():
            "d. perspires"],
         a=4,
         exp="<b>📖 واژگان:</b><br>"
-            "وقتی فرد **عرق می‌کند (perspires)**، عرق به پوست رسیده و تبخیر می‌شود (گزینه **د**)."))
+            "تبخیر عرق زمانی است که فرد <b>عرق می‌کند (perspires)</b> (گزینه <b>d</b>)."))
 
-    questions.append(dict(no=123, subject="english",
+    questions.append(dict(no=119, subject="english",
         q="Body heat is lost by radiation in the form of infrared heat rays being ...... the body to the surroundings.",
         c=["a. emitted from",
            "b. submitted to",
@@ -1465,9 +1440,9 @@ def build():
            "d. admitted to"],
         a=1,
         exp="<b>📖 واژگان:</b><br>"
-            "پرتوهای فروسرخ **از بدن تابش (emitted from)** می‌شوند (گزینه **الف**)."))
+            "امواج فروسرخ <b>از بدن تابش (emitted from)</b> می‌شوند (گزینه <b>a</b>)."))
 
-    questions.append(dict(no=124, subject="english",
+    questions.append(dict(no=120, subject="english",
         q="Though no one would deny that upbringing and environment play important roles in the making of a criminal, scientists increasingly ...... that biology also plays a significant part.",
         c=["a. suspect",
            "b. complain",
@@ -1475,9 +1450,9 @@ def build():
            "d. require"],
         a=1,
         exp="<b>📖 واژگان:</b><br>"
-            "دانشمندان به‌طور فزاینده **مظنون هستند / باور دارند (suspect)** که زیست‌شناسی هم نقش دارد (گزینه **الف**)."))
+            "دانشمندان به‌طور فزاینده <b>گمان می‌برند (suspect)</b> که زیست‌شناسی نیز نقش مهمی دارد (گزینه <b>a</b>)."))
 
-    questions.append(dict(no=125, subject="english",
+    questions.append(dict(no=121, subject="english",
         q="Research into human head and brain injury has pinpointed areas of the brain where impairment can ...... aggression.",
         c=["a. violate",
            "b. reestablish",
@@ -1485,9 +1460,9 @@ def build():
            "d. conserve"],
         a=3,
         exp="<b>📖 واژگان:</b><br>"
-            "ضایعه در نواحی خاص مغز می‌تواند **سبب تحریک (trigger)** پرخاشگری شود (گزینه **ج**)."))
+            "ضایعه در نواحی خاص می‌تواند <b>تحریک/برانگیختن (trigger)</b> پرخاشگری را سبب شود (گزینه <b>c</b>)."))
 
-    questions.append(dict(no=126, subject="english",
+    questions.append(dict(no=122, subject="english",
         q="Adolescence is a timely period to ...... healthy eating and lifestyle behaviors, thereby preventing nutrition-related diseases in adulthood.",
         c=["a. consolidate",
            "b. declare",
@@ -1495,9 +1470,9 @@ def build():
            "d. forbid"],
         a=1,
         exp="<b>📖 واژگان:</b><br>"
-            "نوجوانی دوره‌ای مناسب برای **تثبیت (consolidate)** عادات غذایی سالم است (گزینه **الف**)."))
+            "نوجوانی دوره مناسب برای <b>تثبیت (consolidate)</b> عادات سالم غذایی/سبک زندگی است (گزینه <b>a</b>)."))
 
-    questions.append(dict(no=127, subject="english",
+    questions.append(dict(no=123, subject="english",
         q="The strain of influenza responsible for the 1918 pandemic was so ...... that more than 20 million people died.",
         c=["a. inoffensive",
            "b. transitory",
@@ -1505,9 +1480,9 @@ def build():
            "d. lenient"],
         a=3,
         exp="<b>📖 واژگان:</b><br>"
-            "سویه آنفولانزا ۱۹۱۸ به‌قدرت **کشنده/ویروسی و شدید (virulent)** بود (گزینه **ج**)."))
+            "سویه آنفولانزای ۱۹۱۸ به‌قدرت <b>کشنده/ویروسی و شدید (virulent)</b> بود که بیش از ۲۰ میلیون نفر کشته شدند (گزینه <b>c</b>)."))
 
-    questions.append(dict(no=128, subject="english",
+    questions.append(dict(no=124, subject="english",
         q="Rachel Carson, an American biologist, wrote 'Silent Spring' to warn people of the dangers of unrestricted use of chemical pesticides and as a result ...... a movement to save the environment.",
         c=["a. aborted",
            "b. launched",
@@ -1515,27 +1490,67 @@ def build():
            "d. halted"],
         a=2,
         exp="<b>📖 واژگان:</b><br>"
-            "کتاب سبب **راه‌اندازی (launched)** یک جنبش زیست‌محیطی شد (گزینه **ب**)."))
+            "کتاب «بهار خاموش» سبب <b>راه‌اندازی (launched)</b> جنبش زیست‌محیطی شد (گزینه <b>b</b>)."))
 
-    questions.append(dict(no=129, subject="english",
-        q="The doctor advised him to ...... from strenuous exercise until his wound fully healed.",
-        c=["a. abstain",
-           "b. benefit",
-           "c. derive",
-           "d. result"],
-        a=1,
-        exp="<b>📖 واژگان:</b><br>"
-            "پزشک توصیه کرد از ورزش سنگین **پرهیز (abstain)** کند (گزینه **الف**)."))
-
-    questions.append(dict(no=130, subject="english",
-        q="Complete the sentence: Most children cannot identify or specifically ...... the particular location of pain until they are four or five years old.",
-        c=["a. evolve by",
-           "b. involve in",
-           "c. complain of",
-           "d. refrain from"],
+    questions.append(dict(no=125, subject="english",
+        q="Certain solvents are highly ...... . Therefore, to prevent fires, read the labels and follow the directions for proper storage and disposal.",
+        c=["a. irresistible",
+           "b. irresponsible",
+           "c. combustible",
+           "d. compatible"],
         a=3,
         exp="<b>📖 واژگان:</b><br>"
-            "کودکان تا ۴-۵ سالگی نمی‌توانند به‌طور مشخص **شکایت کنند از / توصیف کنند (complain of)** محل درد (گزینه **ج**)."))
+            "جمله به جلوگیری از آتش‌سوزی اشاره دارد، پس حلال‌ها به‌شدت <b>قابل اشتعال (combustible)</b> هستند (گزینه <b>c</b>)."))
+
+    questions.append(dict(no=126, subject="english",
+        q="Signs and symptoms of passive-aggressive behavior include ......, resentment and opposition to the demands of others.",
+        c=["a. collaboration",
+           "b. compliance",
+           "c. stubbornness",
+           "d. submission"],
+        a=3,
+        exp="<b>📖 واژگان:</b><br>"
+            "رفتار منفعل-پرخاشگر شامل <b>لجبازی (stubbornness)</b>، رنجش و مخالفت با خواسته‌های دیگران است (گزینه <b>c</b>)."))
+
+    questions.append(dict(no=127, subject="english",
+        q="An unconscious coping mechanism known as denial gives you time to adjust to a(n) ...... situation.",
+        c=["a. distressing",
+           "b. persuasive",
+           "c. acceptable",
+           "d. exceptional"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "مکانیزم انکار به فرد فرصت می‌دهد با موقعیت‌های <b>پریشان‌کننده (distressing)</b> سازگار شود (گزینه <b>a</b>)."))
+
+    questions.append(dict(no=128, subject="english",
+        q="After the appropriate prescription, the injured man's wounds are ...... rapidly.",
+        c=["a. healing",
+           "b. vanishing",
+           "c. relapsing",
+           "d. deteriorating"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "پس از نسخه/درمان مناسب، زخم‌ها به‌سرعت <b>التیام (healing)</b> می‌یابند (گزینه <b>a</b>)."))
+
+    questions.append(dict(no=129, subject="english",
+        q="The kidney ...... any products the body needs and secretes waste materials as urine.",
+        c=["a. releases",
+           "b. resurfaces",
+           "c. reabsorbs",
+           "d. removes"],
+        a=3,
+        exp="<b>📖 واژگان:</b><br>"
+            "کلیه مواد ضروری بدن را <b>بازجذب (reabsorbs)</b> و مواد زائد را به صورت ادرار دفع می‌کند (گزینه <b>c</b>)."))
+
+    questions.append(dict(no=130, subject="english",
+        q="In many countries, patient education is an important nursing ...... .",
+        c=["a. campus",
+           "b. focus",
+           "c. locus",
+           "d. bonus"],
+        a=2,
+        exp="<b>📖 واژگان:</b><br>"
+            "آموزش به بیمار <b>محور/تمرکز (focus)</b> مهم پرستاری است (گزینه <b>b</b>)."))
 
     # ═══════════════════ درس‌های دیگر در پیام بعدی ═══════════════════
 
