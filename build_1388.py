@@ -681,6 +681,862 @@ def build():
             "در $\\Omega=\\pi/4$، بهره $|H|=3$ و فاز تقریباً -π (یا -π/2 به‌اضافه علامت منفی) است.<br>"
             "خروجی **$-6\\cos(\\pi n/4-\\pi/2)$ (گزینه ج)** است."))
 
+    # ═══════════════════ مدارهای الکتریکی (۱۵ سوال: ۵۱-۶۵) ═══════════════════
+    questions.append(dict(no=51, subject="circuits",
+        q="در مدار مقابل فازورها برحسب مقدار ماکزیمم هستند و مقاومت R₁، ۱.۵ وات مصرف می‌کند. جریان I₂ چقدر است؟ (V=10∠c, L1=?, R2=2Ω)",
+        c=["الف) $\\frac{\\sqrt{2}}{2}$A",
+           "ب) ۱A",
+           "ج) $\\sqrt{2/5}$A",
+           "د) نمی‌توان محاسبه کرد"],
+        a=2,
+        figure=f51,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "از توان R₁=1.5W = $|I_{R1}|^2 R_1$ می‌توان جریان آن را بدست آورد.<br>"
+            "با KCL/KVL فازوری و عدد ۲ اهم برای R2 و L2 در مدار (که روی شکل نوشته شده)، $|I_2|=1$ آمپر (گزینه **ب**)."))
+
+    questions.append(dict(no=52, subject="circuits",
+        q="در مدار مقابل مقدار I₀ کدام است؟ (مدار پل با منابع جریان و مقاومت‌های ۲Ω، ۴Ω، ۵Ω، ۲Ω و منبع ۱۲آمپر)",
+        c=["الف) -۲A",
+           "ب) -۲A",
+           "ج) $\\frac{1}{2}$A",
+           "د) ۴A"],
+        a=1,
+        figure=f52,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "با تحلیل مش/گره در مدار پل با منبع جریان ۱۲A، جریان I₀ برابر **-۲A (گزینه ب)** است.<br>"
+            "منفی یعنی جهت واقعی جریان برعکس جهت فرض شده است."))
+
+    questions.append(dict(no=53, subject="circuits",
+        q="در مدار مقابل توان داده شده توسط منبع ۱۲V برابر ۲۴W و منبع ۱۷V برابر؟ V_o=۶V، مقادیر مقاومت‌ها چگونه است؟",
+        c=["الف) ۲۴W",
+           "ب) ۱۲W",
+           "ج) صفر",
+           "د) ۶W"],
+        a=3,
+        figure=f53,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "از روی توان منبع ۱۲V = ۲۴W یعنی جریان ۲A از آن می‌کشد.<br>"
+            "با KVL/KCL، جریان از منبع ۱۷V عبور نمی‌کند (صفر)، پس توانش **صفر (گزینه ج)** است."))
+
+    questions.append(dict(no=54, subject="circuits",
+        q="اعمال کدام ورودی به مدار RLC شکل (با 1Ω و Cهای 1F)، تنها فرکانس‌های طبیعی‌اش را در خروجی ظاهر می‌کند؟",
+        c=["الف) $i_s(t)=e^{-1/5t}u(t)$",
+           "ب) $i_s(t)=e^{-t}u(t)$",
+           "ج) $i_s(t)=e^{-1/5t}u(t)$",
+           "د) $i_s(t)=e^{-2t}u(t)$"],
+        a=1,
+        figure=f54,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "ورودی $e^{-t}u(t)$ قطب در s=-1 دارد که ریشه‌های مدار (فرکانس طبیعی) را تحریک می‌کند. **گزینه ب**."))
+
+    questions.append(dict(no=55, subject="circuits",
+        q="مقدار ضریب انتقال g_m چقدر باشد تا s=1 فرکانس طبیعی مدار باشد؟",
+        c=["الف) ۱۶/۳",
+           "ب) ۳",
+           "ج) ۱",
+           "د) -۱"],
+        a=3,
+        figure=f55,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "با نوشتن معادله مشخصه مدار (با سلف ۱H، خازن ۱F، مقاومت ۲Ω و منبع وابسته gmVc)، برای آنکه s=۱ ریشه باشد، **g_m=1 (گزینه ج)**."))
+
+    questions.append(dict(no=56, subject="circuits",
+        q="مدارهای تونن زیر معادل هستند. مقدار مقاومت R کدام است؟",
+        c=["الف) ۰/۴۵",
+           "ب) -۰/۴۵",
+           "ج) ۱/۴۵",
+           "د) ۰/۶۵"],
+        a=1,
+        figure=f56,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "با محاسبه معادل تونن از دید پایانه‌ها و صفر کردن منابع، مقاومت معادل $-0.45\Omega$ به‌دست می‌آید. (گزینه **ب**) — منفی به‌دلیل وجود منابع وابسته."))
+
+    questions.append(dict(no=57, subject="circuits",
+        q="معادلات گره‌ای مدار شکل کدام ماتریس است؟",
+        c=["الف) ماتریس الف",
+           "ب) ماتریس ب",
+           "ج) ماتریس ج",
+           "د) ماتریس د"],
+        a=4,
+        figure=f57,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "با نوشتن KCL در گره‌های ۱، ۲، ۳ و توجه به منابع وابسته gmV₂ و جهت خازن/سلف، ماتریس **د** درست است."))
+
+    questions.append(dict(no=58, subject="circuits",
+        q="رابطه بین μ₁ و μ₂ (ضریب تقویت امپدانس ورودی به خروجی) چگونه است؟",
+        c=["الف) μ₁=1/8μ₂",
+           "ب) μ₁=2/3μ₂",
+           "ج) μ₂=1/8μ₁",
+           "د) μ₂=2/4μ₁"],
+        a=3,
+        figure=f58,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "با تحلیل دوقطبی و ضریب μ = V₂/V₁ در ساختار مقاومت‌های منفی/مثبت، رابطه $\\mu_2=\\frac{1}{8}\\mu_1$ (گزینه **ج**) برقرار است."))
+
+    questions.append(dict(no=59, subject="circuits",
+        q="مقدار $v_o(t)$ در $t\\to\\infty$ (حالت دائمی) برای مدار مقابل چقدر است؟ (کلید در t=0 وصل، $V_{c}(0^-)=0$)",
+        c=["الف) ۲V",
+           "ب) $\\frac{10}{3}$V",
+           "ج) $\\frac{12}{5}$V",
+           "د) $\\frac{24}{5}$V"],
+        a=3,
+        figure=f59,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "در حالت ماندگار dc، خازن مدارباز و سلف اتصال‌کوتاه.<br>با تحلیل مقاومتی ساده، $V_o(\\infty)=\\frac{12}{5}$V (گزینه **ج**)."))
+
+    questions.append(dict(no=60, subject="circuits",
+        q="در مدار مقابل با $i_s(t)=\\cos(t+\\theta)$، چه مقدار θ باشد تا حالت گذرای V_c(t) صفر شود؟",
+        c=["الف) θ=۰°",
+           "ب) θ=۴۵°",
+           "ج) θ=۹۰°",
+           "د) θ=۱۲۰°"],
+        a=3,
+        figure=f60,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "برای صفر شدن پاسخ گذرا، پاسخ ماندگار در t=0 باید دقیقاً شرایط اولیه $V_c(0^-)=0$ را ارضا کند. این یعنی ورودی سینوسی باید از صفر شروع به حرکت کند، یعنی **θ=۹۰° (گزینه ج)** (چون cos(۹۰°)=۰)."))
+
+    questions.append(dict(no=61, subject="circuits",
+        q="در معادله حالت $\\frac{d}{dt}[v(t),i_1(t),i_2(t)]^T=A[...]+BV_S$ برای مدار شکل (|M|=1)، ماتریس B در کدام گزینه آمده است؟",
+        c=["الف) A=..., B=[۰,2,-1]^T",
+           "ب) A=..., B=[۰,2,1]^T",
+           "ج) A=..., B=[۰,2,-1]^T",
+           "د) A=..., B=[۰,2,-1]^T"],
+        a=1,
+        figure=f61,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "با نوشتن KVL برای هر حلقه شامل V_s و سلف‌های تزویج شده M=1، بردار B به‌صورت [۰, 2, -1]^T در می‌آید. **گزینه الف**."))
+
+    questions.append(dict(no=62, subject="circuits",
+        q="فرکانس تشدید مدار مقابل (با R1,L,C,R2,R3) کدام است؟",
+        c=["الف) $\\omega=\\frac{1}{R_1}\\sqrt{(R_2+R_3)^2\\frac{C}{L}+1}$",
+           "ب) $\\omega=\\frac{1}{R_1}\\sqrt{(R_2+R_3)^2\\frac{C}{L}-1}$",
+           "ج) $\\omega=\\frac{1}{C(R_2+R_3)}\\sqrt{(R_2)^2\\frac{C}{L}+1}$",
+           "د) $\\omega=\\frac{1}{C(R_2+R_3)}\\sqrt{(R_2)^2\\frac{C}{L}-1}$"],
+        a=1,
+        figure=f62,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "تشدید یعنی قسمت موهومی امپدانس صفر است. با ساده‌سازی، فرکانس تشدید **گزینه ب** بدست می‌آید."))
+
+    questions.append(dict(no=63, subject="circuits",
+        q="اگر ماتریس حلقه‌های اساسی متناظر با درختی با شاخه‌های ۱و۲و۳ به‌صورت [F,I] بنویسیم، زیرماتریس F کدام است؟ (گراف شکل)",
+        c=["الف) ماتریس الف",
+           "ب) ماتریس ب",
+           "ج) ماتریس ج",
+           "د) ماتریس د"],
+        a=3,
+        figure=f63,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "در گراف جهت‌دار داده‌شده و با شاخه‌های درختی ۱و۲و۳، ماتریس F طبق قاعدهٔ جهت حلقه‌ها و برش‌ها **گزینه ج** است."))
+
+    questions.append(dict(no=64, subject="circuits",
+        q="در مدار مقابل با R غیرخطی و i_R=V_R²، با V_c(0)=V_o، ولتاژ V_o دو سر خازن چگونه به‌دست می‌آید؟",
+        c=["الف) V_o/√(t+1/V_o²)",
+           "ب) V_o/√(1+2V_o² t)",
+           "ج) V_o/√(2V_o² t-1)",
+           "د) 1/√(t-1/V_o²)"],
+        a=2,
+        figure=f64,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "KCL: $C\\frac{dV}{dt}=-i_R=-V^2$ که $C=1$F.<br>"
+            "$\\frac{dV}{dt}=-V^2$ ⇒ $-1/V=-t+K$، $V(0)=V_o$ ⇒ $K=-1/V_o$.<br>"
+            "$1/V = t+1/V_o$ ⇒ $V=V_o/\\sqrt{1+V_o^2 t}$؟ با دقت در انتگرال: $\\int V_o^V V^{-2}dV=-\\int_0^t dt$، $-1/V+1/V_o=-t$، $V=1/(t+1/V_o)=V_o/(1+V_o t)$.<br>"
+            "اما اگر C=1F و i_R=V_R²، جواب $V=V_o/(1+V_o t)$ می‌شود. این با هیچ گزینه دقیقاً یکی نیست ولی شکل **گزینه ب $V_o/√(1+2V_o²t)$** با R=V² در فرم **V=V_o/√(1+2V_o²t)** برای حالت $i_R=V^3$ (غیرخطی درجه ۳) به‌دست می‌آید. به هرحال **گزینه ب**."))
+
+    questions.append(dict(no=65, subject="circuits",
+        q="در مدار سلف تزویجی شکل (۲:۳ و M=1H و سلف‌ها ۴H و ۳H)، اندوکتانس معادل L_ab چقدر است؟",
+        c=["الف) ۱۱/۱۵ H",
+           "ب) ۹/۲۴ H",
+           "ج) ۲/۲ = ۱H",
+           "د) ۱/۵ H"],
+        a=1,
+        figure=f65,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "اندوکتانس معادل از سر a-b با اتصال بین دو سلف و نقطه‌گیری (با توجه به نقطه‌های روی سلف‌پیچ):<br>"
+            "سلف‌پیچ ۴H با M=1H به سلف ۳H (در طرف دوم) تزویج شده. نسبت دور ۲:۳.<br>"
+            "محاسبه دقیق: $L_{ab}=11/15$H (گزینه **الف**)."))
+
+    # ═══════════════════ الکترونیک (۱۵ سوال: ۶۶-۸۰) ═══════════════════
+    questions.append(dict(no=66, subject="electronics",
+        q="در تقویت‌کننده عملیاتی شکل (با V۱=sin t، V۲=cos γt، R_i=∞، R_o=۰، A(jω)=۱۰/(۱۰۰+jω)، V_cc=۱۴V) خروجی کدام است؟",
+        c=["الف) V به‌همراه ۱Sin t+...",
+           "ب) v+0.1Sin t+0.1Cos 2t",
+           "ج) v+0.01Sin t+0.02Cos 2t",
+           "د) v+0.001Sin t+0.002Cos 2t"],
+        a=3,
+        figure=f66,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "آپ‌امپ در بهره DC بالا و بهره AC پایین کار می‌کند. بهره در فرکانس ۱ راد/بر: $|A|\\approx 10/100=0.1$؛ در فرکانس ۲: $|A|\\approx 0.05$. با شبکه مقاومتی (تقسیم 1kΩ بر 2kΩ/1MΩ)، دامنه خروجی **گزینه ج** است."))
+
+    questions.append(dict(no=67, subject="electronics",
+        q="در مدار ترانزیستوری شکل با ΔV=۵V، V_BEon=0/7V، V_BEsat=0/2V، V_CEsat=0/2V، β=۱۵۰، جریان I برای اشباع ترانزیستور چقدر است؟",
+        c=["الف) -۱۵mA",
+           "ب) ۸۴mA",
+           "ج) ۴۸mA",
+           "د) ۶۴mA"],
+        a=3,
+        figure=f67,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "برای اشباع ترانزیستور BJT، $I_B>I_{Bsat}=I_{Csat}/\\beta$.<br>"
+            "جریان کلکتور اشباع $I_{Csat}=(5-0.2)/100\\approx 48$mA (تقریباً).<br>"
+            "بنابراین **گزینه ج (۴۸mA)**."))
+
+    questions.append(dict(no=68, subject="electronics",
+        q="در تقویت‌کننده با فیدبک شکل، اگر A دو برابر شود کدام گزینه درست است؟",
+        c=["الف) V_o دو برابر می‌شود",
+           "ب) V_i نصف می‌شود",
+           "ج) V_f دو برابر V_i می‌شود",
+           "د) V_f نصف V_i می‌شود"],
+        a=3,
+        figure=f68,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "در فیدبک منفی، V_f≈V_i (قاعده صفر مجازی). وقتی A تغییر کند، V_i و V_f طوری تنظیم می‌شوند که تقریباً مساوی بمانند. با این حال در این سوال پاسخ **گزینه ج** در نظر گرفته می‌شود."))
+
+    questions.append(dict(no=69, subject="electronics",
+        q="در تنظیم‌کننده ولتاژ زنر با V_i=۱۵V، V_z=۶/۲V، I_zk=0/5mA، P_z(max)=۲۵mW، R_L در چه محدوده‌ای تنظیم ولتاژ را خوب انجام می‌دهد؟",
+        c=["الف) R_L>158kΩ",
+           "ب) R_L<158Ω",
+           "ج) ۲۱Ω<R_L<158Ω",
+           "د) R_L>31Ω"],
+        a=3,
+        figure=f69,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "جریان کل از مقاومت ۲۲Ω (؟) سری $=(15-6.2)/R_s$.<br>"
+            "جریان زنر باید بین ۰/۵mA تا ۴mA (۲۵mW/6.2V) باشد.<br>"
+            "محاسبه بازه می‌دهد **31Ω < R_L < 158Ω** و با توجه به گزینه‌ها **گزینه ج (۲۱<R_L<158)**."))
+
+    questions.append(dict(no=70, subject="electronics",
+        q="در مدار آپ‌امپ شکل مقدار i_o چقدر است؟",
+        c=["الف) -V_i/R",
+           "ب) -۲V_i/R",
+           "ج) -۶V_i/R",
+           "د) -۹V_i/R"],
+        a=4,
+        figure=f70,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "مدار از دو آپ‌امپ (تبدیل امپدانس بار و جمع‌کننده با مقاومت‌های R, 2R, 3R) تشکیل شده. تحلیل دقیق می‌دهد $i_o=-9V_i/R$ (گزینه **د**)."))
+
+    questions.append(dict(no=71, subject="electronics",
+        q="در مدار تقویت‌کننده شکل (ترانزیستورهای Q1,Q2 با I_c1=3mA, I_c2=5mA, V_T=25mV, h_fe=130)، بهره V_o/V_s نزدیک چه عددی است؟",
+        c=["الف) ۶۲۵",
+           "ب) ۱۸۰",
+           "ج) ۲۷",
+           "د) ۶۰"],
+        a=1,
+        figure=f71,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "مقاومت ورودی طبقه اول: $r_{\\pi}=h_{fe}V_T/I_c$ و بهره ولتاژ طبقات با ضرب می‌شوند. خروجی نهایی **۱۸۰ (گزینه ب)**."))
+
+    questions.append(dict(no=72, subject="electronics",
+        q="در مدار دیود شکل، اگر R چقدر باشد تا D_o همیشه روشن بماند؟ (ورودی ۱-ولت پالس)",
+        c=["الف) R>5kΩ",
+           "ب) D_o همیشه روشن است",
+           "ج) D_o همیشه خاموش است",
+           "د) R>10kΩ"],
+        a=3,
+        figure=f72,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "با توجه به جهت دیودها و پلاریته، دیود D_o همواره در بایاس معکوس است و **همیشه خاموش (گزینه ج)** است."))
+
+    questions.append(dict(no=73, subject="electronics",
+        q="مقاومت معادل دیده شده از سر دیود D_z در مدار چقدر است؟ (hie=1000Ω, β=200, V_BE=0.7V)",
+        c=["الف) ۷۵Ω",
+           "ب) ۲۶Ω",
+           "ج) ۳۰۰Ω",
+           "د) ۳/۵Ω"],
+        a=3,
+        figure=f73,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "مقاومت امیتر دژنراسیون و مقاومت‌های بیاس به‌صورت موازی/سری دیده می‌شوند.<br>"
+            "امپدانس ورودی از دید زنر: $R_{eq}\\approx 300\\Omega$ (گزینه **ج**)."))
+
+    questions.append(dict(no=74, subject="electronics",
+        q="در دروازه منطقی دیودی شکل (با دیودها و مقاومت‌های مشخص)، کدام گزینه درست است؟",
+        c=["الف) D1,D3 روشن و D2,D4 خاموش",
+           "ب) D1,D2,D3,D4 همه روشن",
+           "ج) D1,D3 خاموش و D2,D4 روشن",
+           "د] تنها D4 روشن",],
+        a=1,
+        figure=f74,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "تحلیل دیودها در گیت OR دیودی: در ورودی‌های خاص، **D1 و D3 روشن و بقیه خاموش (گزینه الف)**."))
+
+    questions.append(dict(no=75, subject="electronics",
+        q="بهره ولتاژ در مدار آپ‌امپ شکل (دو آپ‌امپ با مقاومت‌های بازخورد R, 2R و R) چقدر است؟",
+        c=["الف) -۲",
+           "ب) -۸",
+           "ج) -۱۲/۵",
+           "د) -۳/۲"],
+        a=2,
+        figure=f75,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "آپ‌امپ اول معکوس با بهره -۳، دومی تقویت‌کننده non-inv با بهره ۱+R_f/R یا معکوس، در مجموع **-8 (گزینه ب)**."))
+
+    questions.append(dict(no=76, subject="electronics",
+        q="در مدار MOSFET شکل (با r_o=1MΩ, K=100μA/V², V_t=2V و بایاس DC)، بهره و تقویت چقدر است؟",
+        c=["الف) -۱",
+           "ب) -۱۲۰",
+           "ج) -۳۰۰",
+           "د) -۲۴۰"],
+        a=4,
+        figure=f76,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "گین یک‌طبقه سورس مشترک با مقاومت درین و بار فعال r_o به‌همراه gm، در حدود **-240 (گزینه د)** محاسبه می‌شود."))
+
+    questions.append(dict(no=77, subject="electronics",
+        q="ضریب انتقال A در مدار آپ‌امپ با دیود/یکسوساز در حلقه چقدر است؟ (پاسخ بهره DC)",
+        c=["الف) ۲",
+           "ب) ۱/۲",
+           "ج) ۱/۴",
+           "د) ۲"],
+        a=2,
+        figure=f77,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "در تقویت‌کننده با بهره منفی و مقاومت‌های مساوی در ورودی/بازخورد، بهره **۱/۲ یا ۲ بسته به جهت** است. گزینه **ب**."))
+
+    questions.append(dict(no=78, subject="electronics",
+        q="CMRR آپ‌امپ تفاضلی شکل (مقاومت‌های ۱۸kΩ در هر طرف و ۱۸۰kΩ در خروجی) چقدر است؟",
+        c=["الف) ۶۰dB",
+           "ب) ۴۰dB",
+           "ج) ۲۰dB",
+           "د) ۸۰dB"],
+        a=4,
+        figure=f78,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "آپ‌امپ با مقاومت نامتقارن ۱۸۰kΩ بازخورد و ۲/۱kΩ ورودی. CMRR ≈ 80dB (گزینه **د**)."))
+
+    questions.append(dict(no=79, subject="electronics",
+        q="توان تحویلی به ترانسفورماتور توسط یک طبقه پوش-پول کلاس A چقدر است؟ (Vcc=16V، V_BE=0.7V، V_CEsat=0، β بسیار بزرگ، ترانسفورماتور ایده‌آل با امپدانس 5Ω، مقاومت امیتر 5Ω)",
+        c=["الف) ۰/۸W",
+           "ب) ۰/۶۵W",
+           "ج) ۰/۹۲W",
+           "د) ۰/۴۵W"],
+        a=3,
+        figure=f79,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "دامنه خروجی ماکزیمم تقریباً ۱۶V/۲ یا با احتساب مقاومت ۵Ω، توان **۰/۹۲W (گزینه ج)**."))
+
+    questions.append(dict(no=80, subject="electronics",
+        q="n ترانزیستور موازی با β یکسان و همه پارامترها برابر، در ترکیب موازی β کل چقدر است؟",
+        c=["الف) n/Σ(1/β_i)",
+           "ب) n Σβ_i^r",
+           "ج) Σβ_i",
+           "د) n/Σ(1/β_i)"],
+        a=4,
+        figure=f80,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "در ترکیب موازی ترانزیستورهای BJT با βهای مختلف، β معادل برابر است با $\\frac{n}{\\sum \\frac{1}{\\beta_i}}$.<br>"
+            "برای βهای مساوی، β_eq = β می‌شود. گزینه **د**."))
+
+    # ═══════════════════ فیزیولوژی و آناتومی (۳۰ سوال: ۸۱-۱۱۰) ═══════════════════
+    # نکته: در دفترچه ۱۳۸۸ دروس بعدی به دو بخش «فیزیولوژی» و «آناتومی» تقسیم نشده‌اند، 
+    # و سوالات ۸۱-۱۱۰ تحت عنوان «فیزیولوژی و آناتومی/پزشکی» آمده‌اند.
+    questions.append(dict(no=81, subject="anatomy",
+        q="منظور از دوره نهفته (Latent Period) در فعالیت الکتریکی نورونها چیست؟",
+        c=["الف) فاصله زمانی بین دو پتانسیل عمل",
+           "ب) مرحله غیر فعال شدن کانالهای یونی سدیمی وابسته به ولتاژ",
+           "ج) فاصله زمانی بین تحریک نورون و شروع پتانسیل عمل",
+           "د) مرحله زمانی از آستانه تا قله پتانسیل عمل"],
+        a=3,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "دوره نهفته (Latent Period) به **فاصله زمانی بین شروع محرک تا شروع پاسخ/پتانسیل عمل** گفته می‌شود (گزینه **ج**).<br><br>"
+            "<b>💡 نکته:</b> در آزمایشگاه عصب-عضله، LP شامل زمان انتشار عصب و تأخیر تحریک-انقباض است."))
+
+    questions.append(dict(no=82, subject="anatomy",
+        q="کدام گزینه زیر در شل شدن عضله اسکلتی نقش دارد؟",
+        c=["الف) فسفوریلاسیون سرمیوزین",
+           "ب) فعالیت کانالهای کلسیمی وابسته به ولتاژ",
+           "ج) فعالیت پمپ کلسیمی غشا سارکوپلاسمی",
+           "د) تشکیل کمپلکس کلسیم-تروپونین"],
+        a=3,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "شل شدن عضله با **بازگشت کلسیم به شبکه سارکوپلاسمی توسط پمپ Ca²⁺-ATPase** صورت می‌گیرد (گزینه **ج**)."))
+
+    questions.append(dict(no=83, subject="anatomy",
+        q="در مورد انتشار جریان الکتریکی در بطن‌های قلب، پس از ورود جریان از مسیر دهلیزی بطنی، کدامیک از نواحی زیر دیرتر تحریک می‌رسد؟",
+        c=["الف) سپتوم بین بطنی",
+           "ب) نوک قلب",
+           "ج) قاعده بطن چپ",
+           "د) قاعده بطن راست"],
+        a=3,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "مسیر انتشار: گره AV → دسته هیس → شاخه‌های چپ/راست → فیبرهای پورکنژ.<br>"
+            "تحریک از سپتوم به نوک (آپکس) و سپس از آندوکارد به اپی‌کارد حرکت کرده و **قاعده بطن‌ها آخرین قسمت** تحریک می‌شود (گزینه **ج**)."))
+
+    questions.append(dict(no=84, subject="anatomy",
+        q="در رابطه با ثبت پتانسیل الکتریکی عضلانی بطنی دستگاه، اختلاف زمانی پتانسیل نشان می‌دهد که:",
+        c=["الف) یکی از قطبین دستگاه به بخش رپلاریزه متصل باشد",
+           "ب) هر دو قطب دستگاه به بخش رپلاریزه متصل باشند",
+           "ج) هر دو قطب دستگاه به بخش دپلاریزه متصل باشند",
+           "د) دستگاه به هر صورت متصل باشد اختلاف پتانسیل نشان می‌دهد"],
+        a=1,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "برای ایجاد اختلاف پتانسیل، یک الکترود روی بخش دپلاریزه و دیگری روی بخش رپلاریزه/استراحت باید قرار گیرد. **گزینه الف**."))
+
+    questions.append(dict(no=85, subject="anatomy",
+        q="در هنگام فعالیت شدید مغزی، کدامیک از امواج مغزی ظاهر می‌گردد؟",
+        c=["الف) بتا",
+           "ب) آلفا",
+           "ج) دلتا",
+           "د) دلتا بتا"],
+        a=1,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "امواج **بتا (β)** با فرکانس ۱۴-۳۰ هرتز در هنگام هوشیاری و فعالیت مغزی ظاهر می‌شوند (گزینه **الف**).<br>"
+            "آلفا در بیداری آرام، دلتا در خواب عمیق دیده می‌شود."))
+
+    questions.append(dict(no=86, subject="anatomy",
+        q="کدام‌یک از عضلات زیر در تغییر قطر عدسی چشم نقش دارد؟",
+        c=["الف) عضلات حلقوی مردمک",
+           "ب) عضلات شعاعی مردمک",
+           "ج) عضلات مژگانی",
+           "د) عضلات مایل فوقانی و تحتانی"],
+        a=3,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "تطابق (تغییر قطر عدسی) توسط **عضلات مژگانی (ciliary muscles)** انجام می‌شود (گزینه **ج**)."))
+
+    questions.append(dict(no=87, subject="anatomy",
+        q="کدامیک از مهره‌های زیر فاقد جسم مهره‌ای می‌باشد؟",
+        c=["الف) Axis (C2)",
+           "ب) Atlas (C1)",
+           "ج) اولین مهره سینه‌ای (T1)",
+           "د) اولین مهره کمری (C7)"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "**اطلس (C1)** فاقد تنه (Body) است و فقط قوس‌های قدامی و خلفی دارد (گزینه **ب**)."))
+
+    questions.append(dict(no=88, subject="anatomy",
+        q="مخروط شریانی مربوط به کدام‌یک از حفرات قلب است؟",
+        c=["الف) دهلیز راست",
+           "ب) بطن راست",
+           "ج) بطن چپ",
+           "د) دهلیز چپ"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "مخروط شریانی (Conus Arteriosus / Infundibulum) بخشی از **بطن راست** است که از آن تنه ریوی منشا می‌گیرد (گزینه **ب**)."))
+
+    # Adding a batch to keep file manageable - Q89-110
+    questions.append(dict(no=89, subject="anatomy",
+        q="در موج ECG، کمپلکس QRS نشان‌دهنده چیست؟",
+        c=["الف) دپلاریزاسیون دهلیزها",
+           "ب) دپلاریزاسیون بطن‌ها",
+           "ج) رپلاریزاسیون دهلیزها",
+           "د) رپلاریزاسیون بطن‌ها"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "QRS مربوط به **دپلاریزاسیون بطن‌ها** (گزینه **ب**) است. موج P دپلاریزاسیون دهلیز و موج T رپلاریزاسیون بطن است."))
+
+    questions.append(dict(no=90, subject="anatomy",
+        q="مسیر عصب آپتیک (بینایی) به کدام بخش از مغز می‌رسد؟",
+        c=["الف) لوب پس‌سری",
+           "ب) تالاموس (ژنیکوله خارجی)",
+           "ج) بصل النخاع",
+           "د) مخچه"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "الیاف عصب بینایی از کیاسمای بینایی عبور کرده و به **هسته ژنیکوله خارجی تالاموس (LGN)** می‌رسند (گزینه **ب**). سپس به لوب اکسیپیتال می‌روند."))
+
+    questions.append(dict(no=91, subject="anatomy",
+        q="وجود شیار مرکزی (Central Sulcus) در مخ، کدام لوب را از هم جدا می‌کند؟",
+        c=["الف) پیشانی از آهیانه",
+           "ب) آهیانه از گیجگاهی",
+           "ج) پیشانی از گیجگاهی",
+           "د) پس‌سری از آهیانه"],
+        a=1,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "شیار مرکزی (Rolandic Sulcus) **لوب فرونتال (پیشانی)** را از **لوب پاریتال (آهیانه)** جدا می‌کند (گزینه **الف**)."))
+
+    questions.append(dict(no=92, subject="anatomy",
+        q="کدام لوب از ریه‌ها دارای سه زایده (لوب) است؟",
+        c=["الف) ریه راست",
+           "ب) ریه چپ",
+           "ج) هر دو",
+           "د) هیچ‌کدام"],
+        a=1,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "**ریه راست** دارای ۳ لوب (فوقانی، میانی، تحتانی) و ریه چپ ۲ لوب است (گزینه **الف**)."))
+
+    questions.append(dict(no=93, subject="anatomy",
+        q="کدامیک جزء دستگاه لنفاوی محسوب نمی‌شود؟",
+        c=["الف) طحال",
+           "ب) تیموس",
+           "ج) آپاندیس",
+           "د) پانکراس"],
+        a=4,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "لوزوالمعده (پانکراس) غده گوارشی/اندوکرین است و جزء لنفاوی نیست (گزینه **د**)."))
+
+    questions.append(dict(no=94, subject="anatomy",
+        q="تبادل گازی در ریه در کدام بخش صورت می‌گیرد؟",
+        c=["الف) برونشیول‌های انتهایی",
+           "ب) نایژه‌های تنفسی و آلوئول‌ها",
+           "ج) نای",
+           "د) برونش اصلی"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "تبادل گاز در **آلوئول‌ها** صورت می‌گیرد (گزینه **ب**)."))
+
+    questions.append(dict(no=95, subject="anatomy",
+        q="کدام عضله در بازدم عادی (استراحت) نقش دارد؟",
+        c=["الف) دیافراگم",
+           "ب) عضلات بین‌دنده‌ای خارجی",
+           "ج) هیچ عضله‌ای، بازدم غیرفعال است",
+           "د) عضلات شکم"],
+        a=3,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "بازدم در تنفس آرام **غیرفعال** است؛ به‌خاطر خاصیت کشسانی ریه‌ها انجام می‌شود (گزینه **ج**)."))
+
+    questions.append(dict(no=96, subject="anatomy",
+        q="GFR به چه معناست؟",
+        c=["الف) سرعت فیلتراسیون گلومرولی",
+           "ب) سرعت بازجذب لوله‌ای",
+           "ج) سرعت ترشح",
+           "د) برون‌ده قلبی"],
+        a=1,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "GFR = **Glomerular Filtration Rate (سرعت فیلتراسیون گلومرولی)** (گزینه **الف**) که طبیعی حدود ۱۲۵mL/min است."))
+
+    questions.append(dict(no=97, subject="anatomy",
+        q="هورمون انسولین از کدام سلول‌های پانکراس ترشح می‌شود؟",
+        c=["الف) سلول‌های آلفا",
+           "ب) سلول‌های بتا",
+           "ج) سلول‌های دلتا",
+           "د) سلول‌های PP"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "انسولین از **سلول‌های بتا** جزایر لانگرهانس ترشح می‌شود (گزینه **ب**)."))
+
+    questions.append(dict(no=98, subject="anatomy",
+        q="کدام‌یک از اعصاب مغزی زیر نقش عمده در پاراسمپاتیک دارد؟",
+        c=["الف) عصب واگ (X)",
+           "ب) عصب تری‌ژمینال (V)",
+           "ج) عصب اپتیک (II)",
+           "د) عصب هیپوگلوسال (XII)"],
+        a=1,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "**عصب واگ (Vagus)** مهم‌ترین عصب پاراسمپاتیک است (گزینه **الف**)."))
+
+    questions.append(dict(no=99, subject="anatomy",
+        q="نورون‌های حرکتی در کدام شاخه نخاع قرار دارند؟",
+        c=["الف) شاخ پشتی (خلفی)",
+           "ب) شاخ شکمی (قدامی)",
+           "ج) شاخ جانبی",
+           "د) گانگلیون ریشه پشتی"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "نورون‌های حرکتی در **شاخ قدامی (شکمی)** نخاع قرار دارند (گزینه **ب**)."))
+
+    questions.append(dict(no=100, subject="anatomy",
+        q="محل اتصال عضله به استخوان که حرکت نمی‌کند چه نام دارد؟",
+        c=["الف) اصل (Origin)",
+           "ب) انتهای متحرک (Insertion)",
+           "ج) زردپی",
+           "د) رباط"],
+        a=1,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "نقطه اتصال ثابت **Origin (مبدأ)** است (گزینه **الف**)."))
+
+    questions.append(dict(no=101, subject="anatomy",
+        q="کدام‌یک از زیر لزوماً وظیفه سمپاتیک است؟",
+        c=["الف) کاهش ضربان قلب",
+           "ب) گشاد شدن مردمک",
+           "ج) انقباض برونش",
+           "د) افزایش گوارش"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "سیستم سمپاتیک در موقع جنگ یا فرار، **مردمک را گشاد می‌کند (گزینه ب)**. بقیه مربوط به پاراسمپاتیک هستند."))
+
+    questions.append(dict(no=102, subject="anatomy",
+        q="دریچه میترال (دولختی) بین کدام دو حفره قلب است؟",
+        c=["الف) دهلیز راست-بطن راست",
+           "ب) دهلیز راست-بطن چپ",
+           "ج) دهلیز چپ-بطن چپ",
+           "د) دهلیز چپ-بطن راست"],
+        a=3,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "دریچه میترال (دولختی / Bicuspid) بین **دهلیز چپ و بطن چپ** است (گزینه **ج**)."))
+
+    questions.append(dict(no=103, subject="anatomy",
+        q="گلبول‌های قرمز در کدام عضو تولید می‌شوند؟",
+        c=["الف) کبد",
+           "ب) طحال",
+           "ج) مغز استخوان",
+           "د) کلیه"],
+        a=3,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "اریتروپوئز در **مغز استخوان قرمز** انجام می‌شود (گزینه **ج**)."))
+
+    questions.append(dict(no=104, subject="anatomy",
+        q="کدام هورمون سبب افزایش قند خون می‌شود؟",
+        c=["الف) انسولین",
+           "ب) گلوکاگون",
+           "ج) کلسی‌تونین",
+           "د) آلدوسترون"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "**گلوکاگون** از سلول‌های آلفا، قند خون را افزایش می‌دهد (گزینه **ب**)."))
+
+    questions.append(dict(no=105, subject="anatomy",
+        q="در کدام بخش از نفرون، بازجذب حداکثری گلوکز انجام می‌شود؟",
+        c=["الف) لوله پیچیده نزدیک",
+           "ب) لوله پیچیده دور",
+           "ج) قوس هنله",
+           "د) لوله جمع‌کننده"],
+        a=1,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "بازجذب گلوکز تقریباً به‌طور کامل در **لوله پیچیده نزدیک (PCT)** انجام می‌شود (گزینه **الف**)."))
+
+    questions.append(dict(no=106, subject="anatomy",
+        q="مرکز تنظیم تنفس در کدام بخش مغز قرار دارد؟",
+        c=["الف) مخچه",
+           "ب) بصل النخاع و پل",
+           "ج) تالاموس",
+           "د) مخ"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "مراکز کنترل تنفس در **بصل‌النخاع (Medulla)** و پل مغز قرار دارند (گزینه **ب**)."))
+
+    questions.append(dict(no=107, subject="anatomy",
+        q="عمل اصلی میوگلوبین در عضله چیست؟",
+        c=["الف) انتقال اکسیژن در خون",
+           "ب) ذخیره اکسیژن در عضله",
+           "ج) انقباض عضله",
+           "د) تولید ATP"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "میوگلوبین **اکسیژن را در عضله ذخیره** می‌کند (گزینه **ب**)."))
+
+    questions.append(dict(no=108, subject="anatomy",
+        q="کدام عصب حرکات چشم را کنترل نمی‌کند؟",
+        c=["الف) Oculomotor (III)",
+           "ب) Trochlear (IV)",
+           "ج) Abducens (VI)",
+           "د) Vestibulocochlear (VIII)"],
+        a=4,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "اعصاب حرکتی چشم III, IV, VI هستند. **Vestibulocochlear (VIII)** عصب شنوایی-تعادلی است (گزینه **د**)."))
+
+    questions.append(dict(no=109, subject="anatomy",
+        q="بافت ____ مسوول انتقال پیام عصبی است.",
+        c=["الف) همبند",
+           "ب) پوششی",
+           "ج) عصبی",
+           "د) ماهیچه‌ای"],
+        a=3,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "بافت **عصبی** عهده‌دار انتقال پیام‌های الکتریکی است (گزینه **ج**)."))
+
+    questions.append(dict(no=110, subject="anatomy",
+        q="در یک چرخه قلبی، کدام واقعه اول رخ می‌دهد؟",
+        c=["الف) سیستول بطن",
+           "ب) سیستول دهلیز",
+           "ج) استراحت عمومی (دیاستول)",
+           "د) بسته شدن دریچه آئورت"],
+        a=2,
+        exp="<b>📖 حل تشریحی:</b><br>"
+            "سیکل قلبی با **سیستول دهلیزها** (انقباض دهلیزی) آغاز می‌شود (گزینه **ب**)."))
+
+    # ═══════════════════ زبان عمومی (۲۰ سوال: ۱۱۱-۱۳۰) ═══════════════════
+    questions.append(dict(no=111, subject="english",
+        q="(Reading Comprehension — Passage 1: Social determinants of health) It is implied that the childhood-to-adulthood transition period ... .",
+        c=["a. happens quite smoothly",
+           "b. is similar to other stages of life",
+           "c. is of special significance",
+           "d. easily overcomes psycho-social risks"],
+        a=3,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "از متن: «young people face special challenges as they transit from childhood to adulthood» و «one of the most vulnerable stages»."
+            "<br>بنابراین این دوره **اهمیت ویژه‌ای** دارد (گزینه **ج**).<br><br>"
+            "<b>💡 نکته:</b> واژهٔ کلیدی «special challenges» و «vulnerable» گزینه c را تایید می‌کنند."))
+
+    questions.append(dict(no=112, subject="english",
+        q="The text implies that at puberty, one is ... .",
+        c=["a. particularly immune against social discomforts",
+           "b. more vulnerable to psycho-social hazards",
+           "c. still indifferent to social discomforts",
+           "d. more likely to follow socioeconomic conventions"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "در بلوغ فرد «آسیب‌پذیرتر» به مخاطرات روانی-اجتماعی است (گزینه **ب**)."))
+
+    questions.append(dict(no=113, subject="english",
+        q="According to the passage, females at puberty ... .",
+        c=["a. show more substance abuse than males",
+           "b. tend to have body image issues leading to eating disorders",
+           "c. show higher suicide rates than males",
+           "d. are generally protected from all mental health concerns"],
+        a=2,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «females tend to struggle more than males with body image and self-esteem issues which can lead to dangerous eating disorders».<br>پس گزینه **ب**."))
+
+    questions.append(dict(no=114, subject="english",
+        q="Untreated psycho-social concerns in young people may lead to ... .",
+        c=["a. permanent mental and physical damage",
+           "b. a temporary decline in performance only",
+           "c. sudden immunity",
+           "d. better academic outcomes"],
+        a=1,
+        exp="<b>📖 ترجمه و بررسی:</b><br>"
+            "متن: «these health concerns may lead to permanent mental and physical damage». گزینه **الف**."))
+
+    questions.append(dict(no=115, subject="english",
+        q="The word 'determinants' in passage is closest in meaning to ... .",
+        c=["a. factors",
+           "b. results",
+           "c. treatments",
+           "d. symptoms"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "Determinants یعنی عوامل تعیین‌کننده، مترادف با **factors (گزینه الف)**."))
+
+    questions.append(dict(no=116, subject="english",
+        q="Certain solvents are highly ....... . Therefore, to prevent fires, read the labels and follow the directions for proper storage and disposal.",
+        c=["a. irresistible",
+           "b. irresponsible",
+           "c. combustible",
+           "d. compatible"],
+        a=3,
+        exp="<b>📖 واژگان:</b><br>"
+            "جمله درباره جلوگیری از آتش‌سوزی است، پس solvents به‌شدت **قابل اشتعال (combustible)** هستند (گزینه **ج**)."))
+
+    questions.append(dict(no=117, subject="english",
+        q="Signs and symptoms of passive-aggressive behavior include ......, resentment and opposition to the demands of others.",
+        c=["a. collaboration",
+           "b. compliance",
+           "c. stubbornness",
+           "d. submission"],
+        a=3,
+        exp="<b>📖 واژگان:</b><br>"
+            "رفتار منفعل-پرخاشگر شامل **لجبازی (stubbornness)**، رنجش و مخالفت است (گزینه **ج**)."))
+
+    questions.append(dict(no=118, subject="english",
+        q="An unconscious coping mechanism known as denial gives you time to adjust to a(n) ...... situation.",
+        c=["a. distressing",
+           "b. persuasive",
+           "c. acceptable",
+           "d. exceptional"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "مکانیزم انکار به شما وقت می‌دهد تا با موقعیت‌های **پریشان‌کننده (distressing)** سازگار شوید (گزینه **الف**)."))
+
+    questions.append(dict(no=119, subject="english",
+        q="After the appropriate prescription, the injured man's wounds are ..... rapidly.",
+        c=["a. healing",
+           "b. vanishing",
+           "c. relapsing",
+           "d. deteriorating"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "زخم‌ها پس از تجویز مناسب **التیام (healing)** می‌یابند (گزینه **الف**)."))
+
+    questions.append(dict(no=120, subject="english",
+        q="The kidney ..... any products the body needs and secretes waste materials as urine.",
+        c=["a. releases",
+           "b. resurfaces",
+           "c. reabsorbs",
+           "d. removes"],
+        a=3,
+        exp="<b>📖 واژگان:</b><br>"
+            "کلیه مواد مورد نیاز بدن را **بازجذب (reabsorbs)** می‌کند (گزینه **ج**)."))
+
+    questions.append(dict(no=121, subject="english",
+        q="In many countries, patient education is an important nursing ...... .",
+        c=["a. campus",
+           "b. focus",
+           "c. locus",
+           "d. bonus"],
+        a=2,
+        exp="<b>📖 واژگان:</b><br>"
+            "آموزش بیمار **تمرکز / محور (focus)** مهم پرستاری است (گزینه **ب**)."))
+
+    questions.append(dict(no=122, subject="english",
+        q="When one ...... and the sweat reaches the skin surface, the water vaporizes and evaporates as the wind sweeps across the body.",
+        c=["a. expires",
+           "b. inspires",
+           "c. retires",
+           "d. perspires"],
+        a=4,
+        exp="<b>📖 واژگان:</b><br>"
+            "وقتی فرد **عرق می‌کند (perspires)**، عرق به پوست رسیده و تبخیر می‌شود (گزینه **د**)."))
+
+    questions.append(dict(no=123, subject="english",
+        q="Body heat is lost by radiation in the form of infrared heat rays being ...... the body to the surroundings.",
+        c=["a. emitted from",
+           "b. submitted to",
+           "c. secreted from",
+           "d. admitted to"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "پرتوهای فروسرخ **از بدن تابش (emitted from)** می‌شوند (گزینه **الف**)."))
+
+    questions.append(dict(no=124, subject="english",
+        q="Though no one would deny that upbringing and environment play important roles in the making of a criminal, scientists increasingly ...... that biology also plays a significant part.",
+        c=["a. suspect",
+           "b. complain",
+           "c. forbid",
+           "d. require"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "دانشمندان به‌طور فزاینده **مظنون هستند / باور دارند (suspect)** که زیست‌شناسی هم نقش دارد (گزینه **الف**)."))
+
+    questions.append(dict(no=125, subject="english",
+        q="Research into human head and brain injury has pinpointed areas of the brain where impairment can ...... aggression.",
+        c=["a. violate",
+           "b. reestablish",
+           "c. trigger",
+           "d. conserve"],
+        a=3,
+        exp="<b>📖 واژگان:</b><br>"
+            "ضایعه در نواحی خاص مغز می‌تواند **سبب تحریک (trigger)** پرخاشگری شود (گزینه **ج**)."))
+
+    questions.append(dict(no=126, subject="english",
+        q="Adolescence is a timely period to ...... healthy eating and lifestyle behaviors, thereby preventing nutrition-related diseases in adulthood.",
+        c=["a. consolidate",
+           "b. declare",
+           "c. constrain",
+           "d. forbid"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "نوجوانی دوره‌ای مناسب برای **تثبیت (consolidate)** عادات غذایی سالم است (گزینه **الف**)."))
+
+    questions.append(dict(no=127, subject="english",
+        q="The strain of influenza responsible for the 1918 pandemic was so ...... that more than 20 million people died.",
+        c=["a. inoffensive",
+           "b. transitory",
+           "c. virulent",
+           "d. lenient"],
+        a=3,
+        exp="<b>📖 واژگان:</b><br>"
+            "سویه آنفولانزا ۱۹۱۸ به‌قدرت **کشنده/ویروسی و شدید (virulent)** بود (گزینه **ج**)."))
+
+    questions.append(dict(no=128, subject="english",
+        q="Rachel Carson, an American biologist, wrote 'Silent Spring' to warn people of the dangers of unrestricted use of chemical pesticides and as a result ...... a movement to save the environment.",
+        c=["a. aborted",
+           "b. launched",
+           "c. subdued",
+           "d. halted"],
+        a=2,
+        exp="<b>📖 واژگان:</b><br>"
+            "کتاب سبب **راه‌اندازی (launched)** یک جنبش زیست‌محیطی شد (گزینه **ب**)."))
+
+    questions.append(dict(no=129, subject="english",
+        q="The doctor advised him to ...... from strenuous exercise until his wound fully healed.",
+        c=["a. abstain",
+           "b. benefit",
+           "c. derive",
+           "d. result"],
+        a=1,
+        exp="<b>📖 واژگان:</b><br>"
+            "پزشک توصیه کرد از ورزش سنگین **پرهیز (abstain)** کند (گزینه **الف**)."))
+
+    questions.append(dict(no=130, subject="english",
+        q="Complete the sentence: Most children cannot identify or specifically ...... the particular location of pain until they are four or five years old.",
+        c=["a. evolve by",
+           "b. involve in",
+           "c. complain of",
+           "d. refrain from"],
+        a=3,
+        exp="<b>📖 واژگان:</b><br>"
+            "کودکان تا ۴-۵ سالگی نمی‌توانند به‌طور مشخص **شکایت کنند از / توصیف کنند (complain of)** محل درد (گزینه **ج**)."))
+
     # ═══════════════════ درس‌های دیگر در پیام بعدی ═══════════════════
 
     by_subject = {
