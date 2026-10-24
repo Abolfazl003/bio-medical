@@ -1255,16 +1255,18 @@ function pkAttachExam(Q, nQuestions, totalSec){
 const PKR_YEARS = ["1385","1386","1387","1388","1389","1390","1391","1392","1393","1394","1395","1396","1397","1398",
                    "1399","1400","1401","1402","1403","1404"];
 /* تعداد سوال هر دفترچه — خوانده‌شده از جلد خودِ دفترچه‌های رسمی وزارت بهداشت — null = هنوز دریافت نشده */
-const PKR_EXAM_COUNT = {"1385":135,"1386":135,"1387":110,"1388":130,"1389":130,"1390":130,"1391":130,"1392":130,
-                        "1394":130,"1395":130,"1396":135,"1397":140,"1398":130,"1399":130,"1400":120,
-                        "1401":120,"1402":null,"1403":120,"1404":120};
+const PKR_EXAM_COUNT = {"1385":135,"1386":135,"1387":110,"1388":130,"1389":130,"1390":130,"1391":130,"1392":130,"1393":130,
+                        "1394":130,"1395":130,"1396":135,"1397":140,"1398":null,"1399":130,"1400":120,
+                        "1401":120,"1402":120,"1403":120,"1404":120};
 /* زمان واقعی هر دفترچه (دقیقه) — از جلد دفترچه‌ها؛ پیش‌فرض ۱۶۰ دقیقه */
 const PKR_EXAM_TIME = {"1385":200,"1386":200,"1387":150,"1388":160};
 const PKR_TIME_DEFAULT = 160;
 /* دفترچه‌هایی که هنوز به دست ما نرسیده‌اند */
-const PKR_MISSING = ["1402"];
+const PKR_MISSING = ["1398"];   /* دفترچهٔ ۱۳۹۸ در هیچ آرشیو عمومی پیدا نشد (ساختار: ۱۳۰ سوال) */
 /* سیاست پاسخ‌نامه: دفترچه‌های رسمی «کلید» ندارند (کلید سنجش جداگانه منتشر می‌شود) */
 const PKR_KEY_POLICY = "حل مؤلف (غیررسمی) — تا رسیدن کلید رسمی سنجش";
+/* سال‌هایی که پاسخ‌هایشان با کلید رسمی مرکز سنجش آموزش پزشکی تطبیق داده شده */
+const PKR_OFFICIAL_KEYS = {"1402":"کلید نهایی سنجش برای سوال‌های ۱ تا ۸۰ (سوال ۵۳ حذف شد؛ زبان عمومی: حل مؤلف)"};
 const PKR_PER_YEAR = 120;                    // آخرین ساختار: ۱۲۰ سوال / ۱۶۰ دقیقه
 const PKR_STRUCTURE = [
   ["ریاضیات مهندسی", "math", 20], ["فیزیک پزشکی", "physics", 20], ["سیگنال‌ها و سیستم‌ها", "signals", 20],
@@ -1291,7 +1293,7 @@ function renderKonkurOfficial(main){
   const years=PKR_YEARS.slice().reverse();
   main.innerHTML=`
     <div class="page-head"><h1>📜 بانک سوالات رسمی کنکور</h1>
-      <p>سوالات <b>واقعی دفترچه‌های کنکور ارشد مهندسی پزشکی (بیوالکتریک) از ۱۳۸۷ تا ۱۴۰۴ (۱۸ دوره)</b> — با شماره سوال اصلی، گزینه‌های دقیق، کلید و حل تشریحی</p>
+      <p>سوالات <b>واقعی دفترچه‌های کنکور ارشد مهندسی پزشکی (بیوالکتریک) از ۱۳۸۵ تا ۱۴۰۴ (۲۰ دوره)</b> — با شماره سوال اصلی، گزینه‌های دقیق، کلید و حل تشریحی</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="setView('mock')">🎯 کنکور آزمایشی — ۱۲۰۰ سوال شبیه‌ساز (۱۰ سال)</button>
         ${prHas()?'<button class="btn btn-ghost" onclick="startOfficial(prNewestYear())">📜 آزمون رسمی جدیدترین دفترچه درج‌شده</button>':''}
@@ -1302,9 +1304,10 @@ function renderKonkurOfficial(main){
       <div class="big-stat"><div class="num" style="color:var(--warning)">${pkFa(prCapacity())}</div><div class="lbl">سوال رسمی دفترچه‌های موجود 🎯</div></div>
     </div>
     <div class="card" style="border-color:var(--accent2);background:rgba(56,189,248,.06);margin-bottom:14px">
-      <p style="line-height:2;margin:0">✅ <b>${pkFa(prReceived())} دفترچه رسمی</b> در اختیار ماست (۱۳۸۷ تا ۱۴۰۴) و سوالاتشان با شماره اصلی در همین صفحه درج می‌شود.
+      <p style="line-height:2;margin:0">✅ <b>${pkFa(prReceived())} دفترچه رسمی</b> در اختیار ماست (۱۳۸۵ تا ۱۴۰۴) و سوالاتشان با شماره اصلی در همین صفحه درج می‌شود.
       ${PKR_MISSING.length?`⏳ تنها دفترچه‌های باقی‌مانده: <b>${PKR_MISSING.map(pkFa).join("، ")}</b>.`:""}
-      🔑 کلید رسمی سنجش داخل دفترچه‌ها چاپ نشده؛ بنابراین پاسخ‌ها با عنوان <b>«${PKR_KEY_POLICY}»</b> ارائه می‌شوند و به‌محض دریافت کلید رسمی، جایگزین می‌گردند.</p>
+      🔑 کلید رسمی سنجش داخل دفترچه‌ها چاپ نشده؛ بنابراین پاسخ‌ها با عنوان <b>«${PKR_KEY_POLICY}»</b> ارائه می‌شوند و به‌محض دریافت کلید رسمی، جایگزین می‌گردند.
+      ${Object.keys(PKR_OFFICIAL_KEYS).map(y=>`<br>✅ <b>${pkFa(y)}:</b> ${PKR_OFFICIAL_KEYS[y]}`).join("")}</p>
     </div>
     ${total===0?`
     <div class="card" style="border-color:var(--warning);background:rgba(245,158,11,.07)">
@@ -1317,7 +1320,7 @@ function renderKonkurOfficial(main){
         <li>پاسخ تشریحی و کلید زیر هر سوال نمایش داده می‌شود</li>
       </ul>
     </div>`:""}
-    <div class="section-title">سال‌های کنکور رسمی (۱۳۸۷ تا ۱۴۰۴ — ۱۸ دوره)</div>
+    <div class="section-title">سال‌های کنکور رسمی (۱۳۸۵ تا ۱۴۰۴ — ۲۰ دوره)</div>
     <div class="grid-cards" id="prg"></div>
     <div class="section-title">ساختار دفترچه رسمی بیوالکتریک (ساختار ۱۲۰ سوالی امروز)</div>
     <div class="card"><table class="exam-table"><thead><tr><th>درس</th><th>تعداد سوال</th></tr></thead><tbody>
@@ -1648,3 +1651,29 @@ if(window.matchMedia('(display-mode: standalone)').matches){
   // running installed
   document.documentElement.classList.add('pwa-installed');
 }
+
+
+/* ═══ نمایش فرمول‌های LaTeX ($…$ و $$…$$) با KaTeX آفلاین ═══
+   متن سوال‌های رسمی (۱۳۸۷، ۱۳۸۸، ۱۴۰۲ و …) فرمول‌ها را به‌صورت LaTeX دارند.
+   هر بار محتوای سوال/گزینه/پاسخ تغییر کند، فرمول‌ها رندر می‌شوند. */
+(function(){
+  const SEL = ".q-text, .choice, .explain, #explain, .review-q, .math-auto";
+  const OPTS = {delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false},{left:"\\(",right:"\\)",display:false}],
+                throwOnError:false, strict:"ignore", ignoredTags:["script","noscript","style","textarea","pre","code","option"]};
+  let pending = false;
+  function run(){
+    pending = false;
+    if(typeof renderMathInElement !== "function") return;
+    document.querySelectorAll(SEL).forEach(el=>{
+      if(el.textContent.indexOf("$")<0 && el.textContent.indexOf("\\(")<0) return;
+      try{ renderMathInElement(el, OPTS); }catch(e){}
+    });
+  }
+  function schedule(){ if(!pending){ pending = true; requestAnimationFrame(run); } }
+  function init(){
+    const root = document.getElementById("main") || document.body;
+    new MutationObserver(schedule).observe(root, {childList:true, subtree:true, attributes:true, attributeFilter:["style"]});
+    schedule();
+  }
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();

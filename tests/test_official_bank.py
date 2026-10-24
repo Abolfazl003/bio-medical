@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-تست‌های بخش «🏛 بانک سوالات رسمی کنکور» (v1.3.4)
-- ۱۸ دوره رسمی: ۱۳۸۷ تا ۱۴۰۴
+تست‌های بخش «🏛 بانک سوالات رسمی کنکور»
+- ۲۰ دوره رسمی: ۱۳۸۵ تا ۱۴۰۴
 - تعداد سوال هر دفترچه طبق جلد خود دفترچه‌ها
 - زمان واقعی آزمون هر سال (۱۶۰ دقیقه؛ ۱۳۸۷: ۱۵۰ دقیقه)
 - سیاست پاسخ‌نامه: حل مؤلف (غیررسمی) — کلید رسمی سنجش داخل دفترچه‌ها نیست
-- سال ۱۴۰۲ تنها دفترچه دریافت‌نشده
+- سال ۱۳۹۸ تنها دفترچه دریافت‌نشده؛ ۱۴۰۲ کامل (۱۲۰ سوال) با کلید نهایی سنجش
 """
 import asyncio, sys, os
 from playwright.async_api import async_playwright
@@ -20,9 +20,9 @@ def check(name, cond, extra=""):
     else:
         fail += 1; print(f"  ❌ {name} {extra}")
 
-EXPECT = {"1387":110,"1388":130,"1389":130,"1390":130,"1391":130,"1392":130,"1393":130,
-          "1394":130,"1395":130,"1396":135,"1397":140,"1398":130,"1399":130,"1400":120,
-          "1401":120,"1402":None,"1403":120,"1404":120}
+EXPECT = {"1385":135,"1386":135,"1387":110,"1388":130,"1389":130,"1390":130,"1391":130,"1392":130,"1393":130,
+          "1394":130,"1395":130,"1396":135,"1397":140,"1398":None,"1399":130,"1400":120,
+          "1401":120,"1402":120,"1403":120,"1404":120}
 
 async def main():
     async with async_playwright() as p:
@@ -44,18 +44,18 @@ async def main():
         })()""")
 
         print("— فهرست دوره‌ها —")
-        check("۱۸ دوره رسمی", d["years"] == 18, d["years"])
-        check("۱۳۸۷ اولین دوره", d["list"][0] == "1387")
+        check("۲۰ دوره رسمی", d["years"] == 20, d["years"])
+        check("۱۳۸۵ اولین دوره", d["list"][0] == "1385")
         check("۱۴۰۴ آخرین دوره", d["list"][-1] == "1404")
-        check("سال‌ها پیوسته ۱۳۸۷→۱۴۰۴",
-              d["list"] == [str(y) for y in range(1387, 1405)])
+        check("سال‌ها پیوسته ۱۳۸۵→۱۴۰۴",
+              d["list"] == [str(y) for y in range(1385, 1405)])
 
         print("— تعداد سوال هر دفترچه —")
         for y, n in EXPECT.items():
             check(f"{y} = {n}", d["count"].get(y) == n, d["count"].get(y))
-        check("۱۷ دفترچه دریافت‌شده", d["recv"] == 17, d["recv"])
-        check("فقط ۱۴۰۲ گم است", d["missing"] == ["1402"], d["missing"])
-        check("سوال دفترچه‌های موجود = ۲۱۶۵", d["cap"] == sum(v for v in EXPECT.values() if v), d["cap"])
+        check("۱۹ دفترچه دریافت‌شده", d["recv"] == 19, d["recv"])
+        check("فقط ۱۳۹۸ گم است", d["missing"] == ["1398"], d["missing"])
+        check("سوال دفترچه‌های موجود", d["cap"] == sum(v for v in EXPECT.values() if v), d["cap"])
 
         print("— زمان آزمون واقعی —")
         check("۱۳۸۷ → ۱۵۰ دقیقه", d["t1387"] == 150, d["t1387"])
@@ -69,22 +69,35 @@ async def main():
         await pg.evaluate("setView('konkur')")
         await pg.wait_for_timeout(500)
         cards = await pg.evaluate("document.querySelectorAll('#prg .card').length")
-        check("۱۸ کارت سال در صفحه", cards == 18, cards)
+        check("۲۰ کارت سال در صفحه", cards == 20, cards)
         txt = await pg.evaluate("document.getElementById('main').innerText")
-        for probe in ["۱۳۸۷", "۱۴۰۴", "۱۸ دوره", "۱۴۰۲", "حل مؤلف", "۱۵۰ دقیقه"]:
+        for probe in ["۱۳۸۵", "۱۴۰۴", "۲۰ دوره", "۱۴۰۲", "حل مؤلف", "کلید نهایی سنجش", "۱۵۰ دقیقه"]:
             check(f"متن صفحه شامل {probe}", probe in txt)
 
-        print("— داده‌های درج‌شده ۱۴۰۰ —")
-        d2 = await pg.evaluate("""({total: prTotalCount(), y: prYearCount('1400'),
-             math: prQ('1400','math').length, phy: prQ('1400','physics').length,
-             no1: (prQ('1400','math')[0]||{}).no, newest: prNewestYear()})""")
-        check("۳۰ سوال رسمی درج‌شده", d2["total"] == 30, d2["total"])
-        check("ریاضیات ۱۴۰۰ = ۱۵ سوال", d2["math"] == 15, d2["math"])
-        check("فیزیک ۱۴۰۰ = ۱۵ سوال", d2["phy"] == 15, d2["phy"])
-        check("شماره اولین سوال = ۱", d2["no1"] == 1, d2["no1"])
-        check("جدیدترین دفترچه درج‌شده = ۱۴۰۰", d2["newest"] == "1400", d2["newest"])
-        sol = await pg.evaluate("(prQ('1400','math')[0]||{}).s || ''")
-        check("هر سوال حل مؤلف دارد", len(sol) > 40, len(sol))
+        print("— دفترچهٔ ۱۴۰۲ (کامل) —")
+        d2 = await pg.evaluate("""(() => {
+          const subs = ['math','physics','signals','control','circuits','anatomy','english'];
+          const c = {}; subs.forEach(s => c[s] = prQ('1402', s).length);
+          const all = subs.flatMap(s => prQ('1402', s));
+          return {c, y: prYearCount('1402'), nos: all.map(q => q.no).sort((a,b)=>a-b),
+                  key: all.filter(q => q.no<=80).map(q => [q.no, q.a]),
+                  imgs: all.filter(q => q.img).length,
+                  sol: all.every(q => (q.s||'').length > 30),
+                  q53: (all.find(q => q.no===53)||{}).s || '',
+                  newest: prNewestYear()};
+        })()""")
+        check("۱۴۰۲ = ۱۲۰ سوال", d2["y"] == 120, d2["y"])
+        check("شماره‌ها ۱..۱۲۰", d2["nos"] == list(range(1, 121)))
+        for sid, n in {"math":15,"physics":15,"signals":15,"control":10,"circuits":15,"anatomy":10,"english":40}.items():
+            check(f"۱۴۰۲ {sid} = {n}", d2["c"][sid] == n, d2["c"][sid])
+        KEY = [2,2,3,2,3,1,3,3,4,2, 1,2,2,3,4,1,4,4,2,3, 3,4,1,1,3,3,2,1,1,3, 4,1,2,3,4,1,2,3,4,4,
+               3,1,3,2,3,3,2,4,4,1, 1,3,None,3,2,4,4,2,1,3, 4,2,1,4,2,3,2,1,3,4, 2,1,2,4,4,1,4,1,3,4]
+        bad = [no for no, a in d2["key"] if KEY[no-1] is not None and KEY[no-1] != a]
+        check("پاسخ‌های ۱-۸۰ = کلید نهایی سنجش", not bad, bad)
+        check("سوال ۵۳ با برچسب «حذف شد»", "حذف شد" in d2["q53"])
+        check("شکل‌های ۱۴۰۲ (base64) ≥ ۲۵", d2["imgs"] >= 25, d2["imgs"])
+        check("همه سوال‌ها حل تشریحی دارند", d2["sol"])
+        check("جدیدترین دفترچه درج‌شده = ۱۴۰۴", d2["newest"] == "1404", d2["newest"])
 
         print("— بخش آزمایشی دست‌نخورده —")
         check("۱۲۰۰ سوال آزمایشی سر جایش", await pg.evaluate("pkTotalCount()") == 1200)

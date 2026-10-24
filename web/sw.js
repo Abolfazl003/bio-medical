@@ -1,5 +1,5 @@
 /* Service Worker برای کار آفلاین PWA */
-const CACHE_NAME = 'bme-konkur-v7';
+const CACHE_NAME = 'bme-konkur-v8';
 const ASSETS = [
   './',
   './index.html',
@@ -27,6 +27,16 @@ const ASSETS = [
   './qbook_d.js',
   './qbook_e.js',
   './study_progress.js',
+  './vendor/katex/katex-embedded.css',
+  './vendor/katex/katex.min.js',
+  './vendor/katex/auto-render.min.js',
+  './konkur_official_1385.js',
+  './konkur_official_1386.js',
+  './konkur_official_1387.js',
+  './konkur_official_1388.js',
+  './konkur_official_1400.js',
+  './konkur_official_1402.js',
+  './konkur_official_1404.js',
   './konkur_1394_95.js',
   './konkur_1396_97.js',
   './konkur_1398_99.js',

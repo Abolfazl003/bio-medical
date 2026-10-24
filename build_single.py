@@ -28,7 +28,9 @@ def collect_official_js():
 
 def collect_konkur_js():
     import glob
-    return sorted(glob.glob(os.path.join(WEB, 'konkur_*.js')))
+    # دفترچه‌های رسمی جداگانه (collect_official_js) اضافه می‌شوند — دوباره‌کاری نشود
+    return sorted(f for f in glob.glob(os.path.join(WEB, 'konkur_*.js'))
+                  if not os.path.basename(f).startswith('konkur_official_'))
 
 NEW_FAMILIES = ['official_refs.js','figures.js','figures2.js','figures_fit.js','book_manifest.js',
                 'qbook_a.js','qbook_b.js','qbook_c.js','qbook_d.js','qbook_e.js',
@@ -73,6 +75,10 @@ def main():
     if offfiles:
         offjs = "\n".join(read(f) for f in offfiles)
     fontcss= read(os.path.join(FONTS, 'vazirmatn-embedded.css'))
+    # KaTeX (فرمول‌های LaTeX دفترچه‌های رسمی) — فونت‌ها داخل CSS جاسازی شده‌اند
+    KX = os.path.join(WEB, 'vendor', 'katex')
+    katexcss = read(os.path.join(KX, 'katex-embedded.css'))
+    katexjs = read(os.path.join(KX, 'katex.min.js')) + '\n' + read(os.path.join(KX, 'auto-render.min.js'))
     icon   = "data:image/png;base64," + base64.b64encode(open(os.path.join(WEB,'icon-192.png'),'rb').read()).decode()
 
     NAV_HTML = """
@@ -106,6 +112,7 @@ def main():
 <title>کنکور ارشد مهندسی پزشکی</title>
 <link rel="icon" href="__ICON__">
 <style>__FONT__
+__KATEXCSS__
 __CSS__</style>
 </head>
 <body>
@@ -126,6 +133,7 @@ __CSS__</style>
 <script>__NEWJS__</script>
 <script>__READER__</script>
 <script>__KONKUR__</script>
+<script>__KATEXJS__</script>
 <script>__OFFICIAL__</script>
 <script>__JS__</script>
 <script>
@@ -164,6 +172,8 @@ document.addEventListener("touchend", function(e){
               .replace("__KONKUR__", konkurjs or "")
               .replace("__OFFICIAL__", offjs)
               .replace("__FONT__", fontcss)
+              .replace("__KATEXCSS__", katexcss)
+              .replace("__KATEXJS__", katexjs)
               .replace("__CSS__", css)
               .replace("__DATA__", data)
               .replace("__JS__", js)
