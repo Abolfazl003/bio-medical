@@ -1,5 +1,5 @@
 /* Service Worker برای کار آفلاین PWA */
-const CACHE_NAME = 'bme-konkur-v8';
+const CACHE_NAME = 'bme-konkur-v9';
 const ASSETS = [
   './',
   './index.html',
