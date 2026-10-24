@@ -126,6 +126,32 @@ async def main():
         check("شکل‌های ۱۴۰۰ (base64) ≥ ۱۵", d0["imgs"] >= 15, d0["imgs"])
         check("همهٔ سوال‌های ۱۴۰۰ حل تشریحی دارند", d0["sol"])
 
+        print("— دفترچهٔ ۱۴۰۴ (کامل، کلید نهایی ۱-۱۲۰) —")
+        d4 = await pg.evaluate("""(() => {
+          const subs = ['math','physics','signals','control','circuits','anatomy','english'];
+          const c = {}; subs.forEach(s => c[s] = prQ('1404', s).length);
+          const all = subs.flatMap(s => prQ('1404', s));
+          return {c, y: prYearCount('1404'), nos: all.map(q => q.no).sort((a,b)=>a-b),
+                  aa: all.map(q => q.a),
+                  imgs: all.filter(q => q.img).length,
+                  sol: all.every(q => (q.s||'').length > 30),
+                  del: all.filter(q => (q.s||'').includes('حذف شد')).map(q => q.no),
+                  fixed: all.filter(q => (q.s||'').includes('اصلاح شد')).map(q => q.no)};
+        })()""")
+        check("۱۴۰۴ = ۱۲۰ سوال", d4["y"] == 120, d4["y"])
+        check("شماره‌های ۱۴۰۴ = ۱..۱۲۰", d4["nos"] == list(range(1, 121)))
+        for sid, n in {"math":15,"physics":15,"signals":15,"control":10,"circuits":15,"anatomy":10,"english":40}.items():
+            check(f"۱۴۰۴ {sid} = {n}", d4["c"][sid] == n, d4["c"][sid])
+        K1404 = [1,2,4,2,None,2,3,4,1,1, 1,4,2,3,2,3,3,4,3,4, 1,2,1,1,4,4,2,4,2,3, 4,2,3,1,1,4,4,1,3,2,
+                 3,1,1,1,3,2,3,2,4,1, 4,3,1,3,4,3,2,1,1,1, 4,4,4,4,2,3,4,3,1,2, 3,4,2,3,4,4,3,2,4,1,
+                 4,2,3,4,1,2,1,3,2,1, 2,3,4,1,3,4,1,3,4,2, 3,1,2,4,2,3,1,3,2,4, 2,4,4,3,2,1,4,3,2,1]
+        bad4 = [i+1 for i, (k, q) in enumerate(zip(K1404, d4["aa"])) if k is not None and q != k]
+        check("پاسخ‌های ۱۴۰۴ = کلید نهایی سنجش", not bad4, bad4)
+        check("حذفی‌های ۱۴۰۴ = فقط سوال ۵", d4["del"] == [5], d4["del"])
+        check("بازنویسی زبان با کلید نهایی", all(n in d4["fixed"] for n in [46, 56, 67, 70]), d4["fixed"][:5])
+        check("شکل‌های ۱۴۰۴ (base64) ≥ ۲۰", d4["imgs"] >= 20, d4["imgs"])
+        check("همهٔ سوال‌های ۱۴۰۴ حل تشریحی دارند", d4["sol"])
+
         print("— بخش آزمایشی دست‌نخورده —")
         check("۱۲۰۰ سوال آزمایشی سر جایش", await pg.evaluate("pkTotalCount()") == 1200)
         check("۱۰ سال آزمایشی", await pg.evaluate("pkYears().length") == 10)
