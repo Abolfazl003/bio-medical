@@ -129,7 +129,33 @@ async def main():
         check("شکل‌های ۱۳۹۹ (base64) = ۲۱", d9["imgs"] == 21, d9["imgs"])
         check("همهٔ سوال‌های ۱۳۹۹ حل تشریحی دارند", d9["sol"])
 
+        print("— دفترچهٔ ۱۳۹۶ (کامل، کلید اولیهٔ ۱-۱۳۵) —")
+        d6 = await pg.evaluate("""(() => {
+          const subs = ['math','physics','signals','circuits','anatomy','english'];
+          const c = {}; subs.forEach(s => c[s] = prQ('1396', s).length);
+          const all = subs.flatMap(s => prQ('1396', s));
+          return {c, y: prYearCount('1396'), nos: all.map(q => q.no).sort((a,b)=>a-b),
+                  aa: all.map(q => q.a),
+                  imgs: all.filter(q => q.img).length,
+                  sol: all.every(q => (q.s||'').length > 30),
+                  aval: all.every(q => (q.s||'').includes('کلید اولیهٔ سنجش'))};
+        })()""")
+        check("۱۳۹۶ = ۱۳۵ سوال", d6["y"] == 135, d6["y"])
+        check("شماره‌های ۱۳۹۶ = ۱..۱۳۵", d6["nos"] == list(range(1, 136)))
+        for sid, n in {"math":25,"physics":20,"signals":20,"circuits":20,"anatomy":10,"english":40}.items():
+            check(f"۱۳۹۶ {sid} = {n}", d6["c"][sid] == n, d6["c"][sid])
+        # کلید ۱۳۹۶ مستقیماً از content/official/src_1396/key1396.py تولید می‌شود (دستی تایپ نشود!)
+        _sp6 = _ilu.spec_from_file_location("key1396", os.path.join(os.path.dirname(__file__), "..", "content", "official", "src_1396", "key1396.py"))
+        _k6 = _ilu.module_from_spec(_sp6); _sp6.loader.exec_module(_k6)
+        K1396 = [_k6.KEY[i] for i in range(1, 136)]
+        bad6 = [i+1 for i, (k, q) in enumerate(zip(K1396, d6["aa"])) if q != k]
+        check("پاسخ‌های ۱۳۹۶ = کلید اولیهٔ سنجش", not bad6, bad6)
+        check("برچسب «کلید اولیهٔ سنجش» برای هر ۱۳۵ سوال", d6["aval"])
+        check("شکل‌های ۱۳۹۶ (base64) = ۳۳", d6["imgs"] == 33, d6["imgs"])
+        check("همهٔ سوال‌های ۱۳۹۶ حل تشریحی دارند", d6["sol"])
+
         print("— دفترچهٔ ۱۴۰۱ (کامل، کلید اولیهٔ ۱-۱۲۰) —")
+
         d1 = await pg.evaluate("""(() => {
           const subs = ['math','physics','signals','control','circuits','anatomy','english'];
           const c = {}; subs.forEach(s => c[s] = prQ('1401', s).length);
