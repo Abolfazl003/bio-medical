@@ -154,6 +154,31 @@ async def main():
         check("شکل‌های ۱۳۹۶ (base64) = ۳۳", d6["imgs"] == 33, d6["imgs"])
         check("همهٔ سوال‌های ۱۳۹۶ حل تشریحی دارند", d6["sol"])
 
+        print("— دفترچهٔ ۱۳۹۷ (کامل، حل مؤلف ۱-۱۴۰) —")
+        d7 = await pg.evaluate("""(() => {
+          const subs = ['math','physics','signals','control','circuits','anatomy','english'];
+          const c = {}; subs.forEach(s => c[s] = prQ('1397', s).length);
+          const all = subs.flatMap(s => prQ('1397', s));
+          return {c, y: prYearCount('1397'), nos: all.map(q => q.no).sort((a,b)=>a-b),
+                  aa: all.map(q => q.a),
+                  imgs: all.filter(q => q.img).length,
+                  sol: all.every(q => (q.s||'').length > 30),
+                  mo: all.every(q => (q.s||'').includes('حل مؤلف'))};
+        })()""")
+        check("۱۳۹۷ = ۱۴۰ سوال", d7["y"] == 140, d7["y"])
+        check("شماره‌های ۱۳۹۷ = ۱..۱۴۰", d7["nos"] == list(range(1, 141)))
+        for sid, n in {"math":20,"physics":20,"signals":20,"control":10,"circuits":20,"anatomy":10,"english":40}.items():
+            check(f"۱۳۹۷ {sid} = {n}", d7["c"][sid] == n, d7["c"][sid])
+        # پاسخ‌های ۱۳۹۷ مستقیماً از content/official/src_1397/key1397.py (حل مؤلف) تولید می‌شوند
+        _sp7 = _ilu.spec_from_file_location("key1397", os.path.join(os.path.dirname(__file__), "..", "content", "official", "src_1397", "key1397.py"))
+        _k7 = _ilu.module_from_spec(_sp7); _sp7.loader.exec_module(_k7)
+        K1397 = [_k7.KEY[i] for i in range(1, 141)]
+        bad7 = [i+1 for i, (k, q) in enumerate(zip(K1397, d7["aa"])) if q != k]
+        check("پاسخ‌های ۱۳۹۷ = حل مؤلف key1397.py", not bad7, bad7)
+        check("برچسب «حل مؤلف» برای هر ۱۴۰ سوال", d7["mo"])
+        check("شکل‌های ۱۳۹۷ (base64) = ۲۶", d7["imgs"] == 26, d7["imgs"])
+        check("همهٔ سوال‌های ۱۳۹۷ حل تشریحی دارند", d7["sol"])
+
         print("— دفترچهٔ ۱۴۰۱ (کامل، کلید اولیهٔ ۱-۱۲۰) —")
 
         d1 = await pg.evaluate("""(() => {
