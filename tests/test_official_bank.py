@@ -129,6 +129,31 @@ async def main():
         check("شکل‌های ۱۳۹۹ (base64) = ۲۱", d9["imgs"] == 21, d9["imgs"])
         check("همهٔ سوال‌های ۱۳۹۹ حل تشریحی دارند", d9["sol"])
 
+        print("— دفترچهٔ ۱۴۰۱ (کامل، کلید اولیهٔ ۱-۱۲۰) —")
+        d1 = await pg.evaluate("""(() => {
+          const subs = ['math','physics','signals','control','circuits','anatomy','english'];
+          const c = {}; subs.forEach(s => c[s] = prQ('1401', s).length);
+          const all = subs.flatMap(s => prQ('1401', s));
+          return {c, y: prYearCount('1401'), nos: all.map(q => q.no).sort((a,b)=>a-b),
+                  aa: all.map(q => q.a),
+                  imgs: all.filter(q => q.img).length,
+                  sol: all.every(q => (q.s||'').length > 30),
+                  aval: all.every(q => (q.s||'').includes('کلید اولیهٔ سنجش'))};
+        })()""")
+        check("۱۴۰۱ = ۱۲۰ سوال", d1["y"] == 120, d1["y"])
+        check("شماره‌های ۱۴۰۱ = ۱..۱۲۰", d1["nos"] == list(range(1, 121)))
+        for sid, n in {"math":15,"physics":15,"signals":15,"control":10,"circuits":15,"anatomy":10,"english":40}.items():
+            check(f"۱۴۰۱ {sid} = {n}", d1["c"][sid] == n, d1["c"][sid])
+        # کلید ۱۴۰۱ مستقیماً از content/official/src_1401/key1401.py تولید می‌شود (دستی تایپ نشود!)
+        _sp1 = _ilu.spec_from_file_location("key1401", os.path.join(os.path.dirname(__file__), "..", "content", "official", "src_1401", "key1401.py"))
+        _k1 = _ilu.module_from_spec(_sp1); _sp1.loader.exec_module(_k1)
+        K1401 = [_k1.KEY[i] for i in range(1, 121)]
+        bad1 = [i+1 for i, (k, q) in enumerate(zip(K1401, d1["aa"])) if q != k]
+        check("پاسخ‌های ۱۴۰۱ = کلید اولیهٔ سنجش", not bad1, bad1)
+        check("برچسب «کلید اولیهٔ سنجش» برای هر ۱۲۰ سوال", d1["aval"])
+        check("شکل‌های ۱۴۰۱ (base64) = ۲۱", d1["imgs"] == 21, d1["imgs"])
+        check("همهٔ سوال‌های ۱۴۰۱ حل تشریحی دارند", d1["sol"])
+
         print("— دفترچهٔ ۱۴۰۰ (کامل، کلید نهایی ۱-۱۲۰) —")
         d0 = await pg.evaluate("""(() => {
           const subs = ['math','physics','signals','control','circuits','anatomy','english'];
