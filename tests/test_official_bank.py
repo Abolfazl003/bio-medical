@@ -21,7 +21,7 @@ def check(name, cond, extra=""):
         fail += 1; print(f"  ❌ {name} {extra}")
 
 EXPECT = {"1385":135,"1386":135,"1387":110,"1388":130,"1389":130,"1390":130,"1391":130,"1392":130,"1393":130,
-          "1394":130,"1395":130,"1396":135,"1397":140,"1398":None,"1399":130,"1400":120,
+          "1394":130,"1395":130,"1396":135,"1397":140,"1398":None,"1399":120,"1400":120,
           "1401":120,"1402":120,"1403":120,"1404":120}
 
 async def main():
@@ -98,6 +98,36 @@ async def main():
         check("شکل‌های ۱۴۰۲ (base64) ≥ ۲۵", d2["imgs"] >= 25, d2["imgs"])
         check("همه سوال‌ها حل تشریحی دارند", d2["sol"])
         check("جدیدترین دفترچه درج‌شده = ۱۴۰۴", d2["newest"] == "1404", d2["newest"])
+
+        print("— دفترچهٔ ۱۳۹۹ (کامل، کلید نهایی ۱-۱۲۰) —")
+        d9 = await pg.evaluate("""(() => {
+          const subs = ['math','physics','signals','control','circuits','anatomy','english'];
+          const c = {}; subs.forEach(s => c[s] = prQ('1399', s).length);
+          const all = subs.flatMap(s => prQ('1399', s));
+          return {c, y: prYearCount('1399'), nos: all.map(q => q.no).sort((a,b)=>a-b),
+                  aa: all.map(q => q.a),
+                  imgs: all.filter(q => q.img).length,
+                  sol: all.every(q => (q.s||'').length > 30),
+                  del: all.filter(q => (q.s||'').includes('حذف شد')).map(q => q.no),
+                  dual: all.filter(q => (q.s||'').includes('هر دو صحیح')).map(q => q.no)};
+        })()""")
+        check("۱۳۹۹ = ۱۲۰ سوال", d9["y"] == 120, d9["y"])
+        check("شماره‌های ۱۳۹۹ = ۱..۱۲۰", d9["nos"] == list(range(1, 121)))
+        for sid, n in {"math":15,"physics":15,"signals":15,"control":10,"circuits":15,"anatomy":10,"english":40}.items():
+            check(f"۱۳۹۹ {sid} = {n}", d9["c"][sid] == n, d9["c"][sid])
+        # کلید ۱۳۹۹ مستقیماً از content/official/src_1399/key1399.py تولید می‌شود (دستی تایپ نشود!)
+        import importlib.util as _ilu
+        _sp = _ilu.spec_from_file_location("key1399", os.path.join(os.path.dirname(__file__), "..", "content", "official", "src_1399", "key1399.py"))
+        _km = _ilu.module_from_spec(_sp); _sp.loader.exec_module(_km)
+        K1399 = [None if _km.KEY[i] == 0 else (set(_km.KEY[i]) if isinstance(_km.KEY[i], tuple) else _km.KEY[i])
+                 for i in range(1, 121)]
+        bad9 = [i+1 for i, (k, q) in enumerate(zip(K1399, d9["aa"]))
+                if k is not None and (q not in k if isinstance(k, set) else q != k)]
+        check("پاسخ‌های ۱۳۹۹ = کلید نهایی سنجش", not bad9, bad9)
+        check("حذفی‌های ۱۳۹۹ = ۹ و ۳۲", d9["del"] == [9, 32], d9["del"])
+        check("دوگزینه‌ای‌های ۱۳۹۹ = ۳۷ و ۷۰", d9["dual"] == [37, 70], d9["dual"])
+        check("شکل‌های ۱۳۹۹ (base64) = ۲۱", d9["imgs"] == 21, d9["imgs"])
+        check("همهٔ سوال‌های ۱۳۹۹ حل تشریحی دارند", d9["sol"])
 
         print("— دفترچهٔ ۱۴۰۰ (کامل، کلید نهایی ۱-۱۲۰) —")
         d0 = await pg.evaluate("""(() => {

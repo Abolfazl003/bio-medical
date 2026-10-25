@@ -1,5 +1,5 @@
 /* Service Worker برای کار آفلاین PWA */
-const CACHE_NAME = 'bme-konkur-v10';
+const CACHE_NAME = 'bme-konkur-v11';
 const ASSETS = [
   './',
   './index.html',
@@ -34,6 +34,7 @@ const ASSETS = [
   './konkur_official_1386.js',
   './konkur_official_1387.js',
   './konkur_official_1388.js',
+  './konkur_official_1399.js',
   './konkur_official_1400.js',
   './konkur_official_1402.js',
   './konkur_official_1404.js',
