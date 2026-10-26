@@ -136,6 +136,10 @@ jobs:
       - name: Build single-file offline app
         run: python build_single.py
 
+      - name: Prepare web assets for bundling
+        working-directory: desktop_app
+        run: Copy-Item -Recurse -Force ..\web .\web
+
       - name: Build EXE (folder version)
         working-directory: desktop_app
         run: pyinstaller --noconfirm --clean --windowed --name BME-Konkur --add-data "web;web" --hidden-import webview.platforms.edgechromium --hidden-import webview.platforms.winforms --hidden-import clr app.py
@@ -180,6 +184,10 @@ jobs:
 
       - name: Build single-file offline app
         run: python build_single.py
+
+      - name: Prepare web assets for bundling
+        working-directory: desktop_app
+        run: cp -r ../web ./web
 
       - name: Build Linux binary
         working-directory: desktop_app
