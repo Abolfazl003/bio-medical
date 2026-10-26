@@ -31,6 +31,13 @@ jobs:
       - name: Build single-file offline app (assets)
         run: python build_single.py
 
+      - name: Bundle app into Android assets
+        run: |
+          mkdir -p android/app/src/main/assets
+          cp bme-konkur-offline.html android/app/src/main/assets/index.html
+          ls -la android/app/src/main/assets/
+          grep -c "کنکور" android/app/src/main/assets/index.html || true
+
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
